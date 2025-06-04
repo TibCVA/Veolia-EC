@@ -1030,10 +1030,81 @@
                 </div>
             </section>
           
-            <!-- SLIDE 6 - CORRECTED -->
+            <!-- SLIDE 6 -->
             <section id="slide6" class="slide-section">
                 <div class="slide-header">
                     <span class="slide-number">SLIDE 6</span>
+                    <h2 class="slide-title">Installed DER & storage – 2024 factual baseline (audit sheet DER_Penetration.xlsx)</h2>
+                    <p class="slide-subtitle">"Germany and Italy already host >21 GWh of behind-the-meter (BTM) batteries; Spain and Portugal remain PV-centric – hence a clear storage upsell."</p>
+                </div>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Metric (2024 real)</th>
+                            <th>ES</th>
+                            <th>IT</th>
+                            <th>DE</th>
+                            <th>PT</th>
+                            <th>Audit path / rationale</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Residential PV density (kW per capita)</strong></td>
+                            <td>0.05</td>
+                            <td>0.09</td>
+                            <td>0.20</td>
+                            <td>0.06</td>
+                            <td>IRENA stat 2024 PV capacity ÷ Eurostat pop — values copied from Slide 7 first draft¹</td>
+                        </tr>
+                        <tr>
+                            <td><strong>BTM battery stock (MWh)</strong></td>
+                            <td style="font-weight: 700;">100 MWh</td>
+                            <td style="font-weight: 700;">9 600 MWh</td>
+                            <td style="font-weight: 700;">12 000 MWh</td>
+                            <td style="font-weight: 700;">150 MWh</td>
+                            <td>Italy: ARERA Q2-2024 "Rapporto Accumuli" → 1.6 M home batteries × 6 kWh avg²; Germany: BNetzA 2024 statistics → 2 M systems × 6 kWh³; ES/PT pilots only: sum of known battery capacities rows 1-7 & row 18 Slide 2</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Public EV chargers (units per 1 000 inh.)</strong></td>
+                            <td>0.98</td>
+                            <td>0.97</td>
+                            <td>1.83</td>
+                            <td>0.40</td>
+                            <td>ACEA Charging Point Monitor 2024 — figures reproduced in earlier Slide 7 table¹</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Large operator sites (≥ 10 GWh/y electricity)</strong></td>
+                            <td>11</td>
+                            <td>9</td>
+                            <td>7</td>
+                            <td>14</td>
+                            <td>Count of concessions explicitly listed in Footprint list (Port Barcelona, Łódź, Leuna, etc.)⁴</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="formula-box">
+                    <strong>Method check (battery stock)</strong><br>
+                    IT stock = 1 600 000 units × 6 kWh/unit = 9 600 MWh<br>
+                    See workbook tab DER_Penetration!B7.
+                </div>
+
+                <div class="footnotes">
+                    <p style="color: var(--cva-gray); font-size: 0.85rem;">
+                    ¹ Assistant message 04-Jun-25 15:08, "Slide 7" table.<br>
+                    ² Same message: ARERA statistic quoted lines 15-18.<br>
+                    ³ Same message: BNetzA statistic quoted lines 15-18.<br>
+                    ⁴ Assistant message 04-Jun-25 15:08, Footprint section.
+                    </p>
+                </div>
+            </section>
+            
+            <!-- SLIDE 7 - CORRECTED -->
+            <section id="slide7" class="slide-section">
+                <div class="slide-header">
+                    <span class="slide-number">SLIDE 7</span>
                     <h2 class="slide-title">Country selection – multi-criterion scoring (method in Excel tab "Perimeter_Score")</h2>
                     <p class="slide-subtitle">"Only ES–IT–PT–DE combine tariff spreads, regulatory readiness and DER momentum: composite score ≥ 50/100."</p>
                 </div>
@@ -1141,82 +1212,11 @@
                 </div>
             </section>
 
-            <!-- SLIDE 7 -->
-            <section id="slide7" class="slide-section">
-                <div class="slide-header">
-                    <span class="slide-number">SLIDE 7</span>
-                    <h2 class="slide-title">Installed DER & storage – 2024 factual baseline (audit sheet DER_Penetration.xlsx)</h2>
-                    <p class="slide-subtitle">"Germany and Italy already host >21 GWh of behind-the-meter (BTM) batteries; Spain and Portugal remain PV-centric – hence a clear storage upsell."</p>
-                </div>
-
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Metric (2024 real)</th>
-                            <th>ES</th>
-                            <th>IT</th>
-                            <th>DE</th>
-                            <th>PT</th>
-                            <th>Audit path / rationale</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Residential PV density (kW per capita)</strong></td>
-                            <td>0.05</td>
-                            <td>0.09</td>
-                            <td>0.20</td>
-                            <td>0.06</td>
-                            <td>IRENA stat 2024 PV capacity ÷ Eurostat pop — values copied from Slide 7 first draft¹</td>
-                        </tr>
-                        <tr>
-                            <td><strong>BTM battery stock (MWh)</strong></td>
-                            <td style="font-weight: 700;">100 MWh</td>
-                            <td style="font-weight: 700;">9 600 MWh</td>
-                            <td style="font-weight: 700;">12 000 MWh</td>
-                            <td style="font-weight: 700;">150 MWh</td>
-                            <td>Italy: ARERA Q2-2024 "Rapporto Accumuli" → 1.6 M home batteries × 6 kWh avg²; Germany: BNetzA 2024 statistics → 2 M systems × 6 kWh³; ES/PT pilots only: sum of known battery capacities rows 1-7 & row 18 Slide 2</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Public EV chargers (units per 1 000 inh.)</strong></td>
-                            <td>0.98</td>
-                            <td>0.97</td>
-                            <td>1.83</td>
-                            <td>0.40</td>
-                            <td>ACEA Charging Point Monitor 2024 — figures reproduced in earlier Slide 7 table¹</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Large operator sites (≥ 10 GWh/y electricity)</strong></td>
-                            <td>11</td>
-                            <td>9</td>
-                            <td>7</td>
-                            <td>14</td>
-                            <td>Count of concessions explicitly listed in Footprint list (Port Barcelona, Łódź, Leuna, etc.)⁴</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="formula-box">
-                    <strong>Method check (battery stock)</strong><br>
-                    IT stock = 1 600 000 units × 6 kWh/unit = 9 600 MWh<br>
-                    See workbook tab DER_Penetration!B7.
-                </div>
-
-                <div class="footnotes">
-                    <p style="color: var(--cva-gray); font-size: 0.85rem;">
-                    ¹ Assistant message 04-Jun-25 15:08, "Slide 7" table.<br>
-                    ² Same message: ARERA statistic quoted lines 15-18.<br>
-                    ³ Same message: BNetzA statistic quoted lines 15-18.<br>
-                    ⁴ Assistant message 04-Jun-25 15:08, Footprint section.
-                    </p>
-                </div>
-            </section>
-
             <!-- SLIDE 8 -->
             <section id="slide8" class="slide-section">
                 <div class="slide-header">
                     <span class="slide-number">SLIDE 8</span>
-                    <h2 class="slide-title">Gross economic value pool – 2024 € for an EC operator</h2>
+                    <h2 class="slide-title">Gross economic value pool – 2024 € for an EC </h2>
                     <p class="slide-subtitle">"Grid-fee relief in ES & IT almost doubles the monetisable pool; DE value is wholesale spread-only."</p>
                 </div>
 
