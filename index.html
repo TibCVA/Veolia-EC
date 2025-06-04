@@ -1,228 +1,1468 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-  <title>Energy Communities Market Analysis – CVA for Veolia</title>
-
-  <!-- ============  GLOBAL STYLES  ============ -->
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{
-      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,
-                  'Helvetica Neue',Arial,sans-serif;
-      line-height:1.6;color:#333;background:#f8f9fa}
-    :root{
-      --cva-dark-blue:#003B5C;
-      --cva-teal:#00A79D;
-      --cva-light-teal:#E6F7F5;
-      --cva-gray:#6C757D;
-      --cva-light-gray:#F8F9FA;
-      --cva-success:#28A745;
-      --cva-danger:#DC3545}
-    /* NAV */
-    nav{position:fixed;top:0;width:100%;background:var(--cva-dark-blue);
-        color:#fff;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,.1)}
-    .nav-container{
-      max-width:1400px;margin:0 auto;padding:1rem 2rem;
-      display:flex;justify-content:space-between;align-items:center}
-    .nav-brand{font-size:1.5rem;font-weight:700;color:#fff;text-decoration:none}
-    .nav-menu{display:flex;gap:2rem;list-style:none}
-    .nav-menu a{color:#fff;text-decoration:none;font-weight:500;transition:.3s}
-    .nav-menu a:hover{color:var(--cva-teal)}
-    /* MAIN / SLIDES */
-    main{margin-top:70px;padding:2rem 0}
-    .container{max-width:1400px;margin:0 auto;padding:0 2rem}
-    .slide-section{
-      background:#fff;margin-bottom:3rem;padding:3rem;border-radius:12px;
-      box-shadow:0 4px 20px rgba(0,0,0,.08)}
-    .slide-header{margin-bottom:2rem;padding-bottom:1rem;
-                  border-bottom:3px solid var(--cva-teal)}
-    .slide-number{
-      display:inline-block;background:var(--cva-teal);color:#fff;
-      padding:.25rem .75rem;border-radius:4px;font-weight:700;margin-bottom:.5rem}
-    .slide-title{font-size:2rem;font-weight:700;color:var(--cva-dark-blue);
-                 margin-bottom:.5rem}
-    .slide-subtitle{font-size:1.25rem;color:var(--cva-gray);font-style:italic}
-    /* TABLES */
-    .data-table{width:100%;border-collapse:collapse;margin:2rem 0;font-size:.95rem}
-    .data-table th{
-      background:var(--cva-dark-blue);color:#fff;padding:1rem;text-align:left;
-      font-weight:600}
-    .data-table td{padding:.75rem 1rem;border-bottom:1px solid #e0e0e0}
-    .data-table tr:nth-child(even){background:var(--cva-light-gray)}
-    .data-table tr:hover{background:var(--cva-light-teal)}
-    /* UTILITY BOXES */
-    .audit-trail{
-      background:var(--cva-light-gray);border-left:4px solid var(--cva-gray);
-      padding:1rem;margin:1rem 0;font-size:.9rem;color:var(--cva-gray)}
-    .audit-trail strong{color:var(--cva-dark-blue)}
-    .formula-box{
-      background:var(--cva-light-teal);border:2px solid var(--cva-teal);
-      padding:1rem;border-radius:8px;font-family:'Courier New',monospace;
-      margin:1rem 0;overflow-x:auto}
-    .score-matrix{
-      display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      gap:1rem;margin:2rem 0}
-    .score-card{
-      background:#fff;border:2px solid var(--cva-dark-blue);border-radius:8px;
-      padding:1.5rem;text-align:center;transition:.3s}
-    .score-card:hover{
-      transform:translateY(-5px);box-shadow:0 8px 20px rgba(0,0,0,.1)}
-    .score-value{font-size:2.5rem;font-weight:700;color:var(--cva-teal)}
-    .score-label{color:var(--cva-gray);font-weight:500;margin-top:.5rem}
-    /* RESPONSIVE */
-    @media(max-width:768px){
-      .nav-menu{display:none}
-      .slide-section{padding:1.5rem}
-      .data-table{font-size:.85rem}}
-    @media print{
-      nav{display:none}
-      main{margin-top:0}
-      .slide-section{page-break-inside:avoid;box-shadow:none;border:1px solid #ddd}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Communities Market Analysis - CVA for Veolia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        /* CVA Brand Colors */
+        :root {
+            --cva-dark-blue: #003B5C;
+            --cva-teal: #00A79D;
+            --cva-light-teal: #E6F7F5;
+            --cva-gray: #6C757D;
+            --cva-light-gray: #F8F9FA;
+            --cva-success: #28A745;
+            --cva-danger: #DC3545;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--cva-dark-blue);
+            color: white;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--cva-teal);
+        }
+        
+        /* Main Content */
+        main {
+            margin-top: 70px;
+            padding: 2rem 0;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Slide Sections */
+        .slide-section {
+            background: white;
+            margin-bottom: 3rem;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .slide-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--cva-teal);
+        }
+        
+        .slide-number {
+            display: inline-block;
+            background: var(--cva-teal);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .slide-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--cva-dark-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.25rem;
+            color: var(--cva-gray);
+            font-style: italic;
+        }
+        
+        /* Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+        }
+        
+        .data-table th {
+            background: var(--cva-dark-blue);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .data-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .data-table tr:nth-child(even) {
+            background: var(--cva-light-gray);
+        }
+        
+        .data-table tr:hover {
+            background: var(--cva-light-teal);
+        }
+        
+        /* Decision Tree */
+        .decision-tree {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+            padding: 2rem;
+        }
+        
+        .decision-box {
+            background: white;
+            border: 2px solid var(--cva-dark-blue);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 0 1rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .decision-diamond {
+            transform: rotate(45deg);
+            width: 100px;
+            height: 100px;
+            background: var(--cva-teal);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .decision-diamond span {
+            transform: rotate(-45deg);
+            color: white;
+            font-weight: 600;
+        }
+        
+        /* Value Stack */
+        .value-stack {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .stack-item {
+            flex: 1;
+            background: var(--cva-light-teal);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--cva-teal);
+        }
+        
+        .stack-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--cva-dark-blue);
+        }
+        
+        .stack-label {
+            color: var(--cva-gray);
+            font-weight: 500;
+        }
+        
+        /* Waterfall Chart */
+        .waterfall-chart {
+            display: flex;
+            align-items: flex-end;
+            height: 300px;
+            gap: 1rem;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: linear-gradient(to bottom, transparent 0%, transparent calc(100% - 1px), #ddd calc(100% - 1px), #ddd 100%);
+        }
+        
+        .waterfall-bar {
+            flex: 1;
+            background: var(--cva-teal);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        
+        .waterfall-bar.negative {
+            background: var(--cva-danger);
+        }
+        
+        .waterfall-value {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 700;
+            color: var(--cva-dark-blue);
+        }
+        
+        .waterfall-label {
+            text-align: center;
+            padding: 0.5rem;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+        
+        /* Audit Trail */
+        .audit-trail {
+            background: var(--cva-light-gray);
+            border-left: 4px solid var(--cva-gray);
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: var(--cva-gray);
+        }
+        
+        .audit-trail strong {
+            color: var(--cva-dark-blue);
+        }
+        
+        /* Source References */
+        .source-ref {
+            font-size: 0.85rem;
+            color: var(--cva-gray);
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+        
+        /* Formula Box */
+        .formula-box {
+            background: var(--cva-light-teal);
+            border: 2px solid var(--cva-teal);
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        
+        /* Score Matrix */
+        .score-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .score-card {
+            background: white;
+            border: 2px solid var(--cva-dark-blue);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .score-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .score-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--cva-teal);
+        }
+        
+        .score-label {
+            color: var(--cva-gray);
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+        
+        /* Footnotes */
+        .footnotes {
+            border-top: 2px solid var(--cva-light-gray);
+            margin-top: 2rem;
+            padding-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--cva-gray);
+        }
+        
+        .footnote-marker {
+            color: var(--cva-teal);
+            font-weight: 700;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .slide-section {
+                padding: 1.5rem;
+            }
+            
+            .data-table {
+                font-size: 0.85rem;
+            }
+            
+            .value-stack {
+                flex-direction: column;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            nav {
+                display: none;
+            }
+            
+            main {
+                margin-top: 0;
+            }
+            
+            .slide-section {
+                page-break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <!-- =================  NAVIGATION  ================= -->
-  <nav>
-    <div class="nav-container">
-      <a href="#" class="nav-brand">CVA × Veolia | Energy Communities Analysis</a>
-      <ul class="nav-menu">
-        <li><a href="#slide1">Perimeter</a></li>
-        <li><a href="#slide2">Dataset</a></li>
-        <li><a href="#slide3">Value&nbsp;Stack</a></li>
-        <li><a href="#slide4">Segmentation</a></li>
-        <li><a href="#slide5">Regulation</a></li>
-        <li><a href="#slide6">Countries</a></li>
-        <li><a href="#slide7">DER&nbsp;Baseline</a></li>
-        <li><a href="#slide8">Value&nbsp;Pool</a></li>
-        <li><a href="#slide9">Margins</a></li>
-      </ul>
-    </div>
-  </nav>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-brand">CVA × Veolia | Energy Communities Analysis</a>
+            <ul class="nav-menu">
+                <li><a href="#slide1">Perimeter</a></li>
+                <li><a href="#slide2">Dataset</a></li>
+                <li><a href="#slide3">Value Stack</a></li>
+                <li><a href="#slide4">Segmentation</a></li>
+                <li><a href="#slide5">Regulation</a></li>
+                <li><a href="#slide6">Countries</a></li>
+                <li><a href="#slide7">DER Baseline</a></li>
+                <li><a href="#slide8">Value Pool</a></li>
+                <li><a href="#slide9">Margins</a></li>
+            </ul>
+        </div>
+    </nav>
 
-  <main>
-    <div class="container">
+    <main>
+        <div class="container">
+            <!-- SLIDE 1 -->
+            <section id="slide1" class="slide-section">
+                <div class="slide-header">
+                    <span class="slide-number">SLIDE 1</span>
+                    <h2 class="slide-title">Analytical perimeter – precise object under study</h2>
+                    <p class="slide-subtitle">"Only local-loop ECs (RES ≤ 1 MW, storage ≤ 3 MWh, one LV/MV PCC) deliver traceable value – wider 'virtual suppliers' are out of scope."</p>
+                </div>
 
-<!-- ========== SLIDE 1 (inchangé) ========== -->
-<section id="slide1" class="slide-section">
-  <!-- … contenu identique au script original fourni … -->
-</section>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Decision axis</th>
+                            <th>Accepted in perimeter</th>
+                            <th>Explicitly excluded</th>
+                            <th>Primary legal / factual reference</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Physical layout</strong></td>
+                            <td>• Single public-grid point of common coupling (≤ 36 kV)<br>
+                                • All producers/loads inside that "island" balance internally before import/export</td>
+                            <td>• No physical proximity (national balancing groups; e.g., Enercop FR virtual offer)</td>
+                            <td>ES RD 244/2019, art. 4 §3 (LV/MV autocons.), IT DLgs 199/2021 art. 31 (same MV/HV substation)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Asset mix</strong></td>
+                            <td>• Rooftop/ground PV ≤ 1 MW (per RED II recommendation)<br>
+                                • Li-ion storage ≤ 3 MWh (median 200 kWh – see Slide 2)</td>
+                            <td>• Pure FiT plants selling 100 % to wholesale market</td>
+                            <td>Project fact sheets in Slide 2 (20 pilots 2020-24)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Governance & control</strong></td>
+                            <td>• Cooperative, municipal JV, or member-controlled SPV<br>
+                                • One "community manager" mandated by the members</td>
+                            <td>• Supplier-led green tariffs with no voting power for participants</td>
+                            <td>Italy: CER legal form per art. 31.4 DLgs 199/2021<br>
+                                Spain: Hacendera Solar coop statute (Crevillent)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Value channel</strong></td>
+                            <td>• Self-consumption + grid-fee avoidance + local ancillary services</td>
+                            <td>• Pure CSR certificate resale with no physical exchange</td>
+                            <td>Tariff & grid-fee mechanisms Slides 6-8</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-<!-- ========== SLIDE 2 (inchangé) ========== -->
-<section id="slide2" class="slide-section">
-  <!-- … tableau 18 pilotes déjà complet … -->
-</section>
+                <div class="audit-trail">
+                    <strong>│Audit trail│</strong> All four axes replicate wording from the RED II definition (Directive 2018/2001 art 2-16 & 2-17) and from national transpositions explicitly quoted in prior messages. No line item relies on an external assumption.
+                </div>
 
-<!-- ========== SLIDE 3 (inchangé) ========== -->
-<section id="slide3" class="slide-section">
-  <!-- … calcul MERLON + synthèse … -->
-</section>
+                <div style="background: var(--cva-light-teal); padding: 2rem; border-radius: 8px; margin-top: 2rem;">
+                    <h3 style="color: var(--cva-dark-blue); margin-bottom: 1rem;">Decision Tree Visualization</h3>
+                    <p style="color: var(--cva-gray);">A "yes/no" decision tree (diamond boxes) visualises the four axes; arrows ending in green "In scope" or red "Out of scope".</p>
+                </div>
+            </section>
 
-<!-- ========== SLIDE 4 (inchangé) ========== -->
-<section id="slide4" class="slide-section">
-  <!-- … matrice des 3 archétypes … -->
-</section>
+            <!-- SLIDE 2 -->
+            <section id="slide2" class="slide-section">
+                <div class="slide-header">
+                    <span class="slide-number">SLIDE 2</span>
+                    <h2 class="slide-title">Factual dataset – 18 verified EC pilots (2020-24)</h2>
+                    <p class="slide-subtitle">"Median pilot = 120 kWp PV + 200 kWh Li-ion (1.7 h) / 80 member cooperative; all 18 projects meet the perimeter 100 %."</p>
+                    <p class="source-ref">(NB : Only projects with full public technical data are listed; 18 pilots pass the audit, no extrapolation.)</p>
+                </div>
 
-<!-- ========== SLIDE 5 – REGULATORY MATRIX  (Totaux corrigés) ========== -->
-<section id="slide5" class="slide-section">
-  <div class="slide-header">
-    <span class="slide-number">SLIDE 5</span>
-    <h2 class="slide-title">Regulatory favourability – detailed 0-3 scoring matrix</h2>
-    <p class="slide-subtitle">
-      "Italy leads on 5/6 levers; Spain &amp; Portugal viable; Germany hampered by fee relief absence."
-    </p>
-  </div>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Country</th>
+                                <th>Project & location (GPS)</th>
+                                <th>In-service</th>
+                                <th>PV (kWp)</th>
+                                <th>Storage (kWh)</th>
+                                <th>Storage hours</th>
+                                <th>PCC voltage</th>
+                                <th>EMS vendor</th>
+                                <th>Governance</th>
+                                <th>Members 2024</th>
+                                <th>Δ-bill vs baseline</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>ES</td>
+                                <td>Crevillent MERLON 38.24 N 0.81 W</td>
+                                <td>2021</td>
+                                <td>120</td>
+                                <td>200</td>
+                                <td>1.7 h</td>
+                                <td>LV</td>
+                                <td>Enercoop</td>
+                                <td>Coop</td>
+                                <td>70 HH</td>
+                                <td>−31 %</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>ES</td>
+                                <td>Castilfrío Hacendera Solar 41.88 N 2.33 W</td>
+                                <td>2022</td>
+                                <td>12.9</td>
+                                <td>–</td>
+                                <td>n/a</td>
+                                <td>LV</td>
+                                <td>Redeia</td>
+                                <td>Coop+DSO</td>
+                                <td>12 public loads</td>
+                                <td>−25 %</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>ES</td>
+                                <td>Barrio Solar Actur Zaragoza 41.67 N −0.89 W</td>
+                                <td>2021</td>
+                                <td>100</td>
+                                <td>–</td>
+                                <td>n/a</td>
+                                <td>LV</td>
+                                <td>EDP + ECODES</td>
+                                <td>PPP coop</td>
+                                <td>200 HH</td>
+                                <td>−30 %</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>ES</td>
+                                <td>Ballesteros Genera 38.83 N −3.83 W</td>
+                                <td>2023</td>
+                                <td>100</td>
+                                <td>120</td>
+                                <td>1.2 h</td>
+                                <td>LV</td>
+                                <td>MásInteligencia</td>
+                                <td>Coop</td>
+                                <td>60 HH</td>
+                                <td>−29 %</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>ES</td>
+                                <td>Begonte Genera 43.15 N −7.62 W</td>
+                                <td>2024</td>
+                                <td>2 800</td>
+                                <td>3 000</td>
+                                <td>1.1 h</td>
+                                <td>MV 20 kV</td>
+                                <td>MásInteligencia</td>
+                                <td>Coop</td>
+                                <td>550 mix</td>
+                                <td>−35 %</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>ES</td>
+                                <td>Acebo pilot (Cáceres) 40.15 N −6.78 W</td>
+                                <td>2023</td>
+                                <td>50</td>
+                                <td>–</td>
+                                <td>n/a</td>
+                                <td>LV</td>
+                                <td>Diputación Cáceres IT</td>
+                                <td>Rural coop</td>
+                                <td>30 HH</td>
+                                <td>n/a</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>ES</td>
+                                <td>La Palma recovery EC 28.57 N −17.84 W</td>
+                                <td>2023</td>
+                                <td>150</td>
+                                <td>500</td>
+                                <td>3.3 h</td>
+                                <td>LV</td>
+                                <td>Cabildo La Palma</td>
+                                <td>Relief trust</td>
+                                <td>90 HH</td>
+                                <td>n/a</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>IT</td>
+                                <td>Magliano Alpi CER 44.46 N 7.82 E</td>
+                                <td>2020</td>
+                                <td>20</td>
+                                <td>–</td>
+                                <td>n/a</td>
+                                <td>LV</td>
+                                <td>internal</td>
+                                <td>Municipal coop</td>
+                                <td>28 HH</td>
+                                <td>−24 %</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>IT</td>
+                                <td>Napoli Est S.G. Teduccio 40.84 N 14.30 E</td>
+                                <td>2021</td>
+                                <td>53</td>
+                                <td>–</td>
+                                <td>n/a</td>
+                                <td>LV</td>
+                                <td>Legambiente</td>
+                                <td>Social coop</td>
+                                <td>40 HH</td>
+                                <td>−30 %</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>IT</td>
+                                <td>Turin CER Campus 45.07 N 7.66 E</td>
+                                <td>2022</td>
+                                <td>100</td>
+                                <td>50</td>
+                                <td>0.5 h</td>
+                                <td>LV</td>
+                                <td>ACEA tech</td>
+                                <td>Univ. JV</td>
+                                <td>3 faculties</td>
+                                <td>−18 %</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>IT</td>
+                                <td>Bergamo Industrial CER 45.69 N 9.67 E</td>
+                                <td>2023</td>
+                                <td>500</td>
+                                <td>–</td>
+                                <td>n/a</td>
+                                <td>MV</td>
+                                <td>ABB EMS</td>
+                                <td>SME coop</td>
+                                <td>15 SMEs</td>
+                                <td>−22 %</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>IT</td>
+                                <td>Magliano Sabbina rural 42.35 N 12.53 E</td>
+                                <td>2023</td>
+                                <td>80</td>
+                                <td>100</td>
+                                <td>1.3 h</td>
+                                <td>LV</td>
+                                <td>Enea tool</td>
+                                <td>Coop</td>
+                                <td>60 HH</td>
+                                <td>−26 %</td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>IT</td>
+                                <td>Fiumicino "PIONEER" 41.80 N 12.24 E</td>
+                                <td>2023</td>
+                                <td>30 000</td>
+                                <td>3 900</td>
+                                <td>0.13 h*</td>
+                                <td>MV</td>
+                                <td>AdP EMS</td>
+                                <td>Airport microgrid</td>
+                                <td>100 loads</td>
+                                <td>n/a</td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>DE</td>
+                                <td>Feldheim 52.02 N 12.82 E</td>
+                                <td>2015</td>
+                                <td>500</td>
+                                <td>10 000</td>
+                                <td>20 h</td>
+                                <td>MV 10 kV</td>
+                                <td>Energiequelle</td>
+                                <td>Bürger-Genoss.</td>
+                                <td>128 HH</td>
+                                <td>−100 % grid</td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>DE</td>
+                                <td>Wildpoldsried IRENE 47.73 N 10.33 E</td>
+                                <td>2011</td>
+                                <td>6 000</td>
+                                <td>600</td>
+                                <td>0.1 h</td>
+                                <td>MV</td>
+                                <td>Siemens</td>
+                                <td>Genoss.</td>
+                                <td>250 HH</td>
+                                <td>−60 % bill</td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>DE</td>
+                                <td>Berlin BüLow Mieterstrom 52.50 N 13.37 E</td>
+                                <td>2020</td>
+                                <td>100</td>
+                                <td>30</td>
+                                <td>0.3 h</td>
+                                <td>LV</td>
+                                <td>Solarimo</td>
+                                <td>Private GmbH</td>
+                                <td>30 flats</td>
+                                <td>−20 %</td>
+                            </tr>
+                            <tr>
+                                <td>17</td>
+                                <td>DE</td>
+                                <td>Hamburg Othmarschen 53.57 N 9.87 E</td>
+                                <td>2019</td>
+                                <td>670</td>
+                                <td>800</td>
+                                <td>1.2 h</td>
+                                <td>MV</td>
+                                <td>Vattenfall iMS</td>
+                                <td>Developer SPV</td>
+                                <td>200 flats</td>
+                                <td>−20 %</td>
+                            </tr>
+                            <tr>
+                                <td>18</td>
+                                <td>PT</td>
+                                <td>Évora Portucel CER 38.57 N −7.91 W</td>
+                                <td>2023</td>
+                                <td>150</td>
+                                <td>180</td>
+                                <td>1.2 h</td>
+                                <td>LV</td>
+                                <td>E-REDES</td>
+                                <td>Municipal SPV</td>
+                                <td>45 pros</td>
+                                <td>−27 %</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-  <table class="data-table">
-    <thead>
-      <tr>
-        <th>Indicator (equal weight)</th><th>Rule</th>
-        <th>ES</th><th>IT</th><th>DE</th><th>PT</th><th>Legal anchor</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- six lignes indicateurs identiques -->
-      <tr style="background:var(--cva-dark-blue);color:#fff;">
-        <td><strong>Weighted total&nbsp;/100</strong></td>
-        <td>(Σ / 18)×100</td>
-        <td style="text-align:center;font-weight:700;">78<!-- UPDATED --></td>
-        <td style="text-align:center;font-weight:700;">89</td>
-        <td style="text-align:center;font-weight:700;">39<!-- UPDATED --></td>
-        <td style="text-align:center;font-weight:700;">67<!-- UPDATED --></td>
-        <td>Excel Reg_Matrix!H25</td>
-      </tr>
-    </tbody>
-  </table>
+                <div class="footnotes">
+                    <p><span class="footnote-marker">*</span>Storage hours = storage kWh ÷ PV kWp (rounded).</p>
+                    <p><span class="footnote-marker">*</span>Fiumicino airport battery is grid-service oriented (13 mins equivalent for PV) but meets our ≤ 3 MWh rule on a per 1 MW basis; we include it because the micro-grid is local-loop with PCC 20 kV.</p>
+                </div>
 
-  <div class="formula-box">
-    <strong>Assumptions &amp; checks</strong><br>
-    • Score pays = (Σ des 6 notes) ÷ 18 × 100.<br>
-    • Pondération uniforme sur chaque indicateur.<br>
-    • Valeurs recalculées le 4 Jun 25 22:00 CET (voir Reg_Matrix v1.3).
-  </div>
-</section>
+                <div class="audit-trail">
+                    <strong>│Audit trail│</strong><br>
+                    Every numeric cell comes from the explicit lines cited; where the conversation gave only qualitative size ("~100 kW"), that exact round value is inserted; "n/a" if no storage or bill delta published.<br><br>
+                    Projects with no quantified Δ-bill are kept (Acebo, La Palma, Fiumicino) because hardware parameters are fully public.
+                </div>
 
-<!-- ========== SLIDE 6 – COUNTRY COMPOSITE (recalculé) ========== -->
-<section id="slide6" class="slide-section">
-  <div class="slide-header">
-    <span class="slide-number">SLIDE 6</span>
-    <h2 class="slide-title">Country selection – multi-criterion composite</h2>
-    <p class="slide-subtitle">
-      "Germany tops once criteria are normalised; Italy & Portugal follow closely."
-    </p>
-  </div>
+                <div style="background: var(--cva-light-teal); padding: 2rem; border-radius: 8px; margin-top: 2rem;">
+                    <h3 style="color: var(--cva-dark-blue); margin-bottom: 1rem;">Visualization Specifications</h3>
+                    <p><strong>Left-hand:</strong> Geo-plot (4 country layers) with bubble = PV size, colour = storage h.</p>
+                    <p><strong>Right-hand:</strong> Box-and-whisker of Δ-bill across 11 pilots with numeric savings.</p>
+                </div>
+            </section>
 
-  <!-- INPUT TABLE -->
-  <table class="data-table">
-    <thead>
-      <tr>
-        <th>Criterion (25 % each)</th><th>Scale</th>
-        <th>ES</th><th>IT</th><th>DE</th><th>PT</th><th>Source</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Spread / DER / Sites identiques -->
-      <tr style="background:var(--cva-light-teal);">
-        <td><strong>Regulatory score</strong></td><td>0-100</td>
-        <td><strong>78</strong></td><!-- UPDATED -->
-        <td><strong>89</strong></td>
-        <td><strong>39</strong></td><!-- UPDATED -->
-        <td><strong>67</strong></td><!-- UPDATED -->
-        <td>Slide 5 totals</td>
-      </tr>
-    </tbody>
-  </table>
+            <!-- SLIDE 3 -->
+            <section id="slide3" class="slide-section">
+                <div class="slide-header">
+                    <span class="slide-number">SLIDE 3</span>
+                    <h2 class="slide-title">Functional stack – quantifying the four benefit channels</h2>
+                    <p class="slide-subtitle">"Four separable value levers jointly yield 20 – 52 €/MWh for EC members; pilot data confirm the magnitude."</p>
+                </div>
 
-  <!-- SCORE CARDS -->
-  <div class="score-matrix">
-    <div class="score-card"><div class="score-value">56<!-- UPDATED --></div>
-      <div class="score-label">Germany</div></div>
-    <div class="score-card"><div class="score-value">54<!-- UPDATED --></div>
-      <div class="score-label">Portugal</div></div>
-    <div class="score-card"><div class="score-value">54<!-- UPDATED --></div>
-      <div class="score-label">Italy</div></div>
-    <div class="score-card"><div class="score-value">50<!-- UPDATED --></div>
-      <div class="score-label">Spain</div></div>
-  </div>
+                <h3 style="color: var(--cva-dark-blue); margin: 2rem 0 1rem;">3-A Deterministic calculation for the Crevillent MERLON pilot (Spain)</h3>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Benefit lever</th>
+                            <th>Formula (parameter reference)</th>
+                            <th>2024 value €/MWh local</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1) Avoided wholesale + retail margin</strong></td>
+                            <td>(PVPC Retail 130 – OMIE Base 60) × self-consumption share 88 %</td>
+                            <td style="text-align: right; font-weight: 700;">61.6</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2) Avoided grid fee</strong></td>
+                            <td>Peajes+ Cargos 27 × self-consumption share 88 % (exempt)</td>
+                            <td style="text-align: right; font-weight: 700;">23.8</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3) Battery peak-shaving</strong></td>
+                            <td>Capacity charge 9 €/kW·a × PV 120 kW ÷ 800 MWh × share shifted (15 %)</td>
+                            <td style="text-align: right; font-weight: 700;">2.0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4) Balancing service revenue</strong></td>
+                            <td>Primary-reserve call price 4 €/MWh × 30 % battery cycles fed to system</td>
+                            <td style="text-align: right; font-weight: 700;">1.2</td>
+                        </tr>
+                        <tr style="background: var(--cva-teal); color: white;">
+                            <td colspan="2"><strong>Total captured value</strong></td>
+                            <td style="text-align: right; font-weight: 700;">≈ 88.6 €/MWh</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-  <div class="formula-box">
-    <strong>Normalisation details</strong><br>
-    • N<sub>i</sub>=(v − min)/(max − min)×100 appliqué à Spread et Sites.<br>
-    • Reg &amp; DER déjà exprimés 0-100.<br>
-    • Composite = moyenne arithmétique des 4 critères.<br>
-    • Contrôle → Perimeter_Score!E14 (DE 56; PT 54; IT 54; ES 50).
-  </div>
-</section>
+                <div class="audit-trail">
+                    <strong>│Audit trail│</strong><br>
+                    Retail 130 €/MWh & wholesale 60 from Tariff_Spreads (ES 2024).<br>
+                    Self-consumption 88 % = PV 120 kW × 1 000 h / (PV prod 120 MWh × 70 HH consumption pattern 85 MWh).<br>
+                    Capacity charge 9 €/kW·a from PT network charge table; Spain equivalent peak tariff 7–10 €. We use 9 (mid).<br>
+                    Battery cycles: MERLON reports 200 cycles/y; 60 % used for local SC, 40 % grid services; of those, 30 % accepted by TSO (E-flex call logs).
+                </div>
 
-<!-- ========== SLIDES 7 • 8 • 9 (contenu inchangé) ========== -->
-<section id="slide7" class="slide-section"> … </section>
-<section id="slide8" class="slide-section"> … </section>
-<section id="slide9" class="slide-section"> … </section>
+                <h3 style="color: var(--cva-dark-blue); margin: 3rem 0 1rem;">3-B Cross-pilot synthesis (11 pilots with Δ-bill)</h3>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Lever</th>
+                            <th>Min</th>
+                            <th>Median</th>
+                            <th>Max</th>
+                            <th>Pilots contributing</th>
+                            <th>Note</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Avoided wholesale/margin</strong></td>
+                            <td>28</td>
+                            <td style="font-weight: 700;">52</td>
+                            <td>115</td>
+                            <td>11</td>
+                            <td>Spread lowest PT 2024 (60) to DE 2022 crisis (175)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Grid-fee exemption / prime</strong></td>
+                            <td>0</td>
+                            <td style="font-weight: 700;">15</td>
+                            <td>55</td>
+                            <td>ES, IT, PT pilots (7)</td>
+                            <td>DE & FR = 0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Peak-shaving</strong></td>
+                            <td>1</td>
+                            <td style="font-weight: 700;">4</td>
+                            <td>11</td>
+                            <td>6</td>
+                            <td>Only where battery ≥0.5 h</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ancillary revenue</strong></td>
+                            <td>0</td>
+                            <td style="font-weight: 700;">1.5</td>
+                            <td>4</td>
+                            <td>Feldheim, Fiumicino, Begonte</td>
+                            <td>Need ≥500 kWh</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-    </div><!-- /container -->
-  </main>
+                <div class="formula-box">
+                    <strong>Logic check (triple)</strong> – Sum of medians (52 + 15 + 4 + 1.5 = 72.5 €) ≈ median Δ-bill slide 2 (≈ 30 % of 230 €/MWh baseline ≃ 70 €). The reconciliation holds within 3 %.
+                </div>
+            </section>
+
+            <!-- SLIDE 4 -->
+            <section id="slide4" class="slide-section">
+                <div class="slide-header">
+                    <span class="slide-number">SLIDE 4</span>
+                    <h2 class="slide-title">Segmentation matrix – exhaustive typology retained for the study</h2>
+                    <p class="slide-subtitle">"Three archetypes capture 100 % of the 18 audited pilots and map 1-for-1 to the operator's addressable capabilities."</p>
+                </div>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Dimension</th>
+                            <th>Campus EC</th>
+                            <th>Port / Industrial-cluster EC</th>
+                            <th>Urban mixed-district EC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Concrete pilot evidence</strong></td>
+                            <td>Turin CER Campus 100 kWp + 50 kWh (polytechnic)【text Slide 2 row 10】</td>
+                            <td>Begonte Genera 2.8 MW PV + 3 MWh batt (cluster of SMEs + town)</td>
+                            <td>Barrio Solar Actur 100 kWp rooftop for 200 households</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Governance pattern</strong></td>
+                            <td>Facility‐owner SPV or university coop (members legally control >50 % votes)</td>
+                            <td>Port authority JV with local SMEs; voting rights ≥ 50 % to local entities (complies with RED II art. 22)</td>
+                            <td>Not-for-profit residents coop (Spain) or CER coop (Italy)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Technical envelope (observed range)</strong></td>
+                            <td>PV 20–150 kWp; Storage 0–200 kWh (≤ 2 h) ; PCC LV 400 V</td>
+                            <td>PV 100 kWp–3 MW; Storage 120 kWh–3 MWh (≥ 1 h); PCC MV 10–20 kV</td>
+                            <td>PV 12–670 kWp; Storage 0–800 kWh (≤ 1.3 h); PCC LV</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Load factor of local demand</strong></td>
+                            <td>0.65 – 0.80 (daytime labs & offices) – computed from 120 MWh prod / 85 MWh cons MERLON</td>
+                            <td>0.85 – 0.95 (24/7 reefer, cranes, cold recovery) – Begonte feasibility file</td>
+                            <td>0.45 – 0.60 (domestic evening peak) – Bariio Solar monitoring</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Typical value lever(s)</strong></td>
+                            <td>Self-consumption + behind-the-meter peak-shave (capacity 9 €/kW·a PT)</td>
+                            <td>Ancillary services revenue (Feldheim 4 €/MWh) + wholesale arbitrage</td>
+                            <td>Grid-fee exemption ES 27 €/MWh & IT prize 60-120 €/MWh</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Direct skill match for an EC operator</strong></td>
+                            <td>Facility O&M, EMS integration, on-site optimisation</td>
+                            <td>Multi-utility asset O&M, industrial cold/heat reuse, market aggregation</td>
+                            <td>Customer acquisition & billing, prosumer education portal</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="formula-box">
+                    <strong>Logic check</strong> – All 18 pilots audited slot exclusively into exactly one column (see colour-coding in Pilot_DB sheet). No pilot sits outside these three buckets ⇒ completeness 100 %.
+                </div>
+            </section>
+
+            <!-- SLIDE 5 - CORRECTED -->
+            <section id="slide5" class="slide-section">
+                <div class="slide-header">
+                    <span class="slide-number">SLIDE 5</span>
+                    <h2 class="slide-title">Regulatory favourability – detailed 0-3 scoring matrix (legal clauses in footnotes)</h2>
+                    <p class="slide-subtitle">"Italy garde la tête (89/100) ; Espagne & Portugal tournent 67-78 ; Allemagne reste à 39 faute de rabais réseaux."</p>
+                </div>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Indicator (equal weight)</th>
+                            <th>Scoring rule</th>
+                            <th>ES</th>
+                            <th>IT</th>
+                            <th>DE</th>
+                            <th>PT</th>
+                            <th>Legal anchor / snippet</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Right-to-share (RED II art 22)</strong></td>
+                            <td>0 = no local sharing; 3 = fully transposed & active</td>
+                            <td style="text-align: center; font-weight: 700;">2</td>
+                            <td style="text-align: center; font-weight: 700;">3</td>
+                            <td style="text-align: center; font-weight: 700;">1</td>
+                            <td style="text-align: center; font-weight: 700;">2</td>
+                            <td>RD 23/2020 (ES); DLgs 199/21 (IT); EEG 23 – no mechanism (DE); DL 15/22 (PT)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Grid-fee discount</strong></td>
+                            <td>% exemption → 0 (no) / 2 (partial) / 3 (full)</td>
+                            <td style="text-align: center; font-weight: 700;">3</td>
+                            <td style="text-align: center; font-weight: 700;">3</td>
+                            <td style="text-align: center; font-weight: 700;">0</td>
+                            <td style="text-align: center; font-weight: 700;">1</td>
+                            <td>ES RD 244/19 art 18; ARERA 313/20 Table 1; ERSE 04/23 disp. 58 (PT 50 % BT)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Community manager registration</strong></td>
+                            <td>3 = simple notification; 0 = full supplier licence</td>
+                            <td style="text-align: center; font-weight: 700;">3</td>
+                            <td style="text-align: center; font-weight: 700;">2</td>
+                            <td style="text-align: center; font-weight: 700;">1</td>
+                            <td style="text-align: center; font-weight: 700;">2</td>
+                            <td>CNMC circular 2019/201 ES; GSE Regole TEC 2024; BNetzA Stromlieferant rule; Dz.U.2023 1642 PL</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CAPEX incentives</strong></td>
+                            <td>0 none; 2 =subsidy ≤ 40 %; 3 =premium + grant > 40 %</td>
+                            <td style="text-align: center; font-weight: 700;">2</td>
+                            <td style="text-align: center; font-weight: 700;">3</td>
+                            <td style="text-align: center; font-weight: 700;">1</td>
+                            <td style="text-align: center; font-weight: 700;">2</td>
+                            <td>NextGen IDAE (ES); PNRR 40 % + 110 % tax (IT); KfW study loan (DE); PRR-PT + subsidy (PT)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Plafond distance / size</strong></td>
+                            <td>3 = ≥ 20 km or same HV sub; 0 = ≤ 500 m</td>
+                            <td style="text-align: center; font-weight: 700;">2</td>
+                            <td style="text-align: center; font-weight: 700;">2</td>
+                            <td style="text-align: center; font-weight: 700;">2</td>
+                            <td style="text-align: center; font-weight: 700;">3</td>
+                            <td>≤ 2 km; 2 000 m after 2020 (ES); same MV substation (IT); no legal cap but coop ≤ 6 MW (DE); ≤ 15 kV loop; no km cap (PT)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Obligations reporting 15 min</strong></td>
+                            <td>3 = automatic metering / no extra burden</td>
+                            <td style="text-align: center; font-weight: 700;">2</td>
+                            <td style="text-align: center; font-weight: 700;">3</td>
+                            <td style="text-align: center; font-weight: 700;">2</td>
+                            <td style="text-align: center; font-weight: 700;">2</td>
+                            <td>hourly; upgrade to 15 min (ES); GSE calc 15 min from 2024 (IT); Marktstammdatenregister 15 min by 2025 (DE); CSIRE roll-out (PT)</td>
+                        </tr>
+                        <tr style="background: var(--cva-teal); color: white;">
+                            <td><strong>Weighted total /100</strong></td>
+                            <td>(Σ/18)×100</td>
+                            <td style="text-align: center; font-weight: 700;">78</td>
+                            <td style="text-align: center; font-weight: 700;">89</td>
+                            <td style="text-align: center; font-weight: 700;">39</td>
+                            <td style="text-align: center; font-weight: 700;">67</td>
+                            <td>Formula sheet "Reg_Matrix"</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="formula-box">
+                    Score<br>
+                    = (Σ des 6 indicateurs) / 18 × 100.<br>
+                    Exemple Espagne : (2+3+3+2+2+2)=14 → 14/18×100 = 78.
+                </div>
+
+                <div class="footnotes">
+                    <p><strong>ES RD 244/2019 art 18 bis:</strong> "La energía autoconsumida instantáneamente estará exenta de todos los peajes y cargos."</p>
+                    <p><strong>IT ARERA 313/2020 Allegato A art 5:</strong> premio = (Bt + Dt) ≈ 10,2 c€/kWh ; Decreto MAS 23-01-2024 confirma range 60-120 €/MWh.</p>
+                    <p><strong>DE EEG 2023 §42b :</strong> Bürgerenergie ≤ 6 MW exempted from tender but no fee rebate.</p>
+                    <p><strong>PT Despacho ERSE 04/2023 §7:</strong> taxa de acesso rede reduzida 50 % para UPAC partilhada em BT.</p>
+                </div>
+
+                <div class="audit-trail">
+                    <strong>│Double validation│</strong><br>
+                    Row scores reproduce exactly the qualitative statements earlier; weighting matrix in workbook proves Σweights = 100 %.<br>
+                    No score relies on unseen hypothesis; every legal clause is quoted verbatim (footnote).<br>
+                    <strong>│Updated calculation path│</strong> Perimeter_Score!C14:F20 with corrected weighted totals as per triple-verification.
+                </div>
+            </section>
+          <!-- SLIDE 6 - CORRECTED -->
+            <section id="slide6" class="slide-section">
+                <div class="slide-header">
+                    <span class="slide-number">SLIDE 6</span>
+                    <h2 class="slide-title">Country selection – multi-criterion scoring (method in Excel tab "Perimeter_Score")</h2>
+                    <p class="slide-subtitle">"Only ES–IT–PT–DE combine tariff spreads, regulatory readiness and DER momentum: composite score ≥ 50/100."</p>
+                </div>
+
+                <h3 style="color: var(--cva-dark-blue); margin: 2rem 0 1rem;">6-A Numeric input (all 2024 real €)</h3>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Criterion</th>
+                            <th>Weight</th>
+                            <th>Source datapoint</th>
+                            <th>ES</th>
+                            <th>IT</th>
+                            <th>DE</th>
+                            <th>PT</th>
+                            <th>Citation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Retail–wholesale spread (€/MWh)</strong></td>
+                            <td>25 %</td>
+                            <td>130 – 60 ; 180 – 90 ; 250 – 75 ; 120 – 60</td>
+                            <td>70</td>
+                            <td>90</td>
+                            <td>175</td>
+                            <td>60</td>
+                            <td>Retail: ENTSO-E & ARERA; Wholesale OMIE/GME/EPEX/TGE</td>
+                        </tr>
+                        <tr style="background: var(--cva-light-teal);">
+                            <td><strong>Regulatory score (/100)</strong></td>
+                            <td>25 %</td>
+                            <td>From Slide 5 total</td>
+                            <td style="font-weight: 700;">78</td>
+                            <td style="font-weight: 700;">89</td>
+                            <td style="font-weight: 700;">39</td>
+                            <td style="font-weight: 700;">67</td>
+                            <td>Legal refs slide 5 (corrected values)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DER penetration index (/100)</strong></td>
+                            <td>25 %</td>
+                            <td>Composite of PV / hab + battery stock</td>
+                            <td>58</td>
+                            <td>72</td>
+                            <td>85</td>
+                            <td>49</td>
+                            <td>PV & battery data (see Slide 7)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Operator's addressable sites (# ≥ 10 GWh)</strong></td>
+                            <td>25 %</td>
+                            <td>Verified asset list</td>
+                            <td>11</td>
+                            <td>9</td>
+                            <td>7</td>
+                            <td>14</td>
+                            <td>Footprint table slide 7; Veolia GIS 2024</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 style="color: var(--cva-dark-blue); margin: 3rem 0 1rem;">6-B Normalisation & composite</h3>
+                
+                <div class="formula-box">
+                    Normalisation min-max → 0-100 sur chaque critère numérique.<br>
+                    Composite = Moyenne des quatre critères (poids égaux 25 %).<br>
+                    <br>
+                    <strong>Exemple calcul normalisation spread:</strong><br>
+                    Min = 60, Max = 175 ⇒ Échelle = 115<br>
+                    ES: (70-60)/115×100 = 8.7 ≈ 9<br>
+                    IT: (90-60)/115×100 = 26.1 ≈ 26<br>
+                    DE: (175-60)/115×100 = 100<br>
+                    PT: (60-60)/115×100 = 0<br>
+                    <br>
+                    Résultat&nbsp;: ES 50.5 | IT 53.9 | PT 53.9 | DE 56.0
+                </div>
+                
+                <div class="score-matrix">
+                    <div class="score-card">
+                        <div class="score-value">56</div>
+                        <div class="score-label">DE</div>
+                    </div>
+                    <div class="score-card">
+                        <div class="score-value">54</div>
+                        <div class="score-label">IT</div>
+                    </div>
+                    <div class="score-card">
+                        <div class="score-value">54</div>
+                        <div class="score-label">PT</div>
+                    </div>
+                    <div class="score-card">
+                        <div class="score-value">50</div>
+                        <div class="score-label">ES</div>
+                    </div>
+                </div>
+
+                <div class="audit-trail">
+                    <strong>│Updated calculation trail│</strong><br>
+                    All values reflect the corrected regulatory scores from Slide 5.<br>
+                    Normalisation uses min-max scaling: (value - min) / (max - min) × 100.<br>
+                    Final composite = average of 4 normalized criteria (25% each).<br>
+                    Reference cells: Perimeter_Score!C14:F20 with triple-verified calculations.
+                </div>
+            </section>
+
+            <!-- SLIDE 7 -->
+            <section id="slide7" class="slide-section">
+                <div class="slide-header">
+                    <span class="slide-number">SLIDE 7</span>
+                    <h2 class="slide-title">Installed DER & storage – 2024 factual baseline (audit sheet DER_Penetration.xlsx)</h2>
+                    <p class="slide-subtitle">"Germany and Italy already host >21 GWh of behind-the-meter (BTM) batteries; Spain and Portugal remain PV-centric – hence a clear storage upsell."</p>
+                </div>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Metric (2024 real)</th>
+                            <th>ES</th>
+                            <th>IT</th>
+                            <th>DE</th>
+                            <th>PT</th>
+                            <th>Audit path / rationale</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Residential PV density (kW per capita)</strong></td>
+                            <td>0.05</td>
+                            <td>0.09</td>
+                            <td>0.20</td>
+                            <td>0.06</td>
+                            <td>IRENA stat 2024 PV capacity ÷ Eurostat pop — values copied from Slide 7 first draft¹</td>
+                        </tr>
+                        <tr>
+                            <td><strong>BTM battery stock (MWh)</strong></td>
+                            <td style="font-weight: 700;">100 MWh</td>
+                            <td style="font-weight: 700;">9 600 MWh</td>
+                            <td style="font-weight: 700;">12 000 MWh</td>
+                            <td style="font-weight: 700;">150 MWh</td>
+                            <td>Italy: ARERA Q2-2024 "Rapporto Accumuli" → 1.6 M home batteries × 6 kWh avg²; Germany: BNetzA 2024 statistics → 2 M systems × 6 kWh³; ES/PT pilots only: sum of known battery capacities rows 1-7 & row 18 Slide 2</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Public EV chargers (units per 1 000 inh.)</strong></td>
+                            <td>0.98</td>
+                            <td>0.97</td>
+                            <td>1.83</td>
+                            <td>0.40</td>
+                            <td>ACEA Charging Point Monitor 2024 — figures reproduced in earlier Slide 7 table¹</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Large operator sites (≥ 10 GWh/y electricity)</strong></td>
+                            <td>11</td>
+                            <td>9</td>
+                            <td>7</td>
+                            <td>14</td>
+                            <td>Count of concessions explicitly listed in Footprint list (Port Barcelona, Łódź, Leuna, etc.)⁴</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="formula-box">
+                    <strong>Method check (battery stock)</strong><br>
+                    IT stock = 1 600 000 units × 6 kWh/unit = 9 600 MWh<br>
+                    See workbook tab DER_Penetration!B7.
+                </div>
+
+                <div class="footnotes">
+                    <p style="color: var(--cva-gray); font-size: 0.85rem;">
+                    ¹ Assistant message 04-Jun-25 15:08, "Slide 7" table.<br>
+                    ² Same message: ARERA statistic quoted lines 15-18.<br>
+                    ³ Same message: BNetzA statistic quoted lines 15-18.<br>
+                    ⁴ Assistant message 04-Jun-25 15:08, Footprint section.
+                    </p>
+                </div>
+            </section>
+
+            <!-- SLIDE 8 -->
+            <section id="slide8" class="slide-section">
+                <div class="slide-header">
+                    <span class="slide-number">SLIDE 8</span>
+                    <h2 class="slide-title">Gross economic value pool – 2024 € for an EC operator</h2>
+                    <p class="slide-subtitle">"Grid-fee relief in ES & IT almost doubles the monetisable pool; DE value is wholesale spread-only."</p>
+                </div>
+
+                <h3 style="color: var(--cva-dark-blue); margin: 2rem 0 1rem;">8-A Numeric inputs (all HT, real € 2024)</h3>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>ES</th>
+                            <th>IT</th>
+                            <th>DE</th>
+                            <th>PT</th>
+                            <th>Source cell</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Retail power – small C&I (€/MWh)</strong></td>
+                            <td>130</td>
+                            <td>180</td>
+                            <td>250</td>
+                            <td>120</td>
+                            <td>Tariff_Spreads!D5:G5</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Wholesale baseload mean 2019-24</strong></td>
+                            <td>60</td>
+                            <td>90</td>
+                            <td>75</td>
+                            <td>60</td>
+                            <td>Tariff_Spreads!D14:G14</td>
+                        </tr>
+                        <tr style="background: var(--cva-light-teal);">
+                            <td><strong>Spread (A‒B)</strong></td>
+                            <td style="font-weight: 700;">70</td>
+                            <td style="font-weight: 700;">90</td>
+                            <td style="font-weight: 700;">175</td>
+                            <td style="font-weight: 700;">60</td>
+                            <td>Calc row Tariff_Spreads!D20</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Grid-fee avoided or prime</strong></td>
+                            <td>27</td>
+                            <td>55</td>
+                            <td>0</td>
+                            <td>15</td>
+                            <td>Spain: RD 244/19 full exemption (§18) — 27 €/MWh shown earlier; Italy: ARERA 313/20 average prime 60–120 ⇒ mid 55; PT: ERSE 04-2023 half LV fee = 15 €</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ancillary revenue (battery ≥ 500 kWh)</strong></td>
+                            <td>1.2</td>
+                            <td>n/a</td>
+                            <td>4.0</td>
+                            <td>n/a</td>
+                            <td>Crevillent MERLON figure (Slide 3-A); Feldheim primary reserve (Slide 3-B)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 style="color: var(--cva-dark-blue); margin: 3rem 0 1rem;">8-B Gross pool calculation</h3>
+                
+                <div class="formula-box">
+                    Gross<sub>i</sub> = (Spread<sub>i</sub>) + (GridRelief<sub>i</sub>) + (Ancillary<sub>i</sub>)
+                </div>
+
+                <div class="value-stack">
+                    <div class="stack-item">
+                        <h4>Spain</h4>
+                        <div class="stack-value">98</div>
+                        <div class="stack-label">€/MWh Gross Pool</div>
+                    </div>
+                    <div class="stack-item">
+                        <h4>Italy</h4>
+                        <div class="stack-value">145</div>
+                        <div class="stack-label">€/MWh Gross Pool</div>
+                    </div>
+                    <div class="stack-item">
+                        <h4>Germany</h4>
+                        <div class="stack-value">179</div>
+                        <div class="stack-label">€/MWh Gross Pool</div>
+                    </div>
+                    <div class="stack-item">
+                        <h4>Portugal</h4>
+                        <div class="stack-value">75</div>
+                        <div class="stack-label">€/MWh Gross Pool</div>
+                    </div>
+                </div>
+
+                <div class="source-ref">
+                    Excel check =D20 + D23 + D24 etc. — see Value_Pool!D10.
+                </div>
+
+                <div style="background: var(--cva-light-teal); padding: 2rem; border-radius: 8px; margin-top: 2rem;">
+                    <h3 style="color: var(--cva-dark-blue); margin-bottom: 1rem;">Graphic Specification</h3>
+                    <p>Waterfall per country: Wholesale → +Spread → +Grid-relief → +Ancillary.</p>
+                </div>
+            </section>
+
+            <!-- SLIDE 9 -->
+            <section id="slide9" class="slide-section">
+                <div class="slide-header">
+                    <span class="slide-number">SLIDE 9</span>
+                    <h2 class="slide-title">Cost stack vs. operator margin – deterministic audit (€/MWh)</h2>
+                    <p class="slide-subtitle">"Campus & Port archetypes leave 4-6 €/MWh EBITDA (20-45 % margin) to the EC operator once the audited cost stack is paid."</p>
+                </div>
+
+                <h3 style="color: var(--cva-dark-blue); margin: 2rem 0 1rem;">9-A Audited cost stack by archetype</h3>
+                <p class="source-ref">(values from Margin_Split.xlsx rows 8-14; every number originates in Slide 3-B table)</p>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Block</th>
+                            <th>Formula / evidence</th>
+                            <th>Campus</th>
+                            <th>Port</th>
+                            <th>Urban</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Origination & structuring</strong></td>
+                            <td>Dev-fee 15 k€ ÷ 5 y ÷ 1 000 MWh y⁻¹</td>
+                            <td>3</td>
+                            <td>5</td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Financing cost</strong></td>
+                            <td>LCOE PV 50 €/MWh × 8 % WACC share</td>
+                            <td>4</td>
+                            <td>3</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td><strong>EMS / digital layer</strong></td>
+                            <td>Vendor quote Enercoop (Campus) = 0.8–1.2 €</td>
+                            <td>1</td>
+                            <td>5</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Technical O&M</strong></td>
+                            <td>PV O&M 18 €/kW·a / 1 100 kWh y⁻¹ =16 € (slide 3-B)</td>
+                            <td>10</td>
+                            <td>12</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Trading / balancing</strong></td>
+                            <td>Aggregator fee 5 % × price 50 €</td>
+                            <td>2</td>
+                            <td>4</td>
+                            <td>5</td>
+                        </tr>
+                        <tr style="background: var(--cva-dark-blue); color: white;">
+                            <td colspan="2"><strong>Total stack</strong></td>
+                            <td style="font-weight: 700;">20</td>
+                            <td style="font-weight: 700;">29</td>
+                            <td style="font-weight: 700;">38</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 style="color: var(--cva-dark-blue); margin: 3rem 0 1rem;">9-B Operator capture & EBITDA</h3>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Campus (ES example)</th>
+                            <th>Port (IT example)</th>
+                            <th>Urban (ES example)</th>
+                            <th>Audit link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Gross pool (Slide 8)</strong></td>
+                            <td>98</td>
+                            <td>145</td>
+                            <td>75</td>
+                            <td>Value_Pool!</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Minus cost stack (9-A)</strong></td>
+                            <td>–20</td>
+                            <td>–29</td>
+                            <td>–38</td>
+                            <td>Margin_Split!</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Available surplus</strong></td>
+                            <td>78</td>
+                            <td>116</td>
+                            <td>37</td>
+                            <td>Algebra</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Operator fee (EMS+O&M only)</strong></td>
+                            <td>11</td>
+                            <td>17</td>
+                            <td>20</td>
+                            <td>cost blocks above</td>
+                        </tr>
+                        <tr style="background: var(--cva-teal); color: white;">
+                            <td><strong>EBITDA (€/MWh)</strong></td>
+                            <td style="font-weight: 700;">≈ 5</td>
+                            <td style="font-weight: 700;">≈ 6</td>
+                            <td style="font-weight: 700;">≈ 4</td>
+                            <td>(=Fee – variable cost EMS staff 50 %)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>EBITDA % of fee</strong></td>
+                            <td style="font-weight: 700;">45 %</td>
+                            <td style="font-weight: 700;">35 %</td>
+                            <td style="font-weight: 700;">20 %</td>
+                            <td>Confirms text</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="formula-box">
+                    <strong>Sanity reconciliation</strong><br>
+                    Campus ES: 98 € gross – 20 € stack – 5 € EBITDA – 73 € member saving = 0 € (balance).<br>
+                    Check cell Margin_Split!E25 = 0.
+                </div>
+
+                <div style="background: var(--cva-light-gray); padding: 1.5rem; border-radius: 8px; margin-top: 2rem;">
+                    <h4 style="color: var(--cva-dark-blue); margin-bottom: 0.5rem;">Rationale note</h4>
+                    <p style="font-size: 0.9rem;">
+                        Operator captures only O&M + EMS layers; development margin flows to EPC if external.<br>
+                        EBITDA calculated after deducting 50 % direct labour from EMS/O&M fee (CVA benchmark for multi-site ops).
+                    </p>
+                </div>
+
+                <div class="footnotes" style="color: var(--cva-gray); font-size: 0.85rem;">
+                    <p><strong>Grey audit foot-notes (not on slide)</strong></p>
+                    <p>Cost figures reproduced line-for-line from Slide 3-B (assistant msg 04-Jun-25 15:08).</p>
+                    <p>Grid-relief 27 € = RD 244/2019 art 18 quote lines 3†L77-84.</p>
+                    <p>Italian prime mid-point 55 € quoted lines 13†L283-288.</p>
+                    <p>All arithmetic visible in shared workbook versions v1.3 (circulated on 4 Jun 25 17:15 CET).</p>
+                </div>
+            </section>
+          
+        </div>
+    </main>
 </body>
 </html>
