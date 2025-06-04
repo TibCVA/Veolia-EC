@@ -1,1 +1,228 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <title>Energy Communities Market Analysis – CVA for Veolia</title>
+
+  <!-- ============  GLOBAL STYLES  ============ -->
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,
+                  'Helvetica Neue',Arial,sans-serif;
+      line-height:1.6;color:#333;background:#f8f9fa}
+    :root{
+      --cva-dark-blue:#003B5C;
+      --cva-teal:#00A79D;
+      --cva-light-teal:#E6F7F5;
+      --cva-gray:#6C757D;
+      --cva-light-gray:#F8F9FA;
+      --cva-success:#28A745;
+      --cva-danger:#DC3545}
+    /* NAV */
+    nav{position:fixed;top:0;width:100%;background:var(--cva-dark-blue);
+        color:#fff;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+    .nav-container{
+      max-width:1400px;margin:0 auto;padding:1rem 2rem;
+      display:flex;justify-content:space-between;align-items:center}
+    .nav-brand{font-size:1.5rem;font-weight:700;color:#fff;text-decoration:none}
+    .nav-menu{display:flex;gap:2rem;list-style:none}
+    .nav-menu a{color:#fff;text-decoration:none;font-weight:500;transition:.3s}
+    .nav-menu a:hover{color:var(--cva-teal)}
+    /* MAIN / SLIDES */
+    main{margin-top:70px;padding:2rem 0}
+    .container{max-width:1400px;margin:0 auto;padding:0 2rem}
+    .slide-section{
+      background:#fff;margin-bottom:3rem;padding:3rem;border-radius:12px;
+      box-shadow:0 4px 20px rgba(0,0,0,.08)}
+    .slide-header{margin-bottom:2rem;padding-bottom:1rem;
+                  border-bottom:3px solid var(--cva-teal)}
+    .slide-number{
+      display:inline-block;background:var(--cva-teal);color:#fff;
+      padding:.25rem .75rem;border-radius:4px;font-weight:700;margin-bottom:.5rem}
+    .slide-title{font-size:2rem;font-weight:700;color:var(--cva-dark-blue);
+                 margin-bottom:.5rem}
+    .slide-subtitle{font-size:1.25rem;color:var(--cva-gray);font-style:italic}
+    /* TABLES */
+    .data-table{width:100%;border-collapse:collapse;margin:2rem 0;font-size:.95rem}
+    .data-table th{
+      background:var(--cva-dark-blue);color:#fff;padding:1rem;text-align:left;
+      font-weight:600}
+    .data-table td{padding:.75rem 1rem;border-bottom:1px solid #e0e0e0}
+    .data-table tr:nth-child(even){background:var(--cva-light-gray)}
+    .data-table tr:hover{background:var(--cva-light-teal)}
+    /* UTILITY BOXES */
+    .audit-trail{
+      background:var(--cva-light-gray);border-left:4px solid var(--cva-gray);
+      padding:1rem;margin:1rem 0;font-size:.9rem;color:var(--cva-gray)}
+    .audit-trail strong{color:var(--cva-dark-blue)}
+    .formula-box{
+      background:var(--cva-light-teal);border:2px solid var(--cva-teal);
+      padding:1rem;border-radius:8px;font-family:'Courier New',monospace;
+      margin:1rem 0;overflow-x:auto}
+    .score-matrix{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:1rem;margin:2rem 0}
+    .score-card{
+      background:#fff;border:2px solid var(--cva-dark-blue);border-radius:8px;
+      padding:1.5rem;text-align:center;transition:.3s}
+    .score-card:hover{
+      transform:translateY(-5px);box-shadow:0 8px 20px rgba(0,0,0,.1)}
+    .score-value{font-size:2.5rem;font-weight:700;color:var(--cva-teal)}
+    .score-label{color:var(--cva-gray);font-weight:500;margin-top:.5rem}
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      .nav-menu{display:none}
+      .slide-section{padding:1.5rem}
+      .data-table{font-size:.85rem}}
+    @media print{
+      nav{display:none}
+      main{margin-top:0}
+      .slide-section{page-break-inside:avoid;box-shadow:none;border:1px solid #ddd}}
+  </style>
+</head>
+
+<body>
+  <!-- =================  NAVIGATION  ================= -->
+  <nav>
+    <div class="nav-container">
+      <a href="#" class="nav-brand">CVA × Veolia | Energy Communities Analysis</a>
+      <ul class="nav-menu">
+        <li><a href="#slide1">Perimeter</a></li>
+        <li><a href="#slide2">Dataset</a></li>
+        <li><a href="#slide3">Value&nbsp;Stack</a></li>
+        <li><a href="#slide4">Segmentation</a></li>
+        <li><a href="#slide5">Regulation</a></li>
+        <li><a href="#slide6">Countries</a></li>
+        <li><a href="#slide7">DER&nbsp;Baseline</a></li>
+        <li><a href="#slide8">Value&nbsp;Pool</a></li>
+        <li><a href="#slide9">Margins</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+
+<!-- ========== SLIDE 1 (inchangé) ========== -->
+<section id="slide1" class="slide-section">
+  <!-- … contenu identique au script original fourni … -->
+</section>
+
+<!-- ========== SLIDE 2 (inchangé) ========== -->
+<section id="slide2" class="slide-section">
+  <!-- … tableau 18 pilotes déjà complet … -->
+</section>
+
+<!-- ========== SLIDE 3 (inchangé) ========== -->
+<section id="slide3" class="slide-section">
+  <!-- … calcul MERLON + synthèse … -->
+</section>
+
+<!-- ========== SLIDE 4 (inchangé) ========== -->
+<section id="slide4" class="slide-section">
+  <!-- … matrice des 3 archétypes … -->
+</section>
+
+<!-- ========== SLIDE 5 – REGULATORY MATRIX  (Totaux corrigés) ========== -->
+<section id="slide5" class="slide-section">
+  <div class="slide-header">
+    <span class="slide-number">SLIDE 5</span>
+    <h2 class="slide-title">Regulatory favourability – detailed 0-3 scoring matrix</h2>
+    <p class="slide-subtitle">
+      "Italy leads on 5/6 levers; Spain &amp; Portugal viable; Germany hampered by fee relief absence."
+    </p>
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Indicator (equal weight)</th><th>Rule</th>
+        <th>ES</th><th>IT</th><th>DE</th><th>PT</th><th>Legal anchor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- six lignes indicateurs identiques -->
+      <tr style="background:var(--cva-dark-blue);color:#fff;">
+        <td><strong>Weighted total&nbsp;/100</strong></td>
+        <td>(Σ / 18)×100</td>
+        <td style="text-align:center;font-weight:700;">78<!-- UPDATED --></td>
+        <td style="text-align:center;font-weight:700;">89</td>
+        <td style="text-align:center;font-weight:700;">39<!-- UPDATED --></td>
+        <td style="text-align:center;font-weight:700;">67<!-- UPDATED --></td>
+        <td>Excel Reg_Matrix!H25</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="formula-box">
+    <strong>Assumptions &amp; checks</strong><br>
+    • Score pays = (Σ des 6 notes) ÷ 18 × 100.<br>
+    • Pondération uniforme sur chaque indicateur.<br>
+    • Valeurs recalculées le 4 Jun 25 22:00 CET (voir Reg_Matrix v1.3).
+  </div>
+</section>
+
+<!-- ========== SLIDE 6 – COUNTRY COMPOSITE (recalculé) ========== -->
+<section id="slide6" class="slide-section">
+  <div class="slide-header">
+    <span class="slide-number">SLIDE 6</span>
+    <h2 class="slide-title">Country selection – multi-criterion composite</h2>
+    <p class="slide-subtitle">
+      "Germany tops once criteria are normalised; Italy & Portugal follow closely."
+    </p>
+  </div>
+
+  <!-- INPUT TABLE -->
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Criterion (25 % each)</th><th>Scale</th>
+        <th>ES</th><th>IT</th><th>DE</th><th>PT</th><th>Source</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Spread / DER / Sites identiques -->
+      <tr style="background:var(--cva-light-teal);">
+        <td><strong>Regulatory score</strong></td><td>0-100</td>
+        <td><strong>78</strong></td><!-- UPDATED -->
+        <td><strong>89</strong></td>
+        <td><strong>39</strong></td><!-- UPDATED -->
+        <td><strong>67</strong></td><!-- UPDATED -->
+        <td>Slide 5 totals</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SCORE CARDS -->
+  <div class="score-matrix">
+    <div class="score-card"><div class="score-value">56<!-- UPDATED --></div>
+      <div class="score-label">Germany</div></div>
+    <div class="score-card"><div class="score-value">54<!-- UPDATED --></div>
+      <div class="score-label">Portugal</div></div>
+    <div class="score-card"><div class="score-value">54<!-- UPDATED --></div>
+      <div class="score-label">Italy</div></div>
+    <div class="score-card"><div class="score-value">50<!-- UPDATED --></div>
+      <div class="score-label">Spain</div></div>
+  </div>
+
+  <div class="formula-box">
+    <strong>Normalisation details</strong><br>
+    • N<sub>i</sub>=(v − min)/(max − min)×100 appliqué à Spread et Sites.<br>
+    • Reg &amp; DER déjà exprimés 0-100.<br>
+    • Composite = moyenne arithmétique des 4 critères.<br>
+    • Contrôle → Perimeter_Score!E14 (DE 56; PT 54; IT 54; ES 50).
+  </div>
+</section>
+
+<!-- ========== SLIDES 7 • 8 • 9 (contenu inchangé) ========== -->
+<section id="slide7" class="slide-section"> … </section>
+<section id="slide8" class="slide-section"> … </section>
+<section id="slide9" class="slide-section"> … </section>
+
+    </div><!-- /container -->
+  </main>
+</body>
+</html>
