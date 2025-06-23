@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CVA - District Heating Market Strategic Analysis - Complete 23 Slides</title>
+    <title>CVA - District Heating Market Strategic Analysis - Complete 26 Slides</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
@@ -327,10 +327,11 @@
             display: flex;
             align-items: center;
             gap: 20px;
+            width: 100%;
         }
 
         .bar-label {
-            width: 120px;
+            min-width: 120px;
             font-weight: 600;
             font-size: 14px;
             color: var(--cva-text);
@@ -374,6 +375,7 @@
             font-size: 12px;
             font-weight: 600;
             margin: 2px;
+            color: white;
         }
 
         .status-complete {
@@ -575,6 +577,80 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
         }
 
+        /* Barriers and enablers visualization */
+        .barriers-enablers-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .barriers-card {
+            background: linear-gradient(135deg, #FFE6E6 0%, #FFCDD2 100%);
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .enablers-card {
+            background: linear-gradient(135deg, #E8FFE8 0%, #C8E6C9 100%);
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        /* Matrix visualization improvements */
+        .matrix-viz {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+            margin: 30px 0;
+            overflow: hidden;
+        }
+
+        .matrix-bubble {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            font-weight: 600;
+            font-size: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            flex-direction: column;
+            padding: 10px;
+            z-index: 10;
+        }
+
+        .matrix-bubble span {
+            line-height: 1.2;
+        }
+
+        .matrix-bubble .country-flag {
+            margin-bottom: 5px;
+        }
+
+        /* Target play cards */
+        .target-play-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--cva-primary);
+            transition: all 0.3s ease;
+        }
+
+        .target-play-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+        }
+
         /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 12px;
@@ -671,7 +747,9 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            margin: 15px 0;
+            margin: 0;
+            flex: 1;
+            min-width: 0;
         }
 
         .fuel-segment {
@@ -680,15 +758,22 @@
             justify-content: center;
             color: white;
             font-weight: 600;
-            font-size: 13px;
+            font-size: 12px;
             position: relative;
             transition: all 0.3s ease;
+            padding: 0 2px;
+            overflow: hidden;
+            white-space: nowrap;
+            min-width: 0;
         }
 
+        /* Fuel segment hover improvements */
         .fuel-segment:hover {
-            transform: scale(1.05);
+            transform: scale(1.05) translateZ(0);
             z-index: 10;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            filter: brightness(1.1);
         }
 
         .fuel-coal { background: var(--coal); }
@@ -1153,6 +1238,9 @@
                 <li class="nav-item"><a href="#section21" class="nav-link">21. LCOH</a></li>
                 <li class="nav-item"><a href="#section22" class="nav-link">22. IRR</a></li>
                 <li class="nav-item"><a href="#section23" class="nav-link">23. Landscape</a></li>
+                <li class="nav-item"><a href="#section24" class="nav-link">24. Barriers</a></li>
+                <li class="nav-item"><a href="#section25" class="nav-link">25. Matrix</a></li>
+                <li class="nav-item"><a href="#section26" class="nav-link">26. Targets</a></li>
             </ul>
         </div>
     </nav>
@@ -1415,30 +1503,66 @@
                 <h3 style="color: var(--cva-primary); margin-bottom: 20px;">Fuel Mix Visualization by Country</h3>
                 <div style="display: flex; flex-direction: column; gap: 15px;">
                     <div class="bar-row">
-                        <div class="bar-label"><span class="country-flag flag-poland"></span>Poland</div>
+                        <div class="bar-label" style="min-width: 140px;"><span class="country-flag flag-poland"></span>Poland</div>
                         <div class="fuel-mix-bar">
-                            <div class="fuel-segment fuel-coal" style="width: 61%;">61%</div>
-                            <div class="fuel-segment fuel-gas" style="width: 13%;">13%</div>
-                            <div class="fuel-segment fuel-biomass" style="width: 14%;">14%</div>
-                            <div class="fuel-segment" style="width: 12%; background: #ddd;">Other</div>
+                            <div class="fuel-segment fuel-coal" style="flex: 0 0 61%;">Coal 61%</div>
+                            <div class="fuel-segment fuel-gas" style="flex: 0 0 13%;">Gas 13%</div>
+                            <div class="fuel-segment fuel-biomass" style="flex: 0 0 14%;">RES 14%</div>
+                            <div class="fuel-segment" style="flex: 0 0 12%; background: #ddd;">Other 12%</div>
                         </div>
                     </div>
                     <div class="bar-row">
-                        <div class="bar-label"><span class="country-flag flag-france"></span>France</div>
+                        <div class="bar-label" style="min-width: 140px;"><span class="country-flag flag-france"></span>France</div>
                         <div class="fuel-mix-bar">
-                            <div class="fuel-segment fuel-gas" style="width: 33%;">33%</div>
-                            <div class="fuel-segment fuel-wte" style="width: 30%;">WtE 30%</div>
-                            <div class="fuel-segment fuel-biomass" style="width: 26%;">Bio 26%</div>
-                            <div class="fuel-segment fuel-geothermal" style="width: 5.6%;">5.6%</div>
-                            <div class="fuel-segment" style="width: 5.4%; background: #ddd;"></div>
+                            <div class="fuel-segment fuel-gas" style="flex: 0 0 33%;">Gas 33%</div>
+                            <div class="fuel-segment fuel-wte" style="flex: 0 0 30%;">WtE 30%</div>
+                            <div class="fuel-segment fuel-biomass" style="flex: 0 0 26%;">Bio 26%</div>
+                            <div class="fuel-segment fuel-geothermal" style="flex: 0 0 5.6%;" title="Geothermal 5.6%"></div>
+                            <div class="fuel-segment" style="flex: 0 0 5.4%; background: #ddd;" title="Other 5.4%"></div>
                         </div>
                     </div>
                     <div class="bar-row">
-                        <div class="bar-label"><span class="country-flag flag-uk"></span>UK</div>
+                        <div class="bar-label" style="min-width: 140px;"><span class="country-flag flag-uk"></span>UK</div>
                         <div class="fuel-mix-bar">
-                            <div class="fuel-segment fuel-gas" style="width: 73%;">Gas 73%</div>
-                            <div class="fuel-segment fuel-biomass" style="width: 20%;">RES <20%</div>
-                            <div class="fuel-segment" style="width: 7%; background: #ddd;">Other</div>
+                            <div class="fuel-segment fuel-gas" style="flex: 0 0 73%;">Gas 73%</div>
+                            <div class="fuel-segment fuel-biomass" style="flex: 0 0 20%;">RES <20%</div>
+                            <div class="fuel-segment" style="flex: 0 0 7%; background: #ddd;">Other 7%</div>
+                        </div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label" style="min-width: 140px;"><span class="country-flag flag-germany"></span>Germany</div>
+                        <div class="fuel-mix-bar">
+                            <div class="fuel-segment fuel-gas" style="flex: 0 0 45%;">Gas 45%</div>
+                            <div class="fuel-segment fuel-coal" style="flex: 0 0 20%;">Coal 20%</div>
+                            <div class="fuel-segment fuel-biomass" style="flex: 0 0 23%;">RES 23%</div>
+                            <div class="fuel-segment" style="flex: 0 0 12%; background: #ddd;">Other 12%</div>
+                        </div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label" style="min-width: 140px;"><span class="country-flag flag-czech"></span>Czech Rep.</div>
+                        <div class="fuel-mix-bar">
+                            <div class="fuel-segment fuel-coal" style="flex: 0 0 57.5%;">Coal 55-60%</div>
+                            <div class="fuel-segment fuel-gas" style="flex: 0 0 27.5%;">Gas 25-30%</div>
+                            <div class="fuel-segment fuel-biomass" style="flex: 0 0 10%;">RES ~10%</div>
+                            <div class="fuel-segment" style="flex: 0 0 5%; background: #ddd;" title="Other 5%"></div>
+                        </div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label" style="min-width: 140px;"><span class="country-flag flag-hungary"></span>Hungary</div>
+                        <div class="fuel-mix-bar">
+                            <div class="fuel-segment fuel-gas" style="flex: 0 0 70%;">Gas 70%</div>
+                            <div class="fuel-segment fuel-biomass" style="flex: 0 0 12%;">Bio 12%</div>
+                            <div class="fuel-segment fuel-geothermal" style="flex: 0 0 11%;">Geo 11%</div>
+                            <div class="fuel-segment fuel-wte" style="flex: 0 0 5.5%;" title="WtE 5-6%"></div>
+                            <div class="fuel-segment" style="flex: 0 0 1.5%; background: #ddd;" title="Other 1.5%"></div>
+                        </div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label" style="min-width: 140px;"><span class="country-flag flag-spain"></span>Spain</div>
+                        <div class="fuel-mix-bar">
+                            <div class="fuel-segment fuel-biomass" style="flex: 0 0 70%;">Biomass >70%</div>
+                            <div class="fuel-segment fuel-gas" style="flex: 0 0 20%;">Gas ~20%</div>
+                            <div class="fuel-segment" style="flex: 0 0 10%; background: #ddd;">Other 10%</div>
                         </div>
                     </div>
                 </div>
@@ -2760,41 +2884,42 @@
 
             <div class="bar-chart-container">
                 <h3 style="color: var(--cva-primary); margin-bottom: 20px;">LCOH Comparison (€/MWh)</h3>
+                <p style="font-size: 12px; color: #666; margin-bottom: 20px;">Scale: Czech Rep. (€31-44) to Germany (€100-150) • <span style="color: var(--success); font-weight: 600;">Green</span> = subsidised <50€/MWh • <span style="color: #FF9800; font-weight: 600;">Orange</span> = medium 50-85€/MWh • <span style="color: var(--warning); font-weight: 600;">Red</span> = high >85€/MWh</p>
                 <div class="horizontal-bar-chart">
+                    <div class="bar-row">
+                        <div class="bar-label"><span class="country-flag flag-czech"></span>Czech Rep.</div>
+                        <div class="bar-container">
+                            <div class="bar lcoh-bar" style="width: 30%; background: linear-gradient(90deg, var(--success) 0%, #1e633f 100%);">€31-44</div>
+                        </div>
+                    </div>
                     <div class="bar-row">
                         <div class="bar-label"><span class="country-flag flag-france"></span>France (sub.)</div>
                         <div class="bar-container">
-                            <div class="bar lcoh-bar" style="width: 27%; background: linear-gradient(90deg, var(--success) 0%, #1e633f 100%);">€40-60</div>
+                            <div class="bar lcoh-bar" style="width: 40%; background: linear-gradient(90deg, var(--success) 0%, #1e633f 100%);">€40-60</div>
                         </div>
                     </div>
                     <div class="bar-row">
                         <div class="bar-label"><span class="country-flag flag-spain"></span>Spain (sub.)</div>
                         <div class="bar-container">
-                            <div class="bar lcoh-bar" style="width: 27%; background: linear-gradient(90deg, var(--success) 0%, #1e633f 100%);">€40-60</div>
-                        </div>
-                    </div>
-                    <div class="bar-row">
-                        <div class="bar-label"><span class="country-flag flag-czech"></span>Czech Rep.</div>
-                        <div class="bar-container">
-                            <div class="bar lcoh-bar" style="width: 20%; background: linear-gradient(90deg, var(--cva-secondary) 0%, #153a5e 100%);">€31-44</div>
+                            <div class="bar lcoh-bar" style="width: 40%; background: linear-gradient(90deg, var(--success) 0%, #1e633f 100%);">€40-60</div>
                         </div>
                     </div>
                     <div class="bar-row">
                         <div class="bar-label"><span class="country-flag flag-uk"></span>UK</div>
                         <div class="bar-container">
-                            <div class="bar lcoh-bar" style="width: 32%; background: linear-gradient(90deg, var(--cva-secondary) 0%, #153a5e 100%);">€58-70</div>
+                            <div class="bar lcoh-bar" style="width: 51%; background: linear-gradient(90deg, var(--cva-secondary) 0%, #153a5e 100%);">€58-70</div>
                         </div>
                     </div>
                     <div class="bar-row">
                         <div class="bar-label"><span class="country-flag flag-poland"></span>Poland</div>
                         <div class="bar-container">
-                            <div class="bar lcoh-bar" style="width: 39%; background: linear-gradient(90deg, #FF9800 0%, #E65100 100%);">€85</div>
+                            <div class="bar lcoh-bar" style="width: 68%; background: linear-gradient(90deg, #FF9800 0%, #E65100 100%);">€85</div>
                         </div>
                     </div>
                     <div class="bar-row">
                         <div class="bar-label"><span class="country-flag flag-germany"></span>Germany</div>
                         <div class="bar-container">
-                            <div class="bar lcoh-bar" style="width: 68%; background: linear-gradient(90deg, var(--warning) 0%, #C41E3A 100%);">€100-150</div>
+                            <div class="bar lcoh-bar" style="width: 100%; background: linear-gradient(90deg, var(--warning) 0%, #C41E3A 100%);">€100-150</div>
                         </div>
                     </div>
                 </div>
@@ -3005,6 +3130,321 @@
         </div>
     </section>
 
+    <!-- Section 24: Barriers to Entry & Winning Factors -->
+    <section class="section" id="section24">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">24</span>
+                <h2 class="section-title">Barriers to Entry & Winning Factors (2024 snapshot)</h2>
+                <p class="section-subtitle">Entry hurdles are overwhelmingly institutional (ownership structures, tariff regimes, licensing), while winning factors are invariably the national grant schemes and Veolia's local footholds.</p>
+            </div>
+
+            <div class="key-message">
+                Entry hurdles are overwhelmingly institutional (ownership structures, tariff regimes, licensing), while winning factors are invariably the national grant schemes and Veolia's local footholds.
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Country</th>
+                        <th>Key entry barriers (evidence)</th>
+                        <th>Winning factors / levers (evidence)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="country-flag flag-germany"></span><strong>Germany</strong></td>
+                        <td>• >70% of networks owned by municipal Stadtwerke; access requires local-equity deals</td>
+                        <td>• BEW grants ≤40% CAPEX + OPEX bonus; mandatory heat plans create shovel-ready zones</td>
+                    </tr>
+                    <tr>
+                        <td><span class="country-flag flag-poland"></span><strong>Poland</strong></td>
+                        <td>• 398 licensed DH companies → fragmented; regulated tariffs caused sector-wide -9.5% ROE 2023</td>
+                        <td>• NFOŚiGW & RRP programmes cover 30-50% CAPEX; soaring ETS costs accelerate coal switch</td>
+                    </tr>
+                    <tr>
+                        <td><span class="country-flag flag-czech"></span><strong>Czech Rep.</strong></td>
+                        <td>• 600+ municipal utilities, no single tendering hub; high coal-to-RES CAPEX still unfunded</td>
+                        <td>• Modernisation Fund "HEAT" 35% subsidy; VAT cut to 10% on DH heat improves payback</td>
+                    </tr>
+                    <tr>
+                        <td><span class="country-flag flag-france"></span><strong>France</strong></td>
+                        <td>• Access via competitive DSP concessions dominated by Engie/Dalkia; renewal cycles lock assets for 20-30 yrs</td>
+                        <td>• Fonds Chaleur 30-60% CAPEX + 5.5% VAT & "classement" connection mandate</td>
+                    </tr>
+                    <tr>
+                        <td><span class="country-flag flag-uk"></span><strong>United Kingdom</strong></td>
+                        <td>• Incoming Ofgem licensing & price-control regime (2025-26) adds compliance cost; zoning rules still piloted</td>
+                        <td>• GHNF grants 35-50% CAPEX + Heat-Network Zones grant quasi-monopoly rights</td>
+                    </tr>
+                    <tr>
+                        <td><span class="country-flag flag-spain"></span><strong>Spain</strong></td>
+                        <td>• No national tariff law; lengthy permits until draft Royal Decree recognises DH as public-interest infra</td>
+                        <td>• PERTE Thermal Networks grants up to 45% CAPEX; RD to streamline permits & create GoO system</td>
+                    </tr>
+                    <tr>
+                        <td><span class="country-flag flag-hungary"></span><strong>Hungary</strong></td>
+                        <td>• Profit cap (previously 4.5%) & household tariff freeze limit upside; state controls key Budapest grid</td>
+                        <td>• Profit-cap raised to 9% for RES retrofits; Jedlik Ányos scheme funds 50% CAPEX 2025-30</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="insights-box">
+                <h3 class="insights-title">Insight</h3>
+                <div class="insight-item">Veolia's chance of winning new business correlates with the size of the grant bucket and its ability to partner municipal owners (DE, CZ) or leverage existing concessions (FR, PL, HU, UK).</div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin: 40px 0;">
+                <div style="background: linear-gradient(135deg, #FFE6E6 0%, #FFCDD2 100%); border-radius: 12px; padding: 30px;">
+                    <h3 style="color: var(--warning); margin-bottom: 20px;">Major Barriers</h3>
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div style="width: 8px; height: 8px; background: var(--warning); border-radius: 50%;"></div>
+                            <span style="font-size: 14px;"><strong>Municipal ownership</strong> (DE >70%, CZ 600+ utilities)</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div style="width: 8px; height: 8px; background: var(--warning); border-radius: 50%;"></div>
+                            <span style="font-size: 14px;"><strong>Tariff regulation</strong> (PL -9.5% ROE, HU profit cap)</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div style="width: 8px; height: 8px; background: var(--warning); border-radius: 50%;"></div>
+                            <span style="font-size: 14px;"><strong>Concession cycles</strong> (FR 20-30 years)</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="background: linear-gradient(135deg, #E8FFE8 0%, #C8E6C9 100%); border-radius: 12px; padding: 30px;">
+                    <h3 style="color: var(--success); margin-bottom: 20px;">Key Enablers</h3>
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div style="width: 8px; height: 8px; background: var(--success); border-radius: 50%;"></div>
+                            <span style="font-size: 14px;"><strong>CAPEX grants</strong> (30-60% across all markets)</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div style="width: 8px; height: 8px; background: var(--success); border-radius: 50%;"></div>
+                            <span style="font-size: 14px;"><strong>Carbon pricing</strong> (ETS driving coal exit)</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div style="width: 8px; height: 8px; background: var(--success); border-radius: 50%;"></div>
+                            <span style="font-size: 14px;"><strong>Zoning/planning</strong> (DE/UK mandatory zones)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 25: Country Attractiveness vs Ease-of-Entry Matrix -->
+    <section class="section" id="section25" style="background-color: #fafafa;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">25</span>
+                <h2 class="section-title">Country Attractiveness vs Ease-of-Entry Matrix</h2>
+                <p class="section-subtitle">Germany & Poland sit in the "High Opportunity / Difficult Entry" quadrant; Spain & the UK combine material upside with manageable barriers, making them the near-term sweet-spot.</p>
+            </div>
+
+            <div class="key-message">
+                Germany & Poland sit in the "High Opportunity / Difficult Entry" quadrant; Spain & the UK combine material upside with manageable barriers, making them the near-term sweet-spot.
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Country</th>
+                        <th>Quantified opportunity (slides 15-18)</th>
+                        <th>Ease-of-entry (slide 24 evidence)</th>
+                        <th>Matrix position</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="country-flag flag-germany"></span><strong>Germany</strong></td>
+                        <td>17-20 GWth coal retrofit</td>
+                        <td>Municipal ownership barrier; BEW subsidy available</td>
+                        <td><span class="status-tag" style="background: #FF6347;">High opp. / Hard entry</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="country-flag flag-poland"></span><strong>Poland</strong></td>
+                        <td>40-45 GWth retrofit + 5,560 km pipe ext.</td>
+                        <td>Fragmented + tariff squeeze; large grants exist</td>
+                        <td><span class="status-tag" style="background: #FF6347;">High opp. / Hard entry</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="country-flag flag-spain"></span><strong>Spain</strong></td>
+                        <td>5-8 GWth greenfield 4G/5G pipeline</td>
+                        <td>RD to simplify permits; 45% PERTE grants</td>
+                        <td><span class="status-tag" style="background: #2E8B57;">High opp. / Medium entry</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="country-flag flag-uk"></span><strong>United Kingdom</strong></td>
+                        <td>≈12 GWth new capacity by 2030</td>
+                        <td>Ofgem licence + GHNF funds; zoning grants exclusivity</td>
+                        <td><span class="status-tag" style="background: #2E8B57;">High opp. / Medium entry</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="country-flag flag-france"></span><strong>France</strong></td>
+                        <td><1 GWth retrofit; +1,300 km pipes</td>
+                        <td>Concession renewals competitive; strong subsidies</td>
+                        <td><span class="status-tag" style="background: #4682B4;">Mid opp. / Medium entry</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="country-flag flag-czech"></span><strong>Czech Rep.</strong></td>
+                        <td>Coal exit mandates, funding €350m</td>
+                        <td>Highly municipal, fragmented market</td>
+                        <td><span class="status-tag" style="background: #FF8C00;">Mid opp. / Hard entry</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="country-flag flag-hungary"></span><strong>Hungary</strong></td>
+                        <td>0.3-0.5 GWth new plants + 22 PJ gas switch</td>
+                        <td>Profit-cap 9%, single-buyer tariff model</td>
+                        <td><span class="status-tag" style="background: #708090;">Low opp. / Medium entry</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="footnote">
+                Qualitative "High / Medium / Hard" labels derive solely from documented grant intensity, ownership structures and regulatory hurdles – no subjective scoring introduced.
+            </p>
+
+            <div class="matrix-viz" style="margin: 40px 0; position: relative; background: white; border-radius: 12px; padding: 40px; box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08); height: 500px;">
+                <div class="matrix-grid" style="position: absolute; top: 80px; left: 80px; right: 40px; bottom: 80px; border-left: 3px solid var(--cva-primary); border-bottom: 3px solid var(--cva-primary);">
+                    <!-- Axis labels -->
+                    <div class="axis-label-x" style="position: absolute; bottom: -50px; left: 50%; transform: translateX(-50%); font-weight: 600; font-size: 14px; color: var(--cva-primary);">Ease of Entry →</div>
+                    <div class="axis-label-y" style="position: absolute; left: -60px; top: 50%; transform: rotate(-90deg) translateX(-50%); transform-origin: center; font-weight: 600; font-size: 14px; color: var(--cva-primary);">Market Opportunity →</div>
+                    
+                    <!-- Axis ticks -->
+                    <div class="axis-tick" style="position: absolute; bottom: -30px; left: 0; font-size: 11px; color: #888;">Hard</div>
+                    <div class="axis-tick" style="position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); font-size: 11px; color: #888;">Medium</div>
+                    <div class="axis-tick" style="position: absolute; bottom: -30px; right: 0; font-size: 11px; color: #888;">Easy</div>
+                    <div class="axis-tick" style="position: absolute; left: -40px; bottom: 0; font-size: 11px; color: #888;">Low</div>
+                    <div class="axis-tick" style="position: absolute; left: -40px; top: 50%; transform: translateY(-50%); font-size: 11px; color: #888;">Mid</div>
+                    <div class="axis-tick" style="position: absolute; left: -40px; top: 0; font-size: 11px; color: #888;">High</div>
+                    
+                    <!-- Quadrant labels -->
+                    <div class="quadrant-label" style="position: absolute; top: 20px; left: 20px; background: #FFE6E6; padding: 8px 16px; border-radius: 6px; font-weight: 600; font-size: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">Challenge Zone</div>
+                    <div class="quadrant-label" style="position: absolute; top: 20px; right: 20px; background: #E8FFE8; padding: 8px 16px; border-radius: 6px; font-weight: 600; font-size: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">Sweet Spot</div>
+                    
+                    <!-- Country bubbles -->
+                    <div class="matrix-bubble" style="background: #DC143C; width: 100px; height: 100px; left: 15%; top: 10%;">
+                        <span class="country-flag flag-germany"></span>
+                        <span>DE<br>17-20 GW</span>
+                    </div>
+                    <div class="matrix-bubble" style="background: #DC143C; width: 140px; height: 140px; left: 10%; top: 5%;">
+                        <span class="country-flag flag-poland"></span>
+                        <span>PL<br>40-45 GW</span>
+                    </div>
+                    <div class="matrix-bubble" style="background: #2E8B57; width: 80px; height: 80px; right: 25%; top: 20%;">
+                        <span class="country-flag flag-spain"></span>
+                        <span>ES<br>5-8 GW</span>
+                    </div>
+                    <div class="matrix-bubble" style="background: #2E8B57; width: 90px; height: 90px; right: 30%; top: 15%;">
+                        <span class="country-flag flag-uk"></span>
+                        <span>UK<br>12 GW</span>
+                    </div>
+                    <div class="matrix-bubble" style="background: #4682B4; width: 60px; height: 60px; right: 35%; bottom: 35%;">
+                        <span class="country-flag flag-france"></span>
+                        <span>FR</span>
+                    </div>
+                    <div class="matrix-bubble" style="background: #FF8C00; width: 70px; height: 70px; left: 20%; bottom: 40%;">
+                        <span class="country-flag flag-czech"></span>
+                        <span>CZ</span>
+                    </div>
+                    <div class="matrix-bubble" style="background: #708090; width: 50px; height: 50px; right: 40%; bottom: 20%;">
+                        <span class="country-flag flag-hungary"></span>
+                        <span>HU</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 26: Short-List of Target Plays -->
+    <section class="section" id="section26">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">26</span>
+                <h2 class="section-title">Short-List of Target Plays for Veolia (evidence-based)</h2>
+                <p class="section-subtitle">Four concrete plays emerge where Veolia's references match market timing and entry route.</p>
+            </div>
+
+            <div class="key-message">
+                Four concrete plays emerge where Veolia's references match market timing and entry route.
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(2, 2fr); gap: 24px; margin: 30px 0;">
+                <div style="background: white; border-radius: 12px; padding: 30px; box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08); border-top: 4px solid var(--cva-primary);">
+                    <h3 style="color: var(--cva-primary); margin-bottom: 15px; font-size: 20px;">
+                        <span class="country-flag flag-germany"></span>
+                        <strong>DE - Coal-to-RES Stadtwerke JV retrofits</strong>
+                    </h3>
+                    <p style="font-size: 14px; color: #666; margin-bottom: 15px;">(e.g. Rhein-Ruhr, Leipzig)</p>
+                    <div style="font-size: 14px; line-height: 1.8;">
+                        • Largest single brownfield pool (17-20 GWth)<br>
+                        • BEW 40% grants + OPEX bonus<br>
+                        • Stadtwerke seek capex partners
+                    </div>
+                </div>
+                <div style="background: white; border-radius: 12px; padding: 30px; box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08); border-top: 4px solid var(--cva-primary);">
+                    <h3 style="color: var(--cva-primary); margin-bottom: 15px; font-size: 20px;">
+                        <span class="country-flag flag-poland"></span>
+                        <strong>PL - Deep decarb of Veolia-operated cities</strong>
+                    </h3>
+                    <p style="font-size: 14px; color: #666; margin-bottom: 15px;">(Warsaw, Łódź, Poznań)</p>
+                    <div style="font-size: 14px; line-height: 1.8;">
+                        • Veolia already operates major grids<br>
+                        • 40-45 GWth coal exit; ETS burden €41.5bn 2023<br>
+                        • RRP & NFOŚiGW funds available
+                    </div>
+                </div>
+                <div style="background: white; border-radius: 12px; padding: 30px; box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08); border-top: 4px solid var(--cva-primary);">
+                    <h3 style="color: var(--cva-primary); margin-bottom: 15px; font-size: 20px;">
+                        <span class="country-flag flag-uk"></span>
+                        <strong>UK - GHNF-backed low-temp networks</strong>
+                    </h3>
+                    <p style="font-size: 14px; color: #666; margin-bottom: 15px;">(Bristol, Leeds, London zones)</p>
+                    <div style="font-size: 14px; line-height: 1.8;">
+                        • £773m GHNF >50% CAPEX<br>
+                        • Zoning pilots give quasi-monopoly<br>
+                        • Veolia track record in Sheffield ERF heat network
+                    </div>
+                </div>
+                <div style="background: white; border-radius: 12px; padding: 30px; box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08); border-top: 4px solid var(--cva-primary);">
+                    <h3 style="color: var(--cva-primary); margin-bottom: 15px; font-size: 20px;">
+                        <span class="country-flag flag-spain"></span>
+                        <strong>ES - First-mover 5GDHC in data-centre clusters</strong>
+                    </h3>
+                    <p style="font-size: 14px; color: #666; margin-bottom: 15px;">& Valladolid 55 MW biomass</p>
+                    <div style="font-size: 14px; line-height: 1.8;">
+                        • 5-8 GWth new capacity by 2030<br>
+                        • Draft RD to streamline permits<br>
+                        • Veolia already co-owns Valladolid & Móstoles networks
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); border-radius: 12px; padding: 30px; margin: 30px 0;">
+                <h3 style="color: var(--cva-primary); margin-bottom: 20px;">Secondary options (monitor):</h3>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; font-size: 14px;">
+                    <div>
+                        <strong>Czech steam-to-HW conversions with ČEZ</strong><br>
+                        (coal exit 2030)
+                    </div>
+                    <div>
+                        <strong>HU geothermal mini-grids under Jedlik Ányos programme</strong><br>
+                        (50% grant, 9% profit cap)
+                    </div>
+                </div>
+            </div>
+
+            <div class="insights-box">
+                <h3 class="insights-title">Why these plays?</h3>
+                <div class="insight-item">Sizeable, time-bound TAM (brownfield GWth or greenfield CAPEX) already quantified in public plans.</div>
+                <div class="insight-item">Clear entry door – concession renewal (FR, PL), JV request (DE Stadtwerke), or grant-tied tender (UK, ES).</div>
+                <div class="insight-item">Veolia credentials in similar tech (coal-to-biomass, 5GDHC, waste-heat) cited in national documents.</div>
+            </div>
+        </div>
+    </section>
+
     <script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -3053,7 +3493,7 @@
         }, observerOptions);
 
         // Observe all animatable elements
-        document.querySelectorAll('.metric-card, .matrix-cell, .timeline-event, .capacity-bubble, .opportunity-card, .subsidy-card, #section23 div[style*="background: white"]').forEach(el => {
+        document.querySelectorAll('.metric-card, .matrix-cell, .timeline-event, .capacity-bubble, .opportunity-card, .subsidy-card, #section23 div[style*="background: white"], #section24 div[style*="background: linear-gradient"], #section26 div[style*="background: white"], #section26 div[style*="background: linear-gradient"]').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'all 0.6s ease';
@@ -3065,16 +3505,22 @@
         const barObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.width = entry.target.getAttribute('style').match(/width:\s*(\d+%)/)[1];
+                    const segment = entry.target;
+                    const originalFlex = segment.style.flex;
+                    if (originalFlex && originalFlex.includes('0 0')) {
+                        segment.style.flex = originalFlex;
+                    }
                 }
             });
         }, observerOptions);
 
         fuelBars.forEach(bar => {
-            const originalWidth = bar.style.width;
-            bar.setAttribute('data-width', originalWidth);
-            bar.style.width = '0';
-            bar.style.transition = 'width 1s ease';
+            const originalFlex = bar.style.flex;
+            if (originalFlex && originalFlex.includes('0 0')) {
+                bar.setAttribute('data-flex', originalFlex);
+                bar.style.flex = '0 0 0%';
+                bar.style.transition = 'flex 1s ease';
+            }
             barObserver.observe(bar);
         });
 
@@ -3221,6 +3667,44 @@
             }, observerOptions);
             
             irrObserver.observe(val);
+        });
+
+        // Animate matrix bubbles in section 25
+        const matrixBubbles = document.querySelectorAll('#section25 .matrix-bubble');
+        matrixBubbles.forEach((bubble, index) => {
+            bubble.style.opacity = '0';
+            bubble.style.transform = 'scale(0)';
+            bubble.style.transition = `all 0.6s ease ${index * 0.1}s`;
+            
+            const bubbleObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'scale(1)';
+                    }
+                });
+            }, observerOptions);
+            
+            bubbleObserver.observe(bubble);
+        });
+
+        // Animate target play cards in section 26
+        const playCards = document.querySelectorAll('#section26 > div > div:nth-child(3) > div');
+        playCards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `all 0.6s ease ${index * 0.15}s`;
+            
+            const cardObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            cardObserver.observe(card);
         });
     </script>
 </body>
