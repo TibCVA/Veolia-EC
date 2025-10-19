@@ -4,186 +4,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voyage au Japon 🇯🇵 - Octobre 2025</title>
+    <title>Notre Voyage au Japon 🇯🇵</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
 ```
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
     :root {
         --primary: #C41E3A;
-        --primary-dark: #8B1329;
-        --secondary: #1a1a1a;
-        --accent: #F4B942;
-        --accent-light: #FFD978;
-        --bg: #FAFAFA;
-        --card-bg: #FFFFFF;
-        --text: #2C2C2C;
-        --text-light: #666666;
-        --border: #E8E8E8;
-        --shadow: rgba(0, 0, 0, 0.08);
-        --shadow-strong: rgba(0, 0, 0, 0.15);
-        --blue: #2563EB;
-        --blue-light: #3B82F6;
-        --green: #059669;
-        --purple: #7C3AED;
+        --primary-dark: #9B1629;
+        --primary-light: #E85D75;
+        --secondary: #2C3E50;
+        --accent: #F4E4E6;
+        --accent-dark: #E8B4B8;
+        --bg-light: #F8F9FA;
+        --bg-white: #FFFFFF;
+        --text-dark: #2C3E50;
+        --text-medium: #4A5568;
+        --text-light: #6C757D;
+        --border: #E8EAED;
+        --border-light: #F0F2F5;
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        line-height: 1.6;
-        padding-bottom: 80px;
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        line-height: 1.7;
+        color: var(--text-dark);
+        background: var(--bg-light);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Header */
-    .header {
-        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    .hero {
+        background: linear-gradient(135deg, #C41E3A 0%, #9B1629 50%, #7A1020 100%);
         color: white;
-        padding: 2rem 1.5rem;
+        padding: 4rem 1.5rem 3rem;
         text-align: center;
-        box-shadow: 0 4px 20px var(--shadow-strong);
-        position: sticky;
+        box-shadow: var(--shadow-lg);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
         top: 0;
-        z-index: 100;
-        backdrop-filter: blur(10px);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at top right, rgba(255,255,255,0.1) 0%, transparent 50%);
+        pointer-events: none;
     }
 
-    .header h1 {
-        font-size: 1.75rem;
+    .hero h1 {
+        font-size: 2.5rem;
         font-weight: 700;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.75rem;
         letter-spacing: -0.5px;
+        position: relative;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
 
-    .header .dates {
-        font-size: 0.95rem;
+    .hero .dates {
+        font-size: 1.125rem;
         opacity: 0.95;
         font-weight: 400;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.3px;
+        position: relative;
     }
 
-    /* Main Navigation */
-    .main-nav {
-        display: flex;
-        background: white;
-        box-shadow: 0 2px 12px var(--shadow);
-        position: sticky;
-        top: 88px;
-        z-index: 99;
-    }
-
-    .main-nav-item {
-        flex: 1;
-        padding: 1rem;
-        text-align: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-weight: 600;
-        font-size: 0.9rem;
-        border-bottom: 3px solid transparent;
-        color: var(--text-light);
-    }
-
-    .main-nav-item:hover {
-        background: var(--bg);
-        color: var(--primary);
-    }
-
-    .main-nav-item.active {
-        color: var(--primary);
-        border-bottom-color: var(--primary);
-        background: var(--bg);
-    }
-
-    /* Day Navigation */
-    .day-nav {
+    .nav-tabs {
         display: flex;
         overflow-x: auto;
         background: white;
-        padding: 0.75rem 0.75rem 0 0.75rem;
-        box-shadow: 0 2px 8px var(--shadow);
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
         position: sticky;
-        top: 144px;
-        z-index: 98;
+        top: 0;
+        z-index: 100;
         -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        gap: 0.5rem;
+        border-bottom: 1px solid var(--border-light);
     }
 
-    .day-nav::-webkit-scrollbar {
+    .nav-tabs::-webkit-scrollbar {
         display: none;
     }
 
-    .day-tab {
+    .nav-tab {
         flex: 0 0 auto;
-        padding: 0.875rem 1.25rem;
-        background: linear-gradient(135deg, var(--bg) 0%, #f0f0f0 100%);
-        border: 2px solid var(--border);
-        border-radius: 16px 16px 0 0;
+        padding: 1.125rem 1.75rem;
+        background: none;
+        border: none;
+        border-bottom: 3px solid transparent;
         cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        font-size: 0.85rem;
+        font-size: 0.9375rem;
         font-weight: 600;
-        white-space: nowrap;
         color: var(--text-light);
-        box-shadow: 0 2px 4px var(--shadow);
+        transition: var(--transition);
+        white-space: nowrap;
+        letter-spacing: 0.2px;
+        position: relative;
     }
 
-    .day-tab:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 4px 8px var(--shadow);
+    .nav-tab::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--primary);
+        transform: scaleX(0);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .day-tab.active {
-        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-        color: white;
-        border-color: var(--primary);
-        transform: translateY(-4px);
-        box-shadow: 0 6px 16px var(--shadow-strong);
+    .nav-tab:hover {
+        color: var(--primary);
+        background: linear-gradient(180deg, transparent 0%, rgba(196, 30, 58, 0.03) 100%);
     }
 
-    .day-tab .day-number {
-        display: block;
-        font-size: 1.15rem;
-        margin-bottom: 0.25rem;
-        font-weight: 700;
+    .nav-tab.active {
+        color: var(--primary);
+        background: linear-gradient(180deg, transparent 0%, rgba(196, 30, 58, 0.05) 100%);
     }
 
-    .day-tab .day-date {
-        font-size: 0.75rem;
-        opacity: 0.85;
-        font-weight: 500;
+    .nav-tab.active::after {
+        transform: scaleX(1);
     }
 
-    /* Content */
-    .content {
-        max-width: 900px;
+    .container {
+        max-width: 1200px;
         margin: 0 auto;
-        padding: 1.5rem;
+        padding: 2rem 1.5rem;
     }
 
-    .section {
+    .day-section {
         display: none;
-        animation: fadeInUp 0.5s ease;
+        animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .section.active {
-        display: block;
-    }
-
-    .day-content {
-        display: none;
-        animation: fadeInUp 0.5s ease;
-    }
-
-    .day-content.active {
+    .day-section.active {
         display: block;
     }
 
@@ -198,14 +166,13 @@
         }
     }
 
-    /* Day Header */
     .day-header {
-        background: linear-gradient(135deg, var(--secondary) 0%, #2a2a2a 100%);
-        color: white;
-        padding: 2rem 1.75rem;
-        border-radius: 20px;
+        background: white;
+        padding: 2rem 2rem 1.75rem;
+        border-radius: 16px;
         margin-bottom: 2rem;
-        box-shadow: 0 8px 24px var(--shadow-strong);
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border-light);
         position: relative;
         overflow: hidden;
     }
@@ -214,1661 +181,1261 @@
         content: '';
         position: absolute;
         top: 0;
+        left: 0;
         right: 0;
-        width: 200px;
-        height: 200px;
-        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-        border-radius: 50%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
     }
 
     .day-header h2 {
+        color: var(--primary);
         font-size: 2rem;
-        margin-bottom: 0.75rem;
-        font-weight: 700;
-        position: relative;
-        z-index: 1;
-        letter-spacing: -0.5px;
-    }
-
-    .day-header .subtitle {
-        font-size: 1.1rem;
-        opacity: 0.9;
-        font-weight: 400;
-        position: relative;
-        z-index: 1;
-    }
-
-    /* Cards */
-    .card {
-        background: var(--card-bg);
-        border-radius: 20px;
-        padding: 1.75rem;
-        margin-bottom: 1.5rem;
-        box-shadow: 0 4px 16px var(--shadow);
-        border: 1px solid var(--border);
-        transition: all 0.3s ease;
-    }
-
-    .card:hover {
-        box-shadow: 0 8px 32px var(--shadow-strong);
-        transform: translateY(-2px);
-    }
-
-    .card-header {
+        margin-bottom: 0.5rem;
         display: flex;
         align-items: center;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-        padding-bottom: 1rem;
-        border-bottom: 3px solid var(--primary);
-    }
-
-    .card-icon {
-        font-size: 1.75rem;
-        min-width: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .card-title {
-        font-size: 1.35rem;
+        gap: 0.75rem;
         font-weight: 700;
-        color: var(--secondary);
         letter-spacing: -0.3px;
     }
 
-    /* Activity Item */
-    .activity {
+    .day-header .subtitle {
+        color: var(--text-medium);
+        font-size: 1.0625rem;
+        font-weight: 500;
+        letter-spacing: 0.2px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 16px;
+        padding: 2rem;
         margin-bottom: 1.75rem;
-        padding: 1.5rem;
-        background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
-        border-radius: 16px;
-        border-left: 5px solid var(--primary);
-        transition: all 0.3s ease;
-    }
-
-    .activity:hover {
-        box-shadow: 0 4px 16px var(--shadow);
-        transform: translateX(4px);
-    }
-
-    .activity:last-child {
-        margin-bottom: 0;
-    }
-
-    .activity-time {
-        display: inline-block;
-        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-        color: white;
-        padding: 0.35rem 1rem;
-        border-radius: 24px;
-        font-size: 0.875rem;
-        font-weight: 700;
-        margin-bottom: 0.75rem;
-        box-shadow: 0 2px 8px rgba(196, 30, 58, 0.3);
-    }
-
-    .activity-name {
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: var(--secondary);
-        margin-bottom: 0.75rem;
-        line-height: 1.3;
-    }
-
-    .activity-desc {
-        color: var(--text-light);
-        font-size: 0.95rem;
-        line-height: 1.7;
-        margin-bottom: 1rem;
-    }
-
-    .activity-note {
-        background: #FEF3C7;
-        padding: 0.75rem 1rem;
-        border-radius: 10px;
-        font-size: 0.875rem;
-        color: #92400E;
-        margin-top: 0.75rem;
-        border-left: 3px solid #F59E0B;
-    }
-
-    /* Restaurant */
-    .restaurant {
-        background: var(--card-bg);
-        padding: 1.5rem;
-        border-radius: 16px;
-        margin-bottom: 1.25rem;
-        border: 2px solid var(--border);
-        transition: all 0.3s ease;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border-light);
+        transition: var(--transition);
         position: relative;
-        overflow: hidden;
     }
 
-    .restaurant::before {
+    .card::before {
         content: '';
         position: absolute;
         top: 0;
         left: 0;
-        width: 6px;
+        width: 4px;
         height: 100%;
-        background: linear-gradient(180deg, var(--accent) 0%, var(--accent-light) 100%);
+        background: linear-gradient(180deg, var(--primary) 0%, var(--primary-light) 100%);
+        border-radius: 16px 0 0 16px;
         opacity: 0;
-        transition: opacity 0.3s ease;
+        transition: var(--transition);
     }
 
-    .restaurant:hover {
-        border-color: var(--primary);
-        box-shadow: 0 6px 20px var(--shadow);
-        transform: translateY(-2px);
+    .card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--border);
     }
 
-    .restaurant:hover::before {
+    .card:hover::before {
         opacity: 1;
     }
 
-    .restaurant-name {
-        font-size: 1.15rem;
-        font-weight: 700;
+    .time-badge {
+        display: inline-flex;
+        align-items: center;
+        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+        color: var(--primary-dark);
+        padding: 0.5rem 1.125rem;
+        border-radius: 24px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        margin-bottom: 1.25rem;
+        letter-spacing: 0.3px;
+        box-shadow: 0 2px 8px rgba(196, 30, 58, 0.1);
+    }
+
+    .card h3 {
         color: var(--secondary);
-        margin-bottom: 0.5rem;
-    }
-
-    .restaurant-type {
-        display: inline-block;
-        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-        color: var(--secondary);
-        padding: 0.25rem 0.75rem;
-        border-radius: 16px;
-        font-size: 0.8rem;
-        font-weight: 700;
-        margin-bottom: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-
-    .restaurant-desc {
-        color: var(--text-light);
-        font-size: 0.9rem;
-        line-height: 1.6;
-        margin-bottom: 1rem;
-    }
-
-    /* Hotel */
-    .hotel {
-        background: linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%);
-        padding: 1.5rem;
-        border-radius: 16px;
-        border-left: 6px solid var(--accent);
-        box-shadow: 0 2px 8px var(--shadow);
-    }
-
-    .hotel-name {
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: var(--secondary);
-        margin-bottom: 0.5rem;
-    }
-
-    .hotel-location {
-        color: var(--text-light);
-        font-size: 0.95rem;
-        margin-bottom: 1rem;
+        font-size: 1.375rem;
+        margin-bottom: 1.25rem;
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: 0.625rem;
+        font-weight: 700;
+        letter-spacing: -0.2px;
+        line-height: 1.4;
     }
 
-    /* Map Link Button */
-    .map-link {
+    .card p {
+        color: var(--text-medium);
+        margin-bottom: 1rem;
+        line-height: 1.75;
+        font-size: 1rem;
+    }
+
+    .card p:last-of-type {
+        margin-bottom: 0.75rem;
+    }
+
+    .card p strong {
+        color: var(--text-dark);
+        font-weight: 600;
+    }
+
+    .location-link {
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
-        background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
-        color: white;
-        padding: 0.625rem 1.25rem;
-        border-radius: 12px;
+        color: var(--primary);
         text-decoration: none;
-        font-size: 0.875rem;
         font-weight: 600;
-        transition: all 0.3s ease;
+        font-size: 0.9375rem;
+        padding: 0.625rem 1.25rem;
+        border: 2px solid var(--primary);
+        border-radius: 10px;
+        transition: var(--transition);
         margin-top: 0.5rem;
-        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+        margin-right: 0.625rem;
+        letter-spacing: 0.2px;
     }
 
-    .map-link:hover {
-        background: linear-gradient(135deg, var(--blue-light) 0%, var(--blue) 100%);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
+    .location-link:hover {
+        background: var(--primary);
+        color: white;
+        transform: translateX(3px);
+        box-shadow: 0 4px 12px rgba(196, 30, 58, 0.25);
     }
 
-    /* Train Info Box */
+    .icon {
+        font-size: 1.125rem;
+    }
+
     .train-info {
-        background: linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%);
-        border-left: 5px solid var(--blue);
-        padding: 1.5rem;
-        border-radius: 16px;
-        margin: 1.5rem 0;
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+        background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+        border-left: 5px solid #4CAF50;
+        padding: 1.75rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+        box-shadow: var(--shadow-sm);
     }
 
-    .train-info-title {
-        font-weight: 700;
-        color: var(--secondary);
+    .train-info h4 {
+        color: #2E7D32;
         margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        font-size: 1.2rem;
+        font-size: 1.1875rem;
+        font-weight: 700;
+        letter-spacing: -0.2px;
     }
 
-    .train-details {
+    .train-option {
         background: white;
-        padding: 1.25rem;
-        border-radius: 12px;
-        margin-top: 1rem;
-        box-shadow: 0 2px 8px var(--shadow);
-    }
-
-    .train-route {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        margin-bottom: 1rem;
-        font-weight: 700;
-        color: var(--secondary);
-        font-size: 1.05rem;
-    }
-
-    .train-schedule {
-        color: var(--text-light);
-        font-size: 0.95rem;
-        line-height: 1.8;
-    }
-
-    .train-schedule strong {
-        color: var(--secondary);
-        font-weight: 600;
-    }
-
-    /* Info Box */
-    .info-box {
-        background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
-        border-left: 5px solid var(--accent);
-        padding: 1.25rem;
-        border-radius: 12px;
-        margin: 1.25rem 0;
-        box-shadow: 0 2px 8px rgba(244, 185, 66, 0.2);
-    }
-
-    .info-box-title {
-        font-weight: 700;
-        color: var(--secondary);
+        padding: 1.125rem 1.25rem;
+        border-radius: 10px;
         margin-bottom: 0.75rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 1.05rem;
+        font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+        font-size: 0.9375rem;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        border: 1px solid rgba(76, 175, 80, 0.2);
+        transition: var(--transition);
+        font-weight: 500;
     }
 
-    .info-box-content {
-        color: #78350F;
-        font-size: 0.95rem;
-        line-height: 1.7;
+    .train-option:hover {
+        transform: translateX(4px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
-    .info-box-content ul {
+    .train-option:last-child {
+        margin-bottom: 0;
+    }
+
+    .train-option strong {
+        color: #2E7D32;
+    }
+
+    .alert-box {
+        background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+        border-left: 5px solid #FFA726;
+        padding: 1.25rem 1.5rem;
+        border-radius: 12px;
+        margin: 1.5rem 0;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .alert-box strong {
+        color: #E65100;
+        font-weight: 700;
+    }
+
+    .restaurant-grid {
+        display: grid;
+        gap: 1.25rem;
+        margin-top: 1.25rem;
+    }
+
+    .restaurant-item {
+        background: linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 100%);
+        padding: 1.375rem;
+        border-radius: 12px;
+        border-left: 4px solid var(--primary);
+        transition: var(--transition);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .restaurant-item:hover {
+        transform: translateX(4px);
+        box-shadow: var(--shadow);
+    }
+
+    .restaurant-item h4 {
+        color: var(--primary);
+        margin-bottom: 0.625rem;
+        font-size: 1.125rem;
+        font-weight: 700;
+        letter-spacing: -0.1px;
+    }
+
+    .tips-list {
         list-style: none;
         padding-left: 0;
     }
 
-    .info-box-content li {
-        padding: 0.4rem 0;
-        padding-left: 1.5rem;
-        position: relative;
+    .tips-list li {
+        padding: 1.125rem 1.375rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 100%);
+        border-radius: 12px;
+        border-left: 4px solid var(--primary);
+        line-height: 1.75;
+        transition: var(--transition);
+        box-shadow: var(--shadow-sm);
     }
 
-    .info-box-content li:before {
-        content: "→";
-        position: absolute;
-        left: 0;
+    .tips-list li:hover {
+        transform: translateX(4px);
+        box-shadow: var(--shadow);
+    }
+
+    .tips-list li:last-child {
+        margin-bottom: 0;
+    }
+
+    .tips-list li strong {
         color: var(--primary);
-        font-weight: bold;
-    }
-
-    /* Badge */
-    .badge {
-        display: inline-block;
-        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-        color: white;
-        padding: 0.3rem 0.9rem;
-        border-radius: 20px;
-        font-size: 0.75rem;
         font-weight: 700;
-        margin-left: 0.5rem;
-        box-shadow: 0 2px 6px rgba(196, 30, 58, 0.3);
-        text-transform: uppercase;
-        letter-spacing: 0.3px;
     }
 
-    .badge.special {
-        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-        color: var(--secondary);
-    }
-
-    .badge.guide {
-        background: linear-gradient(135deg, var(--purple) 0%, #8B5CF6 100%);
-        color: white;
-    }
-
-    /* Section Divider */
-    .section-divider {
-        display: flex;
-        align-items: center;
-        text-align: center;
-        margin: 3rem 0 2rem 0;
-    }
-
-    .section-divider::before,
-    .section-divider::after {
-        content: '';
-        flex: 1;
-        border-bottom: 3px solid var(--border);
-    }
-
-    .section-divider span {
-        padding: 0 1.5rem;
-        font-weight: 700;
-        color: var(--primary);
-        font-size: 1rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    /* Vocabulary Section */
     .vocab-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 1.25rem;
-        margin-top: 1.5rem;
+        margin-top: 1.25rem;
     }
 
-    .vocab-category {
-        background: var(--card-bg);
-        border-radius: 16px;
-        padding: 1.5rem;
-        box-shadow: 0 4px 12px var(--shadow);
-        border: 2px solid var(--border);
-        transition: all 0.3s ease;
+    @media (min-width: 768px) {
+        .vocab-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
     }
 
-    .vocab-category:hover {
-        box-shadow: 0 8px 24px var(--shadow-strong);
-        transform: translateY(-4px);
-        border-color: var(--primary);
+    .vocab-card {
+        background: linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 100%);
+        padding: 1.375rem;
+        border-radius: 12px;
+        border-left: 4px solid var(--primary);
+        transition: var(--transition);
+        box-shadow: var(--shadow-sm);
     }
 
-    .vocab-category-title {
-        font-size: 1.2rem;
+    .vocab-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow);
+    }
+
+    .vocab-card .japanese {
+        font-size: 1.5rem;
         font-weight: 700;
         color: var(--primary);
-        margin-bottom: 1.25rem;
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        padding-bottom: 0.75rem;
-        border-bottom: 2px solid var(--border);
+        margin-bottom: 0.5rem;
+        letter-spacing: 0.5px;
     }
 
-    .vocab-item {
-        padding: 0.75rem 0;
-        border-bottom: 1px solid var(--border);
-    }
-
-    .vocab-item:last-child {
-        border-bottom: none;
-    }
-
-    .vocab-word {
-        font-weight: 700;
-        color: var(--secondary);
-        font-size: 1.05rem;
-        margin-bottom: 0.25rem;
-        font-family: 'Noto Sans JP', sans-serif;
-    }
-
-    .vocab-phonetic {
-        color: var(--blue);
-        font-size: 0.9rem;
-        font-style: italic;
-        margin-bottom: 0.25rem;
-    }
-
-    .vocab-translation {
+    .vocab-card .pronunciation {
         color: var(--text-light);
-        font-size: 0.875rem;
+        font-style: italic;
+        margin-bottom: 0.5rem;
+        font-size: 0.9375rem;
     }
 
-    /* Page Reference */
-    .page-ref {
-        display: inline-block;
-        background: #EDE9FE;
-        color: var(--purple);
-        padding: 0.2rem 0.6rem;
-        border-radius: 12px;
-        font-size: 0.7rem;
+    .vocab-card .french {
+        color: var(--text-dark);
         font-weight: 600;
-        margin-left: 0.5rem;
+        font-size: 1.0625rem;
     }
 
-    /* Responsive */
+    .hotel-info {
+        background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+        padding: 1.5rem 1.75rem;
+        border-radius: 12px;
+        margin: 1.75rem 0;
+        border-left: 5px solid #2196F3;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .hotel-info h4 {
+        color: #1565C0;
+        margin-bottom: 0.75rem;
+        font-size: 1.1875rem;
+        font-weight: 700;
+        letter-spacing: -0.2px;
+    }
+
+    .hotel-info p {
+        color: var(--text-medium);
+        line-height: 1.7;
+        margin-bottom: 1rem;
+    }
+
     @media (max-width: 768px) {
-        .header h1 {
-            font-size: 1.5rem;
+        .hero {
+            padding: 3rem 1.25rem 2.25rem;
         }
 
-        .day-header h2 {
-            font-size: 1.65rem;
+        .hero h1 {
+            font-size: 2rem;
         }
 
-        .content {
-            padding: 1rem;
+        .hero .dates {
+            font-size: 1rem;
+        }
+
+        .container {
+            padding: 1.5rem 1rem;
         }
 
         .card {
-            padding: 1.25rem;
+            padding: 1.5rem;
+        }
+
+        .day-header {
+            padding: 1.5rem 1.25rem;
+        }
+
+        .day-header h2 {
+            font-size: 1.625rem;
+        }
+
+        .nav-tab {
+            padding: 1rem 1.25rem;
+            font-size: 0.875rem;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
         }
 
         .vocab-grid {
             grid-template-columns: 1fr;
         }
-
-        .main-nav-item {
-            font-size: 0.8rem;
-            padding: 0.875rem;
-        }
     }
 
-    /* Animations */
-    @keyframes float {
-        0%, 100% {
-            transform: translateY(0px);
-        }
-        50% {
-            transform: translateY(-10px);
-        }
-    }
-
-    .float-animation {
-        animation: float 3s ease-in-out infinite;
-    }
-
-    /* Scroll to top button */
-    .scroll-top {
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    .footer {
+        background: linear-gradient(135deg, var(--secondary) 0%, #1a252f 100%);
         color: white;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        box-shadow: 0 4px 16px var(--shadow-strong);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        z-index: 1000;
-        font-size: 1.5rem;
+        text-align: center;
+        padding: 2.5rem 1.5rem;
+        margin-top: 4rem;
+        box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
     }
 
-    .scroll-top.visible {
-        opacity: 1;
-        visibility: visible;
+    .footer p {
+        opacity: 0.9;
+        margin: 0;
+        font-size: 1rem;
+        letter-spacing: 0.3px;
     }
 
-    .scroll-top:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 6px 24px var(--shadow-strong);
+    /* Smooth animations */
+    @media (prefers-reduced-motion: no-preference) {
+        * {
+            scroll-behavior: smooth;
+        }
+    }
+
+    /* Better focus states for accessibility */
+    .nav-tab:focus,
+    .location-link:focus,
+    button:focus {
+        outline: 3px solid var(--primary);
+        outline-offset: 2px;
+    }
+
+    /* Print styles */
+    @media print {
+        .nav-tabs,
+        .footer {
+            display: none;
+        }
+        
+        .card {
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
     }
 </style>
 ```
 
 </head>
 <body>
-    <div class="header">
-        <h1>🇯🇵 Voyage au Japon</h1>
-        <div class="dates">23 - 31 Octobre 2025</div>
-    </div>
 
 ```
-<div class="main-nav">
-    <div class="main-nav-item active" onclick="switchSection('itinerary')">
-        📅 Itinéraire
-    </div>
-    <div class="main-nav-item" onclick="switchSection('vocabulary')">
-        🗣️ Vocabulaire
-    </div>
+<div class="hero">
+    <h1>🇯🇵 Notre Voyage au Japon</h1>
+    <p class="dates">23 - 31 Octobre 2025 • Tokyo & Kyoto</p>
 </div>
 
-<div class="content">
-    <!-- Itinerary Section -->
-    <div class="section active" id="itinerary-section">
-        <div class="day-nav" id="dayNav">
-            <!-- Navigation will be generated by JS -->
-        </div>
-        <div id="dayContent">
-            <!-- Day content will be generated by JS -->
-        </div>
-    </div>
+<nav class="nav-tabs" id="navTabs">
+    <button class="nav-tab active" data-day="jour1">23 Oct</button>
+    <button class="nav-tab" data-day="jour2">24 Oct</button>
+    <button class="nav-tab" data-day="jour3">25 Oct</button>
+    <button class="nav-tab" data-day="jour4">26 Oct</button>
+    <button class="nav-tab" data-day="jour5">27 Oct</button>
+    <button class="nav-tab" data-day="jour6">28 Oct</button>
+    <button class="nav-tab" data-day="jour7">29 Oct</button>
+    <button class="nav-tab" data-day="jour8">30 Oct</button>
+    <button class="nav-tab" data-day="jour9">31 Oct</button>
+    <button class="nav-tab" data-day="langue">🗣️ Langue</button>
+    <button class="nav-tab" data-day="divers">💡 Divers</button>
+</nav>
 
-    <!-- Vocabulary Section -->
-    <div class="section" id="vocabulary-section">
+<div class="container">
+
+    <!-- JOUR 1 : 23 OCTOBRE -->
+    <div id="jour1" class="day-section active">
         <div class="day-header">
-            <h2>🗣️ Vocabulaire essentiel</h2>
-            <div class="subtitle">Mots et phrases clés en phonétique</div>
-        </div>
-
-        <div class="vocab-grid">
-            <div class="vocab-category">
-                <div class="vocab-category-title">
-                    👋 Salutations & Politesse
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">おはようございます</div>
-                    <div class="vocab-phonetic">Ohayō gozaimasu</div>
-                    <div class="vocab-translation">Bonjour (matin)</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">こんにちは</div>
-                    <div class="vocab-phonetic">Konnichiwa</div>
-                    <div class="vocab-translation">Bonjour (journée)</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">こんばんは</div>
-                    <div class="vocab-phonetic">Konbanwa</div>
-                    <div class="vocab-translation">Bonsoir</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">ありがとうございます</div>
-                    <div class="vocab-phonetic">Arigatō gozaimasu</div>
-                    <div class="vocab-translation">Merci (formel)</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">すみません</div>
-                    <div class="vocab-phonetic">Sumimasen</div>
-                    <div class="vocab-translation">Excusez-moi / Pardon</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">ごめんなさい</div>
-                    <div class="vocab-phonetic">Gomen nasai</div>
-                    <div class="vocab-translation">Désolé(e)</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">さようなら</div>
-                    <div class="vocab-phonetic">Sayōnara</div>
-                    <div class="vocab-translation">Au revoir</div>
-                </div>
-            </div>
-
-            <div class="vocab-category">
-                <div class="vocab-category-title">
-                    🍜 Restaurant & Nourriture
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">いただきます</div>
-                    <div class="vocab-phonetic">Itadakimasu</div>
-                    <div class="vocab-translation">Bon appétit (avant le repas)</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">ごちそうさまでした</div>
-                    <div class="vocab-phonetic">Gochisōsama deshita</div>
-                    <div class="vocab-translation">Merci pour le repas (après)</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">おいしい</div>
-                    <div class="vocab-phonetic">Oishii</div>
-                    <div class="vocab-translation">Délicieux</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">おすすめは何ですか</div>
-                    <div class="vocab-phonetic">Osusume wa nan desu ka</div>
-                    <div class="vocab-translation">Quelle est votre recommandation ?</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">お会計お願いします</div>
-                    <div class="vocab-phonetic">Okaikei onegai shimasu</div>
-                    <div class="vocab-translation">L'addition s'il vous plaît</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">魚なしで</div>
-                    <div class="vocab-phonetic">Sakana nashi de</div>
-                    <div class="vocab-translation">Sans poisson</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">ベジタリアン</div>
-                    <div class="vocab-phonetic">Bejitarian</div>
-                    <div class="vocab-translation">Végétarien</div>
-                </div>
-            </div>
-
-            <div class="vocab-category">
-                <div class="vocab-category-title">
-                    🚇 Transport
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">駅</div>
-                    <div class="vocab-phonetic">Eki</div>
-                    <div class="vocab-translation">Gare</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">新幹線</div>
-                    <div class="vocab-phonetic">Shinkansen</div>
-                    <div class="vocab-translation">Train à grande vitesse</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">切符</div>
-                    <div class="vocab-phonetic">Kippu</div>
-                    <div class="vocab-translation">Billet</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">どこですか</div>
-                    <div class="vocab-phonetic">Doko desu ka</div>
-                    <div class="vocab-translation">Où est... ?</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">いくらですか</div>
-                    <div class="vocab-phonetic">Ikura desu ka</div>
-                    <div class="vocab-translation">Combien ça coûte ?</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">タクシー</div>
-                    <div class="vocab-phonetic">Takushī</div>
-                    <div class="vocab-translation">Taxi</div>
-                </div>
-            </div>
-
-            <div class="vocab-category">
-                <div class="vocab-category-title">
-                    🏨 Hôtel
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">チェックイン</div>
-                    <div class="vocab-phonetic">Chekku-in</div>
-                    <div class="vocab-translation">Enregistrement</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">チェックアウト</div>
-                    <div class="vocab-phonetic">Chekku-auto</div>
-                    <div class="vocab-translation">Départ</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">予約</div>
-                    <div class="vocab-phonetic">Yoyaku</div>
-                    <div class="vocab-translation">Réservation</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">部屋</div>
-                    <div class="vocab-phonetic">Heya</div>
-                    <div class="vocab-translation">Chambre</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">温泉</div>
-                    <div class="vocab-phonetic">Onsen</div>
-                    <div class="vocab-translation">Source thermale</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">Wi-Fi</div>
-                    <div class="vocab-phonetic">Wai-fai</div>
-                    <div class="vocab-translation">WiFi</div>
-                </div>
-            </div>
-
-            <div class="vocab-category">
-                <div class="vocab-category-title">
-                    🛍️ Shopping
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">これをください</div>
-                    <div class="vocab-phonetic">Kore wo kudasai</div>
-                    <div class="vocab-translation">Ceci s'il vous plaît</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">見てるだけです</div>
-                    <div class="vocab-phonetic">Miteru dake desu</div>
-                    <div class="vocab-translation">Je regarde juste</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">高い</div>
-                    <div class="vocab-phonetic">Takai</div>
-                    <div class="vocab-translation">Cher</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">安い</div>
-                    <div class="vocab-phonetic">Yasui</div>
-                    <div class="vocab-translation">Pas cher</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">袋</div>
-                    <div class="vocab-phonetic">Fukuro</div>
-                    <div class="vocab-translation">Sac</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">クレジットカード</div>
-                    <div class="vocab-phonetic">Kurejitto kādo</div>
-                    <div class="vocab-translation">Carte de crédit</div>
-                </div>
-            </div>
-
-            <div class="vocab-category">
-                <div class="vocab-category-title">
-                    ❓ Questions utiles
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">英語を話せますか</div>
-                    <div class="vocab-phonetic">Eigo wo hanasemasu ka</div>
-                    <div class="vocab-translation">Parlez-vous anglais ?</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">トイレはどこですか</div>
-                    <div class="vocab-phonetic">Toire wa doko desu ka</div>
-                    <div class="vocab-translation">Où sont les toilettes ?</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">助けてください</div>
-                    <div class="vocab-phonetic">Tasukete kudasai</div>
-                    <div class="vocab-translation">Aidez-moi s'il vous plaît</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">わかりません</div>
-                    <div class="vocab-phonetic">Wakarimasen</div>
-                    <div class="vocab-translation">Je ne comprends pas</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">もう一度お願いします</div>
-                    <div class="vocab-phonetic">Mō ichido onegai shimasu</div>
-                    <div class="vocab-translation">Encore une fois s'il vous plaît</div>
-                </div>
-            </div>
-
-            <div class="vocab-category">
-                <div class="vocab-category-title">
-                    🔢 Nombres
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">一 / 二 / 三</div>
-                    <div class="vocab-phonetic">Ichi / Ni / San</div>
-                    <div class="vocab-translation">Un / Deux / Trois</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">四 / 五 / 六</div>
-                    <div class="vocab-phonetic">Shi/Yon / Go / Roku</div>
-                    <div class="vocab-translation">Quatre / Cinq / Six</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">七 / 八 / 九</div>
-                    <div class="vocab-phonetic">Shichi/Nana / Hachi / Kyū</div>
-                    <div class="vocab-translation">Sept / Huit / Neuf</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">十 / 百 / 千</div>
-                    <div class="vocab-phonetic">Jū / Hyaku / Sen</div>
-                    <div class="vocab-translation">Dix / Cent / Mille</div>
-                </div>
-            </div>
-
-            <div class="vocab-category">
-                <div class="vocab-category-title">
-                    🍱 Plats typiques
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">とんかつ</div>
-                    <div class="vocab-phonetic">Tonkatsu</div>
-                    <div class="vocab-translation">Côtelette de porc panée</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">すき焼き</div>
-                    <div class="vocab-phonetic">Sukiyaki</div>
-                    <div class="vocab-translation">Bœuf mijoté dans bouillon sucré-salé</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">カレーライス</div>
-                    <div class="vocab-phonetic">Karē raisu</div>
-                    <div class="vocab-translation">Curry japonais avec riz</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">焼き鳥</div>
-                    <div class="vocab-phonetic">Yakitori</div>
-                    <div class="vocab-translation">Brochettes de poulet grillées</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">うどん</div>
-                    <div class="vocab-phonetic">Udon</div>
-                    <div class="vocab-translation">Nouilles épaisses</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">そば</div>
-                    <div class="vocab-phonetic">Soba</div>
-                    <div class="vocab-translation">Nouilles de sarrasin</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">ラーメン</div>
-                    <div class="vocab-phonetic">Rāmen</div>
-                    <div class="vocab-translation">Nouilles dans bouillon</div>
-                </div>
-                <div class="vocab-item">
-                    <div class="vocab-word">うなぎ</div>
-                    <div class="vocab-phonetic">Unagi</div>
-                    <div class="vocab-translation">Anguille grillée</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="section-divider" style="margin-top: 3rem;">
-            <span>💡 CONSEILS PRONONCIATION</span>
+            <h2>✈️ Mercredi 23 Octobre</h2>
+            <p class="subtitle">Arrivée à Tokyo - Aéroport Haneda</p>
         </div>
 
         <div class="card">
-            <div class="card-header">
-                <span class="card-icon">📢</span>
-                <span class="card-title">Guide de prononciation</span>
+            <h3>🌙 Soirée tranquille</h3>
+            <p>Arrivée tardive à l'aéroport de Haneda. Rien de prévu pour ce soir - repos et installation à l'hôtel après le long vol.</p>
+        </div>
+
+        <div class="hotel-info">
+            <h4>🏨 Hôtel : NOHGA Hotel Ueno</h4>
+            <p>Check-in et repos. Rechargez-vous pour la belle journée de demain !</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=NOHGA+Hotel+Ueno+Tokyo" target="_blank" class="location-link">
+                📍 Voir sur Google Maps
+            </a>
+        </div>
+    </div>
+
+    <!-- JOUR 2 : 24 OCTOBRE -->
+    <div id="jour2" class="day-section">
+        <div class="day-header">
+            <h2>🎯 Jeudi 24 Octobre</h2>
+            <p class="subtitle">Tokyo - Journée solo (chasse aux Invaders)</p>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">9:00 - 12:30 • Matin</span>
+            <h3>🎮 Chasse aux Space Invaders</h3>
+            <p>Exploration photo dans les quartiers de Nakameguro → Daikanyama → Shibuya backstreets. Ces zones regorgent de recoins, ponts et angles où les mosaïques de Space Invader sont fréquentes. Utilisez l'app FlashInvaders pour repérer les zones "chaudes".</p>
+            <p><strong>Option alternative :</strong> Yanaka et les ruelles autour d'Ueno pour des scènes de rue paisibles (plus proche de l'hôtel).</p>
+            <p><strong>Pause café :</strong> TSUTAYA T-Site à Daikanyama, un lieu magnifique pour une pause culturelle.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Nakameguro+Tokyo" target="_blank" class="location-link">
+                📍 Nakameguro
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Daikanyama+Tokyo" target="_blank" class="location-link">
+                📍 Daikanyama
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=TSUTAYA+T-Site+Daikanyama" target="_blank" class="location-link">
+                📍 TSUTAYA T-Site
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">12:30 • Déjeuner</span>
+            <h3>🍖 Tonkatsu Ponta (Daikanyama)</h3>
+            <p>Excellent restaurant de tonkatsu (porc pané japonais croustillant et savoureux). Le tonkatsu est un classique incontournable de la cuisine japonaise - viande juteuse avec une panure parfaitement dorée, servi avec du chou émincé et une sauce spéciale.</p>
+            <p><strong>⚠️ Réservation conseillée</strong> pour midi pile.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Tonkatsu+Ponta+Daikanyama+Tokyo" target="_blank" class="location-link">
+                📍 Voir sur Google Maps
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">14:00 - 16:00 • Après-midi</span>
+            <h3>📸 Ebisu → Shibuya</h3>
+            <p>Flânerie entre Ebisu et Shibuya avec plus de chances de repérer des Invaders sur les passerelles et façades. Ambiance urbaine tokyoïte authentique.</p>
+            <p><strong>Option vue gratuite :</strong> Le rooftop du PARCO pour une belle perspective de la ville, ou MAGNET Rooftop pour un angle iconique du célèbre carrefour de Shibuya.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Shibuya+Crossing+Tokyo" target="_blank" class="location-link">
+                📍 Shibuya
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Shibuya+Parco+Rooftop" target="_blank" class="location-link">
+                📍 PARCO Rooftop
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">16:00+ • Fin d'après-midi</span>
+            <h3>🏨 Retour chill à l'hôtel</h3>
+            <p>Repos bien mérité après cette journée de découverte solo.</p>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">19:30 • Dîner</span>
+            <h3>🍢 Izakaya près d'Ueno</h3>
+            <p>Izakaya simple avec commande sur iPad (idéal pour manger varié sans fruits de mer). Les izakayas sont des bars-restaurants conviviaux où l'on partage des petits plats variés - parfait pour découvrir plusieurs saveurs japonaises dans une ambiance décontractée.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Izakaya+Ueno+Tokyo" target="_blank" class="location-link">
+                📍 Izakayas à Ueno
+            </a>
+        </div>
+    </div>
+
+    <!-- JOUR 3 : 25 OCTOBRE -->
+    <div id="jour3" class="day-section">
+        <div class="day-header">
+            <h2>⛩️ Vendredi 25 Octobre</h2>
+            <p class="subtitle">Tokyo à deux - Harajuku / Omotesandō / Shibuya</p>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">8:30 - 11:30 • Matin</span>
+            <h3>🌳 Meiji-Jingū & Harajuku</h3>
+            <p>Commencez par le sanctuaire Meiji-Jingū, niché dans une magnifique forêt urbaine - un havre de paix au cœur de Tokyo. L'atmosphère spirituelle et la nature environnante offrent un contraste saisissant avec l'agitation de la ville.</p>
+            <p>Ensuite, plongez dans l'ambiance jeune et colorée de Takeshita-dōri à Harajuku, la rue emblématique de la mode kawaii et des tendances excentriques.</p>
+            <p>Traversez Cat Street vers Omotesandō pour admirer l'architecture contemporaine et les vitrines des grandes enseignes de luxe.</p>
+            <p><strong>Pause café :</strong> crisscross ou A to Z Café (recommandations du guide).</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Meiji+Jingu+Shrine+Tokyo" target="_blank" class="location-link">
+                📍 Meiji-Jingū
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Takeshita+Street+Harajuku" target="_blank" class="location-link">
+                📍 Takeshita-dōri
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Omotesando+Tokyo" target="_blank" class="location-link">
+                📍 Omotesandō
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">12:00 - 13:30 • Déjeuner</span>
+            <h3>🍽️ Cicada</h3>
+            <p>Restaurant avec terrasse agréable, cuisine méditerranéenne. Une excellente option sans poisson pour varier des spécialités japonaises tout en profitant d'un cadre élégant et reposant.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Cicada+Restaurant+Tokyo+Omotesando" target="_blank" class="location-link">
+                📍 Voir sur Google Maps
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">13:45 - 15:30 • Début d'après-midi</span>
+            <h3>🌆 Shibuya - Le carrefour mythique</h3>
+            <p>Découvrez le célèbre carrefour de Shibuya, l'un des plus animés au monde. Expérience urbaine impressionnante !</p>
+            <p><strong>Option vue panoramique :</strong> Shibuya Sky pour une vue spectaculaire à 360° sur Tokyo (réservation recommandée), ou le rooftop PARCO en alternative gratuite.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Shibuya+Crossing+Tokyo" target="_blank" class="location-link">
+                📍 Shibuya Crossing
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Shibuya+Sky+Tokyo" target="_blank" class="location-link">
+                📍 Shibuya Sky
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">15:30+ • Fin d'après-midi</span>
+            <h3>🏨 Retour chill à l'hôtel</h3>
+            <p>Pause repos à l'hôtel pour recharger les batteries.</p>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">19:30 • Dîner</span>
+            <h3>🍲 Nabezo (Shibuya) - Sukiyaki</h3>
+            <p>Dégustez le sukiyaki, un plat emblématique japonais : fines lamelles de bœuf de qualité cuites dans un bouillon savoureux, puis trempées dans de l'œuf cru battu. Une expérience culinaire authentique et délicieuse, recommandée dans le guide !</p>
+            <p><strong>⚠️ Réservation recommandée</strong></p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Nabezo+Shibuya+Tokyo" target="_blank" class="location-link">
+                📍 Voir sur Google Maps
+            </a>
+        </div>
+    </div>
+
+    <!-- JOUR 4 : 26 OCTOBRE -->
+    <div id="jour4" class="day-section">
+        <div class="day-header">
+            <h2>🏙️ Samedi 26 Octobre</h2>
+            <p class="subtitle">Tokyo à deux - Shinjuku → Départ pour Kyoto</p>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">9:00 - 11:30 • Matin</span>
+            <h3>🌸 Shinjuku Gyoen</h3>
+            <p>Magnifique parc et jardin japonais, véritable oasis de sérénité au cœur de Shinjuku. Promenez-vous dans les jardins traditionnels japonais, français et anglais - un lieu apaisant et photogénique.</p>
+            <p><strong>Bonus :</strong> Observatoire gratuit de la mairie de Tokyo (Tokyo Metropolitan Government Building) si le ciel est dégagé. Vue panoramique spectaculaire sur toute la ville et, par temps clair, sur le Mont Fuji.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Shinjuku+Gyoen+National+Garden+Tokyo" target="_blank" class="location-link">
+                📍 Shinjuku Gyoen
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Tokyo+Metropolitan+Government+Building+Observatory" target="_blank" class="location-link">
+                📍 Observatoire Mairie
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">12:00 - 13:00 • Déjeuner</span>
+            <h3>🍢 Omoide Yokocho ou Curry japonais</h3>
+            <p><strong>Option 1 - Omoide Yokocho :</strong> Ruelle mythique de yakitori (brochettes grillées) dans une ambiance rétro et authentique des petits bars tokyoïtes. Un classique recommandé dans le guide.</p>
+            <p><strong>Option 2 - Curry japonais :</strong> Facile à trouver dans le quartier, délicieux et réconfortant pour varier du bœuf pur.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Omoide+Yokocho+Shinjuku+Tokyo" target="_blank" class="location-link">
+                📍 Omoide Yokocho
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Japanese+Curry+Shinjuku+Tokyo" target="_blank" class="location-link">
+                📍 Curry à Shinjuku
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">13:00+ • Début d'après-midi</span>
+            <h3>🎒 Préparation départ</h3>
+            <p>Retour à l'hôtel pour récupérer les bagages, puis direction Tokyo Station en JR Yamanote.</p>
+        </div>
+
+        <div class="train-info">
+            <h4>🚄 Shinkansen Tokyo → Kyoto (fin d'après-midi)</h4>
+            <p>Trajet en Nozomi (le plus rapide) - environ 2h12-2h15</p>
+            <div class="train-option">
+                <strong>Option 1 :</strong> 17:09 → 19:21 — Nozomi 435
             </div>
-            <div class="info-box">
-                <div class="info-box-title">✨ Règles simples</div>
-                <div class="info-box-content">
-                    <ul>
-                        <li><strong>Les voyelles :</strong> a (ah), i (ii), u (ou), e (é), o (oh)</li>
-                        <li><strong>Toutes les syllabes</strong> se prononcent distinctement</li>
-                        <li><strong>Pas d'accent tonique :</strong> ton neutre et régulier</li>
-                        <li><strong>Le "r"</strong> japonais se prononce entre le "r" et le "l" français</li>
-                        <li><strong>Le "u"</strong> final est souvent très discret (presque muet)</li>
-                        <li><strong>"Desu"</strong> se prononce "dess" (le u est muet)</li>
-                        <li><strong>"Masu"</strong> se prononce "mass" (le u est muet)</li>
-                    </ul>
+            <div class="train-option">
+                <strong>Option 2 :</strong> 17:12 → 19:23 — Nozomi 53
+            </div>
+            <div class="train-option">
+                <strong>Option 3 :</strong> 17:30 → 19:44 — Nozomi 55
+            </div>
+            <div class="alert-box">
+                <strong>💡 À réserver :</strong> Via SmartEX (site/app officiel JR Central). Billets dématérialisés, ventes de J-365 jusqu'à 4 min avant départ. Le Nozomi nécessite une réservation de siège (souvent "All Reserved" en période de pointe).
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">19:30+ • Soirée</span>
+            <h3>🌙 Arrivée à Kyoto</h3>
+            <p>Arrivée à Kyoto Station, puis taxi court vers l'hôtel. Dîner libre léger près de l'hôtel (ramen ou izakaya).</p>
+        </div>
+
+        <div class="hotel-info">
+            <h4>🏨 Hôtel : Tou Nishinotoin Kyoto</h4>
+            <p>Check-in et installation pour les prochains jours à Kyoto.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Tou+Nishinotoin+Kyoto" target="_blank" class="location-link">
+                📍 Voir sur Google Maps
+            </a>
+        </div>
+    </div>
+
+    <!-- JOUR 5 : 27 OCTOBRE -->
+    <div id="jour5" class="day-section">
+        <div class="day-header">
+            <h2>⛩️ Dimanche 27 Octobre</h2>
+            <p class="subtitle">Kyoto Est & Fushimi Inari</p>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">7:30 - 9:30 • Très tôt</span>
+            <h3>⛩️ Fushimi Inari Taisha</h3>
+            <p>Le sanctuaire aux milliers de torii (portails) rouges emblématiques ! Arrivez tôt pour profiter du site avant la foule et capturer la magie des tunnels vermillon dans une atmosphère sereine. L'ascension à travers les sentiers bordés de torii est une expérience inoubliable.</p>
+            <p><strong>Accès :</strong> Direct en 2 stations JR depuis Kyoto (ligne Nara, station Inari).</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Fushimi+Inari+Taisha+Kyoto" target="_blank" class="location-link">
+                📍 Voir sur Google Maps
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">10:00 - 12:30 • Fin de matinée</span>
+            <h3>🏯 Kiyomizu-dera & ruelles historiques</h3>
+            <p>Temple Kiyomizu-dera perché sur la colline avec sa célèbre terrasse en bois offrant une vue panoramique sur Kyoto. Explorez ensuite les charmantes ruelles pavées de Sannenzaka et Ninenzaka, bordées de maisons traditionnelles, boutiques d'artisanat et salons de thé.</p>
+            <p>Admirez la magnifique Yasaka Pagoda, une pagode à cinq étages emblématique du vieux Kyoto.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Kiyomizu-dera+Temple+Kyoto" target="_blank" class="location-link">
+                📍 Kiyomizu-dera
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Sannenzaka+Ninenzaka+Kyoto" target="_blank" class="location-link">
+                📍 Sannenzaka/Ninenzaka
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Yasaka+Pagoda+Kyoto" target="_blank" class="location-link">
+                📍 Yasaka Pagoda
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">12:45 • Déjeuner</span>
+            <h3>🍲 Otowa Saryo - Sukiyaki</h3>
+            <p>Restaurant à deux pas de Kiyomizu, réputé pour son sukiyaki de midi décrit comme "à tomber" dans le guide. Un moment gastronomique dans un cadre raffiné avec vue.</p>
+            <p><strong>⚠️ Réservation fortement recommandée</strong></p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Otowa+Saryo+Kiyomizu+Kyoto" target="_blank" class="location-link">
+                📍 Voir sur Google Maps
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">13:45 - 15:30 • Début d'après-midi</span>
+            <h3>🎋 Ishibei Kōji / Kōdai-ji</h3>
+            <p>Si vous avez encore de l'énergie, explorez la ruelle pavée d'Ishibei Kōji (très photogénique) ou visitez le temple Kōdai-ji et ses jardins zen.</p>
+            <p><strong>Sinon :</strong> Retour à l'hôtel pour une pause chill bien méritée.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Ishibei+Koji+Kyoto" target="_blank" class="location-link">
+                📍 Ishibei Kōji
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Kodaiji+Temple+Kyoto" target="_blank" class="location-link">
+                📍 Kōdai-ji
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">19:00+ • Soirée</span>
+            <h3>🌙 Balade & Dîner à Pontochō</h3>
+            <p>Promenade tranquille le long de la rivière Kamo-gawa au coucher du soleil, puis dîner dans la célèbre ruelle de Pontochō. Cette allée étroite et atmosphérique regorge de petits restaurants traditionnels (facile d'éviter les fruits de mer). L'ambiance nocturne avec les lanternes est magique.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Kamo+River+Kyoto" target="_blank" class="location-link">
+                📍 Kamo-gawa
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Pontocho+Alley+Kyoto" target="_blank" class="location-link">
+                📍 Pontochō
+            </a>
+        </div>
+    </div>
+
+    <!-- JOUR 6 : 28 OCTOBRE -->
+    <div id="jour6" class="day-section">
+        <div class="day-header">
+            <h2>🎋 Lundi 28 Octobre</h2>
+            <p class="subtitle">Arashiyama - Journée nature</p>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">7:30 - 10:30 • Très tôt</span>
+            <h3>🎋 Bamboo Grove & Tenryū-ji</h3>
+            <p>La mythique forêt de bambous d'Arashiyama ! Arriver tôt change complètement l'expérience - vous aurez les allées pour vous et la lumière matinale filtrant entre les bambous est sublime.</p>
+            <p>Visitez ensuite le temple Tenryū-ji et son magnifique jardin zen classé au patrimoine mondial de l'UNESCO.</p>
+            <p>Traversez le pont Togetsu-kyō pour admirer la vue sur la rivière et les montagnes.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Arashiyama+Bamboo+Grove+Kyoto" target="_blank" class="location-link">
+                📍 Bamboo Grove
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Tenryuji+Temple+Kyoto" target="_blank" class="location-link">
+                📍 Tenryū-ji
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Togetsukyo+Bridge+Arashiyama" target="_blank" class="location-link">
+                📍 Pont Togetsu
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">11:00+ • Déjeuner</span>
+            <h3>🍜 Soba/Tenpura ou Unagi</h3>
+            <p><strong>Option 1 :</strong> Soba (nouilles de sarrasin) ou tenpura (beignets légers) dans l'une des petites maisons du quartier d'Arashiyama.</p>
+            <p><strong>Option 2 :</strong> Si vous souhaitez tester l'unagi (anguille grillée au charbon avec sauce sucrée-salée), c'est une excellente journée pour le faire ! Spécialité savoureuse et réputée de la cuisine japonaise.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Soba+Restaurant+Arashiyama+Kyoto" target="_blank" class="location-link">
+                📍 Restaurants Arashiyama
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">13:30 - 15:30 • Début d'après-midi</span>
+            <h3>🌳 Parc d'Arashiyama</h3>
+            <p>Promenade dans le parc d'Arashiyama avec de beaux points de vue sur la rivière et les collines environnantes.</p>
+            <p><strong>Option :</strong> Sagano Scenic Train si disponible (train touristique pittoresque à travers les gorges - à réserver à l'avance surtout en période de feuillage d'automne).</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Arashiyama+Park+Kyoto" target="_blank" class="location-link">
+                📍 Parc d'Arashiyama
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">16:00+ • Fin d'après-midi</span>
+            <h3>🏨 Retour et repos</h3>
+            <p>Retour tranquille à l'hôtel pour se reposer.</p>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">19:30 • Dîner</span>
+            <h3>🐟 Unagi-don ou Yakiniku</h3>
+            <p><strong>Option 1 - Unagi-don :</strong> Anguille grillée sur riz (si vous ne l'avez pas fait au déjeuner). À réserver pour une expérience optimale.</p>
+            <p><strong>Option 2 - Yakiniku :</strong> Viande grillée à table (barbecue japonais) si vous avez envie de bœuf ce soir.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Unagi+Restaurant+Kyoto" target="_blank" class="location-link">
+                📍 Restaurants Unagi
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Yakiniku+Restaurant+Kyoto" target="_blank" class="location-link">
+                📍 Restaurants Yakiniku
+            </a>
+        </div>
+    </div>
+
+    <!-- JOUR 7 : 29 OCTOBRE -->
+    <div id="jour7" class="day-section">
+        <div class="day-header">
+            <h2>✨ Mardi 29 Octobre</h2>
+            <p class="subtitle">Nord & Nord-Est de Kyoto</p>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">8:30 - 11:00 • Matin</span>
+            <h3>🏯 Kinkaku-ji - Le Pavillon d'Or</h3>
+            <p>Le célèbre Pavillon d'Or (Kinkaku-ji), temple zen recouvert de feuilles d'or étincelantes qui se reflète majestueusement dans l'étang. Un des sites les plus iconiques et photogéniques du Japon !</p>
+            <p><strong>Pause café :</strong> BR Cafe ou Sabo Kinkaku-an à proximité (si ouvert).</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Kinkakuji+Temple+Golden+Pavilion+Kyoto" target="_blank" class="location-link">
+                📍 Voir sur Google Maps
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">11:15 - 14:30 • Fin de matinée - début d'après-midi</span>
+            <h3>🌸 Ginkaku-ji & Chemin des Philosophes</h3>
+            <p>Circuit magnifique à travers les sites emblématiques du Nord-Est :</p>
+            <p><strong>1. Ginkaku-ji</strong> (Pavillon d'Argent) - Temple zen élégant avec son jardin de sable zen parfaitement ratissé et ses jardins de mousse.</p>
+            <p><strong>2. Chemin des Philosophes</strong> - Agréable promenade le long d'un canal bordé d'arbres (particulièrement beau lors de la floraison des cerisiers ou des érables).</p>
+            <p><strong>3. Nanzen-ji & Aqueduc</strong> - Temple impressionnant et son aqueduc de briques rouges, vestige historique photogénique.</p>
+            <p><strong>4. Heian-jingū</strong> - Sanctuaire spectaculaire avec son immense torii vermillon à l'entrée.</p>
+            <p><em>Enchaînement fluide possible par taxi court + marche.</em></p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Ginkakuji+Temple+Silver+Pavilion+Kyoto" target="_blank" class="location-link">
+                📍 Ginkaku-ji
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Philosophers+Path+Kyoto" target="_blank" class="location-link">
+                📍 Chemin des Philosophes
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Nanzenji+Temple+Kyoto" target="_blank" class="location-link">
+                📍 Nanzen-ji
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Heian+Shrine+Kyoto" target="_blank" class="location-link">
+                📍 Heian-jingū
+            </a>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">15:00+ • Fin d'après-midi</span>
+            <h3>🏨 Repos à l'hôtel</h3>
+            <p>Pause bien méritée après cette journée riche en découvertes.</p>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">19:00+ • Soirée</span>
+            <h3>🌙 Quartier Gion & Dîner</h3>
+            <p>Balade crépusculaire dans le quartier historique de Gion (quartier des geishas). Flânez le long du canal Shirakawa et traversez le parc Maruyama.</p>
+            <p><strong>Avant le dîner :</strong> Drink au K36 Rooftop pour profiter d'une vue superbe sur Kyoto illuminée.</p>
+            <p>Dîner dans le quartier avec ambiance traditionnelle authentique.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Gion+District+Kyoto" target="_blank" class="location-link">
+                📍 Gion
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Shirakawa+Canal+Gion+Kyoto" target="_blank" class="location-link">
+                📍 Shirakawa
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Maruyama+Park+Kyoto" target="_blank" class="location-link">
+                📍 Maruyama Park
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=K36+Rooftop+Bar+Kyoto" target="_blank" class="location-link">
+                📍 K36 Rooftop
+            </a>
+        </div>
+    </div>
+
+    <!-- JOUR 8 : 30 OCTOBRE -->
+    <div id="jour8" class="day-section">
+        <div class="day-header">
+            <h2>🚄 Mercredi 30 Octobre</h2>
+            <p class="subtitle">Kyoto (matin) → Tokyo (après-midi)</p>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">9:00 - 11:30 • Matin</span>
+            <h3>☕ Dernière promenade à Kyoto</h3>
+            <p>Profitez de votre dernière matinée à Kyoto avec une promenade tranquille le long de la rivière Kamo-gawa. Le guide recommande quelques cafés terrasses agréables dans le coin pour un dernier moment de détente kyotoïte.</p>
+            <p>Récupération des bagages à l'hôtel.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Kamo+River+Kyoto" target="_blank" class="location-link">
+                📍 Kamo-gawa
+            </a>
+        </div>
+
+        <div class="train-info">
+            <h4>🚄 Shinkansen Kyoto → Tokyo (après-midi)</h4>
+            <p>Retour à Tokyo en Nozomi - environ 2h11-2h15</p>
+            <div class="train-option">
+                <strong>Option 1 :</strong> 12:45 → 14:57 — Nozomi 92
+            </div>
+            <div class="train-option">
+                <strong>Option 2 :</strong> 13:01 → 15:15 — Nozomi 20
+            </div>
+            <div class="train-option">
+                <strong>Option 3 :</strong> 16:16 → 18:27 — Nozomi 244
+            </div>
+            <p><em>Le Nozomi circule très fréquemment, avec des départs toutes les 5-10 minutes entre 12:30 et 18:30.</em></p>
+            <div class="alert-box">
+                <strong>💡 Astuce arrivée à Tokyo :</strong><br>
+                • Si vol au départ d'<strong>Haneda</strong> : visez <strong>Shinagawa</strong> comme gare d'arrivée (pratique pour Keikyū/Monorail)<br>
+                • Si vol au départ de <strong>Narita</strong> : <strong>Tokyo Station</strong> est pratique pour Narita Express / Keisei
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="time-badge">Soirée</span>
+            <h3>🌙 Dernière nuit à Tokyo</h3>
+            <p>Installation à l'hôtel proche de l'aéroport de Haneda pour le vol matinal du lendemain. Dernière soirée libre à Tokyo !</p>
+        </div>
+
+        <div class="hotel-info">
+            <h4>🏨 Hôtel : Villa Fontaine Grand Haneda Airport</h4>
+            <p>Hôtel situé à l'aéroport de Haneda - pratique pour le vol retour matinal du 31 octobre.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Villa+Fontaine+Grand+Haneda+Airport+Tokyo" target="_blank" class="location-link">
+                📍 Voir sur Google Maps
+            </a>
+        </div>
+    </div>
+
+    <!-- JOUR 9 : 31 OCTOBRE -->
+    <div id="jour9" class="day-section">
+        <div class="day-header">
+            <h2>✈️ Jeudi 31 Octobre</h2>
+            <p class="subtitle">Départ - Aéroport Haneda</p>
+        </div>
+
+        <div class="card">
+            <h3>🛫 Vol retour depuis Haneda</h3>
+            <p>Vol retour le matin depuis l'aéroport de Haneda. Sayōnara Japan ! 🇯🇵</p>
+            <p>Fin de cette belle aventure japonaise. Profitez bien des derniers instants et bon vol de retour !</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Haneda+Airport+Tokyo" target="_blank" class="location-link">
+                📍 Aéroport de Haneda
+            </a>
+        </div>
+    </div>
+
+    <!-- SECTION LANGUE -->
+    <div id="langue" class="day-section">
+        <div class="day-header">
+            <h2>🗣️ Guide Langue</h2>
+            <p class="subtitle">Vocabulaire essentiel & prononciation</p>
+        </div>
+
+        <div class="card">
+            <h3>👋 Salutations & Politesse</h3>
+            <div class="vocab-grid">
+                <div class="vocab-card">
+                    <div class="japanese">こんにちは</div>
+                    <div class="pronunciation">Konnichiwa (ko-n-ni-tchi-oua)</div>
+                    <div class="french">Bonjour (journée)</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="japanese">おはようございます</div>
+                    <div class="pronunciation">Ohayō gozaimasu (o-ha-yo go-za-ï-masse)</div>
+                    <div class="french">Bonjour (matin)</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="japanese">こんばんは</div>
+                    <div class="pronunciation">Konbanwa (ko-n-ba-n-oua)</div>
+                    <div class="french">Bonsoir</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="japanese">ありがとうございます</div>
+                    <div class="pronunciation">Arigatō gozaimasu (a-ri-ga-tô go-za-ï-masse)</div>
+                    <div class="french">Merci beaucoup</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="japanese">すみません</div>
+                    <div class="pronunciation">Sumimasen (sou-mi-ma-sè-n')</div>
+                    <div class="french">Excusez-moi / Pardon / S'il vous plaît</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="japanese">さようなら</div>
+                    <div class="pronunciation">Sayōnara (sa-yo-na-ra)</div>
+                    <div class="french">Au revoir</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>🍽️ Au Restaurant</h3>
+            <div class="vocab-grid">
+                <div class="vocab-card">
+                    <div class="japanese">いただきます</div>
+                    <div class="pronunciation">Itadakimasu (i-ta-da-ki-masse)</div>
+                    <div class="french">Bon appétit (avant de manger)</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="japanese">ごちそうさまでした</div>
+                    <div class="pronunciation">Gochisōsama deshita (go-tchi-sô-sa-ma dè-chi-ta)</div>
+                    <div class="french">C'était délicieux (après le repas)</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="japanese">おいしい</div>
+                    <div class="pronunciation">Oishii (o-ï-chi)</div>
+                    <div class="french">Délicieux</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="japanese">お会計お願いします</div>
+                    <div class="pronunciation">Okaikei onegaishimasu (o-kaï-kéï o-né-gaï-chi-masse)</div>
+                    <div class="french">L'addition s'il vous plaît</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="japanese">これをください</div>
+                    <div class="pronunciation">Kore o kudasai (ko-ré o kou-da-saï)</div>
+                    <div class="french">Je voudrais ceci (en pointant)</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="japanese">魚なし</div>
+                    <div class="pronunciation">Sakana nashi (sa-ka-na na-chi)</div>
+                    <div class="french">Sans poisson</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>🚇 Transports</h3>
+            <div class="vocab-grid">
+                <div class="vocab-card">
+                    <div class="japanese">駅</div>
+                    <div class="pronunciation">Eki (é-ki)</div>
+                    <div class="french">Gare</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="japanese">新幹線</div>
+                    <div class="pronunciation">Shinkansen (chin-ka-n-sè-n')</div>
+                    <div class="french">Train à grande vitesse</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="japanese">切符</div>
+                    <div class="pronunciation">Kippu (ki-ppou)</div>
+                    <div class="french">Billet</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="japanese">出口</div>
+                    <div class="pronunciation">Deguchi (dé-gou-tchi)</div>
+                    <div class="french">Sortie</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="japanese">タクシー</div>
+                    <div class="pronunciation">Takushī (ta-kou-chi)</div>
+                    <div class="french">Taxi</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>🛍️ Shopping & Pratique</h3>
+            <div class="vocab-grid">
+                <div class="vocab-card">
+                    <div class="japanese">いくらですか</div>
+                    <div class="pronunciation">Ikura desu ka? (i-kou-ra dèss-ka)</div>
+                    <div class="french">Combien ça coûte ?</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="japanese">トイレ</div>
+                    <div class="pronunciation">Toire (to-ï-ré)</div>
+                    <div class="french">Toilettes</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="japanese">わかりません</div>
+                    <div class="pronunciation">Wakarimasen (oua-ka-ri-ma-sè-n')</div>
+                    <div class="french">Je ne comprends pas</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="japanese">英語</div>
+                    <div class="pronunciation">Eigo (éï-go)</div>
+                    <div class="french">Anglais</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="japanese">写真</div>
+                    <div class="pronunciation">Shashin (cha-chin')</div>
+                    <div class="french">Photo</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="japanese">はい / いいえ</div>
+                    <div class="pronunciation">Hai / Iie (haï / i-yé)</div>
+                    <div class="french">Oui / Non</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>🆘 Urgences</h3>
+            <div class="vocab-grid">
+                <div class="vocab-card">
+                    <div class="japanese">助けて</div>
+                    <div class="pronunciation">Tasukete (ta-sou-ké-té)</div>
+                    <div class="french">À l'aide !</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="japanese">病院</div>
+                    <div class="pronunciation">Byōin (byo-ï-n')</div>
+                    <div class="french">Hôpital</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="japanese">警察</div>
+                    <div class="pronunciation">Keisatsu (kéï-sa-tsou)</div>
+                    <div class="french">Police</div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- SECTION DIVERS -->
+    <div id="divers" class="day-section">
+        <div class="day-header">
+            <h2>💡 Infos Pratiques & Astuces</h2>
+            <p class="subtitle">Tout ce qu'il faut savoir</p>
+        </div>
+
+        <div class="card">
+            <h3>📱 Data Mobile & Connexion</h3>
+            <ul class="tips-list">
+                <li><strong>eSIM Holafly</strong> recommandée par le guide - Pratique et souvent moins cher qu'un pocket Wi-Fi. Votre iPhone 14 Pro est compatible eSIM. À configurer avant le départ.</li>
+                <li><strong>Alternative :</strong> Pocket Wi-Fi (Ninja WiFi) à récupérer à l'aéroport - Connexion stable pour plusieurs appareils.</li>
+                <li><strong>Wi-Fi gratuit :</strong> Disponible dans la plupart des hôtels, cafés, restaurants et gares au Japon.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>🚇 Transports Urbains</h3>
+            <ul class="tips-list">
+                <li><strong>Carte IC (Suica/Pasmo/Icoca)</strong> - Carte rechargeable indispensable ! Fonctionne pour le métro, bus, et même pour les paiements (kombini, distributeurs, certains restos). Dépôt ~500¥ + recharges. Interopérable entre Tokyo et Kyoto.</li>
+                <li><strong>Apple Wallet :</strong> La carte IC peut être ajoutée dans votre iPhone pour payer directement avec le téléphone.</li>
+                <li><strong>JR Yamanote Line (Tokyo) :</strong> Ligne circulaire pratique qui dessert tous les quartiers principaux.</li>
+                <li><strong>Tokyo Metro & Toei Subway :</strong> Réseau dense et efficace (utilisez Google Maps pour les trajets).</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>🚄 Shinkansen (Trains à Grande Vitesse)</h3>
+            <ul class="tips-list">
+                <li><strong>Réservation via SmartEX</strong> - Application/site officiel JR Central pour acheter vos billets Shinkansen. Billets dématérialisés, vente de J-365 jusqu'à 4 minutes avant le départ.</li>
+                <li><strong>Nozomi :</strong> Le train le plus rapide (Tokyo ↔ Kyoto en ~2h12). Nécessite réservation de siège (souvent "All Reserved" en période de pointe). Non couvert par le JR Pass.</li>
+                <li><strong>À réserver maintenant :</strong> Les trains du 26/10 (Tokyo → Kyoto) et du 30/10 (Kyoto → Tokyo) aux horaires indiqués dans le programme.</li>
+                <li><strong>Gares principales :</strong> Tokyo Station, Shinagawa, Kyoto Station - Bien fléchées avec indications en anglais.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>🧳 Gestion des Bagages</h3>
+            <ul class="tips-list">
+                <li><strong>Service Takkyubin (Kuroneko/Yamato)</strong> - Envoyez vos grosses valises d'hôtel à hôtel la veille pour voyager léger (très pratique pour le 26/10 et 30/10). Service abordable et fiable.</li>
+                <li><strong>Coin Lockers :</strong> Disponibles dans toutes les gares pour stocker vos sacs en journée (différentes tailles).</li>
+                <li><strong>Voyagez léger :</strong> Prévoyez un petit sac pour les journées d'excursion - les Japonais voyagent souvent avec peu d'affaires.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>🍽️ Restaurants & Réservations</h3>
+            <ul class="tips-list">
+                <li><strong>⚠️ À réserver MAINTENANT (priorité) :</strong>
+                    <br>1. Tonkatsu Ponta (24/10 midi)
+                    <br>2. Nabezo Shibuya (25/10 soir)
+                    <br>3. Otowa Saryo Kiyomizu (27/10 midi)
+                    <br>4. Restaurant unagi pour le 28/10 soir
+                </li>
+                <li><strong>Shibuya Sky :</strong> Réserver le créneau du 25/10 pour éviter la queue.</li>
+                <li><strong>Format Izakaya :</strong> Idéal pour goûter plusieurs plats à partager dans une ambiance conviviale. Commande souvent sur tablette avec photos.</li>
+                <li><strong>Pourboire :</strong> Pas de pourboire au Japon ! C'est même considéré comme impoli. Le service est inclus.</li>
+                <li><strong>Oshibori :</strong> Serviette humide chaude donnée au début du repas pour se nettoyer les mains - utilisez-la !</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>💴 Argent & Paiements</h3>
+            <ul class="tips-list">
+                <li><strong>Cash is king :</strong> Le Japon reste très cash. Prévoyez toujours des yens sur vous (de nombreux petits restos n'acceptent que le cash).</li>
+                <li><strong>ATM 7-Eleven & Family Mart :</strong> Distributeurs fiables qui acceptent les cartes internationales 24h/24.</li>
+                <li><strong>Carte bancaire :</strong> De plus en plus acceptée dans les grandes enseignes et chaînes, mais pas partout.</li>
+                <li><strong>Taux de change :</strong> Préférez retirer au Japon plutôt que changer avant le départ (meilleur taux).</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>🎌 Culture & Étiquette</h3>
+            <ul class="tips-list">
+                <li><strong>Retirer ses chaussures :</strong> Dans certains restaurants traditionnels, temples, et évidemment les hébergements de type ryokan. Des pantoufles sont fournies.</li>
+                <li><strong>Silence dans les transports :</strong> Évitez de téléphoner dans le métro/train. Parlez à voix basse. Mettez votre téléphone en mode silencieux.</li>
+                <li><strong>Respecter les files :</strong> Les Japonais font la queue de manière très disciplinée. Attendez votre tour sans doubler.</li>
+                <li><strong>Ne pas manger en marchant :</strong> Évitez de manger ou boire en vous déplaçant dans la rue (sauf festivals). Trouvez un endroit pour vous poser.</li>
+                <li><strong>Inclinaison (bow) :</strong> Pour saluer ou remercier. Une légère inclinaison de la tête suffit en tant que touriste.</li>
+                <li><strong>Tatouages :</strong> Parfois interdits dans les onsen (bains publics) traditionnels et certaines piscines (associations yakuzas).</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>📸 Photos & Souvenirs</h3>
+            <ul class="tips-list">
+                <li><strong>Photos dans les temples :</strong> Généralement autorisées à l'extérieur, souvent interdites à l'intérieur. Respectez les panneaux.</li>
+                <li><strong>Geishas/Maikos à Gion :</strong> Ne les suivez pas, ne les touchez pas. Soyez discret si vous prenez des photos.</li>
+                <li><strong>Kombini (7-Eleven, Family Mart, Lawson) :</strong> Dépannage 24h/24 pour snacks, boissons, repas rapides, et services (imprimer, retirer de l'argent).</li>
+                <li><strong>Don Quijote (Donki) :</strong> Magasin "bazar" japonais sur plusieurs étages - parfait pour les souvenirs insolites et produits typiques.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>🌦️ Météo Octobre</h3>
+            <ul class="tips-list">
+                <li><strong>Températures :</strong> Douces et agréables, environ 15-22°C. Prévoyez des couches (matin/soir plus frais).</li>
+                <li><strong>Pluie possible :</strong> Emportez un petit parapluie pliable ou K-way léger.</li>
+                <li><strong>Automne :</strong> Début de la période des feuillages d'automne (koyo) - magnifique dans les temples et parcs de Kyoto !</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>🆘 Urgences & Infos Utiles</h3>
+            <ul class="tips-list">
+                <li><strong>Police :</strong> 110</li>
+                <li><strong>Pompiers/Ambulance :</strong> 119</li>
+                <li><strong>Ambassade de France à Tokyo :</strong> +81 (0)3 5798 6000</li>
+                <li><strong>Voltage :</strong> 100V (adaptateur pas toujours nécessaire pour les chargeurs modernes, vérifiez vos appareils)</li>
+                <li><strong>Décalage horaire :</strong> +7h en été / +8h en hiver par rapport à la France</li>
+                <li><strong>Applications utiles :</strong> Google Maps (essentiel), Google Translate (mode conversation + appareil photo), FlashInvaders (Space Invaders), SmartEX (Shinkansen)</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>✅ Checklist Avant Départ</h3>
+            <ul class="tips-list">
+                <li>✓ Réserver tous les restaurants mentionnés en priorité</li>
+                <li>✓ Acheter billets Shinkansen via SmartEX (26/10 et 30/10)</li>
+                <li>✓ Configurer eSIM Holafly ou réserver pocket Wi-Fi</li>
+                <li>✓ Télécharger les applications : Google Maps, Google Translate, SmartEX, FlashInvaders</li>
+                <li>✓ Vérifier validité passeports (minimum 6 mois)</li>
+                <li>✓ Prévenir votre banque de votre voyage</li>
+                <li>✓ Ajouter les adresses des hôtels dans Google Maps</li>
+                <li>✓ Imprimer ou sauvegarder les confirmations de réservation</li>
+            </ul>
+        </div>
+
+        <div class="alert-box">
+            <strong>🎌 Bon voyage au Japon !</strong> Profitez de chaque instant de cette aventure inoubliable. Le Japon est un pays fascinant qui saura vous émerveiller à chaque coin de rue !
+        </div>
+    </div>
+
 </div>
 
-<div class="scroll-top" id="scrollTop" onclick="scrollToTop()">
-    ↑
+<div class="footer">
+    <p>Voyage au Japon • 23-31 Octobre 2025 • Tokyo & Kyoto 🇯🇵</p>
 </div>
 
 <script>
-    const tripData = {
-        days: [
-            {
-                number: 1,
-                date: "Jeu 23/10",
-                title: "Arrivée à Tokyo",
-                location: "NOHGA Ueno",
-                hotel: {
-                    name: "NOHGA Hotel Ueno",
-                    location: "Ueno, Tokyo",
-                    maps: "https://maps.google.com/?q=NOHGA+Hotel+Ueno+Tokyo"
-                },
-                activities: [],
-                evening: {
-                    title: "Soirée",
-                    desc: "Arrivée et installation à l'hôtel. Prenez le temps de vous reposer après le vol. L'hôtel NOHGA allie design japonais contemporain et confort occidental dans le quartier historique d'Ueno.",
-                    note: "Le guide recommande d'éviter les taxis et de privilégier Suica/Pasmo pour tous vos paiements dès demain (métro, convenience stores, distributeurs)."
-                },
-                restaurants: [
-                    {
-                        name: "Konbini (Seven-Eleven, Family Mart, Lawson)",
-                        type: "Plan B si faim",
-                        desc: "Les convenience stores japonais sont une institution : onigiri (boulettes de riz), bento, snacks, boissons. Parfait pour un premier repas léger sans stress. Ouvert 24/7, juste à côté de l'hôtel.",
-                        maps: "https://maps.google.com/?q=Convenience+Store+Ueno+Tokyo"
-                    }
-                ],
-                guidePages: ["p. 5-6"]
-            },
-            {
-                number: 2,
-                date: "Ven 24/10",
-                title: "Meiji-Jingū → Harajuku/Omotesandō → Shibuya",
-                location: "Tokyo",
-                hotel: {
-                    name: "NOHGA Hotel Ueno",
-                    location: "Ueno, Tokyo",
-                    maps: "https://maps.google.com/?q=NOHGA+Hotel+Ueno+Tokyo"
-                },
-                activities: [
-                    {
-                        time: "08:45–10:00",
-                        name: "Meiji-Jingū",
-                        desc: "Sanctuaire shinto majestueux dédié à l'empereur Meiji, niché dans une forêt sacrée de 100 000 arbres en plein cœur de Tokyo. L'immense torii (portail) en cyprès marque l'entrée d'un autre monde. Très calme le matin, avant l'arrivée des groupes. Observez les tonneaux de saké offerts, le puits sacré, et peut-être une cérémonie de mariage traditionnel. L'atmosphère spirituelle y est particulièrement forte tôt.",
-                        maps: "https://maps.google.com/?q=Meiji+Jingu+Shrine+Tokyo",
-                        guidePage: "p. 14"
-                    },
-                    {
-                        time: "10:00–11:30",
-                        name: "Omotesandō & Cat Street",
-                        desc: "Les Champs-Élysées de Tokyo : avenue bordée d'arbres avec des boutiques d'architectes (Dior par SANAA, Prada par Herzog & de Meuron, TOD'S par Ito). Cat Street est une ruelle parallèle plus jeune avec ses concept stores, cafés branchés et boutiques vintage. Parfait pour observer l'élégance tokyoïte et les vitrines design.",
-                        maps: "https://maps.google.com/?q=Omotesando+Cat+Street+Tokyo",
-                        guidePage: "p. 14"
-                    },
-                    {
-                        time: "13:00–15:00",
-                        name: "Shibuya : Scramble + Belvédère",
-                        desc: "Le carrefour le plus célèbre du monde (jusqu'à 3000 personnes à chaque feu vert). Vivez l'expérience depuis le sol, puis montez en hauteur. Deux options : MAGNET by Shibuya109 - MAG'S PARK (rooftop gratuit, ouvre 11h, vue directe sur le Scramble) OU Shibuya Sky (229m, réservation conseillée, vue 360° spectaculaire sur tout Tokyo).",
-                        maps: "https://maps.google.com/?q=Shibuya+Crossing+Tokyo",
-                        guidePage: "p. 10"
-                    }
-                ],
-                restaurants: [
-                    {
-                        name: "Tonkatsu Ponta",
-                        type: "Déjeuner - TONKATSU",
-                        desc: "À Daikanyama (1 station de Shibuya). Une institution du tonkatsu depuis 1905 ! Côtelette de porc premium (kurobuta) panée à la perfection : croûte ultra-croustillante dorée, viande d'une tendresse exceptionnelle et juteuse. Servi avec chou râpé à volonté, riz, soupe miso et sauce tonkatsu maison. L'excellence du katsu traditionnel.",
-                        maps: "https://maps.google.com/?q=Tonkatsu+Ponta+Daikanyama+Tokyo",
-                        guidePage: "p. 23"
-                    },
-                    {
-                        name: "Nabezo",
-                        type: "Dîner - SUKIYAKI",
-                        desc: "À Shibuya. Restaurant moderne spécialisé dans le sukiyaki (fines tranches de bœuf mijotées dans un bouillon sucré-salé, puis trempées dans un œuf cru battu). Service clair et accueillant, parfait pour découvrir ce rituel traditionnel japonais. Le personnel vous guide étape par étape. Atmosphère conviviale autour de la marmite partagée.",
-                        maps: "https://maps.google.com/?q=Nabezo+Sukiyaki+Shibuya+Tokyo",
-                        guidePage: "p. 23",
-                        special: true
-                    }
-                ],
-                evening: {
-                    title: "Soirée chill",
-                    desc: "Retour tranquille à l'hôtel. Si envie d'une micro-sortie : Nonbei Yokocho (ruelle de bars minuscules) ou bar TIGHT pour un verre dans l'ambiance tokyoïte.",
-                    guidePage: "p. 25"
-                },
-                guidePages: ["p. 10", "p. 14", "p. 23", "p. 25"]
-            },
-            {
-                number: 3,
-                date: "Sam 25/10",
-                title: "Shinjuku (matin) → Azabudai/TeamLab (option) → repos",
-                location: "Tokyo",
-                hotel: {
-                    name: "NOHGA Hotel Ueno",
-                    location: "Ueno, Tokyo",
-                    maps: "https://maps.google.com/?q=NOHGA+Hotel+Ueno+Tokyo"
-                },
-                activities: [
-                    {
-                        time: "08:30–10:15",
-                        name: "Shinjuku Gyoen",
-                        desc: "L'un des plus beaux parcs de Tokyo (58 hectares) : jardin japonais traditionnel, jardin à la française, serres. Ancienne résidence impériale devenue parc public. Les allées bordées d'arbres, les étangs avec carpes koi, les ponts en bois créent une atmosphère zen absolue. Parfait pour une promenade matinale avant l'agitation de Shinjuku. Entrée payante (500¥).",
-                        maps: "https://maps.google.com/?q=Shinjuku+Gyoen+National+Garden+Tokyo",
-                        guidePage: "p. 12"
-                    },
-                    {
-                        time: "10:30–11:15",
-                        name: "Observatoire de la Mairie de Tokyo (Tochō)",
-                        desc: "Vue panoramique GRATUITE à 202m depuis les tours jumelles du Tokyo Metropolitan Government Building. Vue 360° sur Tokyo, le Mont Fuji si dégagé, et toute la mégalopole. Aussi impressionnant que les observatoires payants. Cafétéria au sommet. Quartier de gratte-ciels impressionnant autour.",
-                        maps: "https://maps.google.com/?q=Tokyo+Metropolitan+Government+Building+Observatory",
-                        guidePage: "p. 12"
-                    },
-                    {
-                        time: "Début d'après-midi (option)",
-                        name: "Azabudai Hills - teamLab Borderless",
-                        desc: "Musée d'art numérique immersif et spectaculaire. Œuvres interactives qui réagissent à vos mouvements, salles infinies de lumières, cascades digitales, jardins de fleurs qui fleurissent à votre passage. Expérience hypnotique et photogénique. Comptez 1h30-2h. Réservation en ligne recommandée (créneaux limités).",
-                        maps: "https://maps.google.com/?q=teamLab+Borderless+Azabudai+Hills+Tokyo",
-                        guidePage: "p. 17"
-                    }
-                ],
-                restaurants: [
-                    {
-                        name: "Katsu-Curry autour de Shinjuku-Sanchōme",
-                        type: "Déjeuner - CURRY japonais",
-                        desc: "Le curry japonais est doux, épais et réconfortant (différent du curry indien). Le katsu-curry combine le meilleur : tonkatsu croustillant nappé de curry onctueux sur riz. Nombreuses échoppes autour de Shinjuku-Sanchōme : CoCo Ichibanya (chaîne populaire, portions modulables), Go! Go! Curry!, ou restaurants locaux. Service ultra-rapide, parfait pour un déjeuner efficace.",
-                        maps: "https://maps.google.com/?q=Curry+Restaurant+Shinjuku+Tokyo"
-                    },
-                    {
-                        name: "Omoide-Yokochō (Memory Lane) ou Bigote",
-                        type: "Dîner - Yakitori",
-                        desc: "Omoide-Yokochō : ruelle mythique de micro-restaurants yakitori sous les rails de la gare. Ambiance Shōwa (années 50-60), fumée de charbon, tabourets serrés. Goûtez les brochettes de poulet grillées au binchotan. OU Bigote : adresse plus moderne et conviviale recommandée par le guide pour yakitori de qualité. Atmosphère izakaya (bistrot japonais) décontractée.",
-                        maps: "https://maps.google.com/?q=Omoide+Yokocho+Shinjuku+Tokyo",
-                        guidePages: ["p. 12", "p. 22-23"]
-                    }
-                ],
-                notes: [
-                    {
-                        title: "Note du guide",
-                        content: "Comme vous allez à Kyoto, inutile de pousser Asakusa/Sensō-ji à Tokyo - vous ferez 'mieux' côté temples à Kyoto.",
-                        page: "p. 15"
-                    }
-                ],
-                guidePages: ["p. 12", "p. 15", "p. 17", "p. 22-23"]
-            },
-            {
-                number: 4,
-                date: "Dim 26/10",
-                title: "Tokyo → Kyoto",
-                location: "Kyoto",
-                hotel: {
-                    name: "Tou Nishinotoin",
-                    location: "Kyoto",
-                    maps: "https://maps.google.com/?q=Tou+Nishinotoin+Kyoto"
-                },
-                train: {
-                    title: "🚄 Shinkansen Tokyo → Kyoto",
-                    route: "Tokyo Station / Shinagawa ➜ Kyoto Station",
-                    details: "<strong>Horaires recommandés pour arriver en milieu d'après-midi :</strong><br><br>• <strong>10:00-11:00</strong> : Départ de Tokyo/Shinagawa<br>• <strong>12:15-13:30</strong> : Arrivée à Kyoto<br>• <strong>Durée :</strong> 2h15-2h30 selon le train<br>• <strong>Train :</strong> Nozomi (le plus rapide) ou Hikari<br>• <strong>Prix :</strong> ~13 500¥ (environ 85€) par personne en siège réservé<br>• <strong>JR Pass :</strong> Non valable sur Nozomi, prendre Hikari<br><br><strong>Astuce Mont Fuji :</strong> Sièges côté E (fenêtre droite dans le sens de la marche). Le Fuji apparaît environ 40 min après le départ, entre Shin-Yokohama et Odawara. Regardez à droite !<br><br><strong>Bon à savoir :</strong> Achetez un ekiben (bento de gare) sur le quai avant de monter - tradition japonaise !"
-                },
-                activities: [
-                    {
-                        time: "Matin",
-                        name: "Check-out & Transfert",
-                        desc: "Petit-déjeuner tranquille puis direction Tokyo Station ou Shinagawa. Le Shinkansen file à 285 km/h dans un confort absolu. Profitez du paysage qui défile : rizières, villes, montagnes, et le Mont Fuji majestueux."
-                    },
-                    {
-                        time: "15:30–17:00",
-                        name: "Gion & Shirakawa",
-                        desc: "LE quartier historique de Kyoto où le temps semble s'être arrêté. Ruelles pavées bordées de maisons en bois traditionnelles (machiya), lanternes en papier suspendues, façades ocre et noires. Le canal Shirakawa avec ses saules pleureurs est particulièrement photogénique en fin de journée (lumière dorée). Vous croiserez peut-être des maiko (apprenties geishas) en kimono se rendant à leurs rendez-vous - admirez leur grâce de loin, ne les arrêtez pas.",
-                        maps: "https://maps.google.com/?q=Gion+Shirakawa+Kyoto",
-                        guidePage: "p. 51"
-                    }
-                ],
-                restaurants: [
-                    {
-                        name: "Restaurant de Pontochō",
-                        type: "Dîner bord de rivière",
-                        desc: "Pontochō : ruelle étroite parallèle à la rivière Kamo, bordée de restaurants traditionnels. De mi-mai à septembre, les terrasses en bois (yuka) s'installent au-dessus de l'eau - demandez 'terrace seki' lors de la réservation. Atmosphère magique avec les lanternes, le bruit de l'eau. Cuisine kaiseki (haute cuisine japonaise), yakitori, ou izakaya selon votre choix. Réservation recommandée pour les terrasses.",
-                        maps: "https://maps.google.com/?q=Pontocho+Kyoto",
-                        guidePage: "p. 53"
-                    }
-                ],
-                guidePages: ["p. 51", "p. 53"]
-            },
-            {
-                number: 5,
-                date: "Lun 27/10",
-                title: "Kyoto Est (Kiyomizu-dera → ruelles historiques)",
-                location: "Kyoto",
-                hotel: {
-                    name: "Tou Nishinotoin",
-                    location: "Kyoto",
-                    maps: "https://maps.google.com/?q=Tou+Nishinotoin+Kyoto"
-                },
-                activities: [
-                    {
-                        time: "07:45–09:30",
-                        name: "Kiyomizu-dera",
-                        desc: "Temple emblématique de Kyoto, classé UNESCO, fondé en 778. Sa terrasse en bois de 13m de haut (aucun clou, technique traditionnelle) offre une vue spectaculaire sur la vallée boisée et la ville. Arrivez à l'ouverture (6h00) pour vivre l'atmosphère mystique dans le calme et voir le lever du soleil illuminer le temple. Source Otowa (trois jets d'eau : longévité, réussite scolaire, amour - choisissez-en un !). Superbe finale sur la vallée.",
-                        maps: "https://maps.google.com/?q=Kiyomizu-dera+Temple+Kyoto",
-                        guidePage: "p. 50"
-                    },
-                    {
-                        time: "09:30–11:30",
-                        name: "Sannenzaka / Ninenzaka → Yasaka Pagoda → Ishibei-kōji",
-                        desc: "Enchaînement doux des plus belles ruelles de Kyoto. Sannenzaka et Ninenzaka : pentes pavées bordées de maisons traditionnelles en bois transformées en boutiques d'artisanat (céramiques de Kiyomizu, éventails, tissus), salons de thé centenaires. Yasaka Pagoda (tour à 5 étages) se dresse au bout - icône photographique. Ishibei-kōji : ruelle pavée ultra-photogénique et préservée, c'est le Kyoto de carte postale. Prenez votre temps.",
-                        maps: "https://maps.google.com/?q=Sannenzaka+Ninenzaka+Kyoto",
-                        guidePage: "p. 50"
-                    },
-                    {
-                        time: "Option courte avant retour",
-                        name: "Kōdai-ji",
-                        desc: "Temple zen avec un magnifique jardin japonais et une petite bambouseraie intime. Moins bondé que les grands sites. Les jardins de mousses, de pierres et l'étang miroir sont particulièrement sereins. Parfait pour terminer la matinée en douceur.",
-                        maps: "https://maps.google.com/?q=Kodai-ji+Temple+Kyoto",
-                        guidePage: "p. 50"
-                    }
-                ],
-                afternoon: {
-                    title: "Fin d'après-midi",
-                    desc: "Retour à l'hôtel pour repos bien mérité. Kyoto se savoure tranquillement."
-                },
-                evening: {
-                    title: "Soirée (option)",
-                    desc: "K36 Rooftop si envie d'un verre avec vue urbaine calme sur Kyoto illuminée.",
-                    guidePage: "p. 50"
-                },
-                restaurants: [
-                    {
-                        name: "Otowa Saryō",
-                        type: "Déjeuner - SUKIYAKI",
-                        desc: "Tout près de Kiyomizu-dera. Restaurant élégant proposant un délicieux sukiyaki du midi dans un cadre raffiné. Fines tranches de bœuf de qualité mijotées dans le bouillon sucré-salé traditionnel, légumes frais, tofu, champignons. Le rituel de tremper la viande dans l'œuf battu cru adoucit et lie les saveurs. Service attentionné qui vous guide. Vue apaisante sur un petit jardin.",
-                        maps: "https://maps.google.com/?q=Otowa+Saryo+Kyoto",
-                        guidePage: "p. 50",
-                        special: true
-                    }
-                ],
-                guidePages: ["p. 50"]
-            },
-            {
-                number: 6,
-                date: "Mar 28/10",
-                title: "Arashiyama (matin) → repos",
-                location: "Kyoto",
-                hotel: {
-                    name: "Tou Nishinotoin",
-                    location: "Kyoto",
-                    maps: "https://maps.google.com/?q=Tou+Nishinotoin+Kyoto"
-                },
-                activities: [
-                    {
-                        time: "07:45–09:00",
-                        name: "Forêt de bambous d'Arashiyama",
-                        desc: "L'image iconique de Kyoto : des milliers de bambous géants de 20-30m créent une cathédrale végétale où la lumière filtre en rayons mystiques. Le craquement des bambous au vent est hypnotisant. Le chemin principal (500m) traverse ce paysage irréel. Arrivez AVANT 8h30 pour l'avoir pour vous seuls - l'expérience est magique dans le silence matinal avec les rayons du soleil. Après 10h, les cars de touristes gâchent l'atmosphère.",
-                        maps: "https://maps.google.com/?q=Arashiyama+Bamboo+Grove+Kyoto",
-                        guidePages: ["p. 45-46"]
-                    },
-                    {
-                        time: "09:00–10:00",
-                        name: "Tenryū-ji → Pont Togetsu → Kimono Forest",
-                        desc: "Tenryū-ji : temple zen classé UNESCO avec l'un des plus beaux jardins du Japon (14ème siècle). Le jardin de contemplation avec son étang miroir reflétant les montagnes d'Arashiyama est l'incarnation de l'esthétique japonaise. Ensuite, traversez le pont Togetsu sur la rivière (vue panoramique sur les montagnes). Kimono Forest à la station Randen : installation artistique de 600 poteaux lumineux inspirés des tissus de kimono.",
-                        maps: "https://maps.google.com/?q=Tenryu-ji+Temple+Arashiyama+Kyoto",
-                        guidePage: "p. 45"
-                    }
-                ],
-                afternoon: {
-                    title: "Après-midi",
-                    desc: "Retour tranquille vers le centre de Kyoto (30 min en train). Repos à l'hôtel : sieste, lecture, ou bain relaxant. Arashiyama le matin suffit amplement."
-                },
-                restaurants: [
-                    {
-                        name: "Food-court Sushi Naritaya & stands",
-                        type: "Déjeuner simple",
-                        desc: "Food-court à Arashiyama avec plusieurs stands : ramen, poulet frit japonais (karaage), brochettes yakitori, curry... Pas obligé de prendre du poisson. Atmosphère décontractée, prix abordables, service rapide. Parfait pour un déjeuner efficace avant de rentrer.",
-                        maps: "https://maps.google.com/?q=Arashiyama+Food+Court+Kyoto",
-                        guidePage: "p. 45"
-                    },
-                    {
-                        name: "Unagi Hirokawa (OPTION unagi)",
-                        type: "Déjeuner - Pour tester",
-                        desc: "Juste à côté. Si vous voulez tester l'unagi (anguille grillée) sans engagement : prenez un mini-bol à partager. La cuisson kabayaki (anguille grillée au charbon et laquée d'une sauce tare sucrée-salée) rend le goût très doux et caramélisé - rien à voir avec l'anguille européenne. Texture fondante, sauce délicate. C'est une spécialité japonaise raffinée.",
-                        maps: "https://maps.google.com/?q=Unagi+Hirokawa+Arashiyama+Kyoto"
-                    }
-                ],
-                guidePages: ["p. 45-46"]
-            },
-            {
-                number: 7,
-                date: "Mer 29/10",
-                title: "Kyoto → Fushimi Inari (tôt) → Hakone",
-                location: "Hakone",
-                hotel: {
-                    name: "Kowakien",
-                    location: "Hakone",
-                    maps: "https://maps.google.com/?q=Hakone+Kowakien+Hotel"
-                },
-                train: {
-                    title: "🚄 Kyoto → Hakone",
-                    route: "Kyoto ➜ Odawara ➜ Hakone-Yumoto ➜ Gōra",
-                    details: "<strong>Trajet recommandé pour arriver en début d'après-midi :</strong><br><br><strong>Étape 1 - Shinkansen :</strong><br>• <strong>09:00-10:00</strong> : Départ Kyoto Station<br>• <strong>09:35-10:35</strong> : Arrivée Odawara (35-40 min, Nozomi ou Hikari)<br><br><strong>Étape 2 - Vers Hakone :</strong><br>• <strong>10:00-11:00</strong> : Odawara → Hakone-Yumoto (15 min, JR local)<br>• <strong>10:30-11:30</strong> : Hakone-Yumoto → Gōra (40 min, Hakone Tozan Railway - petit train de montagne pittoresque qui zigzague)<br>• <strong>Arrivée Gōra/Kowakien :</strong> ~11:30-12:00<br><br><strong>💡 Conseil :</strong> Déposez vos bagages à l'hôtel avant la boucle d'Hakone. Le <strong>Hakone Free Pass</strong> (2-3 jours, ~6000¥) couvre TOUS les transports de la boucle - achetez-le à Odawara."
-                },
-                activities: [
-                    {
-                        time: "06:45–08:30",
-                        name: "Fushimi Inari (10 000 torii)",
-                        desc: "LE sanctuaire aux 10 000 torii (portails vermillon) formant des tunnels magiques qui serpentent sur la montagne. Partez TRÈS TÔT (avant 7h) - les premiers tunnels dans la brume matinale avec les lanternes sont une expérience inoubliable et quasi-déserte. Passé les 15-20 premières minutes de montée, la foule se dissipe complètement. Au sommet : vue panoramique sur Kyoto + stands d'udon. La montée complète prend 2-3h mais même 1h suffit pour vivre la magie.",
-                        maps: "https://maps.google.com/?q=Fushimi+Inari+Shrine+Kyoto",
-                        guidePage: "p. 52"
-                    },
-                    {
-                        time: "Début d'après-midi",
-                        name: "Boucle d'Hakone",
-                        desc: "Circuit panoramique emblématique combinant tous les transports de montagne : Funiculaire jusqu'à Sōunzan → Hakone Ropeway (téléphérique spectaculaire) traversant la vallée volcanique d'Ōwakudani (fumées de soufre, œufs noirs cuits dans les sources chaudes, vue plongeante sur le Mont Fuji si dégagé) → descente vers le lac Ashi → bateau-pirate sur le lac avec le Fuji en toile de fond → bus retour. Circuit complet : 3-4h. Vérifiez l'état du ropeway le matin (parfois fermé par vent fort).",
-                        maps: "https://maps.google.com/?q=Owakudani+Hakone",
-                        guidePage: "p. 33"
-                    }
-                ],
-                restaurants: [
-                    {
-                        name: "ITOH Dining by NOBU",
-                        type: "Dîner - TEPPANYAKI WAGYŪ",
-                        desc: "À Gōra. Le restaurant du célèbre chef Nobu Matsuhisa. Votre grand moment 'bœuf' du voyage ! Teppanyaki (cuisson à la plancha devant vous) avec des menus incluant du wagyu A5 (notation maximale). La viande d'un persillage exceptionnel fond littéralement en bouche. Le chef maîtrise chaque geste comme un spectacle. Menus également avec fruits de mer nobles (homard, Saint-Jacques) si votre épouse souhaite. Cadre élégant avec vue sur les montagnes. Réservation impérative.",
-                        maps: "https://maps.google.com/?q=ITOH+Dining+by+NOBU+Hakone",
-                        special: true
-                    },
-                    {
-                        name: "Tables de l'hôtel Kowakien",
-                        type: "Dîner (option)",
-                        desc: "Si vous préférez profiter des restaurants de votre ryokan : kaiseki traditionnel, ambiance feutrée, produits locaux. Le confort de ne pas ressortir après une journée bien remplie."
-                    }
-                ],
-                guidePages: ["p. 33", "p. 52"]
-            },
-            {
-                number: 8,
-                date: "Jeu 30/10",
-                title: "Hakone (onsen) → Tokyo (veille départ)",
-                location: "Tokyo",
-                train: {
-                    title: "🚄 Hakone → Tokyo",
-                    route: "Gōra ➜ Hakone-Yumoto ➜ Odawara ➜ Shinagawa/Tokyo",
-                    details: "<strong>Départs réguliers, trajet recommandé pour arriver en milieu d'après-midi :</strong><br><br>• <strong>12:00-12:30</strong> : Hakone Tozan Railway Gōra → Hakone-Yumoto (40 min, train pittoresque en descente)<br>• <strong>13:00-13:30</strong> : Local Hakone-Yumoto → Odawara (15 min)<br>• <strong>13:45-14:30</strong> : Shinkansen Odawara → Shinagawa/Tokyo (35-40 min)<br>• <strong>Arrivée à Tokyo :</strong> ~14:30-15:00<br><br><strong>💡 Choix gare d'arrivée :</strong><br>• <strong>Shinagawa</strong> : si vol depuis Haneda (HND) - 20 min en train<br>• <strong>Tokyo Station</strong> : si vol depuis Narita (NRT) - 1h en Narita Express<br><br>Shinagawa est plus pratique pour le centre-sud de Tokyo (Ginza, Shibuya à proximité)."
-                },
-                activities: [
-                    {
-                        time: "Matin",
-                        name: "Onsen / détente à l'hôtel",
-                        desc: "Profitez pleinement de votre ryokan Kowakien et de ses bains thermaux (onsen). Les sources chaudes d'Hakone sont réputées depuis des siècles pour leurs vertus relaxantes. Bain privé ou collectif selon vos préférences, vue sur les montagnes, vapeurs naturelles. Moment de détente absolue. Petit-déjeuner kaiseki traditionnel si vous avez pris la demi-pension. Ne vous pressez pas - c'est votre dernière matinée de zen avant le retour à la ville.",
-                        maps: "https://maps.google.com/?q=Hakone+Kowakien+Hotel"
-                    },
-                    {
-                        time: "Après-midi",
-                        name: "Retour à Tokyo",
-                        desc: "Trajet pittoresque en descendant la montagne puis Shinkansen vers Tokyo. Installation dans votre dernier hôtel (Shinagawa pratique pour Haneda, ou Tokyo Station pour Narita). Fin d'après-midi libre pour flâner, derniers achats de souvenirs, ou repos."
-                    }
-                ],
-                evening: {
-                    title: "Soirée (option)",
-                    desc: "Ginza Music Bar (vinyles vintage) ou Ginza Lion Beer Hall (brasserie historique mythique depuis 1934, architecture Art Déco). Puis repos avant le grand départ.",
-                    guidePages: ["p. 24-26"]
-                },
-                restaurants: [
-                    {
-                        name: "Tamura Ginkatsutei",
-                        type: "Déjeuner avant départ",
-                        desc: "Juste à côté de la gare de Gōra. Spécialité locale originale : tofu-katsu (tofu épais farci au porc haché, pané et mijoté). Croustillant à l'extérieur, fondant à l'intérieur, surprenant ! Une façon délicieuse de terminer votre séjour à Hakone. Ambiance simple et locale, prix très abordables.",
-                        maps: "https://maps.google.com/?q=Tamura+Ginkatsutei+Gora+Hakone"
-                    },
-                    {
-                        name: "Katsu-Curry (Ginza, Shimbashi ou Harajuku)",
-                        type: "Dîner - CURRY japonais",
-                        desc: "Cochez la case 'curry japonais' ! Tonkatsu croustillant nappé de curry onctueux et doux sur riz. Réconfortant et parfait pour un dernier soir. Nombreuses options : CoCo Ichibanya (portions modulables), Go! Go! Curry!, ou restaurants indépendants. Service rapide, ambiance décontractée. Un classique japonais à ne pas manquer.",
-                        maps: "https://maps.google.com/?q=Curry+Restaurant+Ginza+Tokyo"
-                    }
-                ],
-                guidePages: ["p. 24-26"]
-            },
-            {
-                number: 9,
-                date: "Ven 31/10",
-                title: "Départ",
-                location: "Aéroport",
-                activities: [
-                    {
-                        time: "Matin",
-                        name: "Check-out & transfert aéroport",
-                        desc: "Dernier petit-déjeuner japonais puis direction l'aéroport. Depuis Shinagawa vers Haneda (HND) : 20 min en Tokyo Monorail ou Keikyu Line. Depuis Tokyo Station vers Narita (NRT) : 1h en Narita Express. Prévoyez 3h avant le vol international pour les formalités. Sayōnara Japon, à bientôt ! 🇯🇵✈️"
-                    }
-                ],
-                restaurants: []
-            }
-        ]
-    };
+    // Navigation entre les jours
+    const tabs = document.querySelectorAll('.nav-tab');
+    const sections = document.querySelectorAll('.day-section');
 
-    // Generate day navigation
-    function generateNavigation() {
-        const nav = document.getElementById('dayNav');
-        tripData.days.forEach((day, index) => {
-            const tab = document.createElement('div');
-            tab.className = `day-tab ${index === 0 ? 'active' : ''}`;
-            tab.innerHTML = `
-                <span class="day-number">Jour ${day.number}</span>
-                <span class="day-date">${day.date.split(' ')[1]}</span>
-            `;
-            tab.onclick = () => switchDay(index);
-            nav.appendChild(tab);
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Retirer la classe active de tous les onglets et sections
+            tabs.forEach(t => t.classList.remove('active'));
+            sections.forEach(s => s.classList.remove('active'));
+
+            // Ajouter la classe active à l'onglet cliqué
+            tab.classList.add('active');
+
+            // Afficher la section correspondante
+            const dayId = tab.getAttribute('data-day');
+            document.getElementById(dayId).classList.add('active');
+
+            // Scroll vers le haut
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-    }
-
-    // Generate day content
-    function generateContent() {
-        const content = document.getElementById('dayContent');
-        
-        tripData.days.forEach((day, index) => {
-            const dayDiv = document.createElement('div');
-            dayDiv.className = `day-content ${index === 0 ? 'active' : ''}`;
-            dayDiv.id = `day-${index}`;
-            
-            let html = `
-                <div class="day-header">
-                    <h2>Jour ${day.number} - ${day.date}</h2>
-                    <div class="subtitle">${day.title}</div>
-                </div>
-            `;
-
-            // Train info
-            if (day.train) {
-                html += `
-                    <div class="train-info">
-                        <div class="train-info-title">🚄 ${day.train.title}</div>
-                        <div class="train-details">
-                            <div class="train-route">${day.train.route}</div>
-                            <div class="train-schedule">${day.train.details}</div>
-                        </div>
-                    </div>
-                `;
-            }
-
-            // Hotel
-            if (day.hotel) {
-                html += `
-                    <div class="card">
-                        <div class="card-header">
-                            <span class="card-icon">🏨</span>
-                            <span class="card-title">Hébergement</span>
-                        </div>
-                        <div class="hotel">
-                            <div class="hotel-name">${day.hotel.name}</div>
-                            <div class="hotel-location">📍 ${day.hotel.location}</div>
-                            <a href="${day.hotel.maps}" target="_blank" class="map-link">
-                                📍 Localiser sur Google Maps
-                            </a>
-                        </div>
-                    </div>
-                `;
-            }
-
-            // Activities
-            if (day.activities && day.activities.length > 0) {
-                html += `
-                    <div class="card">
-                        <div class="card-header">
-                            <span class="card-icon">🗺️</span>
-                            <span class="card-title">Programme</span>
-                        </div>
-                `;
-                
-                day.activities.forEach(activity => {
-                    html += `
-                        <div class="activity">
-                            <div class="activity-time">${activity.time}</div>
-                            <div class="activity-name">
-                                ${activity.name}
-                                ${activity.guidePage ? `<span class="page-ref">${activity.guidePage}</span>` : ''}
-                            </div>
-                            <div class="activity-desc">${activity.desc}</div>
-                            ${activity.maps ? `
-                                <a href="${activity.maps}" target="_blank" class="map-link">
-                                    📍 Localiser sur Google Maps
-                                </a>
-                            ` : ''}
-                        </div>
-                    `;
-                });
-                
-                html += `</div>`;
-            }
-
-            // Evening/Afternoon/Notes
-            if (day.evening) {
-                html += `
-                    <div class="info-box">
-                        <div class="info-box-title">🌙 ${day.evening.title}</div>
-                        <div class="info-box-content">
-                            ${day.evening.desc}
-                            ${day.evening.note ? `<br><br><strong>💡 ${day.evening.note}</strong>` : ''}
-                            ${day.evening.guidePage ? `<span class="page-ref">${day.evening.guidePage}</span>` : ''}
-                        </div>
-                    </div>
-                `;
-            }
-
-            if (day.afternoon) {
-                html += `
-                    <div class="info-box">
-                        <div class="info-box-title">☀️ ${day.afternoon.title}</div>
-                        <div class="info-box-content">${day.afternoon.desc}</div>
-                    </div>
-                `;
-            }
-
-            if (day.notes) {
-                day.notes.forEach(note => {
-                    html += `
-                        <div class="info-box">
-                            <div class="info-box-title">💡 ${note.title} ${note.page ? `<span class="page-ref">${note.page}</span>` : ''}</div>
-                            <div class="info-box-content">${note.content}</div>
-                        </div>
-                    `;
-                });
-            }
-
-            // Restaurants
-            if (day.restaurants && day.restaurants.length > 0) {
-                html += `
-                    <div class="card">
-                        <div class="card-header">
-                            <span class="card-icon">🍜</span>
-                            <span class="card-title">Restaurants</span>
-                        </div>
-                `;
-                
-                day.restaurants.forEach(resto => {
-                    html += `
-                        <div class="restaurant">
-                            <div class="restaurant-name">
-                                ${resto.name}
-                                ${resto.special ? '<span class="badge special">★ Temps Fort</span>' : ''}
-                                ${resto.guidePage ? `<span class="page-ref">${resto.guidePage}</span>` : ''}
-                                ${resto.guidePages ? `<span class="page-ref">${resto.guidePages.join(', ')}</span>` : ''}
-                            </div>
-                            <div class="restaurant-type">${resto.type}</div>
-                            <div class="restaurant-desc">${resto.desc}</div>
-                            ${resto.maps ? `
-                                <a href="${resto.maps}" target="_blank" class="map-link">
-                                    📍 Localiser sur Google Maps
-                                </a>
-                            ` : ''}
-                        </div>
-                    `;
-                });
-                
-                html += `</div>`;
-            }
-
-            // Guide pages reference
-            if (day.guidePages && day.guidePages.length > 0) {
-                html += `
-                    <div class="info-box" style="background: #F3E8FF; border-left-color: ${tripData.days[0].guidePages ? 'var(--purple)' : 'var(--accent)'};">
-                        <div class="info-box-title" style="color: var(--purple);">📖 Références guide</div>
-                        <div class="info-box-content" style="color: #6B21A8;">
-                            ${day.guidePages.join(', ')}
-                        </div>
-                    </div>
-                `;
-            }
-
-            dayDiv.innerHTML = html;
-            content.appendChild(dayDiv);
-        });
-
-        // Add summary to first day
-        addSummaryToFirstDay();
-    }
-
-    function addSummaryToFirstDay() {
-        const firstDay = document.getElementById('day-0');
-        
-        const summaryHtml = `
-            <div class="section-divider">
-                <span>📌 RÉSERVATIONS ESSENTIELLES</span>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <span class="card-icon">📝</span>
-                    <span class="card-title">À réserver dès maintenant</span>
-                </div>
-                <div class="info-box">
-                    <div class="info-box-title">🏙️ Shibuya Sky (Jour 2)</div>
-                    <div class="info-box-content">
-                        Belvédère à 229m. Réservation en ligne jusqu'à 2 semaines à l'avance.
-                        <br><br><a href="https://www.shibuya-scramble-square.com/sky/en/" target="_blank" class="map-link">🔗 Réserver en ligne</a>
-                    </div>
-                </div>
-                <div class="info-box">
-                    <div class="info-box-title">🍖 Nabezo - Sukiyaki (Jour 2)</div>
-                    <div class="info-box-content">Restaurant sukiyaki à Shibuya. Réservation recommandée.</div>
-                </div>
-                <div class="info-box">
-                    <div class="info-box-title">🍲 Otowa Saryō - Sukiyaki (Jour 5)</div>
-                    <div class="info-box-content">Sukiyaki raffiné près de Kiyomizu-dera, Kyoto. Réservation conseillée.</div>
-                </div>
-                <div class="info-box">
-                    <div class="info-box-title">🍽️ Restaurant Pontochō (Jour 4)</div>
-                    <div class="info-box-content">
-                        Demander "terrace seki" (terrasse sur l'eau) lors de la réservation.
-                    </div>
-                </div>
-                <div class="info-box">
-                    <div class="info-box-title">🥩 ITOH Dining by NOBU (Jour 7)</div>
-                    <div class="info-box-content">Teppanyaki wagyu A5 à Hakone. Réservation impérative.</div>
-                </div>
-            </div>
-
-            <div class="section-divider">
-                <span>💡 CONSEILS PRATIQUES</span>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <span class="card-icon">✨</span>
-                    <span class="card-title">Recommandations du guide</span>
-                </div>
-                <div class="info-box">
-                    <div class="info-box-title">💳 Suica / Pasmo (p. 5-6)</div>
-                    <div class="info-box-content">
-                        Achetez une carte IC rechargeable dès l'aéroport. Elle couvre métro, bus, trains locaux ET les paiements dans convenience stores, distributeurs, restaurants. Indispensable ! Rechargeable dans toutes les gares.
-                    </div>
-                </div>
-                <div class="info-box">
-                    <div class="info-box-title">🚕 Transports (p. 5-6)</div>
-                    <div class="info-box-content">
-                        Évitez les taxis (très chers). Privilégiez métro, trains et bus - ultra-ponctuels et efficaces. Google Maps fonctionne parfaitement pour les itinéraires.
-                    </div>
-                </div>
-                <div class="info-box">
-                    <div class="info-box-title">🧳 Yamato / TA-Q-BIN (p. 5-6)</div>
-                    <div class="info-box-content">
-                        Service de livraison de bagages entre hôtels. Si vous ne voulez pas trimballer vos valises dans les Shinkansen, envoyez-les d'un hôtel à l'autre (livraison lendemain, ~2000¥/bagage). Demandez à la réception.
-                    </div>
-                </div>
-                <div class="info-box">
-                    <div class="info-box-title">💴 Cash & paiement</div>
-                    <div class="info-box-content">
-                        Beaucoup d'endroits n'acceptent que le cash. Retirez dans les 7-Eleven (ATM internationaux 24/7). Gardez toujours du liquide sur vous. Les cartes sont acceptées dans les grands commerces et hôtels.
-                    </div>
-                </div>
-                <div class="info-box">
-                    <div class="info-box-title">🌡️ Météo fin octobre</div>
-                    <div class="info-box-content">
-                        Température : 15-20°C. Journées agréables, soirées fraîches. Prévoyez des couches : t-shirt + pull léger + veste. Possibles averses ponctuelles.
-                    </div>
-                </div>
-                <div class="info-box">
-                    <div class="info-box-title">🎫 Hakone Free Pass</div>
-                    <div class="info-box-content">
-                        Pass 2-3 jours (~6000¥) couvrant TOUS les transports de la boucle d'Hakone (trains, funiculaire, ropeway, bateau, bus). Achetez-le à Odawara en arrivant. Rentabilisé en 1 journée !
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <span class="card-icon">🍱</span>
-                    <span class="card-title">Cohérence du programme</span>
-                </div>
-                <div class="info-box">
-                    <div class="info-box-title">✨ Pourquoi ce programme fonctionne</div>
-                    <div class="info-box-content">
-                        <ul>
-                            <li><strong>Temples à Kyoto :</strong> Le guide recommande de faire les temples à Kyoto plutôt qu'à Tokyo (Asakusa évité). Kyoto offre l'expérience temple/jardin ultime.</li>
-                            <li><strong>Quartiers optimisés :</strong> Focus sur Shibuya, Harajuku-Omotesandō, Shinjuku à Tokyo - les essentiels selon le guide (p. 10, 12, 14).</li>
-                            <li><strong>Bœuf modéré mais exceptionnel :</strong> 2 temps forts (Nabezo sukiyaki, ITOH wagyu A5) + 1 sukiyaki à Kyoto. Le reste alterne tonkatsu, curry, yakitori.</li>
-                            <li><strong>Visites matinales :</strong> Tous les sites touristiques tôt le matin pour éviter les foules et vivre l'atmosphère authentique.</li>
-                            <li><strong>Après-midis au calme :</strong> Retour à l'hôtel pour repos, onsen, sieste. Pas de sur-tourisme.</li>
-                            <li><strong>Logistique fluide :</strong> Trajets Shinkansen en milieu de journée, arrivées en après-midi pour s'installer tranquillement.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        `;
-        
-        firstDay.innerHTML += summaryHtml;
-    }
-
-    // Switch section (itinerary / vocabulary)
-    function switchSection(section) {
-        // Update nav
-        document.querySelectorAll('.main-nav-item').forEach(item => {
-            item.classList.remove('active');
-        });
-        event.target.classList.add('active');
-
-        // Update content
-        document.querySelectorAll('.section').forEach(sec => {
-            sec.classList.remove('active');
-        });
-        document.getElementById(`${section}-section`).classList.add('active');
-
-        // Scroll to top
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // Switch day
-    function switchDay(index) {
-        // Update tabs
-        const tabs = document.querySelectorAll('.day-tab');
-        tabs.forEach((tab, i) => {
-            tab.classList.toggle('active', i === index);
-        });
-
-        // Update content
-        const contents = document.querySelectorAll('.day-content');
-        contents.forEach((content, i) => {
-            content.classList.toggle('active', i === index);
-        });
-
-        // Scroll to top
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-
-        // Scroll nav to active tab
-        const activeTab = tabs[index];
-        activeTab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-    }
-
-    // Scroll to top button
-    window.addEventListener('scroll', () => {
-        const scrollTop = document.getElementById('scrollTop');
-        if (window.pageYOffset > 300) {
-            scrollTop.classList.add('visible');
-        } else {
-            scrollTop.classList.remove('visible');
-        }
     });
 
-    function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // Initialize
-    document.addEventListener('DOMContentLoaded', () => {
-        generateNavigation();
-        generateContent();
+    // Smooth scroll pour les liens internes
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
     });
-
-    // Swipe support for mobile
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    document.addEventListener('touchstart', e => {
-        touchStartX = e.changedTouches[0].screenX;
-    });
-
-    document.addEventListener('touchend', e => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    });
-
-    function handleSwipe() {
-        const activeTab = document.querySelector('.day-tab.active');
-        if (!activeTab) return;
-        
-        const allTabs = document.querySelectorAll('.day-tab');
-        const currentIndex = Array.from(allTabs).indexOf(activeTab);
-
-        if (touchEndX < touchStartX - 50 && currentIndex < allTabs.length - 1) {
-            switchDay(currentIndex + 1);
-        }
-
-        if (touchEndX > touchStartX + 50 && currentIndex > 0) {
-            switchDay(currentIndex - 1);
-        }
-    }
 </script>
 ```
 
