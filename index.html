@@ -1,1395 +1,1235 @@
 <!DOCTYPE html>
-
-<html lang="fr">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notre Voyage au Japon 🇯🇵</title>
+    <title>Veolia Energy x CVA - AI for Energy Programme</title>
+    <!-- 1. Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- 3. Google Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- 4. Custom CSS for "Exquisite" CVA-for-Veolia Design -->
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Base font styling */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F9FAFB; /* Light gray page background */
+        }
+        
+        /* Tighter letter spacing for headers */
+        h1, h2, h3, h4, h5 {
+            letter-spacing: -0.02em;
         }
 
-```
-    :root {
-        --primary: #C41E3A;
-        --primary-dark: #9B1629;
-        --primary-light: #E8505B;
-        --secondary: #2C3E50;
-        --accent: #E8B4B8;
-        --accent-dark: #D4939A;
-        --bg-light: #F5F6F8;
-        --bg-white: #FFFFFF;
-        --text-dark: #2C3E50;
-        --text-light: #6C757D;
-        --text-lighter: #95A5A6;
-        --border: #E5E5E5;
-        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
-        --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
-        --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
-        --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.15);
-    }
+        /* 1. CVA Custom List Styling (Veolia Green Accent) */
+        .cva-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            font-size: 1.05rem; /* 17px */
+            line-height: 1.6;
+            color: #374151; /* gray-700 */
+        }
+        .cva-list li::before {
+            content: '■';
+            position: absolute;
+            left: 0;
+            top: 4px;
+            font-size: 14px;
+            color: #1E6E5E; /* Veolia-Green-Accent */
+        }
+        .cva-list li ul { margin-top: 10px; }
+        .cva-list li ul li::before {
+            content: '–';
+            font-weight: 700;
+        }
+        /* This is the new style to replace inline <strong> */
+        .cva-list .list-lead {
+            font-weight: 600; /* Semibold */
+            color: #111827; /* gray-900 */
+            display: block;
+            margin-bottom: 2px;
+        }
 
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-        line-height: 1.6;
-        color: var(--text-dark);
-        background: var(--bg-light);
-        overflow-x: hidden;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
+        /* 2. Custom "Decision" List (The Ask & Challenges) */
+        .cva-decision-list {
+            list-style: none;
+            padding-left: 0;
+            counter-reset: decision-counter;
+        }
+        .cva-decision-list li {
+            position: relative;
+            padding-left: 60px;
+            padding-top: 4px;
+            margin-bottom: 24px;
+            font-size: 1.125rem; /* 18px */
+            font-weight: 500; /* Medium, not bold */
+            line-height: 1.6;
+            color: #374151; /* gray-700 */
+        }
+        .cva-decision-list li::before {
+            content: counter(decision-counter);
+            counter-increment: decision-counter;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background-color: #1E6E5E; /* Veolia-Green-Accent */
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+        .cva-decision-list-dark li {
+            color: #D1D5DB; /* gray-300 */
+        }
 
-    .hero {
-        background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
-        color: white;
-        padding: 4rem 1.5rem 3rem;
-        text-align: center;
-        box-shadow: var(--shadow-lg);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .hero::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
-        pointer-events: none;
-    }
-
-    .hero h1 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 0.8rem;
-        letter-spacing: -0.5px;
-        position: relative;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .hero .dates {
-        font-size: 1.15rem;
-        opacity: 0.95;
-        font-weight: 300;
-        position: relative;
-        letter-spacing: 0.5px;
-    }
-
-    .nav-tabs {
-        display: flex;
-        overflow-x: auto;
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        box-shadow: var(--shadow-md);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        -webkit-overflow-scrolling: touch;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    }
-
-    .nav-tabs::-webkit-scrollbar {
-        display: none;
-    }
-
-    .nav-tab {
-        flex: 0 0 auto;
-        padding: 1.1rem 1.6rem;
-        background: none;
-        border: none;
-        border-bottom: 3px solid transparent;
-        cursor: pointer;
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: var(--text-light);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        white-space: nowrap;
-        position: relative;
-    }
-
-    .nav-tab::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0;
-        height: 3px;
-        background: var(--primary);
-        transform: translateX(-50%);
-        transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .nav-tab:hover {
-        color: var(--primary);
-        background: linear-gradient(to bottom, rgba(196, 30, 58, 0.03), rgba(196, 30, 58, 0.08));
-    }
-
-    .nav-tab:hover::after {
-        width: 60%;
-    }
-
-    .nav-tab.active {
-        color: var(--primary);
-        background: linear-gradient(to bottom, rgba(196, 30, 58, 0.05), rgba(196, 30, 58, 0.1));
-        border-bottom-color: var(--primary);
-    }
-
-    .nav-tab.active::after {
-        width: 80%;
-    }
-
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem 1.5rem;
-    }
-
-    .day-section {
-        display: none;
-        animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .day-section.active {
-        display: block;
-    }
-
-    @keyframes fadeIn {
-        from {
+        /* 3. Animation Classes */
+        .animate-on-scroll {
             opacity: 0;
-            transform: translateY(20px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
         }
-        to {
+        .fade-in { opacity: 0; }
+        .slide-up { opacity: 0; transform: translateY(16px); }
+        .slide-in-left { opacity: 0; transform: translateX(-16px); }
+        .slide-in-right { opacity: 0; transform: translateX(16px); }
+
+        /* Visible state */
+        .is-visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) translateX(0);
         }
-    }
-
-    .day-header {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.98) 100%);
-        backdrop-filter: blur(10px);
-        padding: 2rem;
-        border-radius: 16px;
-        margin-bottom: 2rem;
-        box-shadow: var(--shadow-md);
-        border: 1px solid rgba(196, 30, 58, 0.1);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .day-header::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 5px;
-        height: 100%;
-        background: linear-gradient(to bottom, var(--primary), var(--primary-light));
-    }
-
-    .day-header h2 {
-        color: var(--primary);
-        font-size: 1.9rem;
-        margin-bottom: 0.6rem;
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-        font-weight: 700;
-    }
-
-    .day-header .subtitle {
-        color: var(--text-light);
-        font-size: 1.05rem;
-        font-weight: 400;
-        padding-left: 2.5rem;
-    }
-
-    .card {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        border-radius: 16px;
-        padding: 1.8rem;
-        margin-bottom: 1.8rem;
-        box-shadow: var(--shadow-sm);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 1px solid rgba(0, 0, 0, 0.04);
-        position: relative;
-    }
-
-    .card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background: linear-gradient(to right, transparent, rgba(196, 30, 58, 0.1), transparent);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .card:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-lg);
-        border-color: rgba(196, 30, 58, 0.15);
-    }
-
-    .card:hover::before {
-        opacity: 1;
-    }
-
-    .time-badge {
-        display: inline-block;
-        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
-        color: var(--primary-dark);
-        padding: 0.5rem 1.1rem;
-        border-radius: 24px;
-        font-size: 0.85rem;
-        font-weight: 700;
-        margin-bottom: 1.2rem;
-        box-shadow: 0 2px 8px rgba(196, 30, 58, 0.2);
-        letter-spacing: 0.3px;
-    }
-
-    .card h3 {
-        color: var(--secondary);
-        font-size: 1.35rem;
-        margin-bottom: 1.1rem;
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-        font-weight: 700;
-    }
-
-    .card p {
-        color: var(--text-light);
-        margin-bottom: 0.9rem;
-        line-height: 1.75;
-        font-size: 0.98rem;
-    }
-
-    .card p strong {
-        color: var(--primary);
-        font-weight: 600;
-    }
-
-    .location-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: var(--primary);
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 0.92rem;
-        padding: 0.6rem 1.2rem;
-        border: 2px solid var(--primary);
-        border-radius: 10px;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        margin-top: 0.6rem;
-        margin-right: 0.6rem;
-        box-shadow: 0 2px 6px rgba(196, 30, 58, 0.15);
-    }
-
-    .location-link:hover {
-        background: var(--primary);
-        color: white;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
-    }
-
-    .icon {
-        font-size: 1.2rem;
-    }
-
-    .train-info {
-        background: linear-gradient(135deg, rgba(232, 245, 233, 0.95) 0%, rgba(200, 230, 201, 0.95) 100%);
-        backdrop-filter: blur(10px);
-        border-left: 5px solid #4CAF50;
-        padding: 1.8rem;
-        border-radius: 12px;
-        margin: 1.8rem 0;
-        box-shadow: var(--shadow-sm);
-    }
-
-    .train-info h4 {
-        color: #2E7D32;
-        margin-bottom: 1rem;
-        font-size: 1.15rem;
-        font-weight: 700;
-    }
-
-    .train-option {
-        background: rgba(255, 255, 255, 0.95);
-        padding: 1.1rem;
-        border-radius: 8px;
-        margin-bottom: 0.6rem;
-        font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
-        font-size: 0.9rem;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-        border-left: 3px solid #4CAF50;
-        transition: all 0.2s ease;
-    }
-
-    .train-option:hover {
-        transform: translateX(4px);
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .alert-box {
-        background: linear-gradient(135deg, rgba(255, 243, 205, 0.95) 0%, rgba(255, 236, 179, 0.95) 100%);
-        backdrop-filter: blur(10px);
-        border-left: 5px solid #FFC107;
-        padding: 1.2rem;
-        border-radius: 12px;
-        margin: 1.2rem 0;
-        box-shadow: var(--shadow-sm);
-    }
-
-    .alert-box strong {
-        color: #856404;
-        font-weight: 700;
-    }
-
-    .tips-list {
-        list-style: none;
-        padding-left: 0;
-    }
-
-    .tips-list li {
-        padding: 1rem 1.2rem;
-        margin-bottom: 1rem;
-        background: linear-gradient(135deg, rgba(248, 249, 250, 0.95) 0%, rgba(241, 243, 245, 0.95) 100%);
-        border-radius: 12px;
-        border-left: 4px solid var(--primary);
-        line-height: 1.7;
-        box-shadow: var(--shadow-sm);
-        transition: all 0.3s ease;
-    }
-
-    .tips-list li:hover {
-        transform: translateX(4px);
-        box-shadow: var(--shadow-md);
-    }
-
-    .tips-list li strong {
-        color: var(--primary);
-        font-weight: 700;
-    }
-
-    .vocab-grid {
-        display: grid;
-        gap: 1.2rem;
-        margin-top: 1.2rem;
-    }
-
-    .vocab-card {
-        background: linear-gradient(135deg, rgba(248, 249, 250, 0.95) 0%, rgba(255, 255, 255, 0.95) 100%);
-        padding: 1.3rem;
-        border-radius: 12px;
-        border-left: 4px solid var(--primary);
-        box-shadow: var(--shadow-sm);
-        transition: all 0.3s ease;
-    }
-
-    .vocab-card:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
-    }
-
-    .vocab-card .japanese {
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: var(--primary);
-        margin-bottom: 0.4rem;
-    }
-
-    .vocab-card .pronunciation {
-        color: var(--text-light);
-        font-style: italic;
-        margin-bottom: 0.4rem;
-        font-size: 0.95rem;
-    }
-
-    .vocab-card .french {
-        color: var(--text-dark);
-        font-weight: 600;
-        font-size: 0.98rem;
-    }
-
-    .hotel-info {
-        background: linear-gradient(135deg, rgba(227, 242, 253, 0.95) 0%, rgba(187, 222, 251, 0.95) 100%);
-        backdrop-filter: blur(10px);
-        padding: 1.5rem;
-        border-radius: 12px;
-        margin: 1.5rem 0;
-        border-left: 5px solid #2196F3;
-        box-shadow: var(--shadow-sm);
-    }
-
-    .hotel-info h4 {
-        color: #1565C0;
-        margin-bottom: 0.7rem;
-        font-weight: 700;
-    }
-
-    @media (max-width: 768px) {
-        .hero {
-            padding: 3rem 1.2rem 2rem;
+        
+        /* 4. Timeline Connector & Pulse Animation */
+        @keyframes pulse-dot {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(30, 110, 94, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(30, 110, 94, 0);
+            }
+        }
+        .timeline-connector {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: #E5E7EB; /* gray-200 */
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            width: 1.5rem; /* 24px */
+            height: 1.5rem;
+            background-color: #1E6E5E; /* Veolia-Green-Accent */
+            border-radius: 50%;
+            border: 4px solid #F4F8FD; /* Match light BG */
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        .is-visible .timeline-dot-animated {
+             animation: pulse-dot 2s infinite;
+        }
+        
+        /* 5. Scroll Down Chevron Animation */
+        @keyframes bounce-chevron {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        .scroll-chevron {
+            animation: bounce-chevron 2.5s infinite;
         }
 
-        .hero h1 {
-            font-size: 2rem;
+    </style>
+
+    <!-- 5. Tailwind Configuration for CVA-Veolia Brand Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cva-blue': '#0A2A4D',     // CVA Primary
+                        'veolia-green': '#1E6E5E', // New Accent Color
+                        'cva-light-bg': '#F4F8FD', // Light, crisp blue
+                        'text-dark': '#111827',    // gray-900
+                        'text-medium': '#374151',  // gray-700
+                        'text-light': '#F9FAFB',   // gray-50
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
         }
-
-        .hero .dates {
-            font-size: 1rem;
-        }
-
-        .container {
-            padding: 1.2rem;
-        }
-
-        .card {
-            padding: 1.4rem;
-        }
-
-        .day-header {
-            padding: 1.5rem;
-        }
-
-        .day-header h2 {
-            font-size: 1.6rem;
-        }
-
-        .nav-tab {
-            padding: 1rem 1.3rem;
-            font-size: 0.9rem;
-        }
-    }
-
-    .footer {
-        background: linear-gradient(135deg, var(--secondary) 0%, #1a252f 100%);
-        color: white;
-        text-align: center;
-        padding: 2.5rem 1rem;
-        margin-top: 4rem;
-        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .footer p {
-        opacity: 0.85;
-        margin: 0;
-        font-size: 0.95rem;
-    }
-
-    html {
-        scroll-behavior: smooth;
-    }
-</style>
-```
-
+    </script>
 </head>
-<body>
+<body class="bg-gray-50 text-text-medium">
 
-```
-<div class="hero">
-    <h1>🇯🇵 Notre Voyage au Japon</h1>
-    <p class="dates">23 - 31 Octobre 2025 • Tokyo & Kyoto</p>
-</div>
-
-<nav class="nav-tabs" id="navTabs">
-    <button class="nav-tab active" data-day="jour1">23 Oct</button>
-    <button class="nav-tab" data-day="jour2">24 Oct</button>
-    <button class="nav-tab" data-day="jour3">25 Oct</button>
-    <button class="nav-tab" data-day="jour4">26 Oct</button>
-    <button class="nav-tab" data-day="jour5">27 Oct</button>
-    <button class="nav-tab" data-day="jour6">28 Oct</button>
-    <button class="nav-tab" data-day="jour7">29 Oct</button>
-    <button class="nav-tab" data-day="jour8">30 Oct</button>
-    <button class="nav-tab" data-day="jour9">31 Oct</button>
-    <button class="nav-tab" data-day="langue">🗣️ Langue</button>
-    <button class="nav-tab" data-day="divers">💡 Divers</button>
-</nav>
-
-<div class="container">
-
-    <!-- JOUR 1 : 23 OCTOBRE - JEUDI -->
-    <div id="jour1" class="day-section active">
-        <div class="day-header">
-            <h2>✈️ Jeudi 23 Octobre</h2>
-            <p class="subtitle">Arrivée à Tokyo</p>
-        </div>
-
-        <div class="card">
-            <h3>🌙 Soirée repos</h3>
-            <p>Rien de prévu pour ce soir - arrivée tardive après le long vol. Check-in à l'hôtel et repos pour être en forme demain !</p>
-        </div>
-
-        <div class="hotel-info">
-            <h4>🏨 Hôtel : NOHGA Hotel Ueno</h4>
-            <p>Installation confortable dans cet hôtel design d'Ueno. Rechargez vos batteries pour les belles journées qui vous attendent !</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=NOHGA+Hotel+Ueno+Tokyo" target="_blank" class="location-link">
-                📍 Voir sur Google Maps
-            </a>
-        </div>
-    </div>
-
-    <!-- JOUR 2 : 24 OCTOBRE - VENDREDI (SOLO) -->
-    <div id="jour2" class="day-section">
-        <div class="day-header">
-            <h2>🎨 Vendredi 24 Octobre</h2>
-            <p class="subtitle">Journée solo - Tokyo lifestyle & chasse aux Invaders</p>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">08:45 - 12:30 • Matin</span>
-            <h3>📸 Daikanyama → Nakameguro → Ebisu</h3>
-            <p>Balade tranquille dans ces quartiers "lifestyle" réputés pour leurs cafés branchés, petites galeries d'art et ruelles élégantes. L'ambiance est décontractée et parfaite pour flâner, photographier et chasser les mosaïques Space Invader disséminées dans le coin. Utilisez l'app FlashInvaders pour repérer les zones "chaudes".</p>
-            <p><strong>Pause café recommandée :</strong> Hiki Café à Daikanyama, un lieu cosy avec une belle sélection de cafés de spécialité.</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Daikanyama+Tokyo" target="_blank" class="location-link">
-                📍 Daikanyama
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Nakameguro+Tokyo" target="_blank" class="location-link">
-                📍 Nakameguro
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Ebisu+Tokyo" target="_blank" class="location-link">
-                📍 Ebisu
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Hiki+Cafe+Daikanyama" target="_blank" class="location-link">
-                ☕ Hiki Café
-            </a>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">12:30 - 13:45 • Déjeuner</span>
-            <h3>🍖 Tonkatsu Ponta (Daikanyama)</h3>
-            <p>Excellent restaurant de tonkatsu, le porc pané japonais emblématique. Ici, la viande est juteuse et tendre, enrobée d'une panure dorée et croustillante à souhait. Servi avec du chou émincé frais, du riz parfumé et une sauce spéciale. Une référence absolue dans le quartier !</p>
-            <p><strong>Alternative :</strong> Udon ou ramen simple dans le quartier si vous préférez quelque chose de plus léger.</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Tonkatsu+Ponta+Daikanyama+Tokyo" target="_blank" class="location-link">
-                📍 Voir sur Google Maps
-            </a>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">14:15 - 17:00 • Après-midi</span>
-            <h3>🎭 Shimokitazawa → Kōenji</h3>
-            <p>Direction les quartiers alternatifs et bohèmes de Tokyo ! Shimokitazawa est célèbre pour ses friperies vintage, ses petits théâtres et son atmosphère artistique. Kōenji partage cette vibe underground avec ses boutiques de vinyles, affiches rétro et bars à l'ambiance décontractée. Parfait terrain de jeu pour la photo de rue et la chasse aux Space Invaders.</p>
-            <p><strong>Option bonus :</strong> Si vous avez encore de l'énergie en fin de journée, passez par Jimbōchō, le quartier des libraires anciens - très photogénique et idéal pour un curry japonais en début de soirée.</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Shimokitazawa+Tokyo" target="_blank" class="location-link">
-                📍 Shimokitazawa
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Koenji+Tokyo" target="_blank" class="location-link">
-                📍 Kōenji
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Jimbocho+Tokyo" target="_blank" class="location-link">
-                📍 Jimbōchō (optionnel)
-            </a>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">19:00+ • Dîner (optionnel)</span>
-            <h3>🍛 Curry ou Izakaya</h3>
-            <p><strong>Option 1 :</strong> Curry japonais traditionnel à Jimbōchō - réconfortant et savoureux, ce quartier regorge de bonnes adresses spécialisées.</p>
-            <p><strong>Option 2 :</strong> Izakaya simple près d'Ueno pour partager plusieurs petits plats dans une ambiance conviviale.</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Japanese+Curry+Jimbocho+Tokyo" target="_blank" class="location-link">
-                📍 Curry à Jimbōchō
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Izakaya+Ueno+Tokyo" target="_blank" class="location-link">
-                📍 Izakaya Ueno
-            </a>
-        </div>
-    </div>
-
-    <!-- JOUR 3 : 25 OCTOBRE - SAMEDI (À DEUX, IMMANQUABLES #1) -->
-    <div id="jour3" class="day-section">
-        <div class="day-header">
-            <h2>⛩️ Samedi 25 Octobre</h2>
-            <p class="subtitle">Tokyo à deux - Meiji-Jingū / Harajuku / Omotesandō / Shibuya</p>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">08:30 - 10:30 • Matin</span>
-            <h3>🌳 Meiji-Jingū & Yoyogi</h3>
-            <p>Commencez la journée par le majestueux sanctuaire Meiji-Jingū, niché dans une forêt urbaine de 70 hectares. Ce havre de paix spirituel au cœur de Tokyo offre une atmosphère sereine avec ses grands torii en bois, ses allées bordées d'arbres centenaires et ses jardins paisibles. Un contraste saisissant avec l'effervescence de la ville environnante.</p>
-            <p>Le parc Yoyogi juste à côté est parfait pour prolonger cette parenthèse nature avant de plonger dans l'agitation d'Harajuku.</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Meiji+Jingu+Shrine+Tokyo" target="_blank" class="location-link">
-                📍 Meiji-Jingū
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Yoyogi+Park+Tokyo" target="_blank" class="location-link">
-                📍 Parc Yoyogi
-            </a>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">10:45 - 12:45 • Fin de matinée</span>
-            <h3>🎌 Harajuku → Omotesandō / Cat Street</h3>
-            <p>Plongez dans l'univers coloré d'Harajuku ! Takeshita-dōri est l'épicentre de la mode kawaii et des tendances excentriques japonaises - boutiques loufoques, crêpes sucrées et foule jeune et branchée.</p>
-            <p>Traversez ensuite Cat Street, une rue piétonne plus calme et élégante avec ses boutiques de créateurs, puis rejoignez Omotesandō, les "Champs-Élysées de Tokyo". Admirez l'architecture contemporaine spectaculaire des flagship stores internationaux conçus par de grands architectes.</p>
-            <p><strong>Pause café :</strong> crisscross ou A to Z Café pour un moment de répit avec vue.</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Takeshita+Street+Harajuku+Tokyo" target="_blank" class="location-link">
-                📍 Takeshita-dōri
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Cat+Street+Harajuku" target="_blank" class="location-link">
-                📍 Cat Street
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Omotesando+Avenue+Tokyo" target="_blank" class="location-link">
-                📍 Omotesandō
-            </a>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">12:45 - 14:00 • Déjeuner</span>
-            <h3>🍽️ CICADA ou crisscross</h3>
-            <p><strong>CICADA :</strong> Restaurant méditerranéen élégant avec une belle terrasse. Cuisine raffinée et cadre apaisant - parfait pour une pause déjeuner de qualité sans fruits de mer.</p>
-            <p><strong>Crisscross :</strong> Alternative avec une ambiance cosy et une carte variée.</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Cicada+Restaurant+Omotesando+Tokyo" target="_blank" class="location-link">
-                📍 CICADA
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=crisscross+Omotesando" target="_blank" class="location-link">
-                📍 crisscross
-            </a>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">14:15 - 17:00 • Début d'après-midi</span>
-            <h3>🌆 Shibuya - Le carrefour mythique</h3>
-            <p>Direction le célèbre carrefour de Shibuya, sans doute l'intersection la plus emblématique du monde ! Observez le ballet hypnotique des milliers de piétons qui le traversent à chaque feu. Prenez la photo obligatoire avec la statue de Hachikō, le chien fidèle devenu symbole de loyauté.</p>
-            <p>Déambulez dans Center-gai et les petites rues adjacentes pour découvrir l'effervescence commerciale et culturelle du quartier.</p>
-            <p><strong>Pour la vue panoramique :</strong> MAG's Park (Magnet Rooftop) offre un angle iconique gratuit sur le carrefour, ou réservez Shibuya Sky pour une expérience à 360° spectaculaire sur tout Tokyo.</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Shibuya+Crossing+Tokyo" target="_blank" class="location-link">
-                📍 Shibuya Crossing
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Hachiko+Statue+Shibuya" target="_blank" class="location-link">
-                📍 Statue Hachikō
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Magnet+Rooftop+Shibuya" target="_blank" class="location-link">
-                📍 Magnet Rooftop
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Shibuya+Sky+Tokyo" target="_blank" class="location-link">
-                📍 Shibuya Sky
-            </a>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">19:00+ • Dîner (optionnel)</span>
-            <h3>🍲 Nabezo ou Shibuya Niku Yokocho</h3>
-            <p><strong>Nabezo :</strong> Restaurant spécialisé dans le shabu-shabu et sukiyaki. Le sukiyaki est une expérience culinaire typiquement japonaise : de fines tranches de bœuf de qualité mijotent dans un bouillon savoureux sucré-salé, puis sont trempées dans de l'œuf cru battu avant dégustation. Fondant et délicieux !</p>
-            <p><strong>Shibuya Niku Yokocho :</strong> Un food hall centré sur les viandes avec plusieurs petits stands spécialisés - ambiance animée et conviviale.</p>
-            <p><strong>⚠️ Réservation conseillée</strong> pour ces adresses populaires.</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Nabezo+Shibuya+Tokyo" target="_blank" class="location-link">
-                📍 Nabezo
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Shibuya+Niku+Yokocho+Tokyo" target="_blank" class="location-link">
-                📍 Niku Yokocho
-            </a>
-        </div>
-    </div>
-
-    <!-- JOUR 4 : 26 OCTOBRE - DIMANCHE (IMMANQUABLES #2 + KYOTO) -->
-    <div id="jour4" class="day-section">
-        <div class="day-header">
-            <h2>🏙️ Dimanche 26 Octobre</h2>
-            <p class="subtitle">Tokyo à deux - Shinjuku → Départ pour Kyoto</p>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">08:45 - 11:15 • Matin</span>
-            <h3>🌸 Shinjuku Gyoen & Observatoire</h3>
-            <p>Profitez du magnifique Shinjuku Gyoen, l'un des plus beaux parcs de Tokyo. Cet immense jardin de 58 hectares combine harmonieusement trois styles paysagers : japonais traditionnel, français formel et anglais romantique. Un véritable havre de paix au cœur du quartier le plus animé de Tokyo, particulièrement sublime en période de feuillages d'automne.</p>
-            <p><strong>Bonus vue panoramique :</strong> L'observatoire gratuit du Tokyo Metropolitan Government Building offre une vue spectaculaire à 360° sur toute la ville. Par temps clair, vous pourrez même apercevoir le Mont Fuji !</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Shinjuku+Gyoen+National+Garden+Tokyo" target="_blank" class="location-link">
-                📍 Shinjuku Gyoen
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Tokyo+Metropolitan+Government+Building+Observatory" target="_blank" class="location-link">
-                📍 Observatoire Gratuit
-            </a>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">11:30 - 13:00 • Déjeuner</span>
-            <h3>🍢 Omoide-Yokochō</h3>
-            <p>Immergez-vous dans l'atmosphère rétro et authentique d'Omoide-Yokochō, la célèbre "ruelle des souvenirs". Ces petites allées étroites bordées de minuscules bars et stands de yakitori (brochettes grillées) offrent une expérience typiquement tokyoïte. Ambiance nostalgique du vieux Tokyo, fumées des grillades, et convivialité garantie ! Un incontournable recommandé par tous les guides.</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Omoide+Yokocho+Shinjuku+Tokyo" target="_blank" class="location-link">
-                📍 Voir sur Google Maps
-            </a>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">13:15 - 15:30 • Début d'après-midi (optionnel)</span>
-            <h3>🛍️ Ginza ou Asakusa express</h3>
-            <p><strong>Option Ginza :</strong> Balade dans le quartier chic du luxe et du shopping - architecture élégante, grands magasins et vitrines prestigieuses.</p>
-            <p><strong>Option Asakusa express :</strong> Si vous tenez absolument à voir le temple Sensō-ji (le plus ancien de Tokyo) avec sa porte Kaminarimon et sa rue commerçante Nakamise-dōri, c'est possible en visite rapide. Notez que ce site est facultatif si vous visitez Kyoto ensuite.</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Ginza+Tokyo" target="_blank" class="location-link">
-                📍 Ginza
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Senso-ji+Temple+Asakusa" target="_blank" class="location-link">
-                📍 Sensō-ji (Asakusa)
-            </a>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">15:30 - 16:15 • Préparation départ</span>
-            <h3>🎒 Direction Tokyo Station</h3>
-            <p>Retour à l'hôtel pour récupérer les bagages. Transfert en métro/taxi vers Tokyo Station (gare de Tokyo).</p>
-        </div>
-
-        <div class="train-info">
-            <h4>🚄 Shinkansen Tokyo → Kyoto (dimanche 26/10)</h4>
-            <p>Trajet en Nozomi (le plus rapide) - environ 2h12 direct</p>
-            <div class="train-option">
-                <strong>Option 1 :</strong> 16:48 → 19:00 — Nozomi 51 (recommandé)
-            </div>
-            <div class="train-option">
-                <strong>Option 2 :</strong> 17:30 → 19:44 — Nozomi 55
-            </div>
-            <p style="margin-top: 1rem; color: #2E7D32;"><em>Départs très fréquents toute l'après-midi si besoin d'ajuster l'horaire.</em></p>
-            <div class="alert-box">
-                <strong>💡 À réserver via SmartEX</strong> (site/app officiel JR Central). Billets dématérialisés. Le Nozomi nécessite une réservation de siège obligatoire.
-            </div>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">19:00+ • Soirée</span>
-            <h3>🌙 Arrivée à Kyoto</h3>
-            <p>Arrivée à Kyoto Station en début de soirée. Taxi court jusqu'à votre hôtel. Dîner léger près de l'hôtel (ramen ou soba) pour vous installer tranquillement.</p>
-        </div>
-
-        <div class="hotel-info">
-            <h4>🏨 Hôtel : Tōu Nishinotoin Kyoto</h4>
-            <p>Check-in dans cet hôtel élégant au cœur de Kyoto. Vous y serez basés pour les prochains jours de découverte de l'ancienne capitale impériale.</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Tou+Nishinotoin+Kyoto" target="_blank" class="location-link">
-                📍 Voir sur Google Maps
-            </a>
-        </div>
-    </div>
-
-    <!-- JOUR 5 : 27 OCTOBRE - LUNDI (KYOTO EST + GION) -->
-    <div id="jour5" class="day-section">
-        <div class="day-header">
-            <h2>⛩️ Lundi 27 Octobre</h2>
-            <p class="subtitle">Kyoto Est & Gion</p>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">07:45 - 09:45 • Très tôt</span>
-            <h3>⛩️ Fushimi Inari Taisha</h3>
-            <p>Levez-vous tôt pour vivre la magie de Fushimi Inari avant l'affluence touristique ! Ce sanctuaire spectaculaire est célèbre pour ses milliers de torii (portails) vermillon qui forment des tunnels envoûtants serpentant sur les flancs de la montagne. L'atmosphère matinale, avec la lumière douce filtrant entre les torii, est absolument sublime et permet de magnifiques photos sans foule.</p>
-            <p>Le sentier principal monte progressivement - vous pouvez aller aussi loin que vous le souhaitez. Même une petite partie de l'ascension vaut le détour !</p>
-            <p><strong>Accès facile :</strong> Ligne JR Nara depuis Kyoto Station, descendre à la station Inari (2 stations, ~5 minutes).</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Fushimi+Inari+Taisha+Kyoto" target="_blank" class="location-link">
-                📍 Voir sur Google Maps
-            </a>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">10:15 - 12:30 • Fin de matinée</span>
-            <h3>🏯 Kiyomizu-dera & ruelles historiques</h3>
-            <p>Le temple Kiyomizu-dera est perché sur une colline avec sa célèbre terrasse en bois construite sans un seul clou, offrant une vue panoramique époustouflante sur Kyoto. Ce site classé au patrimoine mondial de l'UNESCO est l'un des temples les plus emblématiques du Japon.</p>
-            <p>Descendez ensuite par les charmantes ruelles pavées de Ninenzaka et Sannenzaka, bordées de maisons traditionnelles en bois, boutiques d'artisanat, salons de thé et restaurants. L'architecture préservée vous plonge dans l'atmosphère du vieux Kyoto.</p>
-            <p>Ne manquez pas la magnifique Yasaka Pagoda à cinq étages, l'une des structures les plus photographiées de Kyoto.</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Kiyomizu-dera+Temple+Kyoto" target="_blank" class="location-link">
-                📍 Kiyomizu-dera
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Ninenzaka+Sannenzaka+Kyoto" target="_blank" class="location-link">
-                📍 Ninenzaka/Sannenzaka
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Yasaka+Pagoda+Kyoto" target="_blank" class="location-link">
-                📍 Yasaka Pagoda
-            </a>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">12:30 - 13:45 • Déjeuner</span>
-            <h3>🍲 Otowa Saryō - Sukiyaki</h3>
-            <p>Restaurant raffiné situé à deux pas de Kiyomizu, réputé pour son sukiyaki de midi décrit comme "à tomber" par les connaisseurs. Savourez de fines tranches de bœuf de qualité premium cuites dans un bouillon délicatement sucré-salé, avec des légumes frais et des nouilles. Le tout à tremper dans un œuf cru pour une texture onctueuse. Une expérience gastronomique dans un cadre élégant avec vue.</p>
-            <p><strong>⚠️ Réservation fortement recommandée</strong></p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Otowa+Saryo+Kiyomizu+Kyoto" target="_blank" class="location-link">
-                📍 Voir sur Google Maps
-            </a>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">14:00 - 17:00 • Début d'après-midi</span>
-            <h3>🎋 Gion, Shirakawa & Maruyama Park</h3>
-            <p>Explorez le quartier historique de Gion, le célèbre quartier des geishas et maikos. Promenez-vous le long du pittoresque canal Shirakawa bordé de saules pleureurs et de maisons traditionnelles en bois - l'un des coins les plus photogéniques de Kyoto.</p>
-            <p>Traversez le paisible parc Maruyama, particulièrement agréable pour une pause nature. Si vous avez de l'énergie, visitez le temple zen Kennin-ji avec ses magnifiques peintures de dragons et son jardin sec.</p>
-            <p>Flânez dans les ruelles pavées de Gion en gardant l'œil ouvert - vous croiserez peut-être une geisha se rendant à un engagement !</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Gion+District+Kyoto" target="_blank" class="location-link">
-                📍 Gion
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Shirakawa+Canal+Gion+Kyoto" target="_blank" class="location-link">
-                📍 Shirakawa
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Maruyama+Park+Kyoto" target="_blank" class="location-link">
-                📍 Maruyama Park
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Kennin-ji+Temple+Kyoto" target="_blank" class="location-link">
-                📍 Kennin-ji
-            </a>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">19:00+ • Dîner (optionnel)</span>
-            <h3>🌙 Pontochō</h3>
-            <p>Dînez dans la célèbre ruelle de Pontochō, une allée étroite et atmosphérique parallèle à la rivière Kamo. Cette rue historique regorge de petits restaurants traditionnels, certains avec des terrasses surplombant la rivière. L'ambiance nocturne avec les lanternes de papier est absolument magique.</p>
-            <p>Demandez un "terrasse seki" (terrasse côté rivière) si disponible pour une expérience encore plus mémorable. Facile de trouver des options sans fruits de mer.</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Pontocho+Alley+Kyoto" target="_blank" class="location-link">
-                📍 Voir sur Google Maps
-            </a>
-        </div>
-    </div>
-
-    <!-- JOUR 6 : 28 OCTOBRE - MARDI (ARASHIYAMA) -->
-    <div id="jour6" class="day-section">
-        <div class="day-header">
-            <h2>🎋 Mardi 28 Octobre</h2>
-            <p class="subtitle">Arashiyama - Journée nature</p>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">07:30 - 09:00 • Très tôt</span>
-            <h3>🎋 Bamboo Grove & Tenryū-ji</h3>
-            <p>La mythique forêt de bambous d'Arashiyama ! Arriver tôt change complètement l'expérience : vous aurez les majestueuses allées de bambous presque pour vous seuls, et la lumière matinale filtrant entre les tiges vertes crée une atmosphère féerique. Les bambous géants s'élèvent vers le ciel en bruissant doucement - un moment zen inoubliable.</p>
-            <p>Visitez ensuite le temple Tenryū-ji et son magnifique jardin zen classé au patrimoine mondial de l'UNESCO. Le jardin paysager avec son étang et ses collines empruntées est l'un des plus beaux exemples de l'art des jardins japonais.</p>
-            <p>Traversez le pont Togetsu-kyō pour admirer la vue panoramique sur la rivière Katsura et les montagnes environnantes.</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Arashiyama+Bamboo+Grove+Kyoto" target="_blank" class="location-link">
-                📍 Bamboo Grove
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Tenryuji+Temple+Kyoto" target="_blank" class="location-link">
-                📍 Tenryū-ji
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Togetsukyo+Bridge+Arashiyama" target="_blank" class="location-link">
-                📍 Pont Togetsu
-            </a>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">12:00 - 13:15 • Déjeuner</span>
-            <h3>🐟 Hirokawa - Unagi ou Soba/Tenpura</h3>
-            <p><strong>Option Hirokawa (unagi) :</strong> Si vous souhaitez goûter l'anguille grillée (unagi), spécialité réputée de la cuisine japonaise, c'est l'occasion parfaite ! L'anguille est grillée au charbon et glacée avec une sauce sucrée-salée (tare), servie sur un lit de riz. Texture fondante et saveur umami prononcée - une expérience culinaire unique. <strong>⚠️ Réservation recommandée.</strong></p>
-            <p><strong>Alternatives :</strong> Soba (nouilles de sarrasin) ou tenpura (beignets légers de légumes et crevettes) dans l'une des petites maisons traditionnelles du quartier d'Arashiyama.</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Hirokawa+Unagi+Arashiyama+Kyoto" target="_blank" class="location-link">
-                📍 Hirokawa (unagi)
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Soba+Restaurant+Arashiyama" target="_blank" class="location-link">
-                📍 Soba/Tenpura
-            </a>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">14:00 - 17:00 • Après-midi</span>
-            <h3>🌳 Okōchi-Sansō & Rivière Katsura</h3>
-            <p>Prolongez la découverte d'Arashiyama avec la villa Okōchi-Sansō, un jardin japonais exquis avec des vues spectaculaires sur les montagnes. Ce lieu paisible et moins touristique offre une expérience plus intime de la beauté d'Arashiyama.</p>
-            <p>Promenade relaxante le long de la rivière Katsura avec ses beaux points de vue sur les collines boisées.</p>
-            <p><strong>Option train panoramique :</strong> Le Sagano Scenic Train (train touristique pittoresque) traverse les gorges si vous souhaitez prolonger l'expérience (à réserver à l'avance, particulièrement recommandé en automne pour les feuillages).</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Okochi+Sanso+Villa+Arashiyama" target="_blank" class="location-link">
-                📍 Okōchi-Sansō
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Katsura+River+Arashiyama" target="_blank" class="location-link">
-                📍 Rivière Katsura
-            </a>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">19:00+ • Dîner (optionnel)</span>
-            <h3>🍜 Omen Kōdaiji ou Yakitori</h3>
-            <p><strong>Omen Kōdaiji :</strong> Restaurant réputé pour ses udon (nouilles épaisses) faits maison dans un bouillon savoureux. Atmosphère traditionnelle élégante.</p>
-            <p><strong>Alternative :</strong> Yakitori simple près de Shijō pour des brochettes grillées dans une ambiance conviviale de quartier.</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Omen+Kodaiji+Kyoto" target="_blank" class="location-link">
-                📍 Omen Kōdaiji
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Yakitori+Shijo+Kyoto" target="_blank" class="location-link">
-                📍 Yakitori Shijō
-            </a>
-        </div>
-    </div>
-
-    <!-- JOUR 7 : 29 OCTOBRE - MERCREDI (KYOTO NORD/OUEST) -->
-    <div id="jour7" class="day-section">
-        <div class="day-header">
-            <h2>✨ Mercredi 29 Octobre</h2>
-            <p class="subtitle">Kyoto Nord/Ouest → Centre</p>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">08:45 - 11:00 • Matin</span>
-            <h3>🏯 Kinkaku-ji & Ryōan-ji</h3>
-            <p>Le célèbre Pavillon d'Or (Kinkaku-ji) est absolument époustouflant ! Ce temple zen recouvert de feuilles d'or étincelantes se reflète majestueusement dans l'étang miroir qui l'entoure. L'un des sites les plus iconiques et photographiés du Japon - la lumière du matin le fait littéralement briller. Un spectacle inoubliable !</p>
-            <p><strong>Option bonus :</strong> Si vous avez du temps et de l'énergie, visitez le temple Ryōan-ji à proximité, célèbre pour son jardin sec zen minimaliste - 15 rochers disposés sur un lit de gravier ratissé, énigmatique et apaisant.</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Kinkakuji+Temple+Golden+Pavilion+Kyoto" target="_blank" class="location-link">
-                📍 Kinkaku-ji
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Ryoanji+Temple+Kyoto" target="_blank" class="location-link">
-                📍 Ryōan-ji (optionnel)
-            </a>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">12:00 - 13:15 • Déjeuner</span>
-            <h3>🍖 Katsukura ou Honke Owariya</h3>
-            <p><strong>Katsukura :</strong> Chaîne réputée de tonkatsu de haute qualité. Le porc pané est croustillant à l'extérieur, juteux à l'intérieur - un régal ! Excellent rapport qualité/prix pour un déjeuner satisfaisant.</p>
-            <p><strong>Honke Owariya :</strong> Institution historique de soba (nouilles de sarrasin) établie depuis plus de 500 ans ! Atmosphère traditionnelle authentique dans une belle maison ancienne. Les nouilles sont faites à la main selon des méthodes ancestrales.</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Katsukura+Tonkatsu+Kyoto" target="_blank" class="location-link">
-                📍 Katsukura
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Honke+Owariya+Soba+Kyoto" target="_blank" class="location-link">
-                📍 Honke Owariya
-            </a>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">13:45 - 17:00 • Après-midi</span>
-            <h3>⛩️ Heian-jingū, Nanzen-ji & Keage Incline</h3>
-            <p>Visitez le spectaculaire sanctuaire Heian-jingū avec son immense torii vermillon à l'entrée, l'un des plus grands du Japon. Les jardins intérieurs sont magnifiques, particulièrement au printemps et en automne.</p>
-            <p>Direction ensuite le complexe du temple Nanzen-ji, impressionnant ensemble de bâtiments zen avec son aqueduc de briques rouges - vestige historique photogénique de l'ère Meiji qui contraste avec l'architecture traditionnelle.</p>
-            <p>Remontez le Keage Incline, une ancienne voie ferrée désaffectée bordée d'arbres, parfaite pour une balade paisible avec de belles perspectives photographiques.</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Heian+Shrine+Kyoto" target="_blank" class="location-link">
-                📍 Heian-jingū
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Nanzenji+Temple+Kyoto" target="_blank" class="location-link">
-                📍 Nanzen-ji
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Nanzen-ji+Aqueduct+Kyoto" target="_blank" class="location-link">
-                📍 Aqueduc
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Keage+Incline+Kyoto" target="_blank" class="location-link">
-                📍 Keage Incline
-            </a>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">19:00+ • Dîner (optionnel)</span>
-            <h3>🥩 Mishima-tei - Sukiyaki historique</h3>
-            <p>Si vous souhaitez l'expérience sukiyaki "grande tradition" à Kyoto, Mishima-tei est une institution historique établie depuis 1873. Restaurant familial dans une belle maison traditionnelle, servant un sukiyaki d'exception avec du bœuf de Kyoto de première qualité. Service impeccable et atmosphère authentique d'époque.</p>
-            <p>C'est l'occasion de vivre une expérience gastronomique mémorable dans un cadre raffiné !</p>
-            <p><strong>⚠️ Réservation indispensable</strong> (restaurant très prisé)</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Mishimatei+Sukiyaki+Kyoto" target="_blank" class="location-link">
-                📍 Voir sur Google Maps
-            </a>
-        </div>
-    </div>
-
-    <!-- JOUR 8 : 30 OCTOBRE - JEUDI (KYOTO MATIN + TOKYO) -->
-    <div id="jour8" class="day-section">
-        <div class="day-header">
-            <h2>🚄 Jeudi 30 Octobre</h2>
-            <p class="subtitle">Kyoto (matin) → Tokyo/Haneda (après-midi)</p>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">08:30 - 11:30 • Matin</span>
-            <h3>🌸 Ginkaku-ji & Chemin des Philosophes</h3>
-            <p>Profitez de votre dernière matinée à Kyoto avec deux sites magnifiques du Nord-Est :</p>
-            <p><strong>Ginkaku-ji (Pavillon d'Argent) :</strong> Temple zen élégant et raffiné, célèbre pour son jardin de sable zen parfaitement ratissé et ses jardins de mousse luxuriants. Contrairement à son nom, il n'est pas recouvert d'argent mais sa beauté sobre est tout aussi captivante que le Pavillon d'Or.</p>
-            <p><strong>Chemin des Philosophes :</strong> Promenade romantique de 2 km le long d'un canal bordé d'arbres. Cette balade paisible et méditative doit son nom au philosophe Nishida Kitarō qui s'y promenait quotidiennement. Particulièrement sublime lors de la floraison des cerisiers ou des érables d'automne.</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Ginkakuji+Temple+Silver+Pavilion+Kyoto" target="_blank" class="location-link">
-                📍 Ginkaku-ji
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Philosophers+Path+Kyoto" target="_blank" class="location-link">
-                📍 Chemin des Philosophes
-            </a>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">11:45 - 12:45 • Déjeuner</span>
-            <h3>🍜 Déjeuner léger</h3>
-            <p>Soba ou udon simple près de la gare de Kyoto avant le départ. Profitez de ce dernier moment culinaire kyotoïte !</p>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">13:00 - 14:30 • Check-out</span>
-            <h3>🎒 Préparation départ</h3>
-            <p>Retour à l'hôtel, check-out et transfert vers Kyoto Station.</p>
-        </div>
-
-        <div class="train-info">
-            <h4>🚄 Shinkansen Kyoto → Shinagawa/Tokyo (jeudi 30/10)</h4>
-            <p>Retour à Tokyo en Nozomi - environ 2h11-2h15</p>
-            <div class="train-option">
-                <strong>Option 1 :</strong> 15:54 → 17:58 Shinagawa (18:06 Tokyo) — Nozomi 242
-            </div>
-            <div class="train-option">
-                <strong>Option 2 :</strong> 16:30 → 18:38 Shinagawa (18:45 Tokyo) — Nozomi 246 ⭐
-            </div>
-            <div class="train-option">
-                <strong>Option 3 :</strong> 17:16 → 19:20 Shinagawa (19:27 Tokyo) — Nozomi 248
-            </div>
-            <div class="alert-box">
-                <strong>💡 Pourquoi Shinagawa ?</strong><br>
-                Shinagawa est une porte idéale vers l'aéroport de Haneda ! De Shinagawa → Haneda Terminal 3 : seulement 13-20 minutes en Keikyū (départs très fréquents).
-                <br><br>
-                <strong>Train recommandé :</strong> Le Nozomi 246 (16:30) vous laisse un timing confortable pour rejoindre l'hôtel à Haneda et profiter du spa avant la nuit.
-            </div>
-        </div>
-
-        <div class="card">
-            <span class="time-badge">19:00+ • Soirée</span>
-            <h3>🛁 Détente au spa</h3>
-            <p>Arrivée et installation à l'hôtel directement relié au terminal. Profitez du spa "Izumi Tenku no Yu" sur place, ouvert tard le soir, avec une vue relaxante sur les pistes d'atterrissage et, par temps clair, sur le Mont Fuji au loin. Le moment parfait pour décompresser après ces journées bien remplies !</p>
-        </div>
-
-        <div class="hotel-info">
-            <h4>🏨 Hôtel : Villa Fontaine Grand Haneda Airport</h4>
-            <p>Hôtel directement relié au Terminal 3 de Haneda - ultra pratique pour le vol du lendemain matin ! Accès au spa "Izumi Tenku no Yu" avec vue sur les pistes.</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Villa+Fontaine+Grand+Haneda+Airport" target="_blank" class="location-link">
-                📍 Voir sur Google Maps
-            </a>
-        </div>
-    </div>
-
-    <!-- JOUR 9 : 31 OCTOBRE - VENDREDI (DÉPART) -->
-    <div id="jour9" class="day-section">
-        <div class="day-header">
-            <h2>✈️ Vendredi 31 Octobre</h2>
-            <p class="subtitle">Vol retour</p>
-        </div>
-
-        <div class="card">
-            <h3>🛫 Départ matinal</h3>
-            <p>Transfert ultra facile à pied/couvert vers le Terminal 3 depuis l'hôtel - vous y êtes en quelques minutes !</p>
-            <p><strong>Sayōnara Japan ! 🇯🇵</strong></p>
-            <p>Fin de cette magnifique aventure japonaise. Vous repartez avec des souvenirs inoubliables de Tokyo et Kyoto, de temples somptueux, de jardins zen, de ruelles historiques et de délices culinaires. À bientôt au Japon !</p>
-        </div>
-    </div>
-
-    <!-- SECTION LANGUE -->
-    <div id="langue" class="day-section">
-        <div class="day-header">
-            <h2>🗣️ Guide Langue</h2>
-            <p class="subtitle">Vocabulaire essentiel & prononciation pour francophones</p>
-        </div>
-
-        <div class="card">
-            <h3>👋 Salutations & Politesse</h3>
-            <div class="vocab-grid">
-                <div class="vocab-card">
-                    <div class="japanese">こんにちは</div>
-                    <div class="pronunciation">Konnichiwa (ko-n-ni-tchi-oua)</div>
-                    <div class="french">Bonjour (journée)</div>
+    <!-- ==== STICKY HEADER ==== -->
+    <nav class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-200/75">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <!-- Logos: Veolia + CVA -->
+                    <span class="text-2xl font-bold text-veolia-green">VEOLIA</span>
+                    <span class="mx-2 text-gray-300">|</span>
+                    <span class="text-2xl font-bold text-cva-blue">CVA</span>
                 </div>
-                <div class="vocab-card">
-                    <div class="japanese">おはようございます</div>
-                    <div class="pronunciation">Ohayō gozaimasu (o-ha-yo go-za-ï-masse)</div>
-                    <div class="french">Bonjour (matin)</div>
-                </div>
-                <div class="vocab-card">
-                    <div class="japanese">こんばんは</div>
-                    <div class="pronunciation">Konbanwa (ko-n-ba-n-oua)</div>
-                    <div class="french">Bonsoir</div>
-                </div>
-                <div class="vocab-card">
-                    <div class="japanese">ありがとうございます</div>
-                    <div class="pronunciation">Arigatō gozaimasu (a-ri-ga-tô go-za-ï-masse)</div>
-                    <div class="french">Merci beaucoup</div>
-                </div>
-                <div class="vocab-card">
-                    <div class="japanese">すみません</div>
-                    <div class="pronunciation">Sumimasen (sou-mi-ma-sè-n')</div>
-                    <div class="french">Excusez-moi / Pardon / S'il vous plaît</div>
-                </div>
-                <div class="vocab-card">
-                    <div class="japanese">さようなら</div>
-                    <div class="pronunciation">Sayōnara (sa-yo-na-ra)</div>
-                    <div class="french">Au revoir</div>
+                <div class="flex items-center">
+                    <a href="#ask" class="bg-veolia-green text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-opacity-90 transition-colors duration-300 shadow-md hover:shadow-lg">
+                        View Next Steps
+                    </a>
                 </div>
             </div>
         </div>
+    </nav>
 
-        <div class="card">
-            <h3>🍽️ Au Restaurant</h3>
-            <div class="vocab-grid">
-                <div class="vocab-card">
-                    <div class="japanese">いただきます</div>
-                    <div class="pronunciation">Itadakimasu (i-ta-da-ki-masse)</div>
-                    <div class="french">Bon appétit (avant de manger)</div>
+    <!-- ==== SECTION 1: HERO (Slide 1) - Polished ==== -->
+    <section class="bg-cva-blue text-white relative overflow-hidden min-h-screen flex flex-col justify-center">
+        <!-- Subtle Grid Pattern -->
+        <div class="absolute inset-0 bg-gradient-to-br from-cva-blue to-black opacity-90"></div>
+        <div class="absolute inset-0" style="background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M 10 10 L 90 10 L 90 90 L 10 90" fill="none" stroke="%23FFFFFF" stroke-width="0.1" opacity="0.3" /></svg>'); background-size: 50px 50px; opacity: 0.2;"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-24 md:py-36 z-10">
+            <div class="text-center">
+                <p class="animate-on-scroll fade-in text-lg font-semibold text-veolia-green uppercase tracking-wider">Veolia Energy x CVA</p>
+                <h1 class="animate-on-scroll fade-in" style="transition-delay: 150ms; font-size: 4rem; line-height: 1.15; font-weight: 800; margin-top: 1rem; letter-spacing: -0.03em;">
+                    Designing an "AI for Energy" programme<br>at the core of Veolia’s model
+                </h1>
+                <p class="animate-on-scroll fade-in text-2xl text-gray-300 mt-6 max-w-3xl mx-auto" style="transition-delay: 300ms;">
+                    Accelerating decarbonisation and performance of networks, local energy loops and energy services
+                </p>
+                
+                <!-- Logos -->
+                <div class="animate-on-scroll fade-in mt-12 flex justify-center items-center space-x-6" style="transition-delay: 450ms;">
+                    <span class="text-3xl font-bold text-veolia-green">VEOLIA</span>
+                    <span class="text-3xl font-bold text-gray-500">x</span>
+                    <span class="text-3xl font-bold text-white">CVA</span>
                 </div>
-                <div class="vocab-card">
-                    <div class="japanese">ごちそうさまでした</div>
-                    <div class="pronunciation">Gochisōsama deshita (go-tchi-sô-sa-ma dè-chi-ta)</div>
-                    <div class="french">C'était délicieux (après le repas)</div>
-                </div>
-                <div class="vocab-card">
-                    <div class="japanese">おいしい</div>
-                    <div class="pronunciation">Oishii (o-ï-chi)</div>
-                    <div class="french">Délicieux</div>
-                </div>
-                <div class="vocab-card">
-                    <div class="japanese">お会計お願いします</div>
-                    <div class="pronunciation">Okaikei onegaishimasu (o-kaï-kéï o-né-gaï-chi-masse)</div>
-                    <div class="french">L'addition s'il vous plaît</div>
-                </div>
-                <div class="vocab-card">
-                    <div class="japanese">これをください</div>
-                    <div class="pronunciation">Kore o kudasai (ko-ré o kou-da-saï)</div>
-                    <div class="french">Je voudrais ceci (en pointant)</div>
-                </div>
-                <div class="vocab-card">
-                    <div class="japanese">魚なし</div>
-                    <div class="pronunciation">Sakana nashi (sa-ka-na na-chi)</div>
-                    <div class="french">Sans poisson</div>
+            </div>
+            
+            <!-- Footer Info -->
+            <div class="animate-on-scroll fade-in absolute bottom-12 left-0 right-0" style="transition-delay: 1000ms;">
+                <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center text-gray-400">
+                    <p class="text-sm">Meeting: [Date] // [Participants]</p>
+                    <p class="text-sm">CONFIDENTIAL</p>
                 </div>
             </div>
         </div>
+        
+        <!-- Animated Scroll Down Chevron -->
+        <div class="animate-on-scroll fade-in absolute bottom-28 left-1/2 -translate-x-1/2 z-10" style="transition-delay: 1000ms;">
+            <div class="scroll-chevron text-gray-400">
+                <i class="fa-solid fa-chevron-down text-2xl"></i>
+            </div>
+        </div>
+    </section>
 
-        <div class="card">
-            <h3>🚇 Transports</h3>
-            <div class="vocab-grid">
-                <div class="vocab-card">
-                    <div class="japanese">駅</div>
-                    <div class="pronunciation">Eki (é-ki)</div>
-                    <div class="french">Gare</div>
+    <!-- ==== SECTION 2: WHY TALK NOW (Slide 2) ==== -->
+    <section class="py-20 md:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="animate-on-scroll slide-up text-4xl font-extrabold text-cva-blue mb-4">Why talk about AI with Veolia Energy now?</h2>
+                <p class="animate-on-scroll slide-up text-xl text-text-medium" style="transition-delay: 150ms;">AI is a lever to execute Veolia Energy’s decarbonisation and growth agenda faster, not a side topic.</p>
+            </div>
+            
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Card 1: Context -->
+                <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5" style="transition-delay: 300ms;">
+                    <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center mb-5">
+                        <i class="fa-solid fa-water text-2xl text-veolia-green"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-cva-blue mb-3">Context: Energy is a Strategic Pillar</h3>
+                    <ul class="cva-list">
+                        <li>Veolia Energy represents a material share of group revenues and investment. It is one of the three main business pillars alongside Water and Waste.</li>
+                        <li>The group’s strategic plan puts local, low-carbon energy at the heart of its “ecological transformation” narrative.</li>
+                    </ul>
                 </div>
-                <div class="vocab-card">
-                    <div class="japanese">新幹線</div>
-                    <div class="pronunciation">Shinkansen (chin-ka-n-sè-n')</div>
-                    <div class="french">Train à grande vitesse</div>
+                <!-- Card 2: Challenges -->
+                <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5" style="transition-delay: 450ms;">
+                    <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center mb-5">
+                        <i class="fa-solid fa-bullseye text-2xl text-veolia-green"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-cva-blue mb-3">Concentrated, High-Impact Challenges</h3>
+                    <ul class="cva-list">
+                        <li>Decarbonise large district heating portfolios in CEE and Western Europe.</li>
+                        <li>Systematically capture and valorise waste heat from industries, data centres and water treatment assets.</li>
+                        <li>Turn Local Loops of Energy from concepts into scalable business models.</li>
+                    </ul>
                 </div>
-                <div class="vocab-card">
-                    <div class="japanese">切符</div>
-                    <div class="pronunciation">Kippu (ki-ppou)</div>
-                    <div class="french">Billet</div>
+                <!-- Card 3: Assets -->
+                <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5" style="transition-delay: 600ms;">
+                    <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center mb-5">
+                        <i class="fa-solid fa-cubes text-2xl text-veolia-green"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-cva-blue mb-3">Assets Are There, Not Orchestrated</h3>
+                    <ul class="cva-list">
+                        <li>Digital twins, high telemetry penetration, Hubgrade, and Flexcity already aggregate large data volumes.</li>
+                        <li>First AI use cases exist but are not yet structured as a unified “AI for Energy” roadmap aligned with P&L and CO₂ targets.</li>
+                    </ul>
                 </div>
-                <div class="vocab-card">
-                    <div class="japanese">出口</div>
-                    <div class="pronunciation">Deguchi (dé-gou-tchi)</div>
-                    <div class="french">Sortie</div>
-                </div>
-                <div class="vocab-card">
-                    <div class="japanese">タクシー</div>
-                    <div class="pronunciation">Takushī (ta-kou-chi)</div>
-                    <div class="french">Taxi</div>
+                <!-- Card 4: Objective -->
+                <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5" style="transition-delay: 750ms;">
+                    <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center mb-5">
+                        <i class="fa-solid fa-comments text-2xl text-veolia-green"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-cva-blue mb-3">Objective of This Discussion</h3>
+                    <ul class="cva-list">
+                        <li>Identify the *few* AI use cases truly core to Veolia Energy’s business model.</li>
+                        <li>Structure them into a coherent, value-driven programme that can be governed at Veolia Energy ExCom level.</li>
+                    </ul>
                 </div>
             </div>
         </div>
-
-        <div class="card">
-            <h3>🛍️ Shopping & Pratique</h3>
-            <div class="vocab-grid">
-                <div class="vocab-card">
-                    <div class="japanese">いくらですか</div>
-                    <div class="pronunciation">Ikura desu ka? (i-kou-ra dèss-ka)</div>
-                    <div class="french">Combien ça coûte ?</div>
+    </section>
+    
+    <!-- ==== SECTION 3: NUANCED VIEW (Slide 3) - REDESIGNED ==== -->
+    <section class="py-20 md:py-28 bg-cva-light-bg">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="animate-on-scroll slide-up text-4xl font-extrabold text-cva-blue mb-4">Our Nuanced View of Veolia Energy Today</h2>
+                <p class="animate-on-scroll slide-up text-xl text-text-medium" style="transition-delay: 150ms;">Veolia Energy is at the same time an infrastructure operator, an energy services company, and a flexibility aggregator.</p>
+            </div>
+            
+            <div class="mt-20 max-w-5xl mx-auto space-y-16">
+                <!-- Point 1 -->
+                <div class="animate-on-scroll slide-up flex flex-col md:flex-row items-center gap-8" style="transition-delay: 300ms;">
+                    <div class="w-20 h-20 bg-white rounded-full flex-shrink-0 flex items-center justify-center shadow-xl border border-gray-100">
+                        <i class="fa-solid fa-network-wired text-3xl text-veolia-green"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-cva-blue mb-2">A significant local energy infrastructure portfolio</h3>
+                        <p class="text-lg">Over 500 district heating networks (strong in CEE/France), owner of WtE/biomass/geothermal assets, and a concession-based model with long-term capex responsibility.</p>
+                    </div>
                 </div>
-                <div class="vocab-card">
-                    <div class="japanese">トイレ</div>
-                    <div class="pronunciation">Toire (to-ï-ré)</div>
-                    <div class="french">Toilettes</div>
+                <!-- Point 2 -->
+                <div class="animate-on-scroll slide-up flex flex-col md:flex-row-reverse items-center gap-8" style="transition-delay: 300ms;">
+                    <div class="w-20 h-20 bg-white rounded-full flex-shrink-0 flex items-center justify-center shadow-xl border border-gray-100">
+                        <i class="fa-solid fa-building-user text-3xl text-veolia-green"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-cva-blue mb-2">A broad energy services footprint</h3>
+                        <p class="text-lg">Energy performance contracts (EPCs) for buildings and industry (via VIGS), remote supervision via Hubgrade, and end-to-end management of industrial utility islands.</p>
+                    </div>
                 </div>
-                <div class="vocab-card">
-                    <div class="japanese">わかりません</div>
-                    <div class="pronunciation">Wakarimasen (oua-ka-ri-ma-sè-n')</div>
-                    <div class="french">Je ne comprends pas</div>
+                <!-- Point 3 & 4 -->
+                <div class="animate-on-scroll slide-up flex flex-col md:flex-row items-center gap-8" style="transition-delay: 300ms;">
+                    <div class="w-20 h-20 bg-white rounded-full flex-shrink-0 flex items-center justify-center shadow-xl border border-gray-100">
+                        <i class="fa-solid fa-server text-3xl text-veolia-green"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-cva-blue mb-2">Concrete experience with waste heat & Flexcity</h3>
+                        <p class="text-lg">Reference projects recovering heat from data centres and industry. Flexcity aggregates thousands of flexible loads, providing a unique foothold in the flexibility value chain.</p>
+                    </div>
                 </div>
-                <div class="vocab-card">
-                    <div class="japanese">英語</div>
-                    <div class="pronunciation">Eigo (éï-go)</div>
-                    <div class="french">Anglais</div>
-                </div>
-                <div class="vocab-card">
-                    <div class="japanese">写真</div>
-                    <div class="pronunciation">Shashin (cha-chin')</div>
-                    <div class="french">Photo</div>
-                </div>
-                <div class="vocab-card">
-                    <div class="japanese">はい / いいえ</div>
-                    <div class="pronunciation">Hai / Iie (haï / i-yé)</div>
-                    <div class="french">Oui / Non</div>
+                <!-- Point 5 -->
+                <div class="animate-on-scroll slide-up flex flex-col md:flex-row-reverse items-center gap-8" style="transition-delay: 300ms;">
+                    <div class="w-20 h-20 bg-white rounded-full flex-shrink-0 flex items-center justify-center shadow-xl border border-gray-100">
+                        <i class="fa-solid fa-recycle text-3xl text-veolia-green"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-cva-blue mb-2">Strong internal synergies with Water and Waste</h3>
+                        <p class="text-lg">Heat networks fed by WtE plants and wastewater heat. This multi-business integration is a key differentiator against pure-play energy services competitors.</p>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="card">
-            <h3>🆘 Urgences</h3>
-            <div class="vocab-grid">
-                <div class="vocab-card">
-                    <div class="japanese">助けて</div>
-                    <div class="pronunciation">Tasukete (ta-sou-ké-té)</div>
-                    <div class="french">À l'aide !</div>
+    <!-- ==== SECTION 4: STRATEGIC CHALLENGES (Slide 4) - RIGOROUS ==== -->
+    <section class="py-20 md:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="animate-on-scroll slide-up text-4xl font-extrabold text-cva-blue mb-4">Veolia Energy’s Specific Strategic Challenges (3-5 Years)</h2>
+                <p class="animate-on-scroll slide-up text-xl text-text-medium" style="transition-delay: 150ms;">Decarbonise fast, densify networks, build scalable local loops, and defend the delegated model.</p>
+            </div>
+            
+            <div class="mt-16 max-w-4xl mx-auto">
+                <!-- Using the "Decision List" style for premium, numbered content -->
+                <ol class="cva-decision-list">
+                    <li class="animate-on-scroll slide-up" style="transition-delay: 300ms;">
+                        Decarbonisation of large heat portfolios under regulatory and societal pressure (exit coal/gas) while keeping tariffs competitive.
+                    </li>
+                    <li class="animate-on-scroll slide-up" style="transition-delay: 450ms;">
+                        Systematic integration of waste heat from data centres, incinerators, and wastewater, moving from flagships to a repeatable deal flow.
+                    </li>
+                    <li class="animate-on-scroll slide-up" style="transition-delay: 600ms;">
+                        From one-off flagship projects to scalable "Local Loops of Energy" with standardised offers and operating models.
+                    </li>
+                    <li class="animate-on-scroll slide-up" style="transition-delay: 750ms;">
+                        Intensified competition (Engie, Dalkia) and political shifts (remunicipalisation risk), requiring differentiation beyond price.
+                    </li>
+                    <li class="animate-on-scroll slide-up" style="transition-delay: 900ms;">
+                        Productivity, skills, and digitalisation to scale best practices, reduce dependency on individual experts, and strengthen cybersecurity.
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==== SECTION 5: WHERE AI CAN MOVE THE NEEDLE (Slide 5) - CONTENT ADDED ==== -->
+    <section class="py-20 md:py-28 bg-cva-light-bg">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="animate-on-scroll slide-up text-4xl font-extrabold text-cva-blue mb-4">Where AI Can Truly Move the Needle</h2>
+                <p class="animate-on-scroll slide-up text-xl text-text-medium" style="transition-delay: 150ms;">Three AI use cases anchored in Veolia’s core energy processes, not in generic tools.</p>
+            </div>
+            
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Module 1 -->
+                <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 300ms;">
+                    <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center mb-5">
+                        <i class="fa-solid fa-network-wired text-2xl text-veolia-green"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-cva-blue mb-3">AI-optimised 4G district heating & cooling</h3>
+                    <p class="text-text-medium mb-4">Targets daily network operation, dispatch, and medium-term 4G conversion planning.</p>
+                    <p class="text-sm italic text-text-medium border-t pt-4 border-gray-200"><span class="font-semibold not-italic text-text-dark">Veolia Context:</span> Highly instrumented CEE networks with digital twins; growing portfolio of complex 4G/5G systems (e.g., Saclay).</p>
                 </div>
-                <div class="vocab-card">
-                    <div class="japanese">病院</div>
-                    <div class="pronunciation">Byōin (byo-ï-n')</div>
-                    <div class="french">Hôpital</div>
+                <!-- Module 2 -->
+                <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 450ms;">
+                     <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center mb-5">
+                        <i class="fa-solid fa-recycle text-2xl text-veolia-green"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-cva-blue mb-3">AI orchestrator for Local Loops of Energy</h3>
+                    <p class="text-text-medium mb-4">Targets the design, operation, and governance of local multi-energy systems (heat, buildings, DCs, DER, storage).</p>
+                    <p class="text-sm italic text-text-medium border-t pt-4 border-gray-200"><span class="font-semibold not-italic text-text-dark">Veolia Context:</span> Existing "Local Loops" vision and unique ability to combine energy, water, waste, and flexibility (Flexcity) at a district level.</p>
                 </div>
-                <div class="vocab-card">
-                    <div class="japanese">警察</div>
-                    <div class="pronunciation">Keisatsu (kéï-sa-tsou)</div>
-                    <div class="french">Police</div>
+                <!-- Module 3 -->
+                <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 600ms;">
+                     <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center mb-5">
+                        <i class="fa-solid fa-tachometer-alt text-2xl text-veolia-green"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-cva-blue mb-3">AI-enhanced Hubgrade & multi-site performance</h3>
+                    <p class="text-text-medium mb-4">Targets the monitoring and optimisation of thousands of sites under performance contracts.</p>
+                    <p class="text-sm italic text-text-medium border-t pt-4 border-gray-200"><span class="font-semibold not-italic text-text-dark">Veolia Context:</span> Hubgrade centres already aggregate data, but with heterogeneous practices and limited cross-learning at scale.</p>
+                </div>
+            </div>
+            
+            <!-- Rationale Line -->
+            <div class="animate-on-scroll fade-in mt-16 text-center max-w-4xl mx-auto">
+                <p class="text-lg font-semibold text-cva-blue p-6 bg-white rounded-lg shadow-md border-t-4 border-veolia-green">
+                    <span class="font-bold">Rationale:</span> These cases map to Veolia’s key value drivers (networks, ecosystems, services) and can be industrialised in 12-24 months, forming a coherent programme aligned with GreenPath / GreenUp objectives.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==== SECTION 6-7: FOCUS USE CASE 1 (Slides 6 & 7) - FULL CONTENT ==== -->
+    <section class="py-20 md:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <!-- Left Column (At a Glance) -->
+                <div class="lg:col-span-1">
+                    <div class="sticky top-24">
+                        <p class="animate-on-scroll slide-in-left text-lg font-semibold text-veolia-green uppercase tracking-wider">Focus Use Case 1</p>
+                        <h2 class="animate-on-scroll slide-in-left text-4xl font-extrabold text-cva-blue" style="transition-delay: 100ms;">AI-optimised 4G District Heating</h2>
+                        
+                        <div class="animate-on-scroll fade-in bg-cva-light-bg p-6 rounded-xl mt-8 border border-gray-200" style="transition-delay: 200ms;">
+                            <h3 class="text-xl font-bold text-cva-blue mb-4">At a Glance</h3>
+                            <h5 class="text-base font-semibold text-text-dark mb-1">Positioning:</h5>
+                            <p class="text-sm italic text-text-medium mb-4">Daily operation (dispatch, temps) and medium-term decisions (4G conversion, storage) for heat and cooling networks.</p>
+                            <h5 class="text-base font-semibold text-text-dark mb-1">Veolia-specific context:</h5>
+                            <p class="text-sm italic text-text-medium">Highly instrumented networks (Poland, Czech) with digital twins; growing portfolio of complex 4G/5G systems (e.g., Saclay).</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column (Details) -->
+                <div class="lg:col-span-2 space-y-10">
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 300ms;">
+                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Core processes in scope</h4>
+                        <ul class="cva-list">
+                            <li><span class="list-lead">Network operation:</span> Dispatch between production units (CHP, biomass, WtE, gas, geothermal, HPs, data centre heat), management of temperatures/pressures, handling constraints.</li>
+                            <li><span class="list-lead">Planning and asset decisions:</span> Definition of 4G conversion trajectories, integration of new sources, dimensioning of new assets and extensions.</li>
+                        </ul>
+                    </div>
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 400ms;">
+                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Veolia’s current situation</h4>
+                        <ul class="cva-list">
+                            <li>In CEE, Veolia has high telemetry penetration and operational digital twins.</li>
+                            <li>In Western Europe, the situation is more heterogeneous; some networks are advanced, others rely on traditional tools.</li>
+                            <li>Operation and planning are mostly network-by-network, with limited systematic cross-fertilisation of best practices.</li>
+                        </ul>
+                    </div>
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 500ms;">
+                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Typical pain points observed</h4>
+                        <ul class="cva-list">
+                            <li>Dispatch decisions depend heavily on local experience, not explicit portfolio-level optimisation of cost, CO₂, and risk.</li>
+                            <li>Difficult to compare performance between networks and identify what “good” looks like in a 4G environment.</li>
+                            <li>4G business cases are built with static models, making it hard to test multiple scenarios.</li>
+                        </ul>
+                    </div>
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 600ms;">
+                        <h4 class="text-2xl font-bold text-cva-blue mb-4">AI ambition for this use case</h4>
+                        <ul class="cva-list">
+                            <li>Add an AI layer on top of existing digital twins and SCADA to:</li>
+                            <li>Propose optimised dispatch and temperature strategies under multiple scenarios (prices, weather, demand, CO₂ costs).</li>
+                            <li>Simulate 4G conversion and new source integration, providing robust inputs for capex decisions.</li>
+                            <li>Standardise a set of “4G operating playbooks” that can be shared across markets.</li>
+                        </ul>
+                    </div>
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 700ms;">
+                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Value levers for Veolia</h4>
+                        <ul class="cva-list">
+                            <li><span class="list-lead">Production cost optimisation:</span> Better sequencing of units; increased utilisation of low-cost sources (waste heat, WtE).</li>
+                            <li><span class="list-lead">Network performance:</span> Optimised temperatures/pressures to reduce thermal losses.</li>
+                            <li><span class="list-lead">Capex and 4G planning:</span> Use AI-enhanced twins to test 4G scenarios dynamically.</li>
+                            <li><span class="list-lead">Operational robustness:</span> Capture and codify best practices, reducing dependence on a few experts.</li>
+                        </ul>
+                    </div>
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 800ms;">
+                        <h4 class="text-2xl font-bold text-cva-blue mb-4">KPIs to track</h4>
+                        <ul class="cva-list">
+                            <li>€/MWh produced and delivered; CO₂/MWh delivered; % renewable/recovered heat.</li>
+                            <li>% of hours operated at low temperature; network loss ratio; incident rates.</li>
+                            <li>NPV and payback of 4G/asset conversion projects.</li>
+                        </ul>
+                    </div>
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 900ms;">
+                        <h4 class="text-2xl font-bold text-cva-blue mb-4">CVA’s contribution</h4>
+                        <ul class="cva-list">
+                            <li><span class="list-lead">Programme framing:</span> Map and segment Veolia’s network portfolio by data readiness, challenge, and value. Design the "4G AI cockpit" concept.</li>
+                            <li><span class="list-lead">CORE-based design:</span> Apply CORE to the end-to-end “heat supply” process to identify where AI insights should be embedded.</li>
+                            <li><span class="list-lead">SmartPMO to manage scale up:</span> Build a portfolio view to ensure each local project contributes to a coherent, group-level 4G programme.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- SECTION DIVERS -->
-    <div id="divers" class="day-section">
-        <div class="day-header">
-            <h2>💡 Infos Pratiques & Astuces</h2>
-            <p class="subtitle">Tout ce qu'il faut savoir pour un voyage réussi</p>
+    </section>
+    
+    <!-- ==== SECTION 8-9: FOCUS USE CASE 2 (Slides 8 & 9) - FULL CONTENT ==== -->
+    <section class="py-20 md:py-28 bg-cva-light-bg">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <!-- Left Column (At a Glance) -->
+                <div class="lg:col-span-1">
+                    <div class="sticky top-24">
+                        <p class="animate-on-scroll slide-in-left text-lg font-semibold text-veolia-green uppercase tracking-wider">Focus Use Case 2</p>
+                        <h2 class="animate-on-scroll slide-in-left text-4xl font-extrabold text-cva-blue" style="transition-delay: 100ms;">AI Orchestrator for Local Loops</h2>
+                        
+                        <div class="animate-on-scroll fade-in bg-white p-6 rounded-xl mt-8 border border-gray-200 shadow-sm" style="transition-delay: 200ms;">
+                            <h3 class="text-xl font-bold text-cva-blue mb-4">At a Glance</h3>
+                            <h5 class="text-base font-semibold text-text-dark mb-1">Positioning:</h5>
+                            <p class="text-sm italic text-text-medium mb-4">Design, operation, and governance of local multi-energy systems (heat, buildings, DCs, DER, storage, demand response).</p>
+                            <h5 class="text-base font-semibold text-text-dark mb-1">Veolia-specific context:</h5>
+                            <p class="text-sm italic text-text-medium">Existing "Local Loops" vision, pilot projects, and unique combination of Hubgrade, Flexcity, and water/waste assets at a district level.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column (Details) -->
+                <div class="lg:col-span-2 space-y-10">
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 300ms;">
+                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Core processes in scope</h4>
+                        <ul class="cva-list">
+                            <li><span class="list-lead">Local system design:</span> Defining architecture, sizing assets, and setting contractual boundaries (Veolia, city, industrials, DCs, residents).</li>
+                            <li><span class="list-lead">Daily/seasonal orchestration:</span> Optimising flows (WtE vs. DC heat), using storage, and activating electrical flexibility via Flexcity.</li>
+                            <li><span class="list-lead">Governance and value sharing:</span> Allocation of costs and benefits (tariffs, rebates, revenue shares).</li>
+                        </ul>
+                    </div>
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 400ms;">
+                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Veolia’s current situation</h4>
+                        <ul class="cva-list">
+                            <li>Veolia has a clear vision and emblematic projects. Flexcity and Hubgrade provide working platforms.</li>
+                            <li>However, each loop is largely a custom project. Replication is possible but not yet industrialised.</li>
+                        </ul>
+                    </div>
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 500ms;">
+                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Pain points & strategic opportunities</h4>
+                        <ul class="cva-list">
+                            <li>High transaction costs and long lead times to structure each loop (design, legal, stakeholders).</li>
+                            <li>Difficulty for non-specialists to trust the value sharing in complex local systems.</li>
+                            <li>Risk of being pre-empted by competitors on flagship projects if Veolia cannot demonstrate a scalable methodology.</li>
+                        </ul>
+                    </div>
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 600ms;">
+                        <h4 class="text-2xl font-bold text-cva-blue mb-4">AI ambition for this use case</h4>
+                        <ul class="cva-list">
+                            <li>Develop an AI-assisted “Local Loop orchestrator” that:</li>
+                            <li>Ingests local data and generates optimised loop designs and run strategies.</li>
+                            <li>Produces transparent value breakdowns and sensitivities for partners (cities, DCs).</li>
+                            <li>Supports continuous optimisation once operational, including Flexcity activation.</li>
+                        </ul>
+                    </div>
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 700ms;">
+                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Value levers at loop level</h4>
+                        <ul class="cva-list">
+                            <li><span class="list-lead">Total energy cost reduction:</span> Co-optimise heat, cold, and electricity; reduce peak imports via storage/demand response.</li>
+                            <li><span class="list-lead">Increased monetisation:</span> Turn loop flexibilities (industrial loads, DC backups) into new revenues via Flexcity.</li>
+                            <li><span class="list-lead">More efficient capex:</span> Use AI scenarios to test alternative architectures before investing.</li>
+                            <li><span class="list-lead">Higher credibility:</span> Provide transparent, data-based evidence to support approvals and de-risk complex PPPs.</li>
+                        </ul>
+                    </div>
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 800ms;">
+                        <h4 class="text-2xl font-bold text-cva-blue mb-4">KPIs to track</h4>
+                        <ul class="cva-list">
+                            <li>Total cost of energy €/MWh vs. reference; CO₂/MWh; % local/recovered energy.</li>
+                            <li>Gross/net revenues from flexibility; CAPEX per unit of demand decarbonised.</li>
+                            <li>Stakeholder satisfaction and perceived fairness.</li>
+                        </ul>
+                    </div>
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 900ms;">
+                        <h4 class="text-2xl font-bold text-cva-blue mb-4">CVA’s contribution</h4>
+                        <ul class="cva-list">
+                            <li><span class="list-lead">Formalise the Local Loop economic model:</span> Build standard economic templates for different loop archetypes (urban, industrial, DC-heavy).</li>
+                            <li><span class="list-lead">CORE-based governance design:</span> Map the end-to-end decision chain (from city strategy to tariffs) and embed AI outputs to support negotiations.</li>
+                            <li><span class="list-lead">Integration with Veolia’s platforms:</span> Specify how the AI orchestrator sits with Hubgrade, Flexcity, and asset control systems.</li>
+                            <li><span class="list-lead">Programme and scaling view:</span> Prioritise 2–3 pilot loops and design a replication playbook, using SmartPMO to track value.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="card">
-            <h3>📱 Data Mobile & Connexion</h3>
-            <ul class="tips-list">
-                <li><strong>eSIM Holafly</strong> recommandée - Pratique et souvent moins cher qu'un pocket Wi-Fi. Votre iPhone 14 Pro est compatible eSIM. Configuration avant le départ en quelques minutes.</li>
-                <li><strong>Alternative :</strong> Pocket Wi-Fi (Ninja WiFi) à récupérer à l'aéroport - Connexion stable pour plusieurs appareils simultanés.</li>
-                <li><strong>Wi-Fi gratuit :</strong> Largement disponible dans les hôtels, cafés, restaurants et gares principales au Japon.</li>
-            </ul>
+    </section>
+    
+    <!-- ==== SECTION 10-11: FOCUS USE CASE 3 (Slides 10 & 11) - FULL CONTENT ==== -->
+    <section class="py-20 md:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <!-- Left Column (At a Glance) -->
+                <div class="lg:col-span-1">
+                    <div class="sticky top-24">
+                        <p class="animate-on-scroll slide-in-left text-lg font-semibold text-veolia-green uppercase tracking-wider">Focus Use Case 3</p>
+                        <h2 class="animate-on-scroll slide-in-left text-4xl font-extrabold text-cva-blue" style="transition-delay: 100ms;">AI-enhanced Hubgrade Cockpit</h2>
+                        
+                        <div class="animate-on-scroll fade-in bg-cva-light-bg p-6 rounded-xl mt-8 border border-gray-200" style="transition-delay: 200ms;">
+                            <h3 class="text-xl font-bold text-cva-blue mb-4">At a Glance</h3>
+                            <h5 class="text-base font-semibold text-text-dark mb-1">Positioning:</h5>
+                            <p class="text-sm italic text-text-medium mb-4">Monitoring and optimisation of thousands of building/industrial sites under EPCs. Maintenance and lifecycle management of on-site energy systems.</p>
+                            <h5 class="text-base font-semibold text-text-dark mb-1">Veolia-specific context:</h5>
+                            <p class="text-sm italic text-text-medium">Hubgrade centres already aggregate data, but practices are heterogeneous and scaling is resource-intensive.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column (Details) -->
+                <div class="lg:col-span-2 space-y-10">
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 300ms;">
+                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Core processes in scope</h4>
+                        <ul class="cva-list">
+                            <li><span class="list-lead">Energy performance management:</span> Monitoring consumption, comfort, and KPIs across thousands of sites; identifying drifts and triggering corrective actions.</li>
+                            <li><span class="list-lead">Maintenance and lifecycle:</span> Planning preventive maintenance and managing interventions on boilers, chillers, HVAC, etc., under OPEX/performance guarantees.</li>
+                        </ul>
+                    </div>
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 400ms;">
+                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Veolia’s current situation</h4>
+                        <ul class="cva-list">
+                            <li>Hubgrade provides centralised supervision with live dashboards, alerts, and rule-based optimisation.</li>
+                            <li>Practices, tools, and performance remain heterogeneous across countries.</li>
+                            <li>Scaling high performance is increasingly resource-intensive as the number of sites grows.</li>
+                        </ul>
+                    </div>
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 500ms;">
+                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Pain points & improvement opportunities</h4>
+                        <ul class="cva-list">
+                            <li>Difficulty prioritising actions: which buildings are the biggest value pockets? Which equipment is at highest risk?</li>
+                            <li>Limited systematisation of learning; similar buildings don't benefit from each other's experience.</li>
+                            <li>Performance reporting to clients is time-consuming and not always focused on cross-sell/upsell levers.</li>
+                        </ul>
+                    </div>
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 600ms;">
+                        <h4 class="text-2xl font-bold text-cva-blue mb-4">AI ambition for this use case</h4>
+                        <ul class="cva-list">
+                            <li>Build an AI-enhanced Hubgrade cockpit that:</li>
+                            <li>Scores sites and equipment by potential value and risk (energy, CO₂, incident).</li>
+                            <li>Recommends and sequences actions (parameter changes, audits, maintenance) with quantified impact.</li>
+                            <li>Predicts future drifts and failures to move from reactive to proactive management.</li>
+                            <li>Generates sharper performance narratives to support client discussions and upsell.</li>
+                        </ul>
+                    </div>
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 700ms;">
+                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Value levers for Veolia</h4>
+                        <ul class="cva-list">
+                            <li><span class="list-lead">Improved portfolio performance:</span> Use AI to scan the portfolio and highlight the 10-20% of sites with the most savings potential.</li>
+                            <li><span class="list-lead">Reduced downtime:</span> Predict failures of critical assets to optimise maintenance.</li>
+                            <li><span class="list-lead">Better client conversations:</span> Support QBRs with AI-generated insights and quantified performance stories.</li>
+                            <li><span class="list-lead">Upsell:</span> Identify retrofit/service opportunities based on site-specific AI diagnostics.</li>
+                        </ul>
+                    </div>
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 800ms;">
+                        <h4 class="text-2xl font-bold text-cva-blue mb-4">KPIs to track</h4>
+                        <ul class="cva-list">
+                            <li>% reduction in energy/CO₂ vs. baseline; number/severity of unplanned outages.</li>
+                            <li>Productivity: sites per Hubgrade analyst, actions implemented per month.</li>
+                            <li>Contract renewal rate, upsell conversion rate, margin improvement.</li>
+                        </ul>
+                    </div>
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 900ms;">
+                        <h4 class="text-2xl font-bold text-cva-blue mb-4">CVA’s contribution</h4>
+                        <ul class="cva-list">
+                            <li><span class="list-lead">CORE "Hubgrade-to-Value" Map:</span> Map how Hubgrade creates value (data -> decision -> action -> outcome) and identify AI augmentation points.</li>
+                            <li><span class="list-lead">AI Use Case Design:</span> Define and prioritise a limited set of AI modules (site scoring, anomaly detection, action recommendation).</li>
+                            <li><span class="list-lead">SmartPMO & Change:</span> Build governance to deploy AI modules in waves. Support change so staff see AI as an amplifier, not a black box.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="card">
-            <h3>🚇 Transports Urbains</h3>
-            <ul class="tips-list">
-                <li><strong>Carte IC (Suica/Pasmo/Icoca)</strong> - Indispensable ! Carte rechargeable qui fonctionne pour le métro, bus, trains, et même pour les paiements dans les kombini, distributeurs et certains restaurants. Dépôt initial ~500¥ + recharges. Totalement interopérable entre Tokyo et Kyoto.</li>
-                <li><strong>Apple Wallet :</strong> Ajoutez votre carte IC directement dans votre iPhone pour payer avec votre téléphone - ultra pratique !</li>
-                <li><strong>JR Yamanote Line (Tokyo) :</strong> Ligne circulaire qui dessert tous les quartiers principaux de Tokyo - c'est votre meilleur ami !</li>
-                <li><strong>Google Maps :</strong> Parfait pour naviguer dans les réseaux de métro/trains. Donne les horaires en temps réel et les itinéraires optimaux.</li>
-            </ul>
+    <!-- ==== SECTION 12: COHERENT PORTFOLIO (Slide 12) ==== -->
+    <section class="py-20 md:py-28 bg-cva-light-bg">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="animate-on-scroll slide-up text-4xl font-extrabold text-cva-blue mb-4">A Coherent AI for Energy Portfolio</h2>
+                <p class="animate-on-scroll slide-up text-xl text-text-medium" style="transition-delay: 150ms;">Three use cases, three process layers, one programme aligned with Veolia Energy’s strategy.</p>
+            </div>
+            
+            <div class="mt-16 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1: 3 Use Cases -->
+                <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 300ms;">
+                    <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center mb-5">
+                        <i class="fa-solid fa-layer-group text-2xl text-veolia-green"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-cva-blue mb-3">Three Complementary Use Cases</h3>
+                    <ul class="cva-list text-base">
+                        <li><span class="list-lead">AI-optimised 4G district heating & cooling:</span> Focus on infrastructures and production–network interface.</li>
+                        <li><span class="list-lead">AI Local Loop orchestrator:</span> Focus on local multi-energy systems and ecosystem governance.</li>
+                        <li><span class="list-lead">AI Hubgrade cockpit:</span> Focus on site-level performance and client contracts.</li>
+                    </ul>
+                </div>
+                <!-- Card 2: Why Veolia -->
+                <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 450ms;">
+                    <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center mb-5">
+                        <i class="fa-solid fa-check-circle text-2xl text-veolia-green"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-cva-blue mb-3">Why This Portfolio is Right for Veolia</h3>
+                    <ul class="cva-list text-base">
+                        <li>Targets processes where Veolia creates distinctive value (networks, ecosystems, services).</li>
+                        <li>Leverages existing digital assets (digital twins, Hubgrade, Flexcity) rather than assuming a greenfield.</li>
+                        <li>Directly supports strategic priorities: heat decarbonisation, Local Loops, and service performance.</li>
+                    </ul>
+                </div>
+                <!-- Card 3: Why CVA -->
+                <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 600ms;">
+                    <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center mb-5">
+                        <i class="fa-solid fa-handshake text-2xl text-veolia-green"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-cva-blue mb-3">Why CVA is Legitimate to Support</h3>
+                    <ul class="cva-list text-base">
+                        <li>Strategic understanding of Veolia-style businesses (district heating, energy services, data centres).</li>
+                        <li>Proven methods (CORE, SmartPMO) to turn AI ideas into governed, value-driven programmes.</li>
+                        <li>Neutral, C-level focus: We design the "what" and "why," not sell platforms.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="card">
-            <h3>🚄 Shinkansen</h3>
-            <ul class="tips-list">
-                <li><strong>Réservation via SmartEX</strong> - Application/site officiel JR Central pour acheter vos billets Shinkansen. Billets dématérialisés dans votre téléphone, vente de J-365 jusqu'à 4 minutes avant le départ !</li>
-                <li><strong>Nozomi :</strong> Le train le plus rapide (Tokyo ↔ Kyoto en ~2h12). Réservation de siège obligatoire, places souvent en "All Reserved" durant les périodes de forte affluence. Non couvert par le JR Pass classique.</li>
-                <li><strong>À réserver MAINTENANT :</strong> Les trains du 26/10 (Tokyo → Kyoto) et du 30/10 (Kyoto → Shinagawa) aux horaires indiqués dans le programme.</li>
-                <li><strong>Gares principales :</strong> Tokyo Station, Shinagawa, Kyoto Station - Toutes très bien fléchées avec indications en anglais.</li>
-            </ul>
+    <!-- ==== SECTION 13: CORE & DIDA (Slide X) - REDUNDANCY REMOVED ==== -->
+    <section class="py-20 md:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="animate-on-scroll slide-up text-4xl font-extrabold text-cva-blue mb-4">CORE® and DIDA®</h2>
+                <p class="animate-on-scroll slide-up text-xl text-text-medium" style="transition-delay: 150ms;">Our reference framework for AI-enabled process redesign.</p>
+            </div>
+
+            <!-- What CORE is -->
+            <div class="mt-16">
+                <h3 class="animate-on-scroll slide-up text-3xl font-bold text-cva-blue mb-6">What CORE® is: A Proven Methodology</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="animate-on-scroll slide-up bg-cva-light-bg p-8 rounded-xl" style="transition-delay: 300ms;">
+                        <h4 class="text-xl font-bold text-cva-blue mb-3">An integrated methodology on three levels</h4>
+                        <ul class="cva-list">
+                            <li><span class="list-lead">User / client journeys:</span> Design target journeys from the user’s point of view (VoC, service standards).</li>
+                            <li><span class="list-lead">Data flows:</span> Optimise the data model needed to steer satisfaction, cost and carbon end-to-end.</li>
+                            <li><span class="list-lead">Processes:</span> Rebuild processes in a “data-native” way, rethinking decisions and embedding AI where it creates value.</li>
+                        </ul>
+                    </div>
+                    <div class="animate-on-scroll slide-up bg-cva-light-bg p-8 rounded-xl" style="transition-delay: 450ms;">
+                        <h4 class="text-xl font-bold text-cva-blue mb-3">Organised in 2 Lots and 5 Modules</h4>
+                        <ul class="cva-list">
+                            <li><span class="list-lead">Lot 1 – Baseline and redesign (data-native):</span>
+                                <ul>
+                                    <li>M1 – E2E diagnostic and baselines (satisfaction, efficiency, carbon).</li>
+                                    <li>M2 – Target journeys.</li>
+                                    <li>M3 – Target DIDA® flows.</li>
+                                </ul>
+                            </li>
+                            <li><span class="list-lead">Lot 2 – Gap analysis and transformation path:</span>
+                                <ul>
+                                    <li>M4 – Process impacts and levers.</li>
+                                    <li>M5 – Transformation trajectory and “base camps”.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What DIDA is (Visual Process) -->
+            <div class="mt-16">
+                <h3 class="animate-on-scroll slide-up text-3xl font-bold text-cva-blue mb-6">What DIDA® is: The Bridge Between Business and AI</h3>
+                <p class="animate-on-scroll slide-up text-lg text-text-medium max-w-4xl mb-8">DIDA® is the core protocol that connects journeys, data, and processes. It decomposes each journey step into four elements, forcing clarity on how AI changes decisions and actions.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
+                    <!-- Connectors -->
+                    <div class="hidden md:block absolute top-1/2 -translate-y-1/2 left-0 w-full h-full z-0">
+                        <div class="flex justify-around items-center h-full w-full px-16">
+                            <i class="fa-solid fa-chevron-right text-3xl text-gray-300"></i>
+                            <i class="fa-solid fa-chevron-right text-3xl text-gray-300"></i>
+                            <i class="fa-solid fa-chevron-right text-3xl text-gray-300"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- D card -->
+                    <div class="animate-on-scroll slide-up bg-white p-6 rounded-xl shadow-xl border border-gray-100 z-10" style="transition-delay: 300ms;">
+                        <h4 class="text-2xl font-extrabold text-veolia-green mb-2">D – Data</h4>
+                        <p>List the data needed to monitor and deliver the journey step; identify and collect all accessible sources automatically.</p>
+                    </div>
+                    <!-- I card -->
+                    <div class="animate-on-scroll slide-up bg-white p-6 rounded-xl shadow-xl border border-gray-100 z-10" style="transition-delay: 450ms;">
+                        <h4 class="text-2xl font-extrabold text-veolia-green mb-2">I – Insights</h4>
+                        <p>Use analytics and AI to transform raw data into insights that are truly useful for decision-making.</p>
+                    </div>
+                    <!-- D card -->
+                    <div class="animate-on-scroll slide-up bg-white p-6 rounded-xl shadow-xl border border-gray-100 z-10" style="transition-delay: 600ms;">
+                        <h4 class="text-2xl font-extrabold text-veolia-green mb-2">D – Decision</h4>
+                        <p>Define how decisions will be taken (rules, models, exceptions) based on these insights.</p>
+                    </div>
+                    <!-- A card -->
+                    <div class="animate-on-scroll slide-up bg-white p-6 rounded-xl shadow-xl border border-gray-100 z-10" style="transition-delay: 750ms;">
+                        <h4 class="text-2xl font-extrabold text-veolia-green mb-2">A – Action</h4>
+                        <p>Build a process and, where relevant, automation that executes the decision or augments an employee to act effectively.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Why it matters -->
+            <div class="animate-on-scroll fade-in mt-16 text-center max-w-4xl mx-auto">
+                <p class="text-lg font-semibold text-cva-blue p-6 bg-cva-light-bg rounded-lg shadow-md border-t-4 border-veolia-green">
+                    <span class="font-bold">Why this matters for an AI for Energy programme:</span> The three AI use cases are process-heavy. CORE® and DIDA® bring a rigorous, battle-tested way to map these processes, identify the exact roles of data and AI, and design target, AI-enabled processes that teams can implement.
+                </p>
+            </div>
         </div>
+    </section>
 
-        <div class="card">
-            <h3>🧳 Gestion des Bagages</h3>
-            <ul class="tips-list">
-                <li><strong>Service Takkyubin (Kuroneko/Yamato)</strong> - Envoyez vos grosses valises d'hôtel à hôtel la veille de votre départ pour voyager ultra léger dans le Shinkansen (très pratique pour les trajets du 26/10 et 30/10). Service fiable, abordable (~2000-3000¥) et très utilisé au Japon.</li>
-                <li><strong>Coin Lockers :</strong> Casiers de différentes tailles disponibles dans toutes les gares pour stocker vos bagages en journée (300-700¥ selon taille).</li>
-                <li><strong>Voyagez léger :</strong> Les Japonais sont minimalistes - un petit sac à dos pour les excursions de la journée est parfait.</li>
-            </ul>
+    <!-- ==== SECTION 14: SMARTPMO (Slide Y) - NEW DESIGN & CONTENT ==== -->
+    <section class="py-20 md:py-28 bg-cva-light-bg">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <!-- Left Column (At a Glance) -->
+                <div class="lg:col-span-1">
+                    <div class="sticky top-24">
+                        <p class="animate-on-scroll slide-in-left text-lg font-semibold text-veolia-green uppercase tracking-wider">Programme Steering</p>
+                        <h2 class="animate-on-scroll slide-in-left text-4xl font-extrabold text-cva-blue" style="transition-delay: 100ms;">SmartPMO®</h2>
+                        
+                        <div class="animate-on-scroll fade-in bg-white p-6 rounded-xl mt-8 border border-gray-200 shadow-sm" style="transition-delay: 200ms;">
+                            <h3 class="text-xl font-bold text-cva-blue mb-4">A Control Tower, Not Just a PMO</h3>
+                            <p class="text-text-medium mb-4">SmartPMO® is designed for complex, multi-use case AI programmes. It has three distinct roles:</p>
+                            <ul class="cva-list text-base">
+                                <li><span class="list-lead">Classic PMO:</span> Steering, animation, reporting, risk monitoring.</li>
+                                <li><span class="list-lead">PMO Challenge:</span> Challenging content, execution speed, and ensuring alignment with ambition.</li>
+                                <li><span class="list-lead">PMO Support:</span> Providing CORE® toolkits, benchmarks, and expert support.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column (Details) -->
+                <div class="lg:col-span-2 space-y-10">
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 300ms;">
+                        <h4 class="text-2xl font-bold text-cva-blue mb-4">A Common Framework for AI Use Case Maturity</h4>
+                        <ul class="cva-list">
+                            <li><span class="list-lead">Stage 1:</span> Baseline and AI use case catalogue</li>
+                            <li><span class="list-lead">Stage 2:</span> Target design</li>
+                            <li><span class="list-lead">Stage 3:</span> Execution roadmap</li>
+                            <li><span class="list-lead">Stage 4:</span> Build and initial deployment</li>
+                            <li><span class="list-lead">Stage 5:</span> Run, extension and continuous improvement</li>
+                        </ul>
+                    </div>
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 450ms;">
+                        <h4 class="text-2xl font-bold text-cva-blue mb-4">A 360° View of AI Transformation</h4>
+                        <p class="text-lg mb-4">SmartPMO® explicitly aligns three dimensions:</p>
+                        <ul class="cva-list">
+                            <li>Technology / IT and data foundations</li>
+                            <li>Business and process redesign (including AI integration)</li>
+                            <li>HR and workforce evolution (skills, staffing)</li>
+                        </ul>
+                    </div>
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 600ms;">
+                        <h4 class="text-2xl font-bold text-cva-blue mb-4">How SmartPMO® Has Been Used</h4>
+                        <div class="space-y-4">
+                            <div class="bg-white p-6 rounded-lg border border-gray-200">
+                                <h5 class="text-lg font-semibold text-text-dark mb-1">Large insurance group in France</h5>
+                                <p>Support to the CEO to define the transformation vision. Design and implementation of a plan focusing on digital transformation of distribution networks and customer journeys, with SmartPMO® support.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg border border-gray-200">
+                                <h5 class="text-lg font-semibold text-text-dark mb-1">Large European financial group</h5>
+                                <p>Central support to a Group AI Office to track and support AI initiatives, using the 5-stage maturity model. SmartPMO® used to coordinate, manage dependencies, and mutualise solutions.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="animate-on-scroll slide-up" style="transition-delay: 750ms;">
+                        <div class="p-6 bg-white rounded-lg shadow-md border-t-4 border-veolia-green">
+                            <h4 class="text-2xl font-bold text-cva-blue mb-4">Why SmartPMO® is relevant</h4>
+                             <p>An AI for Energy programme will have multiple use cases at different maturities, sharing assets (Hubgrade, twins) and dependencies. SmartPMO® provides a tested way to manage this complexity, ensuring initiatives are sequenced, common components are leveraged, and the programme delivers measurable impact.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="card">
-            <h3>🍽️ Restaurants & Réservations</h3>
-            <ul class="tips-list">
-                <li><strong>⚠️ À réserver MAINTENANT (priorité absolue) :</strong>
-                    <br>• Shibuya Sky (25/10 après-midi)
-                    <br>• Nabezo Shibuya sukiyaki (25/10 soir - optionnel)
-                    <br>• Otowa Saryō Kiyomizu sukiyaki (27/10 midi)
-                    <br>• Hirokawa unagi Arashiyama (28/10 midi)
-                    <br>• Mishima-tei sukiyaki historique (29/10 soir - optionnel)
-                </li>
-                <li><strong>Format Izakaya :</strong> Bar-restaurant convivial où l'on partage plusieurs petits plats variés. Commande souvent sur tablette avec photos - facile même sans parler japonais !</li>
-                <li><strong>Pourboire :</strong> Jamais de pourboire au Japon ! C'est même considéré comme impoli. Le service est toujours inclus et le personnel est offensé si vous insistez.</li>
-                <li><strong>Oshibori :</strong> Serviette humide chaude donnée au début du repas pour se rafraîchir les mains - utilisez-la, c'est la coutume !</li>
-            </ul>
+    <!-- ==== SECTION 15: CREDENTIALS (Slide Z) ==== -->
+    <section class="py-20 md:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="animate-on-scroll slide-up text-4xl font-extrabold text-cva-blue mb-4">Our AI & CORE® Credentials</h2>
+                <p class="animate-on-scroll slide-up text-xl text-text-medium" style="transition-delay: 150ms;">CVA brings a combination of CORE®/AI expertise and deep Energy & Services experience.</p>
+            </div>
+            
+            <!-- Track Record -->
+            <div class="mt-16">
+                <h3 class="animate-on-scroll slide-up text-3xl font-bold text-cva-blue mb-6 text-center">A Unique CORE® and AI Track Record</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="animate-on-scroll slide-up bg-cva-light-bg p-6 rounded-xl text-center" style="transition-delay: 300ms;">
+                        <span class="text-5xl font-extrabold text-cva-blue">+30 pts</span>
+                        <p class="mt-2 font-semibold">NPS improvements on redesigned journeys.</p>
+                    </div>
+                    <div class="animate-on-scroll slide-up bg-cva-light-bg p-6 rounded-xl text-center" style="transition-delay: 400ms;">
+                        <span class="text-5xl font-extrabold text-cva-blue">40-50%</span>
+                        <p class="mt-2 font-semibold">End-to-end efficiency gains on targeted processes.</p>
+                    </div>
+                    <div class="animate-on-scroll slide-up bg-cva-light-bg p-6 rounded-xl text-center" style="transition-delay: 500ms;">
+                        <span class="text-5xl font-extrabold text-cva-blue">Risk <i class="fa-solid fa-arrow-down"></i></span>
+                        <p class="mt-2 font-semibold">Reduction of risk and fraud, with staff refocused.</p>
+                    </div>
+                    <div class="animate-on-scroll slide-up bg-cva-light-bg p-6 rounded-xl text-center" style="transition-delay: 600ms;">
+                        <span class="text-5xl font-extrabold text-cva-blue">20-35%</span>
+                        <p class="mt-2 font-semibold">Of investments redirected to target-state solutions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- References -->
+            <div class="mt-16">
+                <h3 class="animate-on-scroll slide-up text-3xl font-bold text-cva-blue mb-6 text-center">Relevant AI Transformation References</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 300ms;">
+                        <h4 class="text-xl font-bold text-cva-blue mb-3">Large insurance group – digital and AI transformation</h4>
+                        <p>CVA supported the CEO and France management in designing and steering a major transformation of distribution networks, including new digital products and AI-assisted customer journeys and pricing.</p>
+                    </div>
+                    <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 450ms;">
+                        <h4 class="text-xl font-bold text-cva-blue mb-3">Large European group – AI programme and Group AI Office</h4>
+                        <p>CVA supported a Group AI Office with SmartPMO® and CORE®, providing a common maturity framework for AI use cases, programme-level governance, and support to initiative leaders to mutualise solutions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team -->
+            <div class="mt-16">
+                <h3 class="animate-on-scroll slide-up text-3xl font-bold text-cva-blue mb-6 text-center">A Senior Team Combining Energy, CORE® & AI</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 300ms;">
+                        <div class="flex items-center mb-4">
+                            <i class="fa-solid fa-user-tie text-3xl text-veolia-green"></i>
+                            <h4 class="text-xl font-bold text-cva-blue ml-4">Partner – Head of New Services Models</h4>
+                        </div>
+                        <p>Leads CORE®-based programmes in services industries (banking, insurance, telco, energy). Expert in AI strategy and digital transformation.</p>
+                    </div>
+                    <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 450ms;">
+                        <div class="flex items-center mb-4">
+                            <i class="fa-solid fa-user-tie text-3xl text-veolia-green"></i>
+                            <h4 class="text-xl font-bold text-cva-blue ml-4">Partner – Head of Energy & Circular Transition</h4>
+                        </div>
+                        <p>20+ years in Energy & Utilities: renewables, nuclear, energy services, smart grids. Has led numerous projects involving AI applied to asset management and operations.</p>
+                    </div>
+                    <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 600ms;">
+                        <div class="flex items-center mb-4">
+                            <i class="fa-solid fa-user-tie text-3xl text-veolia-green"></i>
+                            <h4 class="text-xl font-bold text-cva-blue ml-4">Associate Partner – Energy & AI Lead</h4>
+                        </div>
+                        <p>12+ years in energy consulting (utilities, DSOs, ESCOs). CVA EMEA AI Lead, in charge of internal AI programmes and multiple AI missions for energy clients.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- What this gives you -->
+            <div class="animate-on-scroll fade-in mt-16 text-center max-w-4xl mx-auto">
+                <p class="text-lg font-semibold text-cva-blue p-6 bg-cva-light-bg rounded-lg shadow-md border-t-4 border-veolia-green">
+                    <span class="font-bold">What this gives Veolia:</span> A team that understands energy infrastructures, services, and AI at a granular level; masters CORE® and SmartPMO® as transformation tools; and has already supported large, multi-use case AI programmes.
+                </p>
+            </div>
         </div>
+    </section>
 
-        <div class="card">
-            <h3>💴 Argent & Paiements</h3>
-            <ul class="tips-list">
-                <li><strong>Le cash est roi :</strong> Le Japon reste très cash-orienté malgré sa modernité. Ayez toujours des yens sur vous - de nombreux petits restaurants, temples et boutiques n'acceptent que les espèces.</li>
-                <li><strong>ATM 7-Eleven & Family Mart :</strong> Distributeurs automatiques fiables qui acceptent les cartes internationales 24h/24. Idéaux pour retirer sans souci.</li>
-                <li><strong>Carte bancaire :</strong> De plus en plus acceptée dans les grandes enseignes, hôtels et chaînes de restaurants, mais pas universelle. Ne comptez pas dessus partout.</li>
-                <li><strong>Taux de change :</strong> Préférez retirer au Japon plutôt que de changer en France (meilleur taux et plus pratique).</li>
-            </ul>
+    <!-- ==== SECTION 16: DELIVERY MODEL (Slide 14) ==== -->
+    <section class="py-20 md:py-28 bg-cva-light-bg">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="animate-on-scroll slide-up text-4xl font-extrabold text-cva-blue mb-4">Delivery Model</h2>
+                <p class="animate-on-scroll slide-up text-xl text-text-medium" style="transition-delay: 150ms;">CVA as strategic designer and orchestrator, working with Veolia’s teams and existing platforms.</p>
+            </div>
+            
+            <div class="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <div class="animate-on-scroll slide-in-left bg-white p-8 rounded-xl shadow-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 300ms;">
+                    <div class="flex items-center mb-5">
+                        <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-people-group text-2xl text-veolia-green"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-cva-blue ml-4">With Veolia Business & Ops</h3>
+                    </div>
+                    <ul class="cva-list">
+                        <li><span class="list-lead">Joint Steering:</span> Programme steered by Veolia Energy with CVA as strategic partner.</li>
+                        <li><span class="list-lead">Co-construction:</span> Mixed teams. CVA brings methodology; Veolia brings process expertise.</li>
+                        <li><span class="list-lead">Capability Transfer:</span> CORE and SmartPMO are used as methods Veolia teams can reuse.</li>
+                    </ul>
+                </div>
+                <div class="animate-on-scroll slide-in-left bg-white p-8 rounded-xl shadow-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 450ms;">
+                    <div class="flex items-center mb-5">
+                        <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-laptop-code text-2xl text-veolia-green"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-cva-blue ml-4">With Veolia Digital & IT</h3>
+                    </div>
+                    <ul class="cva-list">
+                        <li><span class="list-lead">Alignment:</span> Ensure the programme builds on existing architectures (SCADA, Hubgrade, Flexcity).</li>
+                        <li><span class="list-lead">Clear Roles:</span> CVA focuses on the "what & why" (value, process); Veolia/partners focus on the "how" (implementation).</li>
+                    </ul>
+                </div>
+                <div class="animate-on-scroll slide-in-right bg-white p-8 rounded-xl shadow-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 600ms;">
+                    <div class="flex items-center mb-5">
+                        <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-puzzle-piece text-2xl text-veolia-green"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-cva-blue ml-4">With Tech Partners & Vendors</h3>
+                    </div>
+                    <ul class="cva-list">
+                        <li><span class="list-lead">Use What Exists:</span> Integrate AI layers on top of existing digital twins and platforms, don't replace.</li>
+                        <li><span class="list-lead">Fill Gaps:</span> Help Veolia select partners in a structured way where needed.</li>
+                        <li><span class="list-lead">Vendor-Neutral:</span> CVA remains technology-agnostic, aligning all parties around value and governance.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
+    </section>
+    
+    <!-- ==== SECTION 17: CVA METHODOLOGY (Slide 13) ==== -->
+    <section class="py-20 md:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="animate-on-scroll slide-up text-4xl font-extrabold text-cva-blue mb-4">How CVA Would Structure the Programme</h2>
+                <p class="animate-on-scroll slide-up text-xl text-text-medium" style="transition-delay: 150ms;">Using CORE + SmartPMO to turn AI use cases into a governed, high-impact programme.</p>
+            </div>
 
-        <div class="card">
-            <h3>🎌 Culture & Étiquette</h3>
-            <ul class="tips-list">
-                <li><strong>Retirer ses chaussures :</strong> Dans certains restaurants traditionnels, temples, ryokan et maisons. Des pantoufles sont généralement fournies. Attention aux chaussettes trouées !</li>
-                <li><strong>Silence dans les transports :</strong> Évitez de téléphoner dans le métro/train et parlez à voix basse. Mettez votre téléphone en mode silencieux. Les Japonais respectent scrupuleusement cette règle.</li>
-                <li><strong>Respecter les files :</strong> Les Japonais font la queue de manière très disciplinée, même pour monter dans le métro. Attendez toujours votre tour patiemment.</li>
-                <li><strong>Ne pas manger en marchant :</strong> Évitez de manger ou boire en vous déplaçant dans la rue (sauf lors de festivals). Trouvez un endroit pour vous arrêter.</li>
-                <li><strong>Inclinaison (bow) :</strong> Pour saluer ou remercier. Une légère inclinaison de la tête (~15°) suffit largement en tant que touriste. Plus l'inclinaison est profonde, plus le respect est marqué.</li>
-                <li><strong>Tatouages :</strong> Peuvent être problématiques dans certains onsen (bains publics) traditionnels, piscines et salles de sport (associations historiques avec les yakuzas). Vérifiez avant.</li>
-            </ul>
+            <!-- New Timeline -->
+            <div class="mt-24 max-w-3xl mx-auto">
+                <div class="relative">
+                    <!-- The connecting line -->
+                    <div class="timeline-connector hidden md:block" style="background-color: #E5E7EB;"></div>
+                    
+                    <div class="space-y-16">
+                        <!-- Phase 0 -->
+                        <div class="animate-on-scroll fade-in relative">
+                            <div class="timeline-dot timeline-dot-animated hidden md:block" style="top: 0; background-color: #1E6E5E; border-color: #FFF;"></div>
+                            <div class="md:flex md:items-center">
+                                <div class="md:w-1/2 md:pr-16 md:text-right">
+                                    <h3 class="text-2xl font-bold text-veolia-green">Phase 0</h3>
+                                    <p class="text-lg font-semibold text-cva-blue">Clarify Ambition & Scope</p>
+                                </div>
+                                <div class="md:w-1/2 md:pl-16 mt-4 md:mt-0">
+                                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                                        <p>Align Veolia Energy ExCom on ambition, strategic outcomes (CO₂, cost), and programme-level KPIs.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Phase 1 -->
+                        <div class="animate-on-scroll fade-in relative">
+                            <div class="timeline-dot timeline-dot-animated hidden md:block" style="top: 0; background-color: #1E6E5E; border-color: #FFF;"></div>
+                             <div class="md:flex md:flex-row-reverse md:items-center">
+                                <div class="md:w-1/2 md:pl-16 md:text-left">
+                                    <h3 class="text-2xl font-bold text-veolia-green">Phase 1</h3>
+                                    <p class="text-lg font-semibold text-cva-blue">CORE Value Discovery</p>
+                                </div>
+                                <div class="md:w-1/2 md:pr-16 mt-4 md:mt-0">
+                                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                                        <p>Apply CORE to each process (4G, Loops, Hubgrade) to map decision chains. Build a Veolia-specific value vs. maturity matrix and select Wave 1 priorities.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phase 2 -->
+                        <div class="animate-on-scroll fade-in relative">
+                            <div class="timeline-dot timeline-dot-animated hidden md:block" style="top: 0; background-color: #1E6E5E; border-color: #FFF;"></div>
+                            <div class="md:flex md:items-center">
+                                <div class="md:w-1/2 md:pr-16 md:text-right">
+                                    <h3 class="text-2xl font-bold text-veolia-green">Phase 2</h3>
+                                    <p class="text-lg font-semibold text-cva-blue">Target Design & Governance</p>
+                                </div>
+                                <div class="md:w-1/2 md:pl-16 mt-4 md:mt-0">
+                                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                                        <p>Use CORE to design target processes (AI-assisted vs. human-led). Define the AI governance framework (model lifecycle, risk, compliance).</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Phase 3 -->
+                        <div class="animate-on-scroll fade-in relative">
+                            <div class="timeline-dot timeline-dot-animated hidden md:block" style="top: 0; background-color: #1E6E5E; border-color: #FFF;"></div>
+                             <div class="md:flex md:flex-row-reverse md:items-center">
+                                <div class="md:w-1/2 md:pl-16 md:text-left">
+                                    <h3 class="text-2xl font-bold text-veolia-green">Phase 3</h3>
+                                    <p class="text-lg font-semibold text-cva-blue">Pilots, Value & Scale-Up</p>
+                                </div>
+                                <div class="md:w-1/2 md:pr-16 mt-4 md:mt-0">
+                                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                                        <p>Select pilots (e.g., 2 networks, 2 loops) and launch as "proofs of value," not just concepts. Measure impact and design the scale-up roadmap and replication playbooks.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SmartPMO Overlay -->
+            <div class="animate-on-scroll fade-in mt-16 text-center max-w-4xl mx-auto">
+                <p class="text-lg font-semibold text-cva-blue p-6 bg-cva-light-bg rounded-lg shadow-md border-t-4 border-veolia-green">
+                    <span class="font-bold">SmartPMO Overlay:</span> A central governance layer manages the AI programme as a portfolio (pipeline, decision milestones, RACI) with Veolia Energy ExCom visibility.
+                </p>
+            </div>
         </div>
+    </section>
 
-        <div class="card">
-            <h3>📸 Photos & Shopping</h3>
-            <ul class="tips-list">
-                <li><strong>Photos dans les temples :</strong> Généralement autorisées à l'extérieur, souvent interdites à l'intérieur des bâtiments. Respectez toujours les panneaux d'interdiction.</li>
-                <li><strong>Geishas/Maikos à Gion :</strong> Soyez respectueux - ne les suivez pas, ne les touchez jamais. Si vous souhaitez prendre une photo, soyez discret et à distance.</li>
-                <li><strong>Kombini (7-Eleven, Family Mart, Lawson) :</strong> Épiceries de proximité ouvertes 24h/24 pour tout dépannage : snacks délicieux, boissons, repas rapides de qualité, et services pratiques (imprimer, ATM, paiement de factures).</li>
-                <li><strong>Don Quijote (Donki) :</strong> Magasin discount géant sur plusieurs étages - c'est le bazar japonais ultime ! Parfait pour les souvenirs insolites, produits de beauté, snacks et gadgets typiquement japonais à prix raisonnables.</li>
-            </ul>
+    <!-- ==== SECTION 18: THE "ASK" (Slide 15) - RIGOROUS ==== -->
+    <section id="ask" class="py-20 md:py-32 bg-cva-blue text-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="animate-on-scroll slide-up text-4xl font-extrabold mb-4">12–24 Month Roadmap & Decisions</h2>
+                <p class="animate-on-scroll slide-up text-xl text-gray-200" style="transition-delay: 150ms;">A realistic 3-phase roadmap and a small set of decisions to launch the AI for Energy programme.</p>
+            </div>
+            
+            <div class="mt-20 grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <!-- Roadmap -->
+                <div class="animate-on-scroll slide-in-left" style="transition-delay: 200ms;">
+                    <h3 class="text-3xl font-bold text-white mb-6">Proposed Roadmap</h3>
+                    <div class="space-y-4">
+                        <div class="bg-cva-blue/50 p-6 rounded-xl border border-blue-400/30">
+                            <h4 class="text-lg font-semibold text-white">Phase 1 (0-3 Months): Initiation & Scoping</h4>
+                            <p class="text-gray-300">Validate intent at ExCom. Nominate sponsor. Engage CVA for a focused CORE Value Discovery on the 3 use cases to assess readiness and map pilots.</p>
+                        </div>
+                        <div class="bg-cva-blue/50 p-6 rounded-xl border border-blue-400/30">
+                            <h4 class="text-lg font-semibold text-white">Phase 2 (3-12 Months): Design, Pilots & Proof of Value</h4>
+                            <p class="text-gray-300">Complete CORE target design. Select 1-2 pilots per use case. Launch pilots, measure value against baselines, and feed back learnings.</p>
+                        </div>
+                        <div class="bg-cva-blue/50 p-6 rounded-xl border border-blue-400/30">
+                            <h4 class="text-lg font-semibold text-white">Phase 3 (12-24 Months): Scaling & Institutionalisation</h4>
+                            <p class="text-gray-300">Consolidate pilot results into a group-level value case. Design replication playbooks. Integrate the AI programme into the GreenPath / GreenUp plan.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- "Decisions" Card -->
+                <div class="animate-on-scroll slide-in-right" style="transition-delay: 400ms;">
+                    <div class="bg-white text-text-dark p-10 rounded-xl shadow-2xl">
+                        <h3 class="text-3xl font-bold text-veolia-green mb-8">Key Decisions for Veolia Energy</h3>
+                        <!-- Rigorous list with NO inline <strong> tags -->
+                        <ol class="cva-decision-list">
+                            <li>
+                                Strategic Endorsement: Confirm AI as a core lever for decarbonisation, Local Loops, and service performance.
+                            </li>
+                            <li>
+                                Programme Governance: Appoint a senior sponsor and a cross-functional core team with a clear mandate.
+                            </li>
+                            <li>
+                                First Wave Scope: Endorse the three proposed use cases as the first wave and agree on 3-5 pilot geographies/loops to explore.
+                            </li>
+                            <li>
+                                Engage CVA: Mandate CVA to co-design the programme blueprint and first pilots using CORE & SmartPMO.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="card">
-            <h3>🌦️ Météo Octobre</h3>
-            <ul class="tips-list">
-                <li><strong>Températures :</strong> Douces et agréables, entre 15-22°C. Journées confortables mais matinées et soirées plus fraîches. Prévoyez des couches (pull léger, veste).</li>
-                <li><strong>Pluie possible :</strong> Emportez un petit parapluie pliable ou K-way léger. Octobre peut voir quelques averses occasionnelles.</li>
-                <li><strong>Période d'automne :</strong> Début de la saison des magnifiques feuillages d'automne (koyo) - les temples et parcs de Kyoto se parent de couleurs flamboyantes rouge-orangé. Spectaculaire !</li>
-            </ul>
+    <!-- ==== FOOTER ==== -->
+    <footer class="py-12 bg-cva-blue text-gray-400 text-center">
+        <div class="flex justify-center items-center space-x-4">
+            <span class="text-2xl font-bold text-veolia-green">VEOLIA</span>
+            <span class="text-2xl font-bold text-gray-600">x</span>
+            <span class="text-2xl font-bold text-white">CVA</span>
         </div>
+        <p class="mt-2 text-sm">AI for Energy Programme Pitch</p>
+    </footer>
 
-        <div class="card">
-            <h3>🆘 Urgences & Infos Utiles</h3>
-            <ul class="tips-list">
-                <li><strong>Police :</strong> 110</li>
-                <li><strong>Pompiers/Ambulance :</strong> 119</li>
-                <li><strong>Ambassade de France à Tokyo :</strong> +81 (0)3 5798 6000</li>
-                <li><strong>Voltage :</strong> 100V (adaptateur pas toujours nécessaire pour les chargeurs modernes - vérifiez vos appareils)</li>
-                <li><strong>Décalage horaire :</strong> +7h en été / +8h en hiver par rapport à la France</li>
-                <li><strong>Applications indispensables :</strong> Google Maps (navigation), Google Translate (mode conversation + scan texte), FlashInvaders (Space Invaders), SmartEX (billets Shinkansen)</li>
-            </ul>
-        </div>
 
-        <div class="card">
-            <h3>✅ Checklist Avant Départ</h3>
-            <ul class="tips-list">
-                <li>✓ Réserver tous les restaurants prioritaires (Shibuya Sky, Nabezo, Otowa Saryō, Hirokawa, Mishima-tei)</li>
-                <li>✓ Acheter billets Shinkansen via SmartEX (26/10 et 30/10)</li>
-                <li>✓ Configurer eSIM Holafly ou réserver pocket Wi-Fi</li>
-                <li>✓ Télécharger et tester les apps : Google Maps, Google Translate, SmartEX, FlashInvaders</li>
-                <li>✓ Vérifier validité des passeports (minimum 6 mois)</li>
-                <li>✓ Prévenir votre banque du voyage (éviter blocage carte)</li>
-                <li>✓ Ajouter les adresses des hôtels dans Google Maps en favoris</li>
-                <li>✓ Sauvegarder ce site web en favoris ou le télécharger pour accès offline</li>
-                <li>✓ Imprimer ou sauvegarder les confirmations de réservation importantes</li>
-                <li>✓ Préparer une trousse de médicaments de base</li>
-            </ul>
-        </div>
+    <!-- 
+      7. JAVASCRIPT for "Impressive Effects"
+    -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Tabbed Interface Logic
+            const tabs = document.querySelectorAll('.portfolio-tab-btn');
+            const panes = document.querySelectorAll('.portfolio-tab-pane');
 
-        <div class="alert-box" style="background: linear-gradient(135deg, rgba(255, 235, 238, 0.95), rgba(255, 205, 210, 0.95)); border-left: 5px solid var(--primary);">
-            <strong>🎌 Bon voyage au Japon !</strong> Profitez intensément de chaque instant de cette aventure extraordinaire. Le Japon est un pays fascinant qui saura vous émerveiller à chaque coin de rue, de la modernité trépidante de Tokyo aux temples séculaires de Kyoto. Préparez-vous à vivre des moments inoubliables ! 🇯🇵✨
-        </div>
-    </div>
+            if(tabs.length) {
+                tabs.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        const targetPane = document.querySelector(tab.dataset.tabTarget);
 
-</div>
+                        tabs.forEach(t => t.classList.remove('active'));
+                        tab.classList.add('active');
 
-<div class="footer">
-    <p>🇯🇵 Voyage au Japon • 23-31 Octobre 2025 • Tokyo & Kyoto 🇯🇵</p>
-</div>
+                        panes.forEach(p => p.classList.add('hidden'));
+                        targetPane.classList.remove('hidden');
+                    });
+                });
+            }
 
-<script>
-    // Navigation entre les jours
-    const tabs = document.querySelectorAll('.nav-tab');
-    const sections = document.querySelectorAll('.day-section');
+            // Scroll Animation Logic
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            // Retirer la classe active de tous
-            tabs.forEach(t => t.classList.remove('active'));
-            sections.forEach(s => s.classList.remove('active'));
+            if ("IntersectionObserver" in window) {
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target); // Unobserve after it's visible
+                        }
+                    });
+                }, {
+                    threshold: 0.1 // Trigger when 10% of the element is visible
+                });
 
-            // Ajouter la classe active
-            tab.classList.add('active');
-
-            // Afficher la section correspondante
-            const dayId = tab.getAttribute('data-day');
-            document.getElementById(dayId).classList.add('active');
-
-            // Scroll vers le haut
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+                animatedElements.forEach(el => {
+                    observer.observe(el);
+                });
+            } else {
+                // Fallback for very old browsers: just show everything
+                animatedElements.forEach(el => el.classList.add('is-visible'));
+            }
         });
-    });
-</script>
-```
+    </script>
 
 </body>
-</html> 
+</html>
