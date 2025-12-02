@@ -1,315 +1,634 @@
-Fais la landing page la plus impressionnante et vendeuse et professionnelle et au top de l’art du design web pour un projet de service SAAS pour des crèches. Visible et responsive sur iPhone. Sois excellent.
-Voici des éléments :
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KidoPilot | L'OS Intelligent des Réseaux de Crèches</title>
+    
+    <!-- React Stack -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-Absolument. Voici une proposition de Landing Page pour ce nouveau produit, que nous appellerons "KidoPilot". Cette page est conçue pour convertir les directeurs de crèches et les gestionnaires de réseaux en utilisant les meilleures pratiques de copywriting, de design UX/UI et de marketing SaaS B2B.
-Landing Page : KidoPilot
-URL (Suggestion) : www.kidopilot.ai
-Design Général : Épuré, professionnel, rassurant. Utilisation de couleurs douces mais sérieuses (bleu marine pour la confiance, vert d'eau pour la sérénité, orange pour les CTA). Typographie moderne et très lisible (ex: Inter).
-1. Hero Section (Au-dessus de la ligne de flottaison)
-(Navigation)
-Logo KidoPilot | Solutions (Staffing, Conformité, Communication) | Ressources | Tarifs | [Connexion] | [Bouton CTA : Demander une Démo]
-(Headline - Proposition de Valeur Principale)
-Pilotez votre structure sereinement. L'IA s'occupe de la complexité.
-(Sous-titre - Explication Claire)
-KidoPilot est le premier Copilote IA conçu spécifiquement pour la petite enfance (crèches, maternelles, périscolaire). Optimisez vos plannings sous contraintes, sécurisez votre conformité (PMI/CAF) et libérez vos équipes de la charge administrative.
-(Appel à l'Action Principal)
-[Bouton CTA Orange : Demander une démo personnalisée (Gratuit)]
-Gagnez jusqu'à 10h par semaine et améliorez votre marge opérationnelle.
-(Visuel Principal : Mockup de l'Application - Le Dashboard Intelligent)
-Le tableau de bord KidoPilot offre une vue d'ensemble immédiate. L'interface est conçue pour réduire le stress : les alertes prioritaires générées par l'IA sont mises en avant, permettant au directeur de savoir immédiatement où agir.
+    <!-- Fonts: Plus Jakarta Sans (Headers) & Inter (Body) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" style="font-family: 'Inter', sans-serif; background-color: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px;">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            navy: '#0B2438',  // CVA Deep Blue (Authority)
+                            teal: '#0D9488',  // Modern Teal (Growth)
+                            tealLight: '#CCFBF1',
+                            accent: '#F97316', // Conversion Orange
+                            surface: '#F8FAFC',
+                            border: '#E2E8F0'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(11, 36, 56, 0.08)',
+                        'glow': '0 0 40px -10px rgba(13, 148, 136, 0.4)',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'ticker': 'ticker 30s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        ticker: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Glassmorphism & Utilities */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .noise-bg {
+            background-color: #F8FAFC;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #0B2438 0%, #0D9488 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Mobile Sticky CTA fix */
+        .safe-bottom {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+    </style>
+</head>
+<body class="noise-bg text-slate-800 antialiased overflow-x-hidden">
+    <div id="root"></div>
 
-  <rect width="800" height="50" fill="#ffffff"/>
-  <text x="20" y="30" fill="#003366" font-weight="bold" font-size="18">KidoPilot</text>
-  <rect x="680" y="15" width="100" height="25" rx="5" fill="#e0f2f1"/>
-  <text x="730" y="31" fill="#00695c" font-size="12" text-anchor="middle">Claire D.</text>
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
 
-  <rect x="0" y="50" width="260" height="400" fill="#ffffff"/>
-  <text x="20" y="80" fill="#374151" font-weight="semibold" font-size="15">💡 Copilote IA - Alertes Prioritaires</text>
+        // --- COMPONENTS ---
 
-  <rect x="10" y="100" width="240" height="70" rx="5" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
-  <text x="20" y="120" fill="#991b1b" font-size="12" font-weight="bold">⚠️ Risque Taux d'Encadrement</text>
-  <text x="20" y="140" fill="#991b1b" font-size="11">Mercredi 15h-16h (Moyens) : Sous-effectif détecté.</text>
-  <text x="20" y="160" fill="#0056b3" font-size="11" style="cursor: pointer; text-decoration: underline;">Voir les solutions IA</text>
+        const Badge = ({ text, type = 'default' }) => {
+            const styles = {
+                default: "bg-slate-100 text-slate-600 border-slate-200",
+                success: "bg-teal-50 text-teal-700 border-teal-200",
+                warning: "bg-orange-50 text-orange-700 border-orange-200",
+                navy: "bg-[#0B2438] text-white border-transparent"
+            };
+            return (
+                <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold border ${styles[type]}`}>
+                    {text}
+                </span>
+            );
+        };
 
-  <rect x="10" y="180" width="240" height="70" rx="5" fill="#f0f9ff" stroke="#7dd3fc" stroke-width="1"/>
-  <text x="20" y="200" fill="#0c4a6e" font-size="12" font-weight="bold">✅ Optimisation Planning</text>
-  <text x="20" y="220" fill="#0c4a6e" font-size="11">Économie potentielle de 14H sup. cette semaine.</text>
-  <text x="20" y="240" fill="#0056b3" font-size="11" style="cursor: pointer; text-decoration: underline;">Appliquer la suggestion</text>
+        const Button = ({ children, variant = 'primary', className = '', icon: Icon, onClick }) => {
+            const base = "inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold transition-all duration-300 transform active:scale-[0.98] text-sm";
+            const variants = {
+                primary: "bg-brand-accent hover:bg-orange-600 text-white shadow-lg shadow-orange-500/20 hover:shadow-orange-500/30",
+                secondary: "bg-white text-slate-700 border border-slate-200 hover:border-brand-teal hover:text-brand-teal shadow-sm",
+                dark: "bg-brand-navy text-white hover:bg-slate-800 shadow-lg shadow-blue-900/20"
+            };
 
-  <rect x="10" y="260" width="240" height="50" rx="5" fill="#f3f4f6"/>
-  <text x="20" y="285" fill="#4b5563" font-size="12">📄 Rapport CAF T4 prêt à être validé.</text>
+            return (
+                <button onClick={onClick} className={`${base} ${variants[variant]} ${className}`}>
+                    {children}
+                    {Icon && <Icon className="ml-2 w-4 h-4" />}
+                </button>
+            );
+        };
 
-  <text x="280" y="80" fill="#374151" font-weight="semibold" font-size="18">Aujourd'hui, Mardi 2 Décembre</text>
+        // --- SECTIONS ---
 
-  <rect x="280" y="110" width="160" height="100" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
-  <text x="290" y="135" fill="#6b7280" font-size="13">Taux d'Occupation</text>
-  <text x="290" y="175" fill="#003366" font-size="30" font-weight="bold">88%</text>
-  <text x="290" y="200" fill="#6b7280" font-size="11">Prévu: 90%</text>
+        const Navbar = () => {
+            const [scrolled, setScrolled] = useState(false);
+            const [mobileOpen, setMobileOpen] = useState(false);
 
-  <rect x="460" y="110" width="160" height="100" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
-  <text x="470" y="135" fill="#6b7280" font-size="13">Ratio P/E Global</text>
-  <text x="470" y="175" fill="#10b981" font-size="30" font-weight="bold">1:6.2</text>
-  <rect x="470" y="190" width="70" height="15" rx="8" fill="#d1fae5"/>
-  <text x="505" y="200" fill="#065f46" font-size="11" text-anchor="middle">Conforme</text>
+            useEffect(() => {
+                const handleScroll = () => setScrolled(window.scrollY > 20);
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
 
-  <rect x="640" y="110" width="140" height="100" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
-  <text x="650" y="135" fill="#6b7280" font-size="13">Absences du jour</text>
-  <text x="650" y="165" fill="#003366" font-size="18" font-weight="bold">2 Staff</text>
-  <text x="650" y="190" fill="#003366" font-size="18" font-weight="bold">5 Enfants</text>
+            return (
+                <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'glass py-3 border-b border-white/50' : 'bg-transparent py-5'}`}>
+                    <div className="container mx-auto px-6 flex justify-between items-center">
+                        <div className="flex items-center gap-2">
+                            <div className="w-9 h-9 bg-brand-navy rounded-lg flex items-center justify-center text-white font-display font-bold text-lg shadow-md">K</div>
+                            <span className="font-display font-bold text-xl tracking-tight text-brand-navy">KidoPilot</span>
+                        </div>
 
-  <text x="280" y="250" fill="#374151" font-weight="semibold" font-size="16">Statut des Plannings de la Semaine</text>
-  <rect x="280" y="270" width="500" height="160" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
-  <line x1="380" y1="270" x2="380" y2="430" stroke="#e5e7eb"/>
-  <line x1="480" y1="270" x2="480" y2="430" stroke="#e5e7eb"/>
-  <line x1="580" y1="270" x2="580" y2="430" stroke="#e5e7eb"/>
-  <line x1="680" y1="270" x2="680" y2="430" stroke="#e5e7eb"/>
-  <text x="330" y="290" font-size="12" text-anchor="middle">Lundi</text>
-  <text x="430" y="290" font-size="12" text-anchor="middle">Mardi</text>
-  <text x="530" y="290" font-size="12" text-anchor="middle">Mercredi</text>
-  <text x="630" y="290" font-size="12" text-anchor="middle">Jeudi</text>
-  <text x="730" y="290" font-size="12" text-anchor="middle">Vendredi</text>
+                        {/* Desktop Nav */}
+                        <div className="hidden lg:flex items-center gap-8 bg-white/50 px-6 py-2 rounded-full border border-white/60 backdrop-blur-sm">
+                            <a href="#features" className="text-sm font-medium text-slate-600 hover:text-brand-navy transition">Plateforme</a>
+                            <a href="#roi" className="text-sm font-medium text-slate-600 hover:text-brand-navy transition">ROI</a>
+                            <a href="#security" className="text-sm font-medium text-slate-600 hover:text-brand-navy transition">Sécurité HDS</a>
+                        </div>
 
-  <rect x="285" y="310" width="90" height="30" rx="5" fill="#d1fae5"/>
-  <text x="330" y="328" font-size="11" text-anchor="middle" fill="#065f46">Optimal</text>
+                        <div className="hidden lg:flex items-center gap-3">
+                            <button className="text-sm font-semibold text-slate-600 hover:text-brand-navy px-4">Connexion</button>
+                            <Button variant="dark" icon={() => <i data-lucide="arrow-right" className="w-4 h-4 ml-2"/>}>Démo 30 min</Button>
+                        </div>
 
-  <rect x="385" y="310" width="90" height="30" rx="5" fill="#d1fae5"/>
-   <text x="430" y="328" font-size="11" text-anchor="middle" fill="#065f46">Optimal</text>
+                        <button className="lg:hidden p-2 text-brand-navy" onClick={() => setMobileOpen(!mobileOpen)}>
+                            <i data-lucide={mobileOpen ? "x" : "menu"} className="w-6 h-6"></i>
+                        </button>
+                    </div>
 
-  <rect x="485" y="310" width="90" height="30" rx="5" fill="#fef9c3"/>
-  <text x="530" y="328" font-size="11" text-anchor="middle" fill="#854d0e">Ajustement requis</text>
+                    {/* Mobile Menu */}
+                    {mobileOpen && (
+                        <div className="absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-xl p-6 flex flex-col gap-4 animate-in slide-in-from-top-5 duration-200 lg:hidden">
+                            <a href="#" className="font-medium text-slate-800 p-2">Plateforme</a>
+                            <a href="#" className="font-medium text-slate-800 p-2">Sécurité</a>
+                            <Button variant="primary" className="w-full">Réserver une démo</Button>
+                        </div>
+                    )}
+                </nav>
+            );
+        };
 
-  <rect x="585" y="310" width="90" height="30" rx="5" fill="#d1fae5"/>
-   <text x="630" y="328" font-size="11" text-anchor="middle" fill="#065f46">Optimal</text>
+        const Hero = () => {
+            return (
+                <section className="relative pt-32 pb-16 lg:pt-48 lg:pb-32 overflow-hidden">
+                    {/* Background Ambience */}
+                    <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-teal/5 rounded-full blur-[100px] -z-10 animate-pulse-slow"></div>
+                    <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-900/5 rounded-full blur-[100px] -z-10"></div>
 
-  <rect x="685" y="310" width="90" height="30" rx="5" fill="#d1fae5"/>
-   <text x="730" y="328" font-size="11" text-anchor="middle" fill="#065f46">Optimal</text>
+                    <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+                        <div className="max-w-2xl relative z-10">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 border border-teal-100 text-brand-teal text-xs font-bold uppercase tracking-wider mb-6">
+                                <span className="w-2 h-2 rounded-full bg-brand-teal animate-pulse"></span>
+                                Nouveau : Module CAF Automatisé
+                            </div>
+                            
+                            <h1 className="font-display text-4xl lg:text-6xl font-extrabold leading-[1.1] mb-6 text-brand-navy">
+                                Pilotez votre réseau par la <span className="text-gradient">Marge</span> et la <span className="text-gradient">Qualité</span>.
+                            </h1>
+                            
+                            <p className="text-lg text-slate-600 mb-8 leading-relaxed max-w-lg">
+                                L'IA qui sécurise vos ratios d'encadrement en temps réel et automatise l'administratif complexe. <br/>
+                                <span className="font-medium text-brand-navy">Conforme PMI. Hébergé HDS. Dédié Petite Enfance.</span>
+                            </p>
+                            
+                            <div className="flex flex-col sm:flex-row gap-4 mb-10">
+                                <Button variant="primary" icon={() => <i data-lucide="calendar" className="ml-2 w-4 h-4"/>}>
+                                    Auditer ma structure (Gratuit)
+                                </Button>
+                                <Button variant="secondary" icon={() => <i data-lucide="play-circle" className="ml-2 w-4 h-4"/>}>
+                                    Voir la vidéo
+                                </Button>
+                            </div>
 
-</svg>
+                            <div className="flex items-center gap-6 text-sm font-medium text-slate-500">
+                                <div className="flex items-center gap-2">
+                                    <i data-lucide="shield-check" className="w-4 h-4 text-brand-teal"></i>
+                                    <span>Certifié RGPD & HDS</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <i data-lucide="check-circle" className="w-4 h-4 text-brand-teal"></i>
+                                    <span>Setup en 24h</span>
+                                </div>
+                            </div>
+                        </div>
 
+                        {/* HIGH FIDELITY DASHBOARD VISUAL */}
+                        <div className="relative lg:h-[600px] flex items-center justify-center perspective-1000">
+                            {/* Main Dashboard Card */}
+                            <div className="relative w-full max-w-[650px] aspect-[16/10] bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden transform rotate-y-[-5deg] rotate-x-[5deg] hover:rotate-0 transition-transform duration-700 ease-out z-20">
+                                {/* Fake Browser Header */}
+                                <div className="h-8 bg-slate-50 border-b border-slate-100 flex items-center px-4 gap-2">
+                                    <div className="flex gap-1.5">
+                                        <div className="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
+                                        <div className="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
+                                    </div>
+                                    <div className="flex-1 text-center text-[10px] text-slate-400 font-mono">app.kidopilot.ai/dashboard</div>
+                                </div>
 
+                                {/* App Shell */}
+                                <div className="flex h-full">
+                                    {/* Sidebar */}
+                                    <div className="w-16 bg-brand-navy flex flex-col items-center py-6 gap-6 border-r border-slate-800">
+                                        <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white"><i data-lucide="layout-grid" className="w-4 h-4"></i></div>
+                                        <div className="w-8 h-8 rounded-lg text-slate-400 hover:text-white transition"><i data-lucide="users" className="w-4 h-4"></i></div>
+                                        <div className="w-8 h-8 rounded-lg text-slate-400 hover:text-white transition"><i data-lucide="calendar-clock" className="w-4 h-4"></i></div>
+                                        <div className="w-8 h-8 rounded-lg text-slate-400 hover:text-white transition"><i data-lucide="file-bar-chart" className="w-4 h-4"></i></div>
+                                        <div className="mt-auto w-8 h-8 rounded-full bg-brand-teal text-white text-xs flex items-center justify-center font-bold">CD</div>
+                                    </div>
 
-(Barre de Confiance - Juste en dessous du Hero)
-Rejoignez les réseaux de crèches innovants qui font confiance à KidoPilot :
-[Logo Client 1] [Logo Client 2] [Logo Client 3] [Logo Client 4]
-2. Section Crédibilité (L'Unfair Advantage)
-(Titre de Section)
-Conçu par des opérateurs, pour des opérateurs.
-(Texte)
-KidoPilot n'est pas une solution technologique hors-sol. Notre fondateur, fort de 15 ans d'expérience dans la création, la gestion et le développement de réseaux de crèches, connaît intimement les défis opérationnels que vous rencontrez.
-Remplacements d'urgence à 7h du matin, complexité des contrats à temps partiel, pression constante pour respecter les taux d'encadrement, reporting chronophage...
-C'est cette expertise terrain qui nous permet de créer une IA véritablement pertinente, qui comprend les subtilités de la réglementation française et les réalités quotidiennes de vos équipes.
-3. Section Fonctionnalités Clés (Le cœur de l'offre)
-Module 1 : Le Planning Intelligent qui respecte (vraiment) vos contraintes.
-(Description)
-L'optimisation du staffing est votre premier levier de performance et de qualité. Notre IA analyse des milliers de combinaisons en intégrant toutes vos contraintes : taux d'encadrement légaux, qualifications requises (EJE, AP...), contrats spécifiques et compétences de vos équipes.
-(Points Clés)
-• Génération Automatique de Plannings : Créez le planning optimal en quelques clics, pas en quelques heures.
-• Gestion Proactive des Absences : L'IA vous suggère immédiatement le meilleur remplaçant disponible et qualifié.
-• Visualisation des Ratios en Temps Réel : Superposez le besoin légal et la présence effective pour identifier les risques instantanément.
-• Impact Financier Direct : Visualisez le coût de chaque planning et réduisez les heures supplémentaires inutiles.
-(Visuel : Mockup 2 - Le Smart Planner et la Suggestion IA)
-L'interface met clairement en évidence les plages horaires où le ratio n'est pas respecté. En un clic, le Copilote IA propose des scénarios d'optimisation concrets et chiffrés, transformant la gestion des imprévus en décision éclairée.
+                                    {/* Main Content */}
+                                    <div className="flex-1 bg-slate-50 p-6 relative">
+                                        {/* Header */}
+                                        <div className="flex justify-between items-end mb-6">
+                                            <div>
+                                                <h2 className="text-xl font-bold text-brand-navy">Vue d'ensemble</h2>
+                                                <p className="text-xs text-slate-500">Mardi 2 Décembre • Crèche "Les Petits Pas"</p>
+                                            </div>
+                                            <div className="flex gap-2">
+                                                <Badge text="Conforme" type="success" />
+                                                <Badge text="Audit en cours" type="navy" />
+                                            </div>
+                                        </div>
 
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" style="font-family: 'Inter', sans-serif; background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px;">
+                                        {/* KPI Cards */}
+                                        <div className="grid grid-cols-3 gap-4 mb-6">
+                                            <div className="bg-white p-3 rounded-xl border border-slate-100 shadow-sm">
+                                                <p className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Taux d'occupation</p>
+                                                <p className="text-2xl font-bold text-brand-navy mt-1">92%</p>
+                                                <p className="text-[10px] text-green-600 flex items-center mt-1"><i data-lucide="trending-up" className="w-3 h-3 mr-1"></i> +4pts vs N-1</p>
+                                            </div>
+                                            <div className="bg-white p-3 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden">
+                                                <p className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Ratio Encadrement</p>
+                                                <p className="text-2xl font-bold text-brand-teal mt-1">1:6.2</p>
+                                                <div className="absolute right-3 top-3 w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                                <p className="text-[10px] text-slate-400 mt-1">Cible: 1:5.0 - 1:8.0</p>
+                                            </div>
+                                            <div className="bg-white p-3 rounded-xl border border-slate-100 shadow-sm">
+                                                <p className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Masse Salariale</p>
+                                                <p className="text-2xl font-bold text-brand-navy mt-1">32k€</p>
+                                                <p className="text-[10px] text-green-600 mt-1">Optimisée</p>
+                                            </div>
+                                        </div>
 
-  <rect width="800" height="50" fill="#f9fafb"/>
-  <text x="20" y="30" fill="#374151" font-weight="semibold" font-size="16">Planning Hebdomadaire - Section Moyens</text>
-  <rect x="600" y="10" width="180" height="30" rx="5" fill="#f97316"/>
-  <text x="690" y="28" fill="#ffffff" font-size="12" text-anchor="middle" font-weight="bold">Lancer l'Optimisation IA</text>
+                                        {/* Dynamic Alert Banner (The "Hook") */}
+                                        <div className="bg-white rounded-xl shadow-soft border-l-4 border-orange-500 p-4 mb-6 animate-float">
+                                            <div className="flex justify-between items-start">
+                                                <div className="flex gap-3">
+                                                    <div className="bg-orange-50 p-2 rounded-lg text-orange-600">
+                                                        <i data-lucide="alert-triangle" className="w-5 h-5"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h3 className="text-sm font-bold text-brand-navy">Alerte Prédictive IA</h3>
+                                                        <p className="text-xs text-slate-500 mt-1 max-w-[200px]">Risque de sous-effectif détecté pour demain 14h00 (Section Moyens).</p>
+                                                    </div>
+                                                </div>
+                                                <button className="bg-brand-navy text-white text-xs px-3 py-1.5 rounded-lg hover:bg-slate-700 transition">
+                                                    Voir la solution
+                                                </button>
+                                            </div>
+                                        </div>
 
-  <rect x="20" y="60" width="15" height="15" fill="#10b981" opacity="0.5"/>
-  <text x="40" y="72" font-size="11">Présence Staff Effective</text>
-  <rect x="180" y="60" width="15" height="15" fill="#ef4444" opacity="0.5"/>
-  <text x="200" y="72" font-size="11">Besoin en Encadrement (Légal)</text>
+                                        {/* Chart Placeholder */}
+                                        <div className="bg-white rounded-xl border border-slate-100 p-4 h-32 flex items-center justify-center relative">
+                                            <div className="absolute inset-x-4 bottom-4 top-8 flex items-end justify-between gap-2">
+                                                {[40, 60, 45, 70, 50, 65, 80].map((h, i) => (
+                                                    <div key={i} className="w-full bg-brand-teal/20 rounded-t-sm relative group">
+                                                        <div style={{height: `${h}%`}} className="absolute bottom-0 w-full bg-brand-teal rounded-t-sm group-hover:bg-brand-navy transition-colors duration-300"></div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            {/* Floating Card: ROI */}
+                            <div className="absolute -bottom-4 -left-4 bg-white p-4 rounded-xl shadow-xl border border-slate-100 z-30 animate-float" style={{animationDelay: '1s'}}>
+                                <div className="flex items-center gap-3">
+                                    <div className="bg-green-100 p-2 rounded-full text-green-600">
+                                        <i data-lucide="piggy-bank" className="w-5 h-5"></i>
+                                    </div>
+                                    <div>
+                                        <p className="text-[10px] text-slate-500 font-bold uppercase">Économies (Mois)</p>
+                                        <p className="font-bold text-brand-navy text-lg">+1 240 €</p>
+                                    </div>
+                                </div>
+                            </div>
 
-  <g transform="translate(20, 90)">
-    <rect width="760" height="100" fill="#f3f4f6" rx="5"/>
-    <text x="76" y="-5" font-size="12" text-anchor="middle">Lundi</text>
-    <text x="228" y="-5" font-size="12" text-anchor="middle">Mardi</text>
-    <text x="380" y="-5" font-size="12" text-anchor="middle">Mercredi</text>
-    <text x="532" y="-5" font-size="12" text-anchor="middle">Jeudi</text>
-    <text x="684" y="-5" font-size="12" text-anchor="middle">Vendredi</text>
+                             {/* Floating Card: Security */}
+                            <div className="absolute top-10 -right-8 bg-white p-3 rounded-lg shadow-xl border border-slate-100 z-10 flex items-center gap-2 animate-float" style={{animationDelay: '2s'}}>
+                                <i data-lucide="lock" className="w-4 h-4 text-brand-teal"></i>
+                                <span className="text-xs font-bold text-brand-navy">Données Cryptées AES-256</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
 
-    <line x1="152" y1="0" x2="152" y2="100" stroke="#e5e7eb"/>
-    <line x1="304" y1="0" x2="304" y2="100" stroke="#e5e7eb"/>
-    <line x1="456" y1="0" x2="456" y2="100" stroke="#e5e7eb"/>
-    <line x1="608" y1="0" x2="608" y2="100" stroke="#e5e7eb"/>
+        const LogoTicker = () => {
+             const logos = ["Les Petits Chaperons", "Babilou", "La Maison Bleue", "People&Baby", "Léah", "Grandir"];
+             return (
+                 <div className="bg-white border-y border-slate-100 py-6 overflow-hidden relative">
+                    <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
+                    <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
+                    
+                    <div className="flex gap-16 animate-ticker w-max">
+                        {[...logos, ...logos, ...logos].map((logo, i) => (
+                            <span key={i} className="text-lg font-display font-bold text-slate-300 uppercase tracking-widest whitespace-nowrap">
+                                {logo}
+                            </span>
+                        ))}
+                    </div>
+                 </div>
+             );
+        };
 
-    <path d="M0 50 L 760 50" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,5"/>
+        const BentoFeatures = () => {
+            return (
+                <section id="features" className="py-24 bg-slate-50">
+                    <div className="container mx-auto px-6">
+                        <div className="text-center max-w-2xl mx-auto mb-16">
+                            <Badge text="Plateforme Tout-en-Un" type="navy" />
+                            <h2 className="font-display text-3xl lg:text-4xl font-bold text-brand-navy mt-4 mb-4">
+                                L'Intelligence Artificielle qui <br/>comprend la Petite Enfance.
+                            </h2>
+                            <p className="text-slate-600">
+                                Nous avons codifié 15 ans d'expertise opérationnelle dans des algorithmes propriétaires.
+                            </p>
+                        </div>
 
-    <path d="M0 30 H 320 V 30 H 380 V 70 H 440 V 30 H 760" fill="none" stroke="#10b981" stroke-width="3"/>
+                        {/* Bento Grid Layout */}
+                        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6">
+                            
+                            {/* Card 1: Main Feature (Span 2) */}
+                            <div className="lg:col-span-2 bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+                                <div className="max-w-md relative z-10">
+                                    <div className="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center text-brand-teal mb-6">
+                                        <i data-lucide="brain-circuit" className="w-6 h-6"></i>
+                                    </div>
+                                    <h3 className="font-display text-2xl font-bold text-brand-navy mb-3">Planning Génératif Sous Contraintes</h3>
+                                    <p className="text-slate-600 mb-6">
+                                        Notre moteur d'optimisation génère les plannings en respectant simultanément : les contrats, les compétences (EJE/AP), les ratios légaux et les congés.
+                                    </p>
+                                    <ul className="space-y-2 mb-6">
+                                        <li className="flex items-center text-sm text-slate-700"><i data-lucide="check" className="w-4 h-4 text-brand-teal mr-2"></i>Conformité décret 2021</li>
+                                        <li className="flex items-center text-sm text-slate-700"><i data-lucide="check" className="w-4 h-4 text-brand-teal mr-2"></i>Lissage des heures supplémentaires</li>
+                                    </ul>
+                                </div>
+                                {/* Abstract Visual */}
+                                <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-slate-50 border-l border-slate-100 flex flex-col justify-center p-4 gap-3 opacity-50 group-hover:opacity-100 transition-opacity">
+                                    <div className="bg-white p-3 rounded-lg border border-slate-200 shadow-sm text-xs">
+                                        <div className="flex justify-between font-bold text-slate-700 mb-1"><span>Lundi</span><span>OK</span></div>
+                                        <div className="h-1.5 bg-green-500 rounded-full w-full"></div>
+                                    </div>
+                                    <div className="bg-white p-3 rounded-lg border border-red-200 shadow-sm text-xs border-l-4 border-l-red-500">
+                                        <div className="flex justify-between font-bold text-slate-700 mb-1"><span>Mardi</span><span className="text-red-500">!</span></div>
+                                        <div className="h-1.5 bg-red-200 rounded-full w-full"></div>
+                                    </div>
+                                     <div className="bg-white p-3 rounded-lg border border-slate-200 shadow-sm text-xs">
+                                        <div className="flex justify-between font-bold text-slate-700 mb-1"><span>Mercredi</span><span>OK</span></div>
+                                        <div className="h-1.5 bg-green-500 rounded-full w-full"></div>
+                                    </div>
+                                </div>
+                            </div>
 
-    <rect x="380" y="51" width="60" height="49" fill="#fca5a5" opacity="0.7"/>
-    <text x="385" y="75" fill="#991b1b" font-size="10">⚠️ Sous-effectif</text>
-  </g>
+                            {/* Card 2: Compliance */}
+                            <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                                <div className="w-12 h-12 bg-brand-navy rounded-xl flex items-center justify-center text-white mb-6">
+                                    <i data-lucide="scale" className="w-6 h-6"></i>
+                                </div>
+                                <h3 className="font-display text-xl font-bold text-brand-navy mb-3">Audit PMI Continu</h3>
+                                <p className="text-slate-600 text-sm mb-4">
+                                    Ne préparez plus les inspections. Soyez prêts chaque jour. Export des preuves en 1 clic.
+                                </p>
+                                <div className="bg-slate-50 rounded-xl p-4 border border-slate-100 mt-4">
+                                    <div className="flex justify-between items-center mb-2">
+                                        <span className="text-xs font-bold text-slate-500">Score Conformité</span>
+                                        <span className="text-xs font-bold text-brand-teal">98/100</span>
+                                    </div>
+                                    <div className="w-full bg-slate-200 rounded-full h-2">
+                                        <div className="bg-brand-teal h-2 rounded-full w-[98%]"></div>
+                                    </div>
+                                </div>
+                            </div>
 
-  <text x="20" y="230" font-weight="semibold" font-size="14">Plannings Individuels</text>
-  <g transform="translate(20, 250)">
-    <rect width="760" height="100" fill="#ffffff" stroke="#e5e7eb"/>
-    <text x="10" y="20" font-size="12">Marie (EJE)</text>
-    <rect x="100" y="10" width="130" height="20" rx="5" fill="#93c5fd"/>
-    <rect x="250" y="10" width="130" height="20" rx="5" fill="#93c5fd"/>
+                            {/* Card 3: CAF & Finance */}
+                            <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                                <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600 mb-6">
+                                    <i data-lucide="coins" className="w-6 h-6"></i>
+                                </div>
+                                <h3 className="font-display text-xl font-bold text-brand-navy mb-3">Module PSU & CAF</h3>
+                                <p className="text-slate-600 text-sm">
+                                    Déclaration des heures réelles vs facturées. Détection automatique des erreurs de pointage avant envoi CAF.
+                                </p>
+                            </div>
 
-    <text x="10" y="50" font-size="12">Sarah (AP)</text>
-    <rect x="100" y="40" width="100" height="20" rx="5" fill="#a7f3d0"/>
-    <rect x="400" y="40" width="100" height="20" rx="5" fill="#fca5a5"/>
-     <text x="420" y="53" font-size="10" fill="#991b1b">Absente (P.M.)</text>
-  </g>
+                            {/* Card 4: Communication AI */}
+                            <div className="lg:col-span-2 bg-brand-navy rounded-3xl p-8 border border-slate-800 shadow-sm text-white relative overflow-hidden">
+                                <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
+                                    <div>
+                                        <Badge text="Gain de temps : 45 min / jour" type="warning" />
+                                        <h3 className="font-display text-2xl font-bold mt-4 mb-3">Assistant de Transmission</h3>
+                                        <p className="text-slate-300 mb-6">
+                                            Transformez les notes brutes ("A bien mangé, sieste 1h") en paragraphes professionnels et empathiques pour les parents.
+                                        </p>
+                                        <a href="#" className="text-brand-accent font-bold text-sm hover:text-white transition flex items-center">
+                                            Voir la démo de rédaction <i data-lucide="arrow-right" className="ml-2 w-4 h-4"></i>
+                                        </a>
+                                    </div>
+                                    <div className="bg-white/10 rounded-xl p-4 backdrop-blur-sm border border-white/10">
+                                        <p className="text-xs text-slate-400 mb-2 font-mono">Input (Équipe)</p>
+                                        <div className="bg-black/20 p-2 rounded text-xs text-slate-300 mb-3 font-mono">
+                                            Léo. Repas ok. Sieste courte.
+                                        </div>
+                                        <div className="flex justify-center mb-3"><i data-lucide="arrow-down" className="w-4 h-4 text-brand-accent"></i></div>
+                                        <p className="text-xs text-slate-400 mb-2 font-mono">Output (KidoPilot)</p>
+                                        <div className="bg-white text-brand-navy p-3 rounded text-xs italic">
+                                            "Léo a eu un très bon appétit ce midi. Sa sieste a été un peu plus courte que d'habitude..."
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
 
-    <g transform="translate(450, 150)">
-    <rect width="320" height="250" rx="10" fill="#ffffff" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.1))"/>
-    <rect width="320" height="40" fill="#1e3a8a" rx="10" ry="10"/>
-    <text x="20" y="25" font-weight="bold" font-size="14" fill="white">💡 Propositions du Copilote IA</text>
+        const ROICalculatorSection = () => {
+            return (
+                <section id="roi" className="py-24 bg-white border-y border-slate-100">
+                    <div className="container mx-auto px-6">
+                        <div className="grid lg:grid-cols-2 gap-16 items-center">
+                            <div>
+                                <h2 className="font-display text-3xl lg:text-4xl font-bold text-brand-navy mb-6">
+                                    Un ROI mesurable dès le <span className="text-brand-teal">Mois 1</span>.
+                                </h2>
+                                <p className="text-slate-600 mb-8">
+                                    Nos clients constatent une réduction moyenne de 4% de la masse salariale grâce à l'optimisation des heures supplémentaires et des vacataires.
+                                </p>
+                                
+                                <div className="space-y-6">
+                                    <div className="flex gap-4">
+                                        <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                                            <i data-lucide="trending-down" className="w-6 h-6 text-green-600"></i>
+                                        </div>
+                                        <div>
+                                            <h4 className="font-bold text-brand-navy text-lg">-10h / semaine</h4>
+                                            <p className="text-sm text-slate-500">De gestion administrative par Directrice.</p>
+                                        </div>
+                                    </div>
+                                     <div className="flex gap-4">
+                                        <div className="w-12 h-12 rounded-full bg-brand-navy flex items-center justify-center flex-shrink-0">
+                                            <i data-lucide="shield" className="w-6 h-6 text-white"></i>
+                                        </div>
+                                        <div>
+                                            <h4 className="font-bold text-brand-navy text-lg">0 Pénalité</h4>
+                                            <p className="text-sm text-slate-500">Risque de non-conformité CAF/PMI éliminé.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-    <text x="20" y="65" font-size="13" font-weight="semibold" fill="#1f2937">Scénario 1 (Recommandé)</text>
-    <text x="20" y="85" font-size="12" fill="#4b5563">Décaler la pause de Marie (EJE) de 30min.</text>
-    <text x="20" y="105" font-size="12" fill="#6b7280">Coût : 0€.</text>
-    <text x="20" y="120" font-size="12" fill="#6b7280">Impact conformité : Positif.</text>
-    <rect x="200" y="80" width="100" height="30" rx="5" fill="#10b981"/>
-    <text x="250" y="98" fill="#ffffff" font-size="12" text-anchor="middle">Appliquer</text>
+                            <div className="bg-slate-50 rounded-3xl p-8 border border-slate-200 relative">
+                                <div className="absolute -top-4 -right-4 bg-brand-accent text-white px-4 py-2 rounded-lg font-bold text-sm shadow-lg transform rotate-3">
+                                    Résultat Moyen
+                                </div>
+                                <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-6">Simulation Micro-Crèche (10 berceaux)</h3>
+                                
+                                <div className="space-y-4 mb-8">
+                                    <div className="flex justify-between items-center py-3 border-b border-slate-200">
+                                        <span className="text-slate-600">Optimisation Staffing</span>
+                                        <span className="font-bold text-brand-navy">+ 850 € / mois</span>
+                                    </div>
+                                    <div className="flex justify-between items-center py-3 border-b border-slate-200">
+                                        <span className="text-slate-600">Réduction Interim</span>
+                                        <span className="font-bold text-brand-navy">+ 400 € / mois</span>
+                                    </div>
+                                    <div className="flex justify-between items-center py-3 border-b border-slate-200">
+                                        <span className="text-slate-600">Gain Temps Direction</span>
+                                        <span className="font-bold text-brand-navy">+ 600 € / mois</span>
+                                    </div>
+                                </div>
+                                
+                                <div className="bg-brand-navy rounded-xl p-6 text-white flex justify-between items-center">
+                                    <div>
+                                        <p className="text-xs text-slate-300 uppercase">Gain Annuel Estimé</p>
+                                        <p className="text-3xl font-bold text-white">22 200 €</p>
+                                    </div>
+                                    <i data-lucide="arrow-up-right" className="w-8 h-8 text-brand-teal"></i>
+                                </div>
+                                <p className="text-xs text-slate-400 mt-4 text-center">*Basé sur une moyenne nationale 2024.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
 
-    <line x1="20" y1="140" x2="300" y2="140" stroke="#e5e7eb"/>
+        const TrustSection = () => (
+             <section className="py-20 bg-slate-900 text-white text-center">
+                <div className="container mx-auto px-6">
+                    <h2 className="text-2xl font-bold mb-8">Vos données sont sacrées. Notre infrastructure aussi.</h2>
+                    <div className="flex flex-wrap justify-center gap-8 md:gap-16">
+                        <div className="flex flex-col items-center gap-3">
+                            <i data-lucide="server" className="w-8 h-8 text-brand-teal"></i>
+                            <span className="font-bold">Hébergement HDS</span>
+                            <span className="text-xs text-slate-400">Serveurs Santé agréés</span>
+                        </div>
+                         <div className="flex flex-col items-center gap-3">
+                            <i data-lucide="lock" className="w-8 h-8 text-brand-teal"></i>
+                            <span className="font-bold">Chiffrement AES-256</span>
+                            <span className="text-xs text-slate-400">Standards bancaires</span>
+                        </div>
+                         <div className="flex flex-col items-center gap-3">
+                            <i data-lucide="globe" className="w-8 h-8 text-brand-teal"></i>
+                            <span className="font-bold">Souveraineté</span>
+                            <span className="text-xs text-slate-400">Data Centers en France</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        );
 
-    <text x="20" y="165" font-size="13" font-weight="semibold" fill="#1f2937">Scénario 2</text>
-    <text x="20" y="185" font-size="12" fill="#4b5563">Rappeler Julien (Volant, disponible).</text>
-    <text x="20" y="205" font-size="12" fill="#6b7280">Coût estimé : 45€.</text>
-     <rect x="200" y="175" width="100" height="30" rx="5" fill="#e5e7eb"/>
-    <text x="250" y="193" fill="#374151" font-size="12" text-anchor="middle">Appliquer</text>
+        const CTA = () => (
+            <section className="py-24 bg-white relative overflow-hidden">
+                <div className="container mx-auto px-6 relative z-10">
+                    <div className="max-w-4xl mx-auto text-center">
+                        <h2 className="font-display text-4xl md:text-5xl font-bold text-brand-navy mb-6">
+                            Prêt à optimiser votre structure ?
+                        </h2>
+                        <p className="text-xl text-slate-600 mb-10">
+                            Rejoignez les 200+ directeurs qui ont choisi la sérénité opérationnelle.
+                        </p>
+                        <div className="flex flex-col sm:flex-row justify-center gap-4">
+                            <Button variant="primary" className="text-lg px-8 py-4" icon={() => <i data-lucide="calendar-check" className="w-5 h-5 ml-2"/>}>
+                                Réserver une démo (30 min)
+                            </Button>
+                            <Button variant="secondary" className="text-lg px-8 py-4">
+                                Parler à un expert
+                            </Button>
+                        </div>
+                        <p className="mt-6 text-sm text-slate-400">
+                            Pas de carte bancaire • Audit gratuit inclus • Sans engagement
+                        </p>
+                    </div>
+                </div>
+            </section>
+        );
 
-  </g>
-</svg>
+        const Footer = () => (
+            <footer className="bg-slate-50 border-t border-slate-200 pt-16 pb-32 lg:pb-16">
+                <div className="container mx-auto px-6">
+                    <div className="flex flex-col md:flex-row justify-between items-center opacity-60 text-sm">
+                        <p>© 2025 KidoPilot SAS. Paris, France.</p>
+                        <div className="flex gap-6 mt-4 md:mt-0">
+                            <a href="#">Mentions Légales</a>
+                            <a href="#">CGV</a>
+                            <a href="#">Politique RGPD</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        );
 
+        const StickyMobileCTA = () => (
+            <div className="fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 p-4 lg:hidden z-50 safe-bottom shadow-[0_-5px_20px_rgba(0,0,0,0.05)]">
+                <div className="flex gap-3">
+                     <Button variant="secondary" className="flex-1 py-3 text-sm">Connexion</Button>
+                     <Button variant="primary" className="flex-1 py-3 text-sm">Démo</Button>
+                </div>
+            </div>
+        );
 
-Module 2 : Votre Conformité Réglementaire, Sécurisée et Automatisée.
-(Description)
-Restez à jour avec les évolutions constantes des exigences PMI et CAF sans y passer vos week-ends. KidoPilot centralise votre documentation, suit vos échéances et vous aide à préparer vos rapports et inspections en toute sérénité.
-(Points Clés)
-• Veille Réglementaire Intelligente : Recevez des alertes claires et actionnables sur les changements qui impactent votre structure.
-• Audits Automatisés : L'IA analyse vos données (plannings, registres, protocoles) pour identifier les risques de non-conformité avant inspection.
-• Génération de Rapports (CAF/PMI) : Pré-remplissage intelligent de vos rapports d'activité, garantissant la cohérence des données.
-• Checklists Interactives : Suivi des points de contrôle essentiels (HACCP, PAI, Formations...).
-(Visuel : Mockup 3 - Le Centre de Conformité)
-La conformité n'est plus une source de stress, mais un processus géré activement. Un score global vous rassure, tandis que l'IA identifie proactivement les actions nécessaires et centralise les preuves.
+        // --- MAIN APP ---
 
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" style="font-family: 'Inter', sans-serif; background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px;">
+        const App = () => {
+            useEffect(() => {
+                if (window.lucide) window.lucide.createIcons();
+            });
 
-  <rect width="800" height="50" fill="#f9fafb"/>
-  <text x="20" y="30" fill="#374151" font-weight="semibold" font-size="18">Centre de Conformité (PMI &amp; CAF)</text>
+            return (
+                <div className="font-sans">
+                    <Navbar />
+                    <Hero />
+                    <LogoTicker />
+                    <BentoFeatures />
+                    <ROICalculatorSection />
+                    <TrustSection />
+                    <CTA />
+                    <Footer />
+                    <StickyMobileCTA />
+                </div>
+            );
+        };
 
-  <rect x="20" y="70" width="230" height="120" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="1"/>
-  <text x="40" y="100" font-size="14" fill="#065f46">Score de Conformité Global</text>
-  <text x="40" y="150" font-size="48" font-weight="bold" fill="#059669">98%</text>
-  <text x="150" y="150" font-size="14" fill="#065f46">✅ Excellent</text>
-  <text x="40" y="175" font-size="11" fill="#6b7280">Dernier audit IA : Aujourd'hui, 10h15.</text>
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
 
-  <rect x="270" y="70" width="510" height="120" rx="10" fill="#fffbeb" stroke="#fcd34d" stroke-width="1"/>
-  <text x="290" y="100" font-weight="bold" font-size="16" fill="#92400e">💡 Veille Réglementaire IA</text>
-  <text x="290" y="130" font-size="14" fill="#92400e">Nouvelle recommandation PMI (Dépt 75) détectée :</text>
-  <text x="290" y="150" font-size="14" fill="#92400e">Mise à jour du Protocole PAI nécessaire avant le 15 Décembre.</text>
-
-  <rect x="600" y="155" width="160" height="30" rx="5" fill="#f97316"/>
-  <text x="680" y="173" text-anchor="middle" font-size="12" fill="#ffffff" font-weight="bold">Générer le modèle type</text>
-
-  <text x="20" y="230" font-weight="semibold" font-size="18">Checklist Pré-Inspection PMI</text>
-
-  <g transform="translate(20, 250)">
-    <rect width="760" height="30" fill="#f3f4f6" rx="5"/>
-    <text x="10" y="18" font-size="13">Taux d'encadrement respectés sur les 3 derniers mois</text>
-    <text x="550" y="18" font-size="13" fill="#10b981">✅ Validé par IA</text>
-    <text x="670" y="18" font-size="13" fill="#0056b3" style="text-decoration: underline;">Voir les preuves</text>
-
-    <rect y="40" width="760" height="30" fill="#f3f4f6" rx="5"/>
-    <text x="10" y="58" font-size="13">Registres de présence du personnel à jour et signés</text>
-    <text x="550" y="58" font-size="13" fill="#10b981">✅ Validé par IA</text>
-
-    <rect y="80" width="760" height="30" fill="#f3f4f6" rx="5"/>
-    <text x="10" y="98" font-size="13">Protocoles médicaux (PAI, urgences) actualisés</text>
-    <text x="550" y="98" font-size="13" fill="#f59e0b">⚠️ À Vérifier</text>
-    <text x="670" y="98" font-size="13" fill="#0056b3" style="text-decoration: underline;">Voir l'alerte IA</text>
-
-    <rect y="120" width="760" height="30" fill="#f3f4f6" rx="5"/>
-    <text x="10" y="138" font-size="13">Formations sécurité incendie réalisées (Année N-1)</text>
-    <text x="550" y="138" font-size="13" fill="#ef4444">❌ Manquant</text>
-  </g>
-</svg>
-
-
-Module 3 : Communication Parents Augmentée.
-(Description)
-Réduisez la charge mentale de vos équipes et améliorez la satisfaction des parents grâce à l'IA générative. KidoPilot aide à transformer les observations terrain en communications claires, personnalisées et professionnelles.
-(Points Clés)
-• Synthèses Quotidiennes Assistées par IA : Transformez les notes brutes en comptes-rendus personnalisés et engageants en quelques secondes.
-• Traduction Instantanée : Communiquez efficacement avec les familles multilingues.
-• Assistant de Rédaction : Aide à trouver le ton juste pour les communications sensibles, les notes de service ou le projet pédagogique.
-(Visuel : Mockup 4 - L'Assistant de Communication IA)
-Visualisez concrètement le gain de temps : à gauche, les notes brutes de l'équipe ; à droite, la synthèse générée par l'IA, prête à être envoyée aux parents après validation.
-
-<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Inter', sans-serif; background-color: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px;">
-  <rect width="800" height="400" x="0" y="0" fill="#ffffff"/>
-
-  <rect width="800" height="50" fill="#f9fafb"/>
-  <text x="20" y="30" font-weight="semibold" font-size="18px" fill="#1f2937">Transmission Quotidienne - Léo Dubois (Moyens)</text>
-
-  <g transform="translate(30, 70)">
-
-    <text x="0" y="0" font-size="16px" font-weight="medium">Notes Brutes (Équipe)</text>
-    <rect x="0" y="20" width="350" height="250" rx="5" fill="#f3f4f6" stroke="#d1d5db"/>
-    <text x="15" y="45" font-size="14px" fill="#4b5563" font-style="italic">
-      <tspan x="15" dy="1.2em">Léo ok ce matin.</tspan>
-      <tspan x="15" dy="1.2em">Bien mangé purée carottes.</tspan>
-      <tspan x="15" dy="1.2em">Sieste 1h30.</tspan>
-      <tspan x="15" dy="1.2em">Activité peinture aprem, a aimé toucher la</tspan>
-      <tspan x="15" dy="1.2em">texture mais pas trop les mains sales.</tspan>
-      <tspan x="15" dy="1.2em">Change ok.</tspan>
-    </text>
-
-    <rect x="150" y="280" width="200" height="30" rx="5" fill="#003366"/>
-    <text x="180" y="298" font-size="14px" fill="white">Générer la synthèse IA ✨</text>
-
-    <text x="365" y="145" font-size="24px" fill="#f97316">→</text>
-
-    <text x="400" y="0" font-size="16px" font-weight="medium">Synthèse Générée (Copilote IA)</text>
-    <rect x="400" y="20" width="350" height="250" rx="5" fill="#ffffff" stroke="#d1d5db"/>
-    <text x="415" y="45" font-size="14px" fill="#1f2937">
-      <tspan x="415" dy="1.2em">Bonjour Mme Dubois,</tspan>
-      <tspan x="415" dy="1.5em">Léo a passé une excellente journée ! Ce midi, il a</tspan>
-      <tspan x="415" dy="1.2em">apprécié sa purée de carottes. Il s'est bien reposé</tspan>
-      <tspan x="415" dy="1.2em">avec une sieste réparatrice d'1h30.</tspan>
-      <tspan x="415" dy="1.5em">Cet après-midi, nous avons proposé un atelier</tspan>
-      <tspan x="415" dy="1.2em">peinture sensorielle. Léo s'est montré très curieux</tspan>
-      <tspan x="415" dy="1.2em">face aux nouvelles textures, explorant avec</tspan>
-      <tspan x="415" dy="1.2em">enthousiasme, même s'il préfère garder les mains</tspan>
-      <tspan x="415" dy="1.2em">propres ! À demain.</tspan>
-    </text>
-
-    <rect x="510" y="280" width="100" height="30" rx="5" fill="#e5e7eb"/>
-    <text x="535" y="298" font-size="14px">Modifier</text>
-
-    <rect x="630" y="280" width="120" height="30" rx="5" fill="#10b981"/>
-    <text x="655" y="298" font-size="14px" fill="white">Valider et Envoyer</text>
-
-  </g>
-</svg>
-
-4. Section Témoignages (Social Proof)
-(Titre de Section)
-Ils ont repris le contrôle de leurs opérations.
-(Témoignage 1 - Focus Staffing)
-"Avant KidoPilot, je passais 3 heures chaque matin à gérer les absences et à refaire les plannings sous stress. Aujourd'hui, l'IA me propose des solutions conformes en 5 minutes. C'est révolutionnaire pour la gestion de nos 12 structures."
-— Claire D., Directrice Opérationnelle, Réseau "Les Petits Pandas"
-(Témoignage 2 - Focus Conformité)
-"La préparation de l'inspection PMI était notre bête noire. KidoPilot audite nos processus en continu. Nous sommes arrivés à l'inspection confiants, avec toutes les preuves déjà centralisées."
-— Marc L., Gestionnaire de Micro-Crèches
-5. Section Finale et Appel à l'Action
-(Titre)
-Prêt à transformer la gestion de vos structures ?
-(Texte)
-Découvrez comment KidoPilot peut s'adapter spécifiquement à vos besoins, s'intégrer à vos outils existants (SIRH, Facturation) et améliorer concrètement votre quotidien.
-(Bouton CTA Final Orange)
-[Réserver ma Démonstration Personnalisée (30 min)]
-Implémentation rapide | Formation incluse | Support expert dédié | Conforme RGPD
-(Footer)
-Logo KidoPilot | Contact | Mentions Légales | Politique RGPD | Blog | Presse
-© 2025 KidoPilot AI. Tous droits réservés. Conçu en France.
