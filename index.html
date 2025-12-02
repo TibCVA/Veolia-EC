@@ -1,1307 +1,315 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veolia Energy x CVA - AI for Energy Programme</title>
-    <!-- 1. Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- 2. Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- 3. Google Font: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+Fais la landing page la plus impressionnante et vendeuse et professionnelle et au top de l’art du design web pour un projet de service SAAS pour des crèches. Visible et responsive sur iPhone. Sois excellent.
+Voici des éléments :
 
-    <!-- 4. Custom CSS for "Exquisite" CVA-for-Veolia Design -->
-    <style>
-        /* Base font styling */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #F9FAFB; /* Light gray page background */
-        }
-        
-        /* Tighter letter spacing for headers */
-        h1, h2, h3, h4, h5 {
-            letter-spacing: -0.02em;
-        }
+Absolument. Voici une proposition de Landing Page pour ce nouveau produit, que nous appellerons "KidoPilot". Cette page est conçue pour convertir les directeurs de crèches et les gestionnaires de réseaux en utilisant les meilleures pratiques de copywriting, de design UX/UI et de marketing SaaS B2B.
+Landing Page : KidoPilot
+URL (Suggestion) : www.kidopilot.ai
+Design Général : Épuré, professionnel, rassurant. Utilisation de couleurs douces mais sérieuses (bleu marine pour la confiance, vert d'eau pour la sérénité, orange pour les CTA). Typographie moderne et très lisible (ex: Inter).
+1. Hero Section (Au-dessus de la ligne de flottaison)
+(Navigation)
+Logo KidoPilot | Solutions (Staffing, Conformité, Communication) | Ressources | Tarifs | [Connexion] | [Bouton CTA : Demander une Démo]
+(Headline - Proposition de Valeur Principale)
+Pilotez votre structure sereinement. L'IA s'occupe de la complexité.
+(Sous-titre - Explication Claire)
+KidoPilot est le premier Copilote IA conçu spécifiquement pour la petite enfance (crèches, maternelles, périscolaire). Optimisez vos plannings sous contraintes, sécurisez votre conformité (PMI/CAF) et libérez vos équipes de la charge administrative.
+(Appel à l'Action Principal)
+[Bouton CTA Orange : Demander une démo personnalisée (Gratuit)]
+Gagnez jusqu'à 10h par semaine et améliorez votre marge opérationnelle.
+(Visuel Principal : Mockup de l'Application - Le Dashboard Intelligent)
+Le tableau de bord KidoPilot offre une vue d'ensemble immédiate. L'interface est conçue pour réduire le stress : les alertes prioritaires générées par l'IA sont mises en avant, permettant au directeur de savoir immédiatement où agir.
 
-        /* 1. CVA Custom List Styling (Veolia Green Accent) */
-        .cva-list li {
-            position: relative;
-            padding-left: 28px;
-            margin-bottom: 12px;
-            font-size: 1.05rem; /* 17px */
-            line-height: 1.6;
-            color: #374151; /* gray-700 */
-        }
-        .cva-list li::before {
-            content: '■';
-            position: absolute;
-            left: 0;
-            top: 4px;
-            font-size: 14px;
-            color: #1E6E5E; /* Veolia-Green-Accent */
-        }
-        .cva-list li ul { margin-top: 10px; }
-        .cva-list li ul li::before {
-            content: '–';
-            font-weight: 700;
-        }
-        /* This is the new style to replace inline <strong> */
-        .cva-list .list-lead {
-            font-weight: 600; /* Semibold */
-            color: #111827; /* gray-900 */
-            display: block;
-            margin-bottom: 2px;
-        }
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" style="font-family: 'Inter', sans-serif; background-color: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px;">
 
-        /* 2. Custom "Decision" List (The Ask & Challenges) */
-        .cva-decision-list {
-            list-style: none;
-            padding-left: 0;
-            counter-reset: decision-counter;
-        }
-        .cva-decision-list li {
-            position: relative;
-            padding-left: 60px;
-            padding-top: 4px;
-            margin-bottom: 24px;
-            font-size: 1.125rem; /* 18px */
-            font-weight: 500; /* Medium, not bold */
-            line-height: 1.6;
-            color: #374151; /* gray-700 */
-        }
-        .cva-decision-list li::before {
-            content: counter(decision-counter);
-            counter-increment: decision-counter;
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 40px;
-            height: 40px;
-            background-color: #1E6E5E; /* Veolia-Green-Accent */
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.125rem;
-        }
-        .cva-decision-list-dark li {
-            color: #D1D5DB; /* gray-300 */
-        }
+  <rect width="800" height="50" fill="#ffffff"/>
+  <text x="20" y="30" fill="#003366" font-weight="bold" font-size="18">KidoPilot</text>
+  <rect x="680" y="15" width="100" height="25" rx="5" fill="#e0f2f1"/>
+  <text x="730" y="31" fill="#00695c" font-size="12" text-anchor="middle">Claire D.</text>
 
-        /* 3. Animation Classes */
-        .animate-on-scroll {
-            opacity: 0;
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-        }
-        .fade-in { opacity: 0; }
-        .slide-up { opacity: 0; transform: translateY(16px); }
-        .slide-in-left { opacity: 0; transform: translateX(-16px); }
-        .slide-in-right { opacity: 0; transform: translateX(16px); }
+  <rect x="0" y="50" width="260" height="400" fill="#ffffff"/>
+  <text x="20" y="80" fill="#374151" font-weight="semibold" font-size="15">💡 Copilote IA - Alertes Prioritaires</text>
 
-        /* Visible state */
-        .is-visible {
-            opacity: 1;
-            transform: translateY(0) translateX(0);
-        }
-        
-        /* 4. Timeline Connector & Pulse Animation */
-        @keyframes pulse-dot {
-            0%, 100% {
-                box-shadow: 0 0 0 0 rgba(30, 110, 94, 0.4);
-            }
-            50% {
-                box-shadow: 0 0 0 10px rgba(30, 110, 94, 0);
-            }
-        }
-        .timeline-connector {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background-color: #E5E7EB; /* gray-200 */
-            transform: translateX(-50%);
-            z-index: 0;
-        }
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            width: 1.5rem; /* 24px */
-            height: 1.5rem;
-            background-color: #1E6E5E; /* Veolia-Green-Accent */
-            border-radius: 50%;
-            border: 4px solid #F4F8FD; /* Match light BG */
-            transform: translateX(-50%);
-            z-index: 10;
-        }
-        .is-visible .timeline-dot-animated {
-             animation: pulse-dot 2s infinite;
-        }
-        
-        /* 5. Scroll Down Chevron Animation */
-        @keyframes bounce-chevron {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-        .scroll-chevron {
-            animation: bounce-chevron 2.5s infinite;
-        }
+  <rect x="10" y="100" width="240" height="70" rx="5" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+  <text x="20" y="120" fill="#991b1b" font-size="12" font-weight="bold">⚠️ Risque Taux d'Encadrement</text>
+  <text x="20" y="140" fill="#991b1b" font-size="11">Mercredi 15h-16h (Moyens) : Sous-effectif détecté.</text>
+  <text x="20" y="160" fill="#0056b3" font-size="11" style="cursor: pointer; text-decoration: underline;">Voir les solutions IA</text>
 
-    </style>
+  <rect x="10" y="180" width="240" height="70" rx="5" fill="#f0f9ff" stroke="#7dd3fc" stroke-width="1"/>
+  <text x="20" y="200" fill="#0c4a6e" font-size="12" font-weight="bold">✅ Optimisation Planning</text>
+  <text x="20" y="220" fill="#0c4a6e" font-size="11">Économie potentielle de 14H sup. cette semaine.</text>
+  <text x="20" y="240" fill="#0056b3" font-size="11" style="cursor: pointer; text-decoration: underline;">Appliquer la suggestion</text>
 
-    <!-- 5. Tailwind Configuration for CVA-Veolia Brand Colors -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'cva-blue': '#0A2A4D',     // CVA Primary
-                        'veolia-green': '#1E6E5E', // New Accent Color
-                        'cva-light-bg': '#F4F8FD', // Light, crisp blue
-                        'text-dark': '#111827',    // gray-900
-                        'text-medium': '#374151',  // gray-700
-                        'text-light': '#F9FAFB',   // gray-50
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
-</head>
-<body class="bg-gray-50 text-text-medium">
+  <rect x="10" y="260" width="240" height="50" rx="5" fill="#f3f4f6"/>
+  <text x="20" y="285" fill="#4b5563" font-size="12">📄 Rapport CAF T4 prêt à être validé.</text>
 
-    <!-- ==== STICKY HEADER ==== -->
-    <nav class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-200/75">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <!-- Logos: Veolia + CVA -->
-                    <span class="text-2xl font-bold text-veolia-green">VEOLIA</span>
-                    <span class="mx-2 text-gray-300">|</span>
-                    <span class="text-2xl font-bold text-cva-blue">CVA</span>
-                </div>
-                <div class="flex items-center">
-                    <a href="#ask" class="bg-veolia-green text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-opacity-90 transition-colors duration-300 shadow-md hover:shadow-lg">
-                        View Next Steps
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
+  <text x="280" y="80" fill="#374151" font-weight="semibold" font-size="18">Aujourd'hui, Mardi 2 Décembre</text>
 
-    <!-- ==== SECTION 1: HERO (Slide 1) - Polished ==== -->
-    <section class="bg-cva-blue text-white relative overflow-hidden min-h-screen flex flex-col justify-center">
-        <!-- Subtle Grid Pattern - RIGOROUSLY FIXED -->
-        <div class="absolute inset-0" style="background-image: url('data:image/svg+xml;utf8,%3Csvg%20width%3D%27100%27%20height%3D%27100%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%3E%3Cpath%20d%3D%27M%2010%2010%20L%2090%2010%20L%2090%2090%20L%2010%2090%27%20fill%3D%27none%27%20stroke%3D%27%2523FFFFFF%27%20stroke-width%3D%270.1%27%20opacity%3D%270.3%27%20%2F%3E%3C%2Fsvg%3E'); background-size: 50px 50px; opacity: 0.2;"></div>
-        
-        <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-24 md:py-36 z-10">
-            <div class="text-center">
-                <p class="animate-on-scroll fade-in text-lg font-semibold text-veolia-green uppercase tracking-wider">Veolia Energy x CVA</p>
-                <h1 class="animate-on-scroll fade-in" style="transition-delay: 150ms; font-size: 4rem; line-height: 1.15; font-weight: 800; margin-top: 1rem; letter-spacing: -0.03em;">
-                    Designing an "AI for Energy" programme<br>at the core of Veolia’s model
-                </h1>
-                <p class="animate-on-scroll fade-in text-2xl text-gray-300 mt-6 max-w-3xl mx-auto" style="transition-delay: 300ms;">
-                    Accelerating decarbonisation and performance of networks, local energy loops and energy services
-                </p>
-                
-                <!-- Logos -->
-                <div class="animate-on-scroll fade-in mt-12 flex justify-center items-center space-x-6" style="transition-delay: 450ms;">
-                    <span class="text-3xl font-bold text-veolia-green">VEOLIA</span>
-                    <span class="text-3xl font-bold text-gray-500">x</span>
-                    <span class="text-3xl font-bold text-white">CVA</span>
-                </div>
-            </div>
-            
-            <!-- Footer Info - RIGOROUSLY FIXED -->
-            <div class="animate-on-scroll fade-in absolute bottom-12 left-0 right-0" style="transition-delay: 1000ms;">
-                <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center text-gray-400">
-                    <p class="text-sm">2025</p>
-                    <p class="text-sm">CONFIDENTIAL</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Animated Scroll Down Chevron -->
-        <div class="animate-on-scroll fade-in absolute bottom-28 left-1/2 -translate-x-1/2 z-10" style="transition-delay: 1000ms;">
-            <div class="scroll-chevron text-gray-400">
-                <i class="fa-solid fa-chevron-down text-2xl"></i>
-            </div>
-        </div>
-    </section>
+  <rect x="280" y="110" width="160" height="100" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="290" y="135" fill="#6b7280" font-size="13">Taux d'Occupation</text>
+  <text x="290" y="175" fill="#003366" font-size="30" font-weight="bold">88%</text>
+  <text x="290" y="200" fill="#6b7280" font-size="11">Prévu: 90%</text>
 
-    <!-- ==== SECTION 2: WHY TALK NOW (Slide 2) - FULL CONTENT ==== -->
-    <section class="py-20 md:py-28 bg-white">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto">
-                <h2 class="animate-on-scroll slide-up text-4xl font-extrabold text-cva-blue mb-4">Why talk about AI with Veolia Energy now?</h2>
-                <p class="animate-on-scroll slide-up text-xl text-text-medium" style="transition-delay: 150ms;">AI is a lever to execute Veolia Energy’s decarbonisation and growth agenda faster, not a side topic.</p>
-            </div>
-            
-            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Card 1: Context -->
-                <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5" style="transition-delay: 300ms;">
-                    <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center mb-5">
-                        <i class="fa-solid fa-water text-2xl text-veolia-green"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-cva-blue mb-3">Context: Energy is a Strategic Pillar</h3>
-                    <ul class="cva-list">
-                        <li>Veolia Energy represents a material share of group revenues and investment. It is one of the three main business pillars alongside Water and Waste.</li>
-                        <li>The group’s strategic plan puts local, low-carbon energy at the heart of its “ecological transformation” narrative. With explicit targets on renewable and recovered heat.</li>
-                    </ul>
-                </div>
-                <!-- Card 2: Challenges -->
-                <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5" style="transition-delay: 450ms;">
-                    <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center mb-5">
-                        <i class="fa-solid fa-bullseye text-2xl text-veolia-green"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-cva-blue mb-3">Concentrated, High-Impact Challenges</h3>
-                    <ul class="cva-list">
-                        <li>Decarbonise large district heating portfolios in CEE and Western Europe.</li>
-                        <li>Systematically capture and valorise waste heat from industries, data centres and water treatment assets.</li>
-                        <li>Turn Local Loops of Energy from concepts into scalable business models.</li>
-                        <li>Industrialise Hubgrade and Flexcity as differentiating digital platforms.</li>
-                    </ul>
-                </div>
-                <!-- Card 3: Assets -->
-                <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5" style="transition-delay: 600ms;">
-                    <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center mb-5">
-                        <i class="fa-solid fa-cubes text-2xl text-veolia-green"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-cva-blue mb-3">Assets Are There, Not Orchestrated</h3>
-                    <ul class="cva-list">
-                        <li>Digital twins, high telemetry penetration, Hubgrade, and Flexcity already aggregate large data volumes.</li>
-                        <li>First AI use cases exist but are not yet structured as a unified “AI for Energy” roadmap aligned with P&L and CO₂ targets.</li>
-                    </ul>
-                </div>
-                <!-- Card 4: Objective -->
-                <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5" style="transition-delay: 750ms;">
-                    <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center mb-5">
-                        <i class="fa-solid fa-comments text-2xl text-veolia-green"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-cva-blue mb-3">Objective of This Discussion</h3>
-                    <ul class="cva-list">
-                        <li>Identify the *few* AI use cases truly core to Veolia Energy’s business model.</li>
-                        <li>Structure them into a coherent, value-driven programme that can be governed at Veolia Energy ExCom level.</li>
-                        <li>Show how CVA can help design, prioritise and industrialise that programme.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ==== SECTION 3: NUANCED VIEW (Slide 3) - REDESIGNED ==== -->
-    <section class="py-20 md:py-28 bg-cva-light-bg">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto">
-                <h2 class="animate-on-scroll slide-up text-4xl font-extrabold text-cva-blue mb-4">Our Nuanced View of Veolia Energy Today</h2>
-                <p class="animate-on-scroll slide-up text-xl text-text-medium" style="transition-delay: 150ms;">Veolia Energy is at the same time an infrastructure operator, an energy services company, and a flexibility aggregator.</p>
-            </div>
-            
-            <div class="mt-20 max-w-5xl mx-auto space-y-16">
-                <!-- Point 1 -->
-                <div class="animate-on-scroll slide-up flex flex-col md:flex-row items-center gap-8" style="transition-delay: 300ms;">
-                    <div class="w-20 h-20 bg-white rounded-full flex-shrink-0 flex items-center justify-center shadow-xl border border-gray-100">
-                        <i class="fa-solid fa-network-wired text-3xl text-veolia-green"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-cva-blue mb-2">A significant local energy infrastructure portfolio</h3>
-                        <p class="text-lg">Over 500 district heating networks (strong in CEE/France), owner of WtE/biomass/geothermal assets, and a concession-based model with long-term capex responsibility.</p>
-                    </div>
-                </div>
-                <!-- Point 2 -->
-                <div class="animate-on-scroll slide-up flex flex-col md:flex-row-reverse items-center gap-8" style="transition-delay: 300ms;">
-                    <div class="w-20 h-20 bg-white rounded-full flex-shrink-0 flex items-center justify-center shadow-xl border border-gray-100">
-                        <i class="fa-solid fa-building-user text-3xl text-veolia-green"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-cva-blue mb-2">A broad energy services footprint</h3>
-                        <p class="text-lg">Energy performance contracts (EPCs) for buildings and industry (via VIGS), remote supervision via Hubgrade, and end-to-end management of industrial utility islands.</p>
-                    </div>
-                </div>
-                <!-- Point 3 & 4 -->
-                <div class="animate-on-scroll slide-up flex flex-col md:flex-row items-center gap-8" style="transition-delay: 300ms;">
-                    <div class="w-20 h-20 bg-white rounded-full flex-shrink-0 flex items-center justify-center shadow-xl border border-gray-100">
-                        <i class="fa-solid fa-server text-3xl text-veolia-green"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-cva-blue mb-2">Concrete experience with waste heat & Flexcity</h3>
-                        <p class="text-lg">Reference projects recovering heat from data centres and industry. Flexcity aggregates thousands of flexible loads, providing a unique foothold in the flexibility value chain.</p>
-                    </div>
-                </div>
-                <!-- Point 5 -->
-                <div class="animate-on-scroll slide-up flex flex-col md:flex-row-reverse items-center gap-8" style="transition-delay: 300ms;">
-                    <div class="w-20 h-20 bg-white rounded-full flex-shrink-0 flex items-center justify-center shadow-xl border border-gray-100">
-                        <i class="fa-solid fa-recycle text-3xl text-veolia-green"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-cva-blue mb-2">Strong internal synergies with Water and Waste</h3>
-                        <p class="text-lg">Heat networks fed by WtE plants and wastewater heat. This multi-business integration is a key differentiator against pure-play energy services competitors.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <rect x="460" y="110" width="160" height="100" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="470" y="135" fill="#6b7280" font-size="13">Ratio P/E Global</text>
+  <text x="470" y="175" fill="#10b981" font-size="30" font-weight="bold">1:6.2</text>
+  <rect x="470" y="190" width="70" height="15" rx="8" fill="#d1fae5"/>
+  <text x="505" y="200" fill="#065f46" font-size="11" text-anchor="middle">Conforme</text>
 
-    <!-- ==== SECTION 4: STRATEGIC CHALLENGES (Slide 4) - RIGOROUS ==== -->
-    <section class="py-20 md:py-28 bg-white">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto">
-                <h2 class="animate-on-scroll slide-up text-4xl font-extrabold text-cva-blue mb-4">Veolia Energy’s Specific Strategic Challenges (3-5 Years)</h2>
-                <p class="animate-on-scroll slide-up text-xl text-text-medium" style="transition-delay: 150ms;">Decarbonise fast, densify networks, build scalable local loops, and defend the delegated model.</p>
-            </div>
-            
-            <div class="mt-16 max-w-4xl mx-auto">
-                <!-- Using the "Decision List" style for premium, numbered content -->
-                <ol class="cva-decision-list">
-                    <li class="animate-on-scroll slide-up" style="transition-delay: 300ms;">
-                        Decarbonisation of large heat portfolios under regulatory and societal pressure (exit coal/gas) while keeping tariffs competitive.
-                    </li>
-                    <li class="animate-on-scroll slide-up" style="transition-delay: 450ms;">
-                        Systematic integration of waste heat from data centres, incinerators, and wastewater, moving from flagships to a repeatable deal flow.
-                    </li>
-                    <li class="animate-on-scroll slide-up" style="transition-delay: 600ms;">
-                        From one-off flagship projects to scalable "Local Loops of Energy" with standardised offers and operating models.
-                    </li>
-                    <li class="animate-on-scroll slide-up" style="transition-delay: 750ms;">
-                        Intensified competition (Engie, Dalkia) and political shifts (remunicipalisation risk), requiring differentiation beyond price.
-                    </li>
-                    <li class="animate-on-scroll slide-up" style="transition-delay: 900ms;">
-                        Productivity, skills, and digitalisation to scale best practices, reduce dependency on individual experts, and strengthen cybersecurity.
-                    </li>
-                </ol>
-            </div>
-        </div>
-    </section>
+  <rect x="640" y="110" width="140" height="100" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="650" y="135" fill="#6b7280" font-size="13">Absences du jour</text>
+  <text x="650" y="165" fill="#003366" font-size="18" font-weight="bold">2 Staff</text>
+  <text x="650" y="190" fill="#003366" font-size="18" font-weight="bold">5 Enfants</text>
 
-    <!-- ==== SECTION 5: WHERE AI CAN MOVE THE NEEDLE (Slide 5) - CONTENT ADDED ==== -->
-    <section class="py-20 md:py-28 bg-cva-light-bg">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto">
-                <h2 class="animate-on-scroll slide-up text-4xl font-extrabold text-cva-blue mb-4">Where AI Can Truly Move the Needle</h2>
-                <p class="animate-on-scroll slide-up text-xl text-text-medium" style="transition-delay: 150ms;">Three AI use cases anchored in Veolia’s core energy processes, not in generic tools.</p>
-            </div>
-            
-            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Module 1 -->
-                <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 300ms;">
-                    <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center mb-5">
-                        <i class="fa-solid fa-network-wired text-2xl text-veolia-green"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-cva-blue mb-3">AI-optimised 4G district heating & cooling</h3>
-                    <p class="text-text-medium mb-4">Targets daily network operation, dispatch, and medium-term 4G conversion planning.</p>
-                    <p class="text-sm italic text-text-medium border-t pt-4 border-gray-200"><span class="font-semibold not-italic text-text-dark">Veolia Context:</span> Highly instrumented CEE networks with digital twins; growing portfolio of complex 4G/5G systems (e.g., Saclay).</p>
-                </div>
-                <!-- Module 2 -->
-                <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 450ms;">
-                     <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center mb-5">
-                        <i class="fa-solid fa-recycle text-2xl text-veolia-green"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-cva-blue mb-3">AI orchestrator for Local Loops of Energy</h3>
-                    <p class="text-text-medium mb-4">Targets the design, operation, and governance of local multi-energy systems (heat, buildings, DCs, DER, storage).</p>
-                    <p class="text-sm italic text-text-medium border-t pt-4 border-gray-200"><span class="font-semibold not-italic text-text-dark">Veolia Context:</span> Existing "Local Loops" vision and unique ability to combine energy, water, waste, and flexibility (Flexcity) at a district level.</p>
-                </div>
-                <!-- Module 3 -->
-                <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 600ms;">
-                     <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center mb-5">
-                        <i class="fa-solid fa-tachometer-alt text-2xl text-veolia-green"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-cva-blue mb-3">AI-enhanced Hubgrade & multi-site performance</h3>
-                    <p class="text-text-medium mb-4">Targets the monitoring and optimisation of thousands of sites under performance contracts.</p>
-                    <p class="text-sm italic text-text-medium border-t pt-4 border-gray-200"><span class="font-semibold not-italic text-text-dark">Veolia Context:</span> Hubgrade centres already aggregate data, but with heterogeneous practices and limited cross-learning at scale.</p>
-                </div>
-            </div>
-            
-            <!-- Rationale Line -->
-            <div class="animate-on-scroll fade-in mt-16 text-center max-w-4xl mx-auto">
-                <p class="text-lg font-semibold text-cva-blue p-6 bg-white rounded-lg shadow-md border-t-4 border-veolia-green">
-                    <span class="font-bold">Rationale:</span> These cases map to Veolia’s key value drivers (networks, ecosystems, services) and can be industrialised in 12-24 months, forming a coherent programme aligned with GreenPath / GreenUp objectives.
-                </p>
-            </div>
-        </div>
-    </section>
+  <text x="280" y="250" fill="#374151" font-weight="semibold" font-size="16">Statut des Plannings de la Semaine</text>
+  <rect x="280" y="270" width="500" height="160" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <line x1="380" y1="270" x2="380" y2="430" stroke="#e5e7eb"/>
+  <line x1="480" y1="270" x2="480" y2="430" stroke="#e5e7eb"/>
+  <line x1="580" y1="270" x2="580" y2="430" stroke="#e5e7eb"/>
+  <line x1="680" y1="270" x2="680" y2="430" stroke="#e5e7eb"/>
+  <text x="330" y="290" font-size="12" text-anchor="middle">Lundi</text>
+  <text x="430" y="290" font-size="12" text-anchor="middle">Mardi</text>
+  <text x="530" y="290" font-size="12" text-anchor="middle">Mercredi</text>
+  <text x="630" y="290" font-size="12" text-anchor="middle">Jeudi</text>
+  <text x="730" y="290" font-size="12" text-anchor="middle">Vendredi</text>
 
-    <!-- ==== SECTION 6-7: FOCUS USE CASE 1 (Slides 6 & 7) - FULL CONTENT ==== -->
-    <section class="py-20 md:py-28 bg-white">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                <!-- Left Column (At a Glance) -->
-                <div class="lg:col-span-1">
-                    <div class="sticky top-24">
-                        <p class="animate-on-scroll slide-in-left text-lg font-semibold text-veolia-green uppercase tracking-wider">Focus Use Case 1</p>
-                        <h2 class="animate-on-scroll slide-in-left text-4xl font-extrabold text-cva-blue" style="transition-delay: 100ms;">AI-optimised 4G District Heating</h2>
-                        
-                        <div class="animate-on-scroll fade-in bg-cva-light-bg p-6 rounded-xl mt-8 border border-gray-200" style="transition-delay: 200ms;">
-                            <h3 class="text-xl font-bold text-cva-blue mb-4">At a Glance</h3>
-                            <h5 class="text-base font-semibold text-text-dark mb-1">Positioning:</h5>
-                            <p class="text-sm italic text-text-medium mb-4">Daily operation (dispatch, temps) and medium-term decisions (4G conversion, storage) for heat and cooling networks.</p>
-                            <h5 class="text-base font-semibold text-text-dark mb-1">Veolia-specific context:</h5>
-                            <p class="text-sm italic text-text-medium">Highly instrumented networks (Poland, Czech) with digital twins; growing portfolio of complex 4G/5G systems (e.g., Saclay).</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Right Column (Details) -->
-                <div class="lg:col-span-2 space-y-10">
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 300ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Core processes in scope</h4>
-                        <ul class="cva-list">
-                            <li><span class="list-lead">Network operation:</span> Dispatch between production units (CHP, biomass, WtE, gas, geothermal, HPs, data centre heat), management of temperatures/pressures, handling constraints.</li>
-                            <li><span class="list-lead">Planning and asset decisions:</span> Definition of 4G conversion trajectories, integration of new sources, dimensioning of new assets and extensions.</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 400ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Veolia’s current situation</h4>
-                        <ul class="cva-list">
-                            <li>In CEE, Veolia has high telemetry penetration and operational digital twins.</li>
-                            <li>In Western Europe, the situation is more heterogeneous; some networks are advanced, others rely on traditional tools.</li>
-                            <li>Operation and planning are mostly network-by-network, with limited systematic cross-fertilisation of best practices.</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 500ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Typical pain points observed</h4>
-                        <ul class="cva-list">
-                            <li>Dispatch decisions depend heavily on local experience, not explicit portfolio-level optimisation of cost, CO₂, and risk.</li>
-                            <li>Difficult to compare performance between networks and identify what “good” looks like in a 4G environment.</li>
-                            <li>4G business cases are built with static models, making it hard to test multiple scenarios.</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 600ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">AI ambition for this use case</h4>
-                        <ul class="cva-list">
-                            <li>Add an AI layer on top of existing digital twins and SCADA to:</li>
-                            <li>Propose optimised dispatch and temperature strategies under multiple scenarios (prices, weather, demand, CO₂ costs).</li>
-                            <li>Simulate 4G conversion and new source integration, providing robust inputs for capex decisions.</li>
-                            <li>Standardise a set of “4G operating playbooks” that can be shared across markets.</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 700ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Value levers for Veolia</h4>
-                        <ul class="cva-list">
-                            <li><span class="list-lead">Production cost optimisation:</span> Better sequencing of units; increased utilisation of low-cost sources (waste heat, WtE).</li>
-                            <li><span class="list-lead">Network performance:</span> Optimised temperatures/pressures to reduce thermal losses.</li>
-                            <li><span class="list-lead">Capex and 4G planning:</span> Use AI-enhanced twins to test 4G scenarios dynamically.</li>
-                            <li><span class="list-lead">Operational robustness:</span> Capture and codify best practices, reducing dependence on a few experts.</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 800ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">KPIs to track</h4>
-                        <ul class="cva-list">
-                            <li>€/MWh produced and delivered; CO₂/MWh delivered; % renewable/recovered heat.</li>
-                            <li>% of hours operated at low temperature; network loss ratio; incident rates.</li>
-                            <li>NPV and payback of 4G/asset conversion projects.</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 900ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">CVA’s contribution</h4>
-                        <ul class="cva-list">
-                            <li><span class="list-lead">Programme framing:</span> Map and segment Veolia’s network portfolio by data readiness, challenge, and value. Design the "4G AI cockpit" concept.</li>
-                            <li><span class="list-lead">CORE-based design:</span> Apply CORE to the end-to-end “heat supply” process to identify where AI insights should be embedded.</li>
-                            <li><span class="list-lead">SmartPMO to manage scale up:</span> Build a portfolio view to ensure each local project contributes to a coherent, group-level 4G programme.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ==== SECTION 8-9: FOCUS USE CASE 2 (Slides 8 & 9) - FULL CONTENT ==== -->
-    <section class="py-20 md:py-28 bg-cva-light-bg">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                <!-- Left Column (At a Glance) -->
-                <div class="lg:col-span-1">
-                    <div class="sticky top-24">
-                        <p class="animate-on-scroll slide-in-left text-lg font-semibold text-veolia-green uppercase tracking-wider">Focus Use Case 2</p>
-                        <h2 class="animate-on-scroll slide-in-left text-4xl font-extrabold text-cva-blue" style="transition-delay: 100ms;">AI Orchestrator for Local Loops</h2>
-                        
-                        <div class="animate-on-scroll fade-in bg-white p-6 rounded-xl mt-8 border border-gray-200 shadow-sm" style="transition-delay: 200ms;">
-                            <h3 class="text-xl font-bold text-cva-blue mb-4">At a Glance</h3>
-                            <h5 class="text-base font-semibold text-text-dark mb-1">Positioning:</h5>
-                            <p class="text-sm italic text-text-medium mb-4">Design, operation, and governance of local multi-energy systems (heat, buildings, DCs, DER, storage, demand response).</p>
-                            <h5 class="text-base font-semibold text-text-dark mb-1">Veolia-specific context:</h5>
-                            <p class="text-sm italic text-text-medium">Existing "Local Loops" vision, pilot projects, and unique combination of Hubgrade, Flexcity, and water/waste assets at a district level.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Right Column (Details) -->
-                <div class="lg:col-span-2 space-y-10">
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 300ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Core processes in scope</h4>
-                        <ul class="cva-list">
-                            <li><span class="list-lead">Local system design:</span> Defining architecture, sizing assets, and setting contractual boundaries (Veolia, city, industrials, DCs, residents).</li>
-                            <li><span class="list-lead">Daily/seasonal orchestration:</span> Optimising flows (WtE vs. DC heat), using storage, and activating electrical flexibility via Flexcity.</li>
-                            <li><span class="list-lead">Governance and value sharing:</span> Allocation of costs and benefits (tariffs, rebates, revenue shares).</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 400ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Veolia’s current situation</h4>
-                        <ul class="cva-list">
-                            <li>Veolia has a clear vision and emblematic projects. Flexcity and Hubgrade provide working platforms.</li>
-                            <li>However, each loop is largely a custom project. Replication is possible but not yet industrialised.</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 500ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Pain points & strategic opportunities</h4>
-                        <ul class="cva-list">
-                            <li>High transaction costs and long lead times to structure each loop (design, legal, stakeholders).</li>
-                            <li>Difficulty for non-specialists to trust the value sharing in complex local systems.</li>
-                            <li>Risk of being pre-empted by competitors on flagship projects if Veolia cannot demonstrate a scalable methodology.</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 600ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">AI ambition for this use case</h4>
-                        <ul class="cva-list">
-                            <li>Develop an AI-assisted “Local Loop orchestrator” that:</li>
-                            <li>Ingests local data and generates optimised loop designs and run strategies.</li>
-                            <li>Produces transparent value breakdowns and sensitivities for partners (cities, DCs).</li>
-                            <li>Supports continuous optimisation once operational, including Flexcity activation.</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 700ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Value levers at loop level</h4>
-                        <ul class="cva-list">
-                            <li><span class="list-lead">Total energy cost reduction:</span> Co-optimise heat, cold, and electricity; reduce peak imports via storage/demand response.</li>
-                            <li><span class="list-lead">Increased monetisation:</span> Turn loop flexibilities (industrial loads, DC backups) into new revenues via Flexcity.</li>
-                            <li><span class="list-lead">More efficient capex:</span> Use AI scenarios to test alternative architectures before investing.</li>
-                            <li><span class="list-lead">Higher credibility:</span> Provide transparent, data-based evidence to support approvals and de-risk complex PPPs.</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 800ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">KPIs to track</h4>
-                        <ul class="cva-list">
-                            <li>Total cost of energy €/MWh vs. reference; CO₂/MWh; % local/recovered energy.</li>
-                            <li>Gross/net revenues from flexibility; CAPEX per unit of demand decarbonised.</li>
-                            <li>Stakeholder satisfaction and perceived fairness.</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 900ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">CVA’s contribution</h4>
-                        <ul class="cva-list">
-                            <li><span class="list-lead">Formalise the Local Loop economic model:</span> Build standard economic templates for different loop archetypes (urban, industrial, DC-heavy).</li>
-                            <li><span class="list-lead">CORE-based governance design:</span> Map the end-to-end decision chain (from city strategy to tariffs) and embed AI outputs to support negotiations.</li>
-                            <li><span class="list-lead">Integration with Veolia’s platforms:</span> Specify how the AI orchestrator sits with Hubgrade, Flexcity, and asset control systems.</li>
-                            <li><span class="list-lead">Programme and scaling view:</span> Prioritise 2–3 pilot loops and design a replication playbook, using SmartPMO to track value.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ==== SECTION 10-11: FOCUS USE CASE 3 (Slides 10 & 11) - FULL CONTENT ==== -->
-    <section class="py-20 md:py-28 bg-white">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                <!-- Left Column (At a Glance) -->
-                <div class="lg:col-span-1">
-                    <div class="sticky top-24">
-                        <p class="animate-on-scroll slide-in-left text-lg font-semibold text-veolia-green uppercase tracking-wider">Focus Use Case 3</p>
-                        <h2 class="animate-on-scroll slide-in-left text-4xl font-extrabold text-cva-blue" style="transition-delay: 100ms;">AI-enhanced Hubgrade Cockpit</h2>
-                        
-                        <div class="animate-on-scroll fade-in bg-cva-light-bg p-6 rounded-xl mt-8 border border-gray-200" style="transition-delay: 200ms;">
-                            <h3 class="text-xl font-bold text-cva-blue mb-4">At a Glance</h3>
-                            <h5 class="text-base font-semibold text-text-dark mb-1">Positioning:</h5>
-                            <p class="text-sm italic text-text-medium mb-4">Monitoring and optimisation of thousands of building/industrial sites under EPCs. Maintenance and lifecycle management of on-site energy systems.</p>
-                            <h5 class="text-base font-semibold text-text-dark mb-1">Veolia-specific context:</h5>
-                            <p class="text-sm italic text-text-medium">Hubgrade centres already aggregate data, but practices are heterogeneous and scaling is resource-intensive.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Right Column (Details) -->
-                <div class="lg:col-span-2 space-y-10">
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 300ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Core processes in scope</h4>
-                        <ul class="cva-list">
-                            <li><span class="list-lead">Energy performance management:</span> Monitoring consumption, comfort, and KPIs across thousands of sites; identifying drifts and triggering corrective actions.</li>
-                            <li><span class="list-lead">Maintenance and lifecycle:</span> Planning preventive maintenance and managing interventions on boilers, chillers, HVAC, etc., under OPEX/performance guarantees.</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 400ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Veolia’s current situation</h4>
-                        <ul class="cva-list">
-                            <li>Hubgrade provides centralised supervision with live dashboards, alerts, and rule-based optimisation.</li>
-                            <li>Practices, tools, and performance remain heterogeneous across countries.</li>
-                            <li>Scaling high performance is increasingly resource-intensive as the number of sites grows.</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 500ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Pain points & improvement opportunities</h4>
-                        <ul class="cva-list">
-                            <li>Difficulty prioritising actions: which buildings are the biggest value pockets? Which equipment is at highest risk?</li>
-                            <li>Limited systematisation of learning; similar buildings don't benefit from each other's experience.</li>
-                            <li>Performance reporting to clients is time-consuming and not always focused on cross-sell/upsell levers.</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 600ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">AI ambition for this use case</h4>
-                        <ul class="cva-list">
-                            <li>Build an AI-enhanced Hubgrade cockpit that:</li>
-                            <li>Scores sites and equipment by potential value and risk (energy, CO₂, incident).</li>
-                            <li>Recommends and sequences actions (parameter changes, audits, maintenance) with quantified impact.</li>
-                            <li>Predicts future drifts and failures to move from reactive to proactive management.</li>
-                            <li>Generates sharper performance narratives to support client discussions and upsell.</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 700ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Value levers for Veolia</h4>
-                        <ul class="cva-list">
-                            <li><span class="list-lead">Improved portfolio performance:</span> Use AI to scan the portfolio and highlight the 10-20% of sites with the most savings potential.</li>
-                            <li><span class="list-lead">Reduced downtime:</span> Predict failures of critical assets to optimise maintenance.</li>
-                            <li><span class="list-lead">Better client conversations:</span> Support QBRs with AI-generated insights and quantified performance stories.</li>
-                            <li><span class="list-lead">Upsell:</span> Identify retrofit/service opportunities based on site-specific AI diagnostics.</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 800ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">KPIs to track</h4>
-                        <ul class="cva-list">
-                            <li>% reduction in energy/CO₂ vs. baseline; number/severity of unplanned outages.</li>
-                            <li>Productivity: sites per Hubgrade analyst, actions implemented per month.</li>
-                            <li>Contract renewal rate, upsell conversion rate, margin improvement.</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 900ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">CVA’s contribution</h4>
-                        <ul class="cva-list">
-                            <li><span class="list-lead">CORE "Hubgrade-to-Value" Map:</span> Map how Hubgrade creates value (data -> decision -> action -> outcome) and identify AI augmentation points.</li>
-                            <li><span class="list-lead">AI Use Case Design:</span> Define and prioritise a limited set of AI modules (site scoring, anomaly detection, action recommendation).</li>
-                            <li><span class="list-lead">SmartPMO & Change:</span> Build governance to deploy AI modules in waves. Support change so staff see AI as an amplifier, not a black box.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <rect x="285" y="310" width="90" height="30" rx="5" fill="#d1fae5"/>
+  <text x="330" y="328" font-size="11" text-anchor="middle" fill="#065f46">Optimal</text>
 
-    <!-- ==== SECTION 12: COHERENT PORTFOLIO (Slide 12) ==== -->
-    <section class="py-20 md:py-28 bg-cva-light-bg">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto">
-                <h2 class="animate-on-scroll slide-up text-4xl font-extrabold text-cva-blue mb-4">A Coherent AI for Energy Portfolio</h2>
-                <p class="animate-on-scroll slide-up text-xl text-text-medium" style="transition-delay: 150ms;">Three use cases, three process layers, one programme aligned with Veolia Energy’s strategy.</p>
-            </div>
-            
-            <div class="mt-16 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Card 1: 3 Use Cases -->
-                <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 300ms;">
-                    <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center mb-5">
-                        <i class="fa-solid fa-layer-group text-2xl text-veolia-green"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-cva-blue mb-3">Three Complementary Use Cases</h3>
-                    <ul class="cva-list text-base">
-                        <li><span class="list-lead">AI-optimised 4G district heating & cooling:</span> Focus on infrastructures and production–network interface.</li>
-                        <li><span class="list-lead">AI Local Loop orchestrator:</span> Focus on local multi-energy systems and ecosystem governance.</li>
-                        <li><span class="list-lead">AI Hubgrade cockpit:</span> Focus on site-level performance and client contracts.</li>
-                    </ul>
-                </div>
-                <!-- Card 2: Why Veolia -->
-                <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 450ms;">
-                    <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center mb-5">
-                        <i class="fa-solid fa-check-circle text-2xl text-veolia-green"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-cva-blue mb-3">Why This Portfolio is Right for Veolia</h3>
-                    <ul class="cva-list text-base">
-                        <li>Targets processes where Veolia creates distinctive value (networks, ecosystems, services).</li>
-                        <li>Leverages existing digital assets (digital twins, Hubgrade, Flexcity) rather than assuming a greenfield.</li>
-                        <li>Directly supports strategic priorities: heat decarbonisation, Local Loops, and service performance.</li>
-                    </ul>
-                </div>
-                <!-- Card 3: Why CVA -->
-                <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 600ms;">
-                    <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center mb-5">
-                        <i class="fa-solid fa-handshake text-2xl text-veolia-green"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-cva-blue mb-3">Why CVA is Legitimate to Support</h3>
-                    <ul class="cva-list text-base">
-                        <li>Strategic understanding of Veolia-style businesses (district heating, energy services, data centres).</li>
-                        <li>Proven methods (CORE, SmartPMO) to turn AI ideas into governed, value-driven programmes.</li>
-                        <li>Neutral, C-level focus: We design the "what" and "why," not sell platforms.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+  <rect x="385" y="310" width="90" height="30" rx="5" fill="#d1fae5"/>
+   <text x="430" y="328" font-size="11" text-anchor="middle" fill="#065f46">Optimal</text>
 
-    <!-- ==== SECTION 13: CASE STUDY (NEW SECTION) ==== -->
-    <section class="py-20 md:py-28 bg-white">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                <!-- Left Column (At a Glance) -->
-                <div class="lg:col-span-1">
-                    <div class="sticky top-24">
-                        <p class="animate-on-scroll slide-in-left text-lg font-semibold text-veolia-green uppercase tracking-wider">Proof Point</p>
-                        <h2 class="animate-on-scroll slide-in-left text-4xl font-extrabold text-cva-blue" style="transition-delay: 100ms;">Case Study: Large European DSO</h2>
-                        
-                        <div class="animate-on-scroll fade-in bg-cva-light-bg p-6 rounded-xl mt-8 border border-gray-200" style="transition-delay: 200ms;">
-                            <h3 class="text-xl font-bold text-cva-blue mb-4">Pilot Context</h3>
-                            <h5 class="text-base font-semibold text-text-dark mb-1">Objective:</h5>
-                            <p class="text-sm italic text-text-medium mb-4">Test CORE® + AI on a critical grid connection journey, complementing existing ExOp and process mining initiatives.</p>
-                            <h5 class="text-base font-semibold text-text-dark mb-1">Key Challenges:</h5>
-                            <ul class="cva-list text-sm">
-                                <li>High stakeholder dissatisfaction on connection process.</li>
-                                <li>Long lead times and large backlogs.</li>
-                            </ul>
-                            <h5 class="text-base font-semibold text-text-dark mb-1 mt-4">Pilot Scope:</h5>
-                            <p class="text-sm italic text-text-medium">10-week POC on “Large Producers > 36 kVA” connection journey.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Right Column (Details) -->
-                <div class="lg:col-span-2 space-y-10">
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 300ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Ambition of the POC</h4>
-                        <ul class="cva-list">
-                            <li>Test a complementary approach to ExOp/process mining to improve both customer experience and operational efficiency.</li>
-                            <li>Use CORE® to perform an integrated redesign at three levels: Customer/user journey, Information flows (data/AI), and Internal processes.</li>
-                            <li>Apply CORE® progressively and provide a clear execution path staged with measurable “base camps”.</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 400ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Lot 1: End-to-end Diagnostic (M1)</h4>
-                        <ul class="cva-list">
-                            <li>Exploited existing data and process mining tools.</li>
-                            <li>Conducted interviews with Operations, DSI, and AI teams.</li>
-                            <li><span class="list-lead">Key Outputs:</span> End-to-end process mapping, baselines of customer satisfaction, KPIs (delays, backlogs), and FTEs mobilised.</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 500ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Lot 2: Target Design (M2-M3)</h4>
-                        <ul class="cva-list">
-                            <li><span class="list-lead">M2 (Target Journey):</span> Two ideation workshops based on VoC analytics and benchmarks. Delivered a target "ideal" connection journey.</li>
-                            <li><span class="list-lead">M3 (DIDA® Flows):</span> Three technical workshops using the DIDA® protocol. Delivered target data flows, high-level specs for AI POCs, and data foundation requirements.</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 600ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Lot 3: Gap Analysis & Roadmap (M4-M5)</h4>
-                        <ul class="cva-list">
-                            <li><span class="list-lead">M4 (Impacts):</span> Gap analysis (ops, IT, data, org). Estimated efficiency gains (>20%) and customer benefits. Macro-costing of investments.</li>
-                            <li><span class="list-lead">M5 (Trajectory):</span> Co-construction of the execution plan. Defined "base camps" including quick wins and a roadmap for AI POCs.</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 700ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">Outcome Beyond the Pilot</h4>
-                        <ul class="cva-list">
-                            <li>A fully documented CORE® / DIDA®-based redesign of the Large Producers journey with quantified value.</li>
-                            <li>A reusable methodology and skill set on the client side to apply the same approach to other journeys.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <rect x="485" y="310" width="90" height="30" rx="5" fill="#fef9c3"/>
+  <text x="530" y="328" font-size="11" text-anchor="middle" fill="#854d0e">Ajustement requis</text>
 
-    <!-- ==== SECTION 14: CORE & DIDA (Slide X) - REDUNDANCY REMOVED ==== -->
-    <section class="py-20 md:py-28 bg-cva-light-bg">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto">
-                <h2 class="animate-on-scroll slide-up text-4xl font-extrabold text-cva-blue mb-4">CORE® and DIDA®</h2>
-                <p class="animate-on-scroll slide-up text-xl text-text-medium" style="transition-delay: 150ms;">Our reference framework for AI-enabled process redesign.</p>
-            </div>
+  <rect x="585" y="310" width="90" height="30" rx="5" fill="#d1fae5"/>
+   <text x="630" y="328" font-size="11" text-anchor="middle" fill="#065f46">Optimal</text>
 
-            <!-- What CORE is -->
-            <div class="mt-16">
-                <h3 class="animate-on-scroll slide-up text-3xl font-bold text-cva-blue mb-6">What CORE® is: A Proven Methodology</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-xl border border-gray-100" style="transition-delay: 300ms;">
-                        <h4 class="text-xl font-bold text-cva-blue mb-3">An integrated methodology on three levels</h4>
-                        <ul class="cva-list">
-                            <li><span class="list-lead">User / client journeys:</span> Design target journeys from the user’s point of view (VoC, service standards).</li>
-                            <li><span class="list-lead">Data flows:</span> Optimise the data model needed to steer satisfaction, cost and carbon end-to-end.</li>
-                            <li><span class="list-lead">Processes:</span> Rebuild processes in a “data-native” way, rethinking decisions and embedding AI where it creates value.</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-xl border border-gray-100" style="transition-delay: 450ms;">
-                        <h4 class="text-xl font-bold text-cva-blue mb-3">Organised in 2 Lots and 5 Modules</h4>
-                        <ul class="cva-list">
-                            <li><span class="list-lead">Lot 1 – Baseline and redesign (data-native):</span>
-                                <ul>
-                                    <li>M1 – E2E diagnostic and baselines (satisfaction, efficiency, carbon).</li>
-                                    <li>M2 – Target journeys.</li>
-                                    <li>M3 – Target DIDA® flows.</li>
-                                </ul>
-                            </li>
-                            <li><span class="list-lead">Lot 2 – Gap analysis and transformation path:</span>
-                                <ul>
-                                    <li>M4 – Process impacts and levers.</li>
-                                    <li>M5 – Transformation trajectory and “base camps”.</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+  <rect x="685" y="310" width="90" height="30" rx="5" fill="#d1fae5"/>
+   <text x="730" y="328" font-size="11" text-anchor="middle" fill="#065f46">Optimal</text>
 
-            <!-- What DIDA is (Visual Process) -->
-            <div class="mt-16">
-                <h3 class="animate-on-scroll slide-up text-3xl font-bold text-cva-blue mb-6">What DIDA® is: The Bridge Between Business and AI</h3>
-                <p class="animate-on-scroll slide-up text-lg text-text-medium max-w-4xl mb-8">DIDA® is the core protocol that connects journeys, data, and processes. It decomposes each journey step into four elements, forcing clarity on how AI changes decisions and actions.</p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
-                    <!-- Connectors -->
-                    <div class="hidden md:block absolute top-1/2 -translate-y-1/2 left-0 w-full h-full z-0">
-                        <div class="flex justify-around items-center h-full w-full px-16">
-                            <i class="fa-solid fa-chevron-right text-3xl text-gray-300"></i>
-                            <i class="fa-solid fa-chevron-right text-3xl text-gray-300"></i>
-                            <i class="fa-solid fa-chevron-right text-3xl text-gray-300"></i>
-                        </div>
-                    </div>
-                    
-                    <!-- D card -->
-                    <div class="animate-on-scroll slide-up bg-white p-6 rounded-xl shadow-xl border border-gray-100 z-10" style="transition-delay: 300ms;">
-                        <h4 class="text-2xl font-extrabold text-veolia-green mb-2">D – Data</h4>
-                        <p>List the data needed to monitor and deliver the journey step; identify and collect all accessible sources automatically.</p>
-                    </div>
-                    <!-- I card -->
-                    <div class="animate-on-scroll slide-up bg-white p-6 rounded-xl shadow-xl border border-gray-100 z-10" style="transition-delay: 450ms;">
-                        <h4 class="text-2xl font-extrabold text-veolia-green mb-2">I – Insights</h4>
-                        <p>Use analytics and AI to transform raw data into insights that are truly useful for decision-making.</p>
-                    </div>
-                    <!-- D card -->
-                    <div class="animate-on-scroll slide-up bg-white p-6 rounded-xl shadow-xl border border-gray-100 z-10" style="transition-delay: 600ms;">
-                        <h4 class="text-2xl font-extrabold text-veolia-green mb-2">D – Decision</h4>
-                        <p>Define how decisions will be taken (rules, models, exceptions) based on these insights.</p>
-                    </div>
-                    <!-- A card -->
-                    <div class="animate-on-scroll slide-up bg-white p-6 rounded-xl shadow-xl border border-gray-100 z-10" style="transition-delay: 750ms;">
-                        <h4 class="text-2xl font-extrabold text-veolia-green mb-2">A – Action</h4>
-                        <p>Build a process and, where relevant, automation that executes the decision or augments an employee to act effectively.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Why it matters -->
-            <div class="animate-on-scroll fade-in mt-16 text-center max-w-4xl mx-auto">
-                <p class="text-lg font-semibold text-cva-blue p-6 bg-white rounded-lg shadow-md border-t-4 border-veolia-green">
-                    <span class="font-bold">Why this matters for an AI for Energy programme:</span> The three AI use cases are process-heavy. CORE® and DIDA® bring a rigorous, battle-tested way to map these processes, identify the exact roles of data and AI, and design target, AI-enabled processes that teams can implement.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==== SECTION 15: SMARTPMO (Slide Y) - NEW DESIGN & CONTENT ==== -->
-    <section class="py-20 md:py-28 bg-white">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                <!-- Left Column (At a Glance) -->
-                <div class="lg:col-span-1">
-                    <div class="sticky top-24">
-                        <p class="animate-on-scroll slide-in-left text-lg font-semibold text-veolia-green uppercase tracking-wider">Programme Steering</p>
-                        <h2 class="animate-on-scroll slide-in-left text-4xl font-extrabold text-cva-blue" style="transition-delay: 100ms;">SmartPMO®</h2>
-                        
-                        <div class="animate-on-scroll fade-in bg-cva-light-bg p-6 rounded-xl mt-8 border border-gray-200" style="transition-delay: 200ms;">
-                            <h3 class="text-xl font-bold text-cva-blue mb-4">A Control Tower, Not Just a PMO</h3>
-                            <p class="text-text-medium mb-4">SmartPMO® is designed for complex, multi-use case AI programmes. It has three distinct roles:</p>
-                            <ul class="cva-list text-base">
-                                <li><span class="list-lead">Classic PMO:</span> Steering, animation, reporting, risk monitoring.</li>
-                                <li><span class="list-lead">PMO Challenge:</span> Challenging content, execution speed, and ensuring alignment with ambition.</li>
-                                <li><span class="list-lead">PMO Support:</span> Providing CORE® toolkits, benchmarks, and expert support.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Right Column (Details) -->
-                <div class="lg:col-span-2 space-y-10">
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 300ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">How SmartPMO® Has Been Used</h4>
-                        <div class="space-y-4">
-                            <div class="bg-cva-light-bg p-6 rounded-lg border border-gray-200">
-                                <h5 class="text-lg font-semibold text-text-dark mb-1">Large insurance group in France</h5>
-                                <p>Support to the CEO to define the transformation vision. Design and implementation of a plan focusing on digital transformation of distribution networks and customer journeys, with SmartPMO® support.</p>
-                            </div>
-                            <div class="bg-cva-light-bg p-6 rounded-lg border border-gray-200">
-                                <h5 class="text-lg font-semibold text-text-dark mb-1">Large European financial group</h5>
-                                <p>Central support to a Group AI Office to track and support AI initiatives, using the 5-stage maturity model. SmartPMO® used to coordinate, manage dependencies, and mutualise solutions.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 450ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">A Common Framework for AI Use Case Maturity</h4>
-                        <ul class="cva-list">
-                            <li><span class="list-lead">Stage 1:</span> Baseline and AI use case catalogue</li>
-                            <li><span class="list-lead">Stage 2:</span> Target design</li>
-                            <li><span class="list-lead">Stage 3:</span> Execution roadmap</li>
-                            <li><span class="list-lead">Stage 4:</span> Build and initial deployment</li>
-                            <li><span class="list-lead">Stage 5:</span> Run, extension and continuous improvement</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 600ms;">
-                        <h4 class="text-2xl font-bold text-cva-blue mb-4">A 360° View of AI Transformation</h4>
-                        <p class="text-lg mb-4">SmartPMO® explicitly aligns three dimensions:</p>
-                        <ul class="cva-list">
-                            <li>Technology / IT and data foundations</li>
-                            <li>Business and process redesign (including AI integration)</li>
-                            <li>HR and workforce evolution (skills, staffing)</li>
-                        </ul>
-                    </div>
-                    <div class="animate-on-scroll slide-up" style="transition-delay: 750ms;">
-                        <div class="p-6 bg-cva-light-bg rounded-lg shadow-md border-t-4 border-veolia-green">
-                            <h4 class="text-2xl font-bold text-cva-blue mb-4">Why SmartPMO® is relevant</h4>
-                             <p>An AI for Energy programme will have multiple use cases at different maturities, sharing assets (Hubgrade, twins) and dependencies. SmartPMO® provides a tested way to manage this complexity, ensuring initiatives are sequenced, common components are leveraged, and the programme delivers measurable impact.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==== SECTION 16: CREDENTIALS (Slide Z) ==== -->
-    <section class="py-20 md:py-28 bg-cva-light-bg">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto">
-                <h2 class="animate-on-scroll slide-up text-4xl font-extrabold text-cva-blue mb-4">Our AI & CORE® Credentials</h2>
-                <p class="animate-on-scroll slide-up text-xl text-text-medium" style="transition-delay: 150ms;">CVA brings a combination of CORE®/AI expertise and deep Energy & Services experience.</p>
-            </div>
-            
-            <!-- Track Record -->
-            <div class="mt-16">
-                <h3 class="animate-on-scroll slide-up text-3xl font-bold text-cva-blue mb-6 text-center">A Unique CORE® and AI Track Record</h3>
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                    <div class="animate-on-scroll slide-up bg-white p-6 rounded-xl text-center shadow-lg border border-gray-100" style="transition-delay: 300ms;">
-                        <span class="text-5xl font-extrabold text-cva-blue">+30 pts</span>
-                        <p class="mt-2 font-semibold">NPS improvements on redesigned journeys.</p>
-                    </div>
-                    <div class="animate-on-scroll slide-up bg-white p-6 rounded-xl text-center shadow-lg border border-gray-100" style="transition-delay: 400ms;">
-                        <span class="text-5xl font-extrabold text-cva-blue">40-50%</span>
-                        <p class="mt-2 font-semibold">End-to-end efficiency gains on targeted processes.</p>
-                    </div>
-                    <div class="animate-on-scroll slide-up bg-white p-6 rounded-xl text-center shadow-lg border border-gray-100" style="transition-delay: 500ms;">
-                        <span class="text-5xl font-extrabold text-cva-blue">Risk <i class="fa-solid fa-arrow-down"></i></span>
-                        <p class="mt-2 font-semibold">Reduction of risk and fraud, with staff refocused.</p>
-                    </div>
-                    <div class="animate-on-scroll slide-up bg-white p-6 rounded-xl text-center shadow-lg border border-gray-100" style="transition-delay: 600ms;">
-                        <span class="text-5xl font-extrabold text-cva-blue">20-35%</span>
-                        <p class="mt-2 font-semibold">Of investments redirected to target-state solutions.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- References -->
-            <div class="mt-16">
-                <h3 class="animate-on-scroll slide-up text-3xl font-bold text-cva-blue mb-6 text-center">Relevant AI Transformation References</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 300ms;">
-                        <h4 class="text-xl font-bold text-cva-blue mb-3">Large insurance group – digital and AI transformation</h4>
-                        <p>CVA supported the CEO and France management in designing and steering a major transformation of distribution networks, including new digital products and AI-assisted customer journeys and pricing.</p>
-                    </div>
-                    <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 450ms;">
-                        <h4 class="text-xl font-bold text-cva-blue mb-3">Large European group – AI programme and Group AI Office</h4>
-                        <p>CVA supported a Group AI Office with SmartPMO® and CORE®, providing a common maturity framework for AI use cases, programme-level governance, and support to initiative leaders to mutualise solutions.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Team -->
-            <div class="mt-16">
-                <h3 class="animate-on-scroll slide-up text-3xl font-bold text-cva-blue mb-6 text-center">A Senior Team Combining Energy, CORE® & AI</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 300ms;">
-                        <div class="flex items-center mb-4">
-                            <i class="fa-solid fa-user-tie text-3xl text-veolia-green"></i>
-                            <h4 class="text-xl font-bold text-cva-blue ml-4">Partner – Head of New Services Models</h4>
-                        </div>
-                        <p>Leads CORE®-based programmes in services industries (banking, insurance, telco, energy). Expert in AI strategy and digital transformation.</p>
-                    </div>
-                    <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 450ms;">
-                        <div class="flex items-center mb-4">
-                            <i class="fa-solid fa-user-tie text-3xl text-veolia-green"></i>
-                            <h4 class="text-xl font-bold text-cva-blue ml-4">Partner – Head of Energy & Circular Transition</h4>
-                        </div>
-                        <p>20+ years in Energy & Utilities: renewables, nuclear, energy services, smart grids. Has led numerous projects involving AI applied to asset management and operations.</p>
-                    </div>
-                    <div class="animate-on-scroll slide-up bg-white p-8 rounded-xl shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 600ms;">
-                        <div class="flex items-center mb-4">
-                            <i class="fa-solid fa-user-tie text-3xl text-veolia-green"></i>
-                            <h4 class="text-xl font-bold text-cva-blue ml-4">Associate Partner – Energy & AI Lead</h4>
-                        </div>
-                        <p>12+ years in energy consulting (utilities, DSOs, ESCOs). CVA EMEA AI Lead, in charge of internal AI programmes and multiple AI missions for energy clients.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- What this gives you -->
-            <div class="animate-on-scroll fade-in mt-16 text-center max-w-4xl mx-auto">
-                <p class="text-lg font-semibold text-cva-blue p-6 bg-cva-light-bg rounded-lg shadow-md border-t-4 border-veolia-green">
-                    <span class="font-bold">What this gives Veolia:</span> A team that understands energy infrastructures, services, and AI at a granular level; masters CORE® and SmartPMO® as transformation tools; and has already supported large, multi-use case AI programmes.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==== SECTION 17: DELIVERY MODEL (Slide 14) ==== -->
-    <section class="py-20 md:py-28 bg-cva-light-bg">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto">
-                <h2 class="animate-on-scroll slide-up text-4xl font-extrabold text-cva-blue mb-4">Delivery Model</h2>
-                <p class="animate-on-scroll slide-up text-xl text-text-medium" style="transition-delay: 150ms;">CVA as strategic designer and orchestrator, working with Veolia’s teams and existing platforms.</p>
-            </div>
-            
-            <div class="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-12">
-                <div class="animate-on-scroll slide-in-left bg-white p-8 rounded-xl shadow-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 300ms;">
-                    <div class="flex items-center mb-5">
-                        <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center flex-shrink-0">
-                            <i class="fa-solid fa-people-group text-2xl text-veolia-green"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-cva-blue ml-4">With Veolia Business & Ops</h3>
-                    </div>
-                    <ul class="cva-list">
-                        <li><span class="list-lead">Joint Steering:</span> Programme steered by Veolia Energy with CVA as strategic partner.</li>
-                        <li><span class="list-lead">Co-construction:</span> Mixed teams. CVA brings methodology; Veolia brings process expertise.</li>
-                        <li><span class="list-lead">Capability Transfer:</span> CORE and SmartPMO are used as methods Veolia teams can reuse.</li>
-                    </ul>
-                </div>
-                <div class="animate-on-scroll slide-in-left bg-white p-8 rounded-xl shadow-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 450ms;">
-                    <div class="flex items-center mb-5">
-                        <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center flex-shrink-0">
-                            <i class="fa-solid fa-laptop-code text-2xl text-veolia-green"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-cva-blue ml-4">With Veolia Digital & IT</h3>
-                    </div>
-                    <ul class="cva-list">
-                        <li><span class="list-lead">Alignment:</span> Ensure the programme builds on existing architectures (SCADA, Hubgrade, Flexcity).</li>
-                        <li><span class="list-lead">Clear Roles:</span> CVA focuses on the "what & why" (value, process); Veolia/partners focus on the "how" (implementation).</li>
-                    </ul>
-                </div>
-                <div class="animate-on-scroll slide-in-right bg-white p-8 rounded-xl shadow-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5" style="transition-delay: 600ms;">
-                    <div class="flex items-center mb-5">
-                        <div class="w-12 h-12 bg-cva-light-bg rounded-full flex items-center justify-center flex-shrink-0">
-                            <i class="fa-solid fa-puzzle-piece text-2xl text-veolia-green"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-cva-blue ml-4">With Tech Partners & Vendors</h3>
-                    </div>
-                    <ul class="cva-list">
-                        <li><span class="list-lead">Use What Exists:</span> Integrate AI layers on top of existing digital twins and platforms, don't replace.</li>
-                        <li><span class="list-lead">Fill Gaps:</span> Help Veolia select partners in a structured way where needed.</li>
-                        <li><span class="list-lead">Vendor-Neutral:</span> CVA remains technology-agnostic, aligning all parties around value and governance.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ==== SECTION 18: CVA METHODOLOGY (Slide 13) ==== -->
-    <section class="py-20 md:py-28 bg-white">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto">
-                <h2 class="animate-on-scroll slide-up text-4xl font-extrabold text-cva-blue mb-4">How CVA Would Structure the Programme</h2>
-                <p class="animate-on-scroll slide-up text-xl text-text-medium" style="transition-delay: 150ms;">Using CORE + SmartPMO to turn AI use cases into a governed, high-impact programme.</p>
-            </div>
-
-            <!-- New Timeline -->
-            <div class="mt-24 max-w-3xl mx-auto">
-                <div class="relative">
-                    <!-- The connecting line -->
-                    <div class="timeline-connector hidden md:block" style="background-color: #E5E7EB;"></div>
-                    
-                    <div class="space-y-16">
-                        <!-- Phase 0 -->
-                        <div class="animate-on-scroll fade-in relative">
-                            <div class="timeline-dot timeline-dot-animated hidden md:block" style="top: 0; background-color: #1E6E5E; border-color: #FFF;"></div>
-                            <div class="md:flex md:items-center">
-                                <div class="md:w-1/2 md:pr-16 md:text-right">
-                                    <h3 class="text-2xl font-bold text-veolia-green">Phase 0</h3>
-                                    <p class="text-lg font-semibold text-cva-blue">Clarify Ambition & Scope</p>
-                                </div>
-                                <div class="md:w-1/2 md:pl-16 mt-4 md:mt-0">
-                                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                                        <p>Align Veolia Energy ExCom on ambition, strategic outcomes (CO₂, cost), and programme-level KPIs.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Phase 1 -->
-                        <div class="animate-on-scroll fade-in relative">
-                            <div class="timeline-dot timeline-dot-animated hidden md:block" style="top: 0; background-color: #1E6E5E; border-color: #FFF;"></div>
-                             <div class="md:flex md:flex-row-reverse md:items-center">
-                                <div class="md:w-1/2 md:pl-16 md:text-left">
-                                    <h3 class="text-2xl font-bold text-veolia-green">Phase 1</h3>
-                                    <p class="text-lg font-semibold text-cva-blue">CORE Value Discovery</p>
-                                </div>
-                                <div class="md:w-1/2 md:pr-16 mt-4 md:mt-0">
-                                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                                        <p>Apply CORE to each process (4G, Loops, Hubgrade) to map decision chains. Build a Veolia-specific value vs. maturity matrix and select Wave 1 priorities.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Phase 2 -->
-                        <div class="animate-on-scroll fade-in relative">
-                            <div class="timeline-dot timeline-dot-animated hidden md:block" style="top: 0; background-color: #1E6E5E; border-color: #FFF;"></div>
-                            <div class="md:flex md:items-center">
-                                <div class="md:w-1/2 md:pr-16 md:text-right">
-                                    <h3 class="text-2xl font-bold text-veolia-green">Phase 2</h3>
-                                    <p class="text-lg font-semibold text-cva-blue">Target Design & Governance</p>
-                                </div>
-                                <div class="md:w-1/2 md:pl-16 mt-4 md:mt-0">
-                                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                                        <p>Use CORE to design target processes (AI-assisted vs. human-led). Define the AI governance framework (model lifecycle, risk, compliance).</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Phase 3 -->
-                        <div class="animate-on-scroll fade-in relative">
-                            <div class="timeline-dot timeline-dot-animated hidden md:block" style="top: 0; background-color: #1E6E5E; border-color: #FFF;"></div>
-                             <div class="md:flex md:flex-row-reverse md:items-center">
-                                <div class="md:w-1/2 md:pl-16 md:text-left">
-                                    <h3 class="text-2xl font-bold text-veolia-green">Phase 3</h3>
-                                    <p class="text-lg font-semibold text-cva-blue">Pilots, Value & Scale-Up</p>
-                                </div>
-                                <div class="md:w-1/2 md:pr-16 mt-4 md:mt-0">
-                                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                                        <p>Select pilots (e.g., 2 networks, 2 loops) and launch as "proofs of value," not just concepts. Measure impact and design the scale-up roadmap and replication playbooks.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- SmartPMO Overlay -->
-            <div class="animate-on-scroll fade-in mt-16 text-center max-w-4xl mx-auto">
-                <p class="text-lg font-semibold text-cva-blue p-6 bg-cva-light-bg rounded-lg shadow-md border-t-4 border-veolia-green">
-                    <span class="font-bold">SmartPMO Overlay:</span> A central governance layer manages the AI programme as a portfolio (pipeline, decision milestones, RACI) with Veolia Energy ExCom visibility.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==== SECTION 19: THE "ASK" (Slide 15) - RIGOROUS ==== -->
-    <section id="ask" class="py-20 md:py-32 bg-cva-blue text-white">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto">
-                <h2 class="animate-on-scroll slide-up text-4xl font-extrabold mb-4">12–24 Month Roadmap & Decisions</h2>
-                <p class="animate-on-scroll slide-up text-xl text-gray-200" style="transition-delay: 150ms;">A realistic 3-phase roadmap and a small set of decisions to launch the AI for Energy programme.</p>
-            </div>
-            
-            <div class="mt-20 grid grid-cols-1 lg:grid-cols-2 gap-12">
-                
-                <!-- Roadmap -->
-                <div class="animate-on-scroll slide-in-left" style="transition-delay: 200ms;">
-                    <h3 class="text-3xl font-bold text-white mb-6">Proposed Roadmap</h3>
-                    <div class="space-y-4">
-                        <div class="bg-cva-blue/50 p-6 rounded-xl border border-blue-400/30">
-                            <h4 class="text-lg font-semibold text-white">Phase 1 (0-3 Months): Initiation & Scoping</h4>
-                            <p class="text-gray-300">Validate intent at ExCom. Nominate sponsor. Engage CVA for a focused CORE Value Discovery on the 3 use cases to assess readiness and map pilots.</p>
-                        </div>
-                        <div class="bg-cva-blue/50 p-6 rounded-xl border border-blue-400/30">
-                            <h4 class="text-lg font-semibold text-white">Phase 2 (3-12 Months): Design, Pilots & Proof of Value</h4>
-                            <p class="text-gray-300">Complete CORE target design. Select 1-2 pilots per use case. Launch pilots, measure value against baselines, and feed back learnings.</p>
-                        </div>
-                        <div class="bg-cva-blue/50 p-6 rounded-xl border border-blue-400/30">
-                            <h4 class="text-lg font-semibold text-white">Phase 3 (12-24 Months): Scaling & Institutionalisation</h4>
-                            <p class="text-gray-300">Consolidate pilot results into a group-level value case. Design replication playbooks. Integrate the AI programme into the GreenPath / GreenUp plan.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- "Decisions" Card -->
-                <div class="animate-on-scroll slide-in-right" style="transition-delay: 400ms;">
-                    <div class="bg-white text-text-dark p-10 rounded-xl shadow-2xl">
-                        <h3 class="text-3xl font-bold text-veolia-green mb-8">Key Decisions for Veolia Energy</h3>
-                        <!-- Rigorous list with NO inline <strong> tags -->
-                        <ol class="cva-decision-list">
-                            <li>
-                                Strategic Endorsement: Confirm AI as a core lever for decarbonisation, Local Loops, and service performance.
-                            </li>
-                            <li>
-                                Programme Governance: Appoint a senior sponsor and a cross-functional core team with a clear mandate.
-                            </li>
-                            <li>
-                                First Wave Scope: Endorse the three proposed use cases as the first wave and agree on 3-5 pilot geographies/loops to explore.
-                            </li>
-                            <li>
-                                Engage CVA: Mandate CVA to co-design the programme blueprint and first pilots using CORE & SmartPMO.
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==== FOOTER ==== -->
-    <footer class="py-12 bg-cva-blue text-gray-400 text-center">
-        <div class="flex justify-center items-center space-x-4">
-            <span class="text-2xl font-bold text-veolia-green">VEOLIA</span>
-            <span class="text-2xl font-bold text-gray-600">x</span>
-            <span class="text-2xl font-bold text-white">CVA</span>
-        </div>
-        <p class="mt-2 text-sm">AI for Energy Programme Pitch</p>
-    </footer>
+</svg>
 
 
-    <!-- 
-      7. JAVASCRIPT for "Impressive Effects"
-    -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Tabbed Interface Logic
-            const tabs = document.querySelectorAll('.portfolio-tab-btn');
-            const panes = document.querySelectorAll('.portfolio-tab-pane');
 
-            if(tabs.length) {
-                tabs.forEach(tab => {
-                    tab.addEventListener('click', () => {
-                        const targetPane = document.querySelector(tab.dataset.tabTarget);
+(Barre de Confiance - Juste en dessous du Hero)
+Rejoignez les réseaux de crèches innovants qui font confiance à KidoPilot :
+[Logo Client 1] [Logo Client 2] [Logo Client 3] [Logo Client 4]
+2. Section Crédibilité (L'Unfair Advantage)
+(Titre de Section)
+Conçu par des opérateurs, pour des opérateurs.
+(Texte)
+KidoPilot n'est pas une solution technologique hors-sol. Notre fondateur, fort de 15 ans d'expérience dans la création, la gestion et le développement de réseaux de crèches, connaît intimement les défis opérationnels que vous rencontrez.
+Remplacements d'urgence à 7h du matin, complexité des contrats à temps partiel, pression constante pour respecter les taux d'encadrement, reporting chronophage...
+C'est cette expertise terrain qui nous permet de créer une IA véritablement pertinente, qui comprend les subtilités de la réglementation française et les réalités quotidiennes de vos équipes.
+3. Section Fonctionnalités Clés (Le cœur de l'offre)
+Module 1 : Le Planning Intelligent qui respecte (vraiment) vos contraintes.
+(Description)
+L'optimisation du staffing est votre premier levier de performance et de qualité. Notre IA analyse des milliers de combinaisons en intégrant toutes vos contraintes : taux d'encadrement légaux, qualifications requises (EJE, AP...), contrats spécifiques et compétences de vos équipes.
+(Points Clés)
+• Génération Automatique de Plannings : Créez le planning optimal en quelques clics, pas en quelques heures.
+• Gestion Proactive des Absences : L'IA vous suggère immédiatement le meilleur remplaçant disponible et qualifié.
+• Visualisation des Ratios en Temps Réel : Superposez le besoin légal et la présence effective pour identifier les risques instantanément.
+• Impact Financier Direct : Visualisez le coût de chaque planning et réduisez les heures supplémentaires inutiles.
+(Visuel : Mockup 2 - Le Smart Planner et la Suggestion IA)
+L'interface met clairement en évidence les plages horaires où le ratio n'est pas respecté. En un clic, le Copilote IA propose des scénarios d'optimisation concrets et chiffrés, transformant la gestion des imprévus en décision éclairée.
 
-                        tabs.forEach(t => t.classList.remove('active'));
-                        tab.classList.add('active');
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" style="font-family: 'Inter', sans-serif; background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px;">
 
-                        panes.forEach(p => p.classList.add('hidden'));
-                        targetPane.classList.remove('hidden');
-                    });
-                });
-            }
+  <rect width="800" height="50" fill="#f9fafb"/>
+  <text x="20" y="30" fill="#374151" font-weight="semibold" font-size="16">Planning Hebdomadaire - Section Moyens</text>
+  <rect x="600" y="10" width="180" height="30" rx="5" fill="#f97316"/>
+  <text x="690" y="28" fill="#ffffff" font-size="12" text-anchor="middle" font-weight="bold">Lancer l'Optimisation IA</text>
 
-            // Scroll Animation Logic
-            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+  <rect x="20" y="60" width="15" height="15" fill="#10b981" opacity="0.5"/>
+  <text x="40" y="72" font-size="11">Présence Staff Effective</text>
+  <rect x="180" y="60" width="15" height="15" fill="#ef4444" opacity="0.5"/>
+  <text x="200" y="72" font-size="11">Besoin en Encadrement (Légal)</text>
 
-            if ("IntersectionObserver" in window) {
-                const observer = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('is-visible');
-                            observer.unobserve(entry.target); // Unobserve after it's visible
-                        }
-                    });
-                }, {
-                    threshold: 0.1 // Trigger when 10% of the element is visible
-                });
+  <g transform="translate(20, 90)">
+    <rect width="760" height="100" fill="#f3f4f6" rx="5"/>
+    <text x="76" y="-5" font-size="12" text-anchor="middle">Lundi</text>
+    <text x="228" y="-5" font-size="12" text-anchor="middle">Mardi</text>
+    <text x="380" y="-5" font-size="12" text-anchor="middle">Mercredi</text>
+    <text x="532" y="-5" font-size="12" text-anchor="middle">Jeudi</text>
+    <text x="684" y="-5" font-size="12" text-anchor="middle">Vendredi</text>
 
-                animatedElements.forEach(el => {
-                    observer.observe(el);
-                });
-            } else {
-                // Fallback for very old browsers: just show everything
-                animatedElements.forEach(el => el.classList.add('is-visible'));
-            }
-        });
-    </script>
+    <line x1="152" y1="0" x2="152" y2="100" stroke="#e5e7eb"/>
+    <line x1="304" y1="0" x2="304" y2="100" stroke="#e5e7eb"/>
+    <line x1="456" y1="0" x2="456" y2="100" stroke="#e5e7eb"/>
+    <line x1="608" y1="0" x2="608" y2="100" stroke="#e5e7eb"/>
 
-</body>
-</html>
+    <path d="M0 50 L 760 50" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,5"/>
+
+    <path d="M0 30 H 320 V 30 H 380 V 70 H 440 V 30 H 760" fill="none" stroke="#10b981" stroke-width="3"/>
+
+    <rect x="380" y="51" width="60" height="49" fill="#fca5a5" opacity="0.7"/>
+    <text x="385" y="75" fill="#991b1b" font-size="10">⚠️ Sous-effectif</text>
+  </g>
+
+  <text x="20" y="230" font-weight="semibold" font-size="14">Plannings Individuels</text>
+  <g transform="translate(20, 250)">
+    <rect width="760" height="100" fill="#ffffff" stroke="#e5e7eb"/>
+    <text x="10" y="20" font-size="12">Marie (EJE)</text>
+    <rect x="100" y="10" width="130" height="20" rx="5" fill="#93c5fd"/>
+    <rect x="250" y="10" width="130" height="20" rx="5" fill="#93c5fd"/>
+
+    <text x="10" y="50" font-size="12">Sarah (AP)</text>
+    <rect x="100" y="40" width="100" height="20" rx="5" fill="#a7f3d0"/>
+    <rect x="400" y="40" width="100" height="20" rx="5" fill="#fca5a5"/>
+     <text x="420" y="53" font-size="10" fill="#991b1b">Absente (P.M.)</text>
+  </g>
+
+    <g transform="translate(450, 150)">
+    <rect width="320" height="250" rx="10" fill="#ffffff" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.1))"/>
+    <rect width="320" height="40" fill="#1e3a8a" rx="10" ry="10"/>
+    <text x="20" y="25" font-weight="bold" font-size="14" fill="white">💡 Propositions du Copilote IA</text>
+
+    <text x="20" y="65" font-size="13" font-weight="semibold" fill="#1f2937">Scénario 1 (Recommandé)</text>
+    <text x="20" y="85" font-size="12" fill="#4b5563">Décaler la pause de Marie (EJE) de 30min.</text>
+    <text x="20" y="105" font-size="12" fill="#6b7280">Coût : 0€.</text>
+    <text x="20" y="120" font-size="12" fill="#6b7280">Impact conformité : Positif.</text>
+    <rect x="200" y="80" width="100" height="30" rx="5" fill="#10b981"/>
+    <text x="250" y="98" fill="#ffffff" font-size="12" text-anchor="middle">Appliquer</text>
+
+    <line x1="20" y1="140" x2="300" y2="140" stroke="#e5e7eb"/>
+
+    <text x="20" y="165" font-size="13" font-weight="semibold" fill="#1f2937">Scénario 2</text>
+    <text x="20" y="185" font-size="12" fill="#4b5563">Rappeler Julien (Volant, disponible).</text>
+    <text x="20" y="205" font-size="12" fill="#6b7280">Coût estimé : 45€.</text>
+     <rect x="200" y="175" width="100" height="30" rx="5" fill="#e5e7eb"/>
+    <text x="250" y="193" fill="#374151" font-size="12" text-anchor="middle">Appliquer</text>
+
+  </g>
+</svg>
 
 
+Module 2 : Votre Conformité Réglementaire, Sécurisée et Automatisée.
+(Description)
+Restez à jour avec les évolutions constantes des exigences PMI et CAF sans y passer vos week-ends. KidoPilot centralise votre documentation, suit vos échéances et vous aide à préparer vos rapports et inspections en toute sérénité.
+(Points Clés)
+• Veille Réglementaire Intelligente : Recevez des alertes claires et actionnables sur les changements qui impactent votre structure.
+• Audits Automatisés : L'IA analyse vos données (plannings, registres, protocoles) pour identifier les risques de non-conformité avant inspection.
+• Génération de Rapports (CAF/PMI) : Pré-remplissage intelligent de vos rapports d'activité, garantissant la cohérence des données.
+• Checklists Interactives : Suivi des points de contrôle essentiels (HACCP, PAI, Formations...).
+(Visuel : Mockup 3 - Le Centre de Conformité)
+La conformité n'est plus une source de stress, mais un processus géré activement. Un score global vous rassure, tandis que l'IA identifie proactivement les actions nécessaires et centralise les preuves.
+
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" style="font-family: 'Inter', sans-serif; background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px;">
+
+  <rect width="800" height="50" fill="#f9fafb"/>
+  <text x="20" y="30" fill="#374151" font-weight="semibold" font-size="18">Centre de Conformité (PMI &amp; CAF)</text>
+
+  <rect x="20" y="70" width="230" height="120" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="1"/>
+  <text x="40" y="100" font-size="14" fill="#065f46">Score de Conformité Global</text>
+  <text x="40" y="150" font-size="48" font-weight="bold" fill="#059669">98%</text>
+  <text x="150" y="150" font-size="14" fill="#065f46">✅ Excellent</text>
+  <text x="40" y="175" font-size="11" fill="#6b7280">Dernier audit IA : Aujourd'hui, 10h15.</text>
+
+  <rect x="270" y="70" width="510" height="120" rx="10" fill="#fffbeb" stroke="#fcd34d" stroke-width="1"/>
+  <text x="290" y="100" font-weight="bold" font-size="16" fill="#92400e">💡 Veille Réglementaire IA</text>
+  <text x="290" y="130" font-size="14" fill="#92400e">Nouvelle recommandation PMI (Dépt 75) détectée :</text>
+  <text x="290" y="150" font-size="14" fill="#92400e">Mise à jour du Protocole PAI nécessaire avant le 15 Décembre.</text>
+
+  <rect x="600" y="155" width="160" height="30" rx="5" fill="#f97316"/>
+  <text x="680" y="173" text-anchor="middle" font-size="12" fill="#ffffff" font-weight="bold">Générer le modèle type</text>
+
+  <text x="20" y="230" font-weight="semibold" font-size="18">Checklist Pré-Inspection PMI</text>
+
+  <g transform="translate(20, 250)">
+    <rect width="760" height="30" fill="#f3f4f6" rx="5"/>
+    <text x="10" y="18" font-size="13">Taux d'encadrement respectés sur les 3 derniers mois</text>
+    <text x="550" y="18" font-size="13" fill="#10b981">✅ Validé par IA</text>
+    <text x="670" y="18" font-size="13" fill="#0056b3" style="text-decoration: underline;">Voir les preuves</text>
+
+    <rect y="40" width="760" height="30" fill="#f3f4f6" rx="5"/>
+    <text x="10" y="58" font-size="13">Registres de présence du personnel à jour et signés</text>
+    <text x="550" y="58" font-size="13" fill="#10b981">✅ Validé par IA</text>
+
+    <rect y="80" width="760" height="30" fill="#f3f4f6" rx="5"/>
+    <text x="10" y="98" font-size="13">Protocoles médicaux (PAI, urgences) actualisés</text>
+    <text x="550" y="98" font-size="13" fill="#f59e0b">⚠️ À Vérifier</text>
+    <text x="670" y="98" font-size="13" fill="#0056b3" style="text-decoration: underline;">Voir l'alerte IA</text>
+
+    <rect y="120" width="760" height="30" fill="#f3f4f6" rx="5"/>
+    <text x="10" y="138" font-size="13">Formations sécurité incendie réalisées (Année N-1)</text>
+    <text x="550" y="138" font-size="13" fill="#ef4444">❌ Manquant</text>
+  </g>
+</svg>
+
+
+Module 3 : Communication Parents Augmentée.
+(Description)
+Réduisez la charge mentale de vos équipes et améliorez la satisfaction des parents grâce à l'IA générative. KidoPilot aide à transformer les observations terrain en communications claires, personnalisées et professionnelles.
+(Points Clés)
+• Synthèses Quotidiennes Assistées par IA : Transformez les notes brutes en comptes-rendus personnalisés et engageants en quelques secondes.
+• Traduction Instantanée : Communiquez efficacement avec les familles multilingues.
+• Assistant de Rédaction : Aide à trouver le ton juste pour les communications sensibles, les notes de service ou le projet pédagogique.
+(Visuel : Mockup 4 - L'Assistant de Communication IA)
+Visualisez concrètement le gain de temps : à gauche, les notes brutes de l'équipe ; à droite, la synthèse générée par l'IA, prête à être envoyée aux parents après validation.
+
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Inter', sans-serif; background-color: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px;">
+  <rect width="800" height="400" x="0" y="0" fill="#ffffff"/>
+
+  <rect width="800" height="50" fill="#f9fafb"/>
+  <text x="20" y="30" font-weight="semibold" font-size="18px" fill="#1f2937">Transmission Quotidienne - Léo Dubois (Moyens)</text>
+
+  <g transform="translate(30, 70)">
+
+    <text x="0" y="0" font-size="16px" font-weight="medium">Notes Brutes (Équipe)</text>
+    <rect x="0" y="20" width="350" height="250" rx="5" fill="#f3f4f6" stroke="#d1d5db"/>
+    <text x="15" y="45" font-size="14px" fill="#4b5563" font-style="italic">
+      <tspan x="15" dy="1.2em">Léo ok ce matin.</tspan>
+      <tspan x="15" dy="1.2em">Bien mangé purée carottes.</tspan>
+      <tspan x="15" dy="1.2em">Sieste 1h30.</tspan>
+      <tspan x="15" dy="1.2em">Activité peinture aprem, a aimé toucher la</tspan>
+      <tspan x="15" dy="1.2em">texture mais pas trop les mains sales.</tspan>
+      <tspan x="15" dy="1.2em">Change ok.</tspan>
+    </text>
+
+    <rect x="150" y="280" width="200" height="30" rx="5" fill="#003366"/>
+    <text x="180" y="298" font-size="14px" fill="white">Générer la synthèse IA ✨</text>
+
+    <text x="365" y="145" font-size="24px" fill="#f97316">→</text>
+
+    <text x="400" y="0" font-size="16px" font-weight="medium">Synthèse Générée (Copilote IA)</text>
+    <rect x="400" y="20" width="350" height="250" rx="5" fill="#ffffff" stroke="#d1d5db"/>
+    <text x="415" y="45" font-size="14px" fill="#1f2937">
+      <tspan x="415" dy="1.2em">Bonjour Mme Dubois,</tspan>
+      <tspan x="415" dy="1.5em">Léo a passé une excellente journée ! Ce midi, il a</tspan>
+      <tspan x="415" dy="1.2em">apprécié sa purée de carottes. Il s'est bien reposé</tspan>
+      <tspan x="415" dy="1.2em">avec une sieste réparatrice d'1h30.</tspan>
+      <tspan x="415" dy="1.5em">Cet après-midi, nous avons proposé un atelier</tspan>
+      <tspan x="415" dy="1.2em">peinture sensorielle. Léo s'est montré très curieux</tspan>
+      <tspan x="415" dy="1.2em">face aux nouvelles textures, explorant avec</tspan>
+      <tspan x="415" dy="1.2em">enthousiasme, même s'il préfère garder les mains</tspan>
+      <tspan x="415" dy="1.2em">propres ! À demain.</tspan>
+    </text>
+
+    <rect x="510" y="280" width="100" height="30" rx="5" fill="#e5e7eb"/>
+    <text x="535" y="298" font-size="14px">Modifier</text>
+
+    <rect x="630" y="280" width="120" height="30" rx="5" fill="#10b981"/>
+    <text x="655" y="298" font-size="14px" fill="white">Valider et Envoyer</text>
+
+  </g>
+</svg>
+
+4. Section Témoignages (Social Proof)
+(Titre de Section)
+Ils ont repris le contrôle de leurs opérations.
+(Témoignage 1 - Focus Staffing)
+"Avant KidoPilot, je passais 3 heures chaque matin à gérer les absences et à refaire les plannings sous stress. Aujourd'hui, l'IA me propose des solutions conformes en 5 minutes. C'est révolutionnaire pour la gestion de nos 12 structures."
+— Claire D., Directrice Opérationnelle, Réseau "Les Petits Pandas"
+(Témoignage 2 - Focus Conformité)
+"La préparation de l'inspection PMI était notre bête noire. KidoPilot audite nos processus en continu. Nous sommes arrivés à l'inspection confiants, avec toutes les preuves déjà centralisées."
+— Marc L., Gestionnaire de Micro-Crèches
+5. Section Finale et Appel à l'Action
+(Titre)
+Prêt à transformer la gestion de vos structures ?
+(Texte)
+Découvrez comment KidoPilot peut s'adapter spécifiquement à vos besoins, s'intégrer à vos outils existants (SIRH, Facturation) et améliorer concrètement votre quotidien.
+(Bouton CTA Final Orange)
+[Réserver ma Démonstration Personnalisée (30 min)]
+Implémentation rapide | Formation incluse | Support expert dédié | Conforme RGPD
+(Footer)
+Logo KidoPilot | Contact | Mentions Légales | Politique RGPD | Blog | Presse
+© 2025 KidoPilot AI. Tous droits réservés. Conçu en France.
