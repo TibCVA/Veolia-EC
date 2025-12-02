@@ -13,7 +13,7 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Lucide Icons (Vanilla Version - Plus stable pour ce format) -->
+    <!-- Lucide Icons (Vanilla Version) -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- Fonts -->
@@ -74,7 +74,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        /* Fix for sticky mobile nav hiding content */
+        /* Mobile Sticky CTA Padding Fix */
         body { padding-bottom: 80px; }
         @media (min-width: 1024px) { body { padding-bottom: 0; } }
     </style>
@@ -86,7 +86,6 @@
         const { useState, useEffect } = React;
 
         // --- SAFE ICON COMPONENT ---
-        // This wrapper ensures icons are re-rendered correctly by Lucide
         const Icon = ({ name, className = "" }) => {
             return <i data-lucide={name} className={className}></i>;
         };
@@ -108,7 +107,7 @@
         };
 
         const Button = ({ children, variant = 'primary', className = '', iconName, onClick }) => {
-            const base = "inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold transition-all duration-300 transform active:scale-[0.98] text-sm cursor-pointer";
+            const base = "inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold transition-all duration-300 transform active:scale-[0.98] text-sm cursor-pointer whitespace-nowrap";
             const variants = {
                 primary: "bg-brand-accent hover:bg-orange-600 text-white shadow-lg shadow-orange-500/20 hover:shadow-orange-500/30",
                 secondary: "bg-white text-slate-700 border border-slate-200 hover:border-brand-teal hover:text-brand-teal shadow-sm",
@@ -184,7 +183,6 @@
         const Hero = () => {
             return (
                 <section className="relative pt-32 pb-16 lg:pt-48 lg:pb-32 overflow-hidden">
-                    {/* Background Ambience */}
                     <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-teal/5 rounded-full blur-[100px] -z-10"></div>
                     <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-900/5 rounded-full blur-[100px] -z-10"></div>
 
@@ -201,12 +199,12 @@
                             
                             <p className="text-lg text-slate-600 mb-8 leading-relaxed max-w-lg">
                                 L'IA qui sécurise vos ratios d'encadrement en temps réel et automatise l'administratif complexe. <br/>
-                                <span className="font-medium text-brand-navy">Conforme PMI. Hébergé HDS. Dédié Petite Enfance.</span>
+                                <span className="font-medium text-brand-navy">Conforme PMI. Hébergé HDS.</span>
                             </p>
                             
                             <div className="flex flex-col sm:flex-row gap-4 mb-10">
                                 <Button variant="primary" iconName="calendar">
-                                    Auditer ma structure (Gratuit)
+                                    Auditer ma structure
                                 </Button>
                                 <Button variant="secondary" iconName="play-circle">
                                     Voir la vidéo
@@ -218,120 +216,74 @@
                                     <Icon name="shield-check" className="w-4 h-4 text-brand-teal" />
                                     <span>Certifié RGPD & HDS</span>
                                 </div>
-                                <div className="flex items-center gap-2">
-                                    <Icon name="check-circle" className="w-4 h-4 text-brand-teal" />
-                                    <span>Setup en 24h</span>
-                                </div>
                             </div>
                         </div>
 
-                        {/* HIGH FIDELITY DASHBOARD VISUAL */}
-                        <div className="relative lg:h-[600px] flex items-center justify-center perspective-1000 hidden md:flex">
+                        {/* DASHBOARD VISUAL - FIX: 3D only on LG, Flat on mobile/tablet */}
+                        <div className="relative lg:h-[600px] flex items-center justify-center lg:perspective-1000">
                             {/* Main Dashboard Card */}
-                            <div className="relative w-full max-w-[650px] aspect-[16/10] bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden transform rotate-y-[-5deg] rotate-x-[5deg] hover:rotate-0 transition-transform duration-700 ease-out z-20">
-                                {/* Fake Browser Header */}
+                            <div className="relative w-full max-w-[650px] aspect-[16/10] bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden lg:transform lg:rotate-y-[-5deg] lg:rotate-x-[5deg] lg:hover:rotate-0 transition-transform duration-700 ease-out z-20">
+                                {/* Header */}
                                 <div className="h-8 bg-slate-50 border-b border-slate-100 flex items-center px-4 gap-2">
                                     <div className="flex gap-1.5">
                                         <div className="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
                                         <div className="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
                                     </div>
-                                    <div className="flex-1 text-center text-[10px] text-slate-400 font-mono">app.kidopilot.ai/dashboard</div>
+                                    <div className="flex-1 text-center text-[10px] text-slate-400 font-mono hidden sm:block">app.kidopilot.ai/dashboard</div>
                                 </div>
 
-                                {/* App Shell */}
+                                {/* Content */}
                                 <div className="flex h-full">
-                                    {/* Sidebar */}
-                                    <div className="w-16 bg-brand-navy flex flex-col items-center py-6 gap-6 border-r border-slate-800">
+                                    <div className="w-12 sm:w-16 bg-brand-navy flex flex-col items-center py-6 gap-6 border-r border-slate-800">
                                         <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white"><Icon name="layout-grid" className="w-4 h-4" /></div>
                                         <div className="w-8 h-8 rounded-lg text-slate-400 hover:text-white transition"><Icon name="users" className="w-4 h-4" /></div>
                                         <div className="w-8 h-8 rounded-lg text-slate-400 hover:text-white transition"><Icon name="calendar-clock" className="w-4 h-4" /></div>
-                                        <div className="w-8 h-8 rounded-lg text-slate-400 hover:text-white transition"><Icon name="file-bar-chart" className="w-4 h-4" /></div>
-                                        <div className="mt-auto w-8 h-8 rounded-full bg-brand-teal text-white text-xs flex items-center justify-center font-bold">CD</div>
                                     </div>
 
-                                    {/* Main Content */}
-                                    <div className="flex-1 bg-slate-50 p-6 relative">
-                                        {/* Header */}
+                                    <div className="flex-1 bg-slate-50 p-4 sm:p-6 relative">
                                         <div className="flex justify-between items-end mb-6">
                                             <div>
-                                                <h2 className="text-xl font-bold text-brand-navy">Vue d'ensemble</h2>
-                                                <p className="text-xs text-slate-500">Mardi 2 Décembre • Crèche "Les Petits Pas"</p>
+                                                <h2 className="text-lg sm:text-xl font-bold text-brand-navy">Vue d'ensemble</h2>
+                                                <p className="text-xs text-slate-500">Mardi 2 Décembre</p>
                                             </div>
                                             <div className="flex gap-2">
-                                                <Badge text="Conforme" type="success" />
-                                                <Badge text="Audit en cours" type="navy" />
+                                                <div className="hidden sm:block"><Badge text="Conforme" type="success" /></div>
                                             </div>
                                         </div>
 
-                                        {/* KPI Cards */}
-                                        <div className="grid grid-cols-3 gap-4 mb-6">
+                                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
                                             <div className="bg-white p-3 rounded-xl border border-slate-100 shadow-sm">
-                                                <p className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Taux d'occupation</p>
-                                                <p className="text-2xl font-bold text-brand-navy mt-1">92%</p>
-                                                <p className="text-[10px] text-green-600 flex items-center mt-1"><Icon name="trending-up" className="w-3 h-3 mr-1" /> +4pts vs N-1</p>
+                                                <p className="text-[10px] text-slate-400 uppercase font-bold">Occup.</p>
+                                                <p className="text-xl sm:text-2xl font-bold text-brand-navy mt-1">92%</p>
                                             </div>
                                             <div className="bg-white p-3 rounded-xl border border-slate-100 shadow-sm relative overflow-hidden">
-                                                <p className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Ratio Encadrement</p>
-                                                <p className="text-2xl font-bold text-brand-teal mt-1">1:6.2</p>
-                                                <div className="absolute right-3 top-3 w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                                <p className="text-[10px] text-slate-400 mt-1">Cible: 1:5.0 - 1:8.0</p>
+                                                <p className="text-[10px] text-slate-400 uppercase font-bold">Ratio</p>
+                                                <p className="text-xl sm:text-2xl font-bold text-brand-teal mt-1">1:6.2</p>
                                             </div>
-                                            <div className="bg-white p-3 rounded-xl border border-slate-100 shadow-sm">
-                                                <p className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Masse Salariale</p>
+                                            <div className="bg-white p-3 rounded-xl border border-slate-100 shadow-sm hidden sm:block">
+                                                <p className="text-[10px] text-slate-400 uppercase font-bold">Masse Sal.</p>
                                                 <p className="text-2xl font-bold text-brand-navy mt-1">32k€</p>
-                                                <p className="text-[10px] text-green-600 mt-1">Optimisée</p>
                                             </div>
                                         </div>
 
-                                        {/* Dynamic Alert Banner (The "Hook") */}
-                                        <div className="bg-white rounded-xl shadow-soft border-l-4 border-orange-500 p-4 mb-6 animate-float">
-                                            <div className="flex justify-between items-start">
-                                                <div className="flex gap-3">
-                                                    <div className="bg-orange-50 p-2 rounded-lg text-orange-600">
+                                        <div className="bg-white rounded-xl shadow-soft border-l-4 border-orange-500 p-3 sm:p-4 mb-6 animate-float">
+                                            <div className="flex justify-between items-start gap-3">
+                                                <div className="flex gap-3 items-start">
+                                                    <div className="bg-orange-50 p-2 rounded-lg text-orange-600 hidden sm:block">
                                                         <Icon name="alert-triangle" className="w-5 h-5" />
                                                     </div>
                                                     <div>
-                                                        <h3 className="text-sm font-bold text-brand-navy">Alerte Prédictive IA</h3>
-                                                        <p className="text-xs text-slate-500 mt-1 max-w-[200px]">Risque de sous-effectif détecté pour demain 14h00 (Section Moyens).</p>
+                                                        <h3 className="text-sm font-bold text-brand-navy">Alerte IA</h3>
+                                                        <p className="text-xs text-slate-500 mt-1 leading-tight">Risque sous-effectif demain 14h.</p>
                                                     </div>
                                                 </div>
-                                                <button className="bg-brand-navy text-white text-xs px-3 py-1.5 rounded-lg hover:bg-slate-700 transition">
-                                                    Voir la solution
+                                                <button className="bg-brand-navy text-white text-[10px] sm:text-xs px-2 py-1.5 rounded-lg whitespace-nowrap">
+                                                    Voir
                                                 </button>
                                             </div>
                                         </div>
-
-                                        {/* Chart Placeholder */}
-                                        <div className="bg-white rounded-xl border border-slate-100 p-4 h-32 flex items-center justify-center relative">
-                                            <div className="absolute inset-x-4 bottom-4 top-8 flex items-end justify-between gap-2">
-                                                {[40, 60, 45, 70, 50, 65, 80].map((h, i) => (
-                                                    <div key={i} className="w-full bg-brand-teal/20 rounded-t-sm relative group">
-                                                        <div style={{height: `${h}%`}} className="absolute bottom-0 w-full bg-brand-teal rounded-t-sm group-hover:bg-brand-navy transition-colors duration-300"></div>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            {/* Floating Card: ROI */}
-                            <div className="absolute -bottom-4 -left-4 bg-white p-4 rounded-xl shadow-xl border border-slate-100 z-30 animate-float" style={{animationDelay: '1s'}}>
-                                <div className="flex items-center gap-3">
-                                    <div className="bg-green-100 p-2 rounded-full text-green-600">
-                                        <Icon name="piggy-bank" className="w-5 h-5" />
-                                    </div>
-                                    <div>
-                                        <p className="text-[10px] text-slate-500 font-bold uppercase">Économies (Mois)</p>
-                                        <p className="font-bold text-brand-navy text-lg">+1 240 €</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                             {/* Floating Card: Security */}
-                            <div className="absolute top-10 -right-8 bg-white p-3 rounded-lg shadow-xl border border-slate-100 z-10 flex items-center gap-2 animate-float" style={{animationDelay: '2s'}}>
-                                <Icon name="lock" className="w-4 h-4 text-brand-teal" />
-                                <span className="text-xs font-bold text-brand-navy">Données Cryptées AES-256</span>
                             </div>
                         </div>
                     </div>
@@ -343,8 +295,8 @@
              const logos = ["Les Petits Chaperons", "Babilou", "La Maison Bleue", "People&Baby", "Léah", "Grandir"];
              return (
                  <div className="bg-white border-y border-slate-100 py-6 overflow-hidden relative">
-                    <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
-                    <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
+                    <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
+                    <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
                     
                     <div className="flex gap-16 animate-ticker w-max">
                         {[...logos, ...logos, ...logos].map((logo, i) => (
@@ -366,36 +318,35 @@
                             <h2 className="font-display text-3xl lg:text-4xl font-bold text-brand-navy mt-4 mb-4">
                                 L'Intelligence Artificielle qui <br/>comprend la Petite Enfance.
                             </h2>
-                            <p className="text-slate-600">
-                                Nous avons codifié 15 ans d'expertise opérationnelle dans des algorithmes propriétaires.
-                            </p>
                         </div>
 
-                        {/* Bento Grid Layout */}
+                        {/* Bento Grid Layout - FIXED LAYOUT */}
                         <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6">
                             
-                            {/* Card 1: Main Feature (Span 2) */}
-                            <div className="lg:col-span-2 bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
-                                <div className="max-w-md relative z-10">
+                            {/* Card 1: Main Feature (Span 2) - FIXED STRUCTURE */}
+                            <div className="lg:col-span-2 bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col md:flex-row">
+                                {/* Left Content Side */}
+                                <div className="p-8 flex-1">
                                     <div className="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center text-brand-teal mb-6">
                                         <Icon name="brain-circuit" className="w-6 h-6" />
                                     </div>
-                                    <h3 className="font-display text-2xl font-bold text-brand-navy mb-3">Planning Génératif Sous Contraintes</h3>
+                                    <h3 className="font-display text-2xl font-bold text-brand-navy mb-3">Planning Génératif</h3>
                                     <p className="text-slate-600 mb-6">
-                                        Notre moteur d'optimisation génère les plannings en respectant simultanément : les contrats, les compétences (EJE/AP), les ratios légaux et les congés.
+                                        Notre moteur génère les plannings en respectant contrats, compétences et ratios légaux.
                                     </p>
-                                    <ul className="space-y-2 mb-6">
-                                        <li className="flex items-center text-sm text-slate-700"><Icon name="check" className="w-4 h-4 text-brand-teal mr-2" />Conformité décret 2021</li>
-                                        <li className="flex items-center text-sm text-slate-700"><Icon name="check" className="w-4 h-4 text-brand-teal mr-2" />Lissage des heures supplémentaires</li>
+                                    <ul className="space-y-2">
+                                        <li className="flex items-center text-sm text-slate-700"><Icon name="check" className="w-4 h-4 text-brand-teal mr-2 flex-shrink-0" />Conformité décret 2021</li>
+                                        <li className="flex items-center text-sm text-slate-700"><Icon name="check" className="w-4 h-4 text-brand-teal mr-2 flex-shrink-0" />Lissage heures sup.</li>
                                     </ul>
                                 </div>
-                                {/* Abstract Visual */}
-                                <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-slate-50 border-l border-slate-100 flex flex-col justify-center p-4 gap-3 opacity-50 group-hover:opacity-100 transition-opacity">
+                                
+                                {/* Right Visual Side - FIXED: No absolute positioning, use flex column */}
+                                <div className="bg-slate-50 border-t md:border-t-0 md:border-l border-slate-100 p-6 w-full md:w-1/3 flex flex-col justify-center gap-3">
                                     <div className="bg-white p-3 rounded-lg border border-slate-200 shadow-sm text-xs">
                                         <div className="flex justify-between font-bold text-slate-700 mb-1"><span>Lundi</span><span>OK</span></div>
                                         <div className="h-1.5 bg-green-500 rounded-full w-full"></div>
                                     </div>
-                                    <div className="bg-white p-3 rounded-lg border border-red-200 shadow-sm text-xs border-l-4 border-l-red-500">
+                                    <div className="bg-white p-3 rounded-lg border border-red-200 shadow-sm text-xs border-l-4 border-l-red-500 transform scale-105">
                                         <div className="flex justify-between font-bold text-slate-700 mb-1"><span>Mardi</span><span className="text-red-500">!</span></div>
                                         <div className="h-1.5 bg-red-200 rounded-full w-full"></div>
                                     </div>
@@ -413,11 +364,11 @@
                                 </div>
                                 <h3 className="font-display text-xl font-bold text-brand-navy mb-3">Audit PMI Continu</h3>
                                 <p className="text-slate-600 text-sm mb-4">
-                                    Ne préparez plus les inspections. Soyez prêts chaque jour. Export des preuves en 1 clic.
+                                    Ne préparez plus les inspections. Soyez prêts chaque jour.
                                 </p>
                                 <div className="bg-slate-50 rounded-xl p-4 border border-slate-100 mt-4">
                                     <div className="flex justify-between items-center mb-2">
-                                        <span className="text-xs font-bold text-slate-500">Score Conformité</span>
+                                        <span className="text-xs font-bold text-slate-500">Conformité</span>
                                         <span className="text-xs font-bold text-brand-teal">98/100</span>
                                     </div>
                                     <div className="w-full bg-slate-200 rounded-full h-2">
@@ -433,33 +384,29 @@
                                 </div>
                                 <h3 className="font-display text-xl font-bold text-brand-navy mb-3">Module PSU & CAF</h3>
                                 <p className="text-slate-600 text-sm">
-                                    Déclaration des heures réelles vs facturées. Détection automatique des erreurs de pointage avant envoi CAF.
+                                    Déclaration des heures réelles vs facturées. Détection automatique des erreurs.
                                 </p>
                             </div>
 
-                            {/* Card 4: Communication AI */}
-                            <div className="lg:col-span-2 bg-brand-navy rounded-3xl p-8 border border-slate-800 shadow-sm text-white relative overflow-hidden">
-                                <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
-                                    <div>
-                                        <Badge text="Gain de temps : 45 min / jour" type="warning" />
-                                        <h3 className="font-display text-2xl font-bold mt-4 mb-3">Assistant de Transmission</h3>
-                                        <p className="text-slate-300 mb-6">
-                                            Transformez les notes brutes ("A bien mangé, sieste 1h") en paragraphes professionnels et empathiques pour les parents.
-                                        </p>
-                                        <button className="text-brand-accent font-bold text-sm hover:text-white transition flex items-center">
-                                            Voir la démo de rédaction <Icon name="arrow-right" className="ml-2 w-4 h-4" />
-                                        </button>
+                            {/* Card 4: Communication AI - FIXED: Flex col on mobile */}
+                            <div className="lg:col-span-2 bg-brand-navy rounded-3xl border border-slate-800 shadow-sm text-white overflow-hidden flex flex-col md:flex-row">
+                                <div className="p-8 flex-1">
+                                    <Badge text="Gain de temps : 45 min / jour" type="warning" />
+                                    <h3 className="font-display text-2xl font-bold mt-4 mb-3">Assistant de Transmission</h3>
+                                    <p className="text-slate-300 mb-6">
+                                        Transformez les notes brutes en paragraphes professionnels et empathiques.
+                                    </p>
+                                    <button className="text-brand-accent font-bold text-sm hover:text-white transition flex items-center">
+                                        Voir la démo <Icon name="arrow-right" className="ml-2 w-4 h-4" />
+                                    </button>
+                                </div>
+                                <div className="bg-white/5 backdrop-blur-sm border-t md:border-t-0 md:border-l border-white/10 p-6 w-full md:w-2/5 flex flex-col justify-center">
+                                    <div className="bg-black/20 p-3 rounded text-xs text-slate-300 mb-3 font-mono">
+                                        "Léo. Repas ok."
                                     </div>
-                                    <div className="bg-white/10 rounded-xl p-4 backdrop-blur-sm border border-white/10">
-                                        <p className="text-xs text-slate-400 mb-2 font-mono">Input (Équipe)</p>
-                                        <div className="bg-black/20 p-2 rounded text-xs text-slate-300 mb-3 font-mono">
-                                            Léo. Repas ok. Sieste courte.
-                                        </div>
-                                        <div className="flex justify-center mb-3"><Icon name="arrow-down" className="w-4 h-4 text-brand-accent" /></div>
-                                        <p className="text-xs text-slate-400 mb-2 font-mono">Output (KidoPilot)</p>
-                                        <div className="bg-white text-brand-navy p-3 rounded text-xs italic">
-                                            "Léo a eu un très bon appétit ce midi. Sa sieste a été un peu plus courte que d'habitude..."
-                                        </div>
+                                    <div className="flex justify-center mb-3"><Icon name="arrow-down" className="w-4 h-4 text-brand-accent" /></div>
+                                    <div className="bg-white text-brand-navy p-3 rounded text-xs italic">
+                                        "Léo a eu un très bon appétit ce midi..."
                                     </div>
                                 </div>
                             </div>
@@ -479,7 +426,7 @@
                                     Un ROI mesurable dès le <span className="text-brand-teal">Mois 1</span>.
                                 </h2>
                                 <p className="text-slate-600 mb-8">
-                                    Nos clients constatent une réduction moyenne de 4% de la masse salariale grâce à l'optimisation des heures supplémentaires et des vacataires.
+                                    Réduction moyenne de 4% de la masse salariale grâce à l'optimisation.
                                 </p>
                                 
                                 <div className="space-y-6">
@@ -498,41 +445,33 @@
                                         </div>
                                         <div>
                                             <h4 className="font-bold text-brand-navy text-lg">0 Pénalité</h4>
-                                            <p className="text-sm text-slate-500">Risque de non-conformité CAF/PMI éliminé.</p>
+                                            <p className="text-sm text-slate-500">Risque de non-conformité éliminé.</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="bg-slate-50 rounded-3xl p-8 border border-slate-200 relative">
-                                <div className="absolute -top-4 -right-4 bg-brand-accent text-white px-4 py-2 rounded-lg font-bold text-sm shadow-lg transform rotate-3">
-                                    Résultat Moyen
-                                </div>
                                 <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-6">Simulation Micro-Crèche (10 berceaux)</h3>
                                 
                                 <div className="space-y-4 mb-8">
                                     <div className="flex justify-between items-center py-3 border-b border-slate-200">
-                                        <span className="text-slate-600">Optimisation Staffing</span>
-                                        <span className="font-bold text-brand-navy">+ 850 € / mois</span>
+                                        <span className="text-slate-600 text-sm sm:text-base">Optimisation Staffing</span>
+                                        <span className="font-bold text-brand-navy text-sm sm:text-base">+ 850 € / mois</span>
                                     </div>
                                     <div className="flex justify-between items-center py-3 border-b border-slate-200">
-                                        <span className="text-slate-600">Réduction Interim</span>
-                                        <span className="font-bold text-brand-navy">+ 400 € / mois</span>
-                                    </div>
-                                    <div className="flex justify-between items-center py-3 border-b border-slate-200">
-                                        <span className="text-slate-600">Gain Temps Direction</span>
-                                        <span className="font-bold text-brand-navy">+ 600 € / mois</span>
+                                        <span className="text-slate-600 text-sm sm:text-base">Réduction Interim</span>
+                                        <span className="font-bold text-brand-navy text-sm sm:text-base">+ 400 € / mois</span>
                                     </div>
                                 </div>
                                 
                                 <div className="bg-brand-navy rounded-xl p-6 text-white flex justify-between items-center">
                                     <div>
                                         <p className="text-xs text-slate-300 uppercase">Gain Annuel Estimé</p>
-                                        <p className="text-3xl font-bold text-white">22 200 €</p>
+                                        <p className="text-2xl sm:text-3xl font-bold text-white">22 200 €</p>
                                     </div>
                                     <Icon name="arrow-up-right" className="w-8 h-8 text-brand-teal" />
                                 </div>
-                                <p className="text-xs text-slate-400 mt-4 text-center">*Basé sur une moyenne nationale 2024.</p>
                             </div>
                         </div>
                     </div>
@@ -543,22 +482,19 @@
         const TrustSection = () => (
              <section id="security" className="py-20 bg-slate-900 text-white text-center">
                 <div className="container mx-auto px-6">
-                    <h2 className="text-2xl font-bold mb-8">Vos données sont sacrées. Notre infrastructure aussi.</h2>
+                    <h2 className="text-xl sm:text-2xl font-bold mb-8">Données sécurisées & Hébergement HDS.</h2>
                     <div className="flex flex-wrap justify-center gap-8 md:gap-16">
                         <div className="flex flex-col items-center gap-3">
                             <Icon name="server" className="w-8 h-8 text-brand-teal" />
-                            <span className="font-bold">Hébergement HDS</span>
-                            <span className="text-xs text-slate-400">Serveurs Santé agréés</span>
+                            <span className="font-bold">HDS agréé</span>
                         </div>
                          <div className="flex flex-col items-center gap-3">
                             <Icon name="lock" className="w-8 h-8 text-brand-teal" />
-                            <span className="font-bold">Chiffrement AES-256</span>
-                            <span className="text-xs text-slate-400">Standards bancaires</span>
+                            <span className="font-bold">AES-256</span>
                         </div>
                          <div className="flex flex-col items-center gap-3">
                             <Icon name="globe" className="w-8 h-8 text-brand-teal" />
-                            <span className="font-bold">Souveraineté</span>
-                            <span className="text-xs text-slate-400">Data Centers en France</span>
+                            <span className="font-bold">France</span>
                         </div>
                     </div>
                 </div>
@@ -570,22 +506,13 @@
                 <div className="container mx-auto px-6 relative z-10">
                     <div className="max-w-4xl mx-auto text-center">
                         <h2 className="font-display text-4xl md:text-5xl font-bold text-brand-navy mb-6">
-                            Prêt à optimiser votre structure ?
+                            Prêt à optimiser ?
                         </h2>
-                        <p className="text-xl text-slate-600 mb-10">
-                            Rejoignez les 200+ directeurs qui ont choisi la sérénité opérationnelle.
-                        </p>
                         <div className="flex flex-col sm:flex-row justify-center gap-4">
                             <Button variant="primary" className="text-lg px-8 py-4" iconName="calendar-check">
-                                Réserver une démo (30 min)
-                            </Button>
-                            <Button variant="secondary" className="text-lg px-8 py-4">
-                                Parler à un expert
+                                Démo (30 min)
                             </Button>
                         </div>
-                        <p className="mt-6 text-sm text-slate-400">
-                            Pas de carte bancaire • Audit gratuit inclus • Sans engagement
-                        </p>
                     </div>
                 </div>
             </section>
@@ -595,11 +522,10 @@
             <footer className="bg-slate-50 border-t border-slate-200 pt-16 pb-32 lg:pb-16">
                 <div className="container mx-auto px-6">
                     <div className="flex flex-col md:flex-row justify-between items-center opacity-60 text-sm">
-                        <p>© 2025 KidoPilot SAS. Paris, France.</p>
+                        <p>© 2025 KidoPilot SAS.</p>
                         <div className="flex gap-6 mt-4 md:mt-0">
                             <a href="#">Mentions Légales</a>
-                            <a href="#">CGV</a>
-                            <a href="#">Politique RGPD</a>
+                            <a href="#">RGPD</a>
                         </div>
                     </div>
                 </div>
@@ -618,7 +544,6 @@
         // --- MAIN APP ---
 
         const App = () => {
-            // Global hook to refresh icons whenever DOM updates
             useEffect(() => {
                 if (window.lucide) {
                     window.lucide.createIcons();
